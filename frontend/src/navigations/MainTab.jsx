@@ -6,10 +6,7 @@ const MainTab = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Home}/>
-      <Tab.Screen name="Coures" component={Home}/>
-      <Tab.Screen name="Home1" component={Home}/>
-      <Tab.Screen name="Home2" component={Home}/>
-      <Tab.Screen name="Settings" component={Home}/>
+
     </Tab.Navigator>
   )
 }
