@@ -1,4 +1,5 @@
 require('dotenv').config()
+const cors = require('cors');
 const PORT = process.env.PORT
 
 const express = require('express')
@@ -12,6 +13,8 @@ const app = express()
 
 db.connect()
 app.use(express.json());
+app.use(cors());
+
 app.use('/api/courses', courseRouter)
 app.use('/api/lesson', lessonRouter)
 app.use('/api/vocabulary', vocabularyRouter)

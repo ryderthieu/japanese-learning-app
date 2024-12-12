@@ -3,9 +3,28 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
+import axios from 'axios';
 
 const Login = ({navigation}) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  
+  const handleLogin = async () => {
+    axios.post('http://10.0.2.2:3000/api/user/login', {
+      email: email,
+      password: password
+    })
+    .then ((res) => {
+      const token = res.data.token
+      alert ('Đăng nhập thành công!')
+      navigation.navigate('MainTab')
+    })
+    .catch((error) => {
+
+      alert (error.response.data.error)
+    }) 
+  }
 
   return (
 
@@ -27,10 +46,12 @@ const Login = ({navigation}) => {
               backgroundColor: "white",
               borderBottomColor: 'white',
               borderRadius: 20,
-              paddingHorizontal: 10
+              paddingHorizontal: 10,
+              borderBottomWidth: 0
             }}
             placeholder="Địa chỉ email"
             leftIcon={{ type: "ant-design", name: "user" }}
+            onChangeText={setEmail}
           />
           <Input
             containerStyle={{
@@ -43,12 +64,14 @@ const Login = ({navigation}) => {
               backgroundColor: "white",
               borderBottomColor: 'white',
               borderRadius: 20,
-              paddingHorizontal: 10
+              paddingHorizontal: 10,
+              borderBottomWidth: 0
             }}
             placeholder="Mật khẩu"
             secureTextEntry={!isPasswordVisible}
             leftIcon={{ type: "feather", name: "key",  }}
             rightIcon={{ type: "feather", name: isPasswordVisible ? "eye-off" : "eye" , onPress: () => setPasswordVisible(!isPasswordVisible) }}
+            onChangeText={setPassword}
           />
           <Text className="mb-5 text-right text-base text-[#2B308B]">
             Quên mật khẩu?
@@ -64,6 +87,7 @@ const Login = ({navigation}) => {
             titleStyle={{
              fontWeight: 'semibold'
             }}
+            onPress={handleLogin}
           />
         </View>
         <Text className="mt-10 mb-5 text-base">Hoặc đăng nhập bằng</Text>

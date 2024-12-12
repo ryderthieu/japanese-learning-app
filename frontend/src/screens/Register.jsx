@@ -1,11 +1,29 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
-
+import axios from "axios";
 const Register = ({ navigation }) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+
+  const handleSignup = async () => {
+    axios.post('http://10.0.2.2:3000/api/user/signup', {
+      email: email,
+      password: password
+    })
+    .then ((res) => {
+      alert('Đăng ký thành công!')
+      navigation.navigate('Login')
+    })
+    .catch((error) => {
+      alert(error.response.data.error)
+    }) 
+  }
 
   return (
     <SafeAreaView>
@@ -26,10 +44,12 @@ const Register = ({ navigation }) => {
               backgroundColor: "white",
               borderBottomColor: 'white',
               borderRadius: 20,
-              paddingHorizontal: 10
+              paddingHorizontal: 10,
+              borderBottomWidth: 0
             }}
             placeholder="Họ và tên"
             leftIcon={{ type: "ant-design", name: "user"}}
+            onChangeText={setName}
           />
           <Input
             containerStyle={{
@@ -42,10 +62,13 @@ const Register = ({ navigation }) => {
               backgroundColor: "white",
               borderBottomColor: 'white',
               borderRadius: 20,
-              paddingHorizontal: 10
+              paddingHorizontal: 10,
+              borderBottomWidth: 0
             }}
+
             placeholder="Địa chỉ email"
             leftIcon={{ type: "ant-design", name: "mail" }}
+            onChangeText={setEmail}
           />
           <Input
             containerStyle={{
@@ -58,7 +81,8 @@ const Register = ({ navigation }) => {
               backgroundColor: "white",
               borderBottomColor: 'white',
               borderRadius: 20,
-              paddingHorizontal: 10
+              paddingHorizontal: 10,
+              borderBottomWidth: 0
             }}
             placeholder="Mật khẩu"
             secureTextEntry={!isPasswordVisible}
@@ -68,6 +92,7 @@ const Register = ({ navigation }) => {
               name: isPasswordVisible ? "eye-off" : "eye",
               onPress: () => setPasswordVisible(!isPasswordVisible),
             }}
+            onChangeText={setPassword}
           />
           <Input
             containerStyle={{
@@ -81,7 +106,8 @@ const Register = ({ navigation }) => {
               backgroundColor: "white",
               borderBottomColor: 'white',
               borderRadius: 20,
-              paddingHorizontal: 10
+              paddingHorizontal: 10,
+              borderBottomWidth: 0
             }}
             placeholder="Xác nhận mật khẩu"
             secureTextEntry={!isPasswordVisible}
@@ -91,8 +117,10 @@ const Register = ({ navigation }) => {
               name: isPasswordVisible ? "eye-off" : "eye",
               onPress: () => setPasswordVisible(!isPasswordVisible),
             }}
+            onChangeText={setConfirmPassword}
           />
           <Button
+            onPress={handleSignup}
             title={"Đăng ký"}
             buttonStyle={{
               width: 350,
@@ -104,6 +132,7 @@ const Register = ({ navigation }) => {
               fontWeight: "bold",
             }}
           />
+
         </View>
         <View className="flex flex-row gap-2 mt-10 text-base">
           <Text>Đã có tài khoản?</Text>
