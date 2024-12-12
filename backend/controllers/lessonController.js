@@ -3,10 +3,9 @@ const Lesson = require('../models/lesson');
 
 const addLesson = async (req, res) => {
     try {
-        const { _id, title, course } = req.body;
+        const { title, course } = req.body;
 
         const newLesson = new Lesson({
-            _id,
             title,
             course
         });
