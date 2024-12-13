@@ -85,7 +85,7 @@ const Login = ({navigation}) => {
               borderRadius: 20,
             }}
             titleStyle={{
-             fontWeight: 'semibold'
+             fontWeight: 'bold'
             }}
             onPress={handleLogin}
           />
