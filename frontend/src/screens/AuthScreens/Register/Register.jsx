@@ -28,7 +28,7 @@ const Register = ({ navigation }) => {
   return (
     <SafeAreaView>
       <View className="flex flex-col items-center w-screen h-screen px-10 py-10">
-        <Image source={require("../assets/logo/logo-app.png")}></Image>
+        <Image source={require("../../../assets/logo/logo-app.png")}></Image>
         <Text className="mt-5 mb-10 text-4xl font-bold text-[#2B308B]">
           Đăng ký
         </Text>

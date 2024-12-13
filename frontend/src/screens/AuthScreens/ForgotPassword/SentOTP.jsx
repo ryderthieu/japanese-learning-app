@@ -51,7 +51,7 @@ const SentOTP = ({ navigation }) => {
           <Icon name="chevron-back-outline" type="ionicon" color="#00aced" />
           <Text className="text-base text-[#00aced]">Quay lại</Text>
         </TouchableOpacity>
-        <Image source={require("../assets/images/sentemail.png")}></Image>
+        <Image source={require("../../../assets/images/sentemail.png")}></Image>
         <View className="flex flex-row gap-3">
           {otp.map((digit, index) => (
             <TextInput

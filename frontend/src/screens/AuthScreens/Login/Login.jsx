@@ -30,7 +30,7 @@ const Login = ({navigation}) => {
 
     <SafeAreaView>
       <View className="flex flex-col items-center w-screen h-screen px-5 py-16">
-        <Image source={require("../assets/logo/logo-app.png")}></Image>
+        <Image source={require("../../../assets/logo/logo-app.png")}></Image>
         <Text className="mt-10 mb-10 text-4xl font-bold text-[#2B308B]">
           Đăng nhập
         </Text>

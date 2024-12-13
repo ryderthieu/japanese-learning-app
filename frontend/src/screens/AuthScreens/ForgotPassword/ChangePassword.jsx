@@ -23,7 +23,7 @@ const ForgotPassword = ({ navigation }) => {
           <Icon name="chevron-back-outline" type="ionicon" color="#00aced" />
           <Text className="text-base text-[#00aced]">Quay lại</Text>
         </TouchableOpacity>
-        <Image source={require("../assets/images/changepass.png")}></Image>
+        <Image source={require("../../../assets/images/changepass.png")}></Image>
         <Input
           containerStyle={{
             width: "full",
