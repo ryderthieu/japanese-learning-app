@@ -1,22 +1,24 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
-const validator = require('validator')
-// Định nghĩa schema người dùng
+const validator = require('validator');
+
 const userSchema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    otp: { type: String },
+    otpExpire: { type: Date },
 }, {
     timestamps: true
 });
 
 userSchema.statics.signup = async function (email, password) {
     if (!email || !password) {
-        throw Error ('Bạn chưa điền hết thông tin!')
+        throw Error('Bạn chưa điền hết thông tin!');
     }
-    
+
     if (!validator.isEmail(email)) {
-        throw Error ('Email không hợp lệ!')
+        throw Error('Email không hợp lệ!');
     }
 
     const exists = await this.findOne({ email });
@@ -38,7 +40,7 @@ userSchema.statics.signup = async function (email, password) {
 
 userSchema.statics.login = async function (email, password) {
     if (!email || !password) {
-        throw Error ('Bạn chưa điền hết thông tin!')
+        throw Error('Bạn chưa điền hết thông tin!');
     }
 
     const user = await this.findOne({ email });
