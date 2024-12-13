@@ -29,7 +29,7 @@ const Login = ({navigation}) => {
   return (
 
     <SafeAreaView>
-      <View className="flex flex-col items-center w-screen h-screen px-10 py-16">
+      <View className="flex flex-col items-center w-screen h-screen px-5 py-16">
         <Image source={require("../assets/logo/logo-app.png")}></Image>
         <Text className="mt-10 mb-10 text-4xl font-bold text-[#2B308B]">
           Đăng nhập
@@ -73,9 +73,7 @@ const Login = ({navigation}) => {
             rightIcon={{ type: "feather", name: isPasswordVisible ? "eye-off" : "eye" , onPress: () => setPasswordVisible(!isPasswordVisible) }}
             onChangeText={setPassword}
           />
-          <Text className="mb-5 text-right text-base text-[#2B308B]">
-            Quên mật khẩu?
-          </Text>
+          <Text className="mb-5 text-right text-base text-[#2B308B]" onPress={() =>navigation.navigate('ForgotPassword')}>Quên mật khẩu?</Text>
           <Button
             title={"Đăng nhập"}
             buttonStyle={{
