@@ -16,7 +16,6 @@ const addCourse = async (req, res) => {
         const { _id, title, description, thumbnail, level } = req.body;
 
         const newCourse = new Course({
-            _id,
             title,
             description,
             thumbnail,

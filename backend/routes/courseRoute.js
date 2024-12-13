@@ -5,4 +5,5 @@ const router = express.Router()
 
 router.post('/', addCourse)
 router.get('/all', getAllCourses)
+
 module.exports = router
