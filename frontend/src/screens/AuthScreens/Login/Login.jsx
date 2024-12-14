@@ -11,19 +11,19 @@ const Login = ({navigation}) => {
   const [password, setPassword] = useState('')
   
   const handleLogin = async () => {
-    axios.post('http://10.0.2.2:3000/api/user/login', {
-      email: email,
-      password: password
-    })
-    .then ((res) => {
-      const token = res.data.token
-      alert ('Đăng nhập thành công!')
+    // axios.post('http://10.0.2.2:3000/api/user/login', {
+    //   email: email,
+    //   password: password
+    // })
+    // .then ((res) => {
+    //   const token = res.data.token
+    //   alert ('Đăng nhập thành công!')
       navigation.navigate('MainDrawer')
-    })
-    .catch((error) => {
+    // })
+    // .catch((error) => {
 
-      alert (error.response.data.error)
-    }) 
+    //   alert (error.response.data.error)
+    // }) 
   }
 
   return (

@@ -1,122 +1,146 @@
-import React, { useState } from "react";
-import { View, Text, FlatList, TouchableOpacity, Image, ScrollView } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import React, { useState } from 'react';
+import { View, Text, FlatList, TouchableOpacity, Image, ScrollView } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
-const Courses = ({ navigation }) => {
+const Courses = () => {
   const [cartCount, setCartCount] = useState(0); // Số lượng sản phẩm trong giỏ hàng
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
-  // Dữ liệu mẫu
-  const newCourses = [
-    { id: 1, title: "Ngữ pháp cơ bản N5", image: "https://via.placeholder.com/150", price: 200000 },
-    { id: 2, title: "Luyện nghe N4 nâng cao", image: "https://via.placeholder.com/150", price: 250000 },
+  const navigation = useNavigation();
+
+  // Dữ liệu mẫu cho các khóa học
+  const allCourses = [
+    { id: 1, title: 'Ngữ pháp cơ bản N5', category: 'Ôn JLPT', level: 'N5', image: 'https://via.placeholder.com/150', price: 200000 },
+    { id: 2, title: 'Luyện nghe N4 nâng cao', category: 'Ôn JLPT', level: 'N4', image: 'https://via.placeholder.com/150', price: 250000 },
+    { id: 3, title: 'Kanji N3', category: 'Ôn JLPT', level: 'N3', image: 'https://via.placeholder.com/150', price: 300000 },
+    { id: 4, title: 'Ngữ pháp N2', category: 'Ôn JLPT', level: 'N2', image: 'https://via.placeholder.com/150', price: 350000 },
+    { id: 5, title: 'Kaiwa cơ bản', category: 'Hội thoại', level: 'N5', image: 'https://via.placeholder.com/150', price: 400000 },
+    { id: 6, title: 'Kaiwa nâng cao', category: 'Hội thoại', level: 'N2', image: 'https://via.placeholder.com/150', price: 500000 },
+    { id: 7, title: 'Tiếng Nhật kinh doanh', category: 'Khác', level: 'N1', image: 'https://via.placeholder.com/150', price: 600000 },
+    { id: 8, title: 'Tiếng Nhật IT', category: 'Khác', level: 'N2', image: 'https://via.placeholder.com/150', price: 700000 },
   ];
 
-  const jlptCourses = [
-    { id: 3, title: "Kanji N3", image: "https://via.placeholder.com/150", price: 300000 },
-    { id: 4, title: "Ngữ pháp N2", image: "https://via.placeholder.com/150", price: 350000 },
-  ];
-
-  const kaiwaCourses = [
-    { id: 5, title: "Kaiwa cơ bản", image: "https://via.placeholder.com/150", price: 400000 },
-    { id: 6, title: "Kaiwa nâng cao", image: "https://via.placeholder.com/150", price: 500000 },
-  ];
-
-  const specialCourses = [
-    { id: 7, title: "Tiếng Nhật kinh doanh", image: "https://via.placeholder.com/150", price: 600000 },
-    { id: 8, title: "Tiếng Nhật IT", image: "https://via.placeholder.com/150", price: 700000 },
-  ];
-
-  // Xử lý thêm vào giỏ hàng
+  // Thêm khóa học vào giỏ hàng
   const addToCart = (course) => {
-    setCartCount(cartCount + 1); // Tăng số lượng giỏ hàng
+    setCartCount(cartCount + 1);
     alert(`Thêm ${course.title} vào giỏ hàng!`);
   };
+  const jlptCourses = allCourses.filter(course => course.category === 'Ôn JLPT');
+  const kaiwaCourses = allCourses.filter(course => course.category === 'Hội thoại');
+  const businessCourses = allCourses.filter(course => course.category === 'Khác');
 
-  // Render danh sách khóa học
+  // Hiển thị danh sách khóa học
   const renderCourse = ({ item }) => (
-    <TouchableOpacity className="flex-row items-center bg-white shadow-lg rounded-lg p-4 mb-4" onPress={() => navigation.navigate("CourseDetail", { course: item })}>
-      <Image source={{ uri: item.image }} className="w-16 h-16 rounded-md" />
-      <View className="ml-4 flex-1">
-        <Text className="text-lg font-bold">{item.title}</Text>
-        <Text className="text-gray-500">Giá: {item.price} VND</Text>
+    <TouchableOpacity className="w-1/2 p-2 mb-4 max-h-[300px]" onPress={() => navigation.navigate('CourseDetail', {item})}>
+      <View className="bg-white p-4 rounded-xl shadow-lg flex flex-col">
+        <Image source={{ uri: item.image }} className="w-full h-32 rounded-lg mb-2" />
+        <View className='border border-white flex-row'>
+          <View className='flex-grow'>
+            <Text className="text-lg font-bold min-h-[50px] align-middle">{item.title}</Text>
+            <Text className="text-lg text-secondary font-bold">{item.level}</Text>
+            <Text className="text-lg text-red-600 font-bold">{item.price === 0 ? 'Miễn phí' : `${item.price} VND`}</Text>
+          </View>
+          <TouchableOpacity
+            onPress={() => addToCart(item)}
+            className='self-end'
+          >
+            <Icon name="cart-outline" size={24} color="#0D308C" />
+          </TouchableOpacity>
+        </View>
+
       </View>
-      <TouchableOpacity onPress={() => addToCart(item)}>
-        <Ionicons name="cart-outline" size={32} color="#22c55e" />
-      </TouchableOpacity>
     </TouchableOpacity>
+
   );
 
   return (
     <View className="flex-1 bg-gray-100">
-      {/* Header */}
-      <View className="flex-row justify-between items-center p-4 bg-white shadow-md">
-        <Text className="text-2xl font-bold">Khóa Học</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("MyCourses")}>
-          <Ionicons name="school-outline" size={28} color="#000" />
-        </TouchableOpacity>
-      </View>
+      <ScrollView className="p-5">
+        <View className="flex-row justify-between mb-5">
+          <TouchableOpacity
+            className={`py-2 px-4 rounded-lg ${selectedCategory === 'all' ? 'bg-primary text-white' : 'bg-white'}`}
+            onPress={() => setSelectedCategory('all')}
+          >
+            <Text className={`${selectedCategory === 'all' ? 'text-white' : 'text-gray-700'}`}>Tất cả</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            className={`py-2 px-4 rounded-lg ${selectedCategory === 'jlpt' ? 'bg-primary text-white' : 'bg-white'}`}
+            onPress={() => setSelectedCategory('jlpt')}
+          >
+            <Text className={`${selectedCategory === 'jlpt' ? 'text-white' : 'text-gray-700'}`}>Ôn JLPT</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            className={`py-2 px-4 rounded-lg ${selectedCategory === 'kaiwa' ? 'bg-primary text-white' : 'bg-white'}`}
+            onPress={() => setSelectedCategory('kaiwa')}
+          >
+            <Text className={`${selectedCategory === 'kaiwa' ? 'text-white' : 'text-gray-700'}`}>Hội thoại</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            className={`py-2 px-4 rounded-lg ${selectedCategory === 'business' ? 'bg-primary text-white' : 'bg-white'}`}
+            onPress={() => setSelectedCategory('business')}
+          >
+            <Text className={`${selectedCategory === 'business' ? 'text-white' : 'text-gray-700'}`}>Khác</Text>
+          </TouchableOpacity>
 
-      {/* Danh sách các danh mục khóa học */}
-      <ScrollView className="p-4">
-        {/* Khóa học mới */}
-        <View className="mb-6">
-          <Text className="text-xl font-semibold mb-2">Khóa học mới</Text>
-          <FlatList
-            data={newCourses}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={renderCourse}
-            horizontal
-          />
         </View>
 
-        {/* Khóa học theo JLPT */}
-        <View className="mb-6">
-          <Text className="text-xl font-semibold mb-2">Khóa học theo JLPT</Text>
-          <FlatList
-            data={jlptCourses}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={renderCourse}
-            horizontal
-          />
-        </View>
+        {/* Hiển thị từng danh mục khóa học */}
+        {(selectedCategory === 'all' || selectedCategory === 'jlpt') && (
+          <View className="mb-6">
+            <Text className="text-2xl font-black mb-3 text-primary">Ôn JLPT</Text>
+            <FlatList
+              scrollEnabled={false}
+              data={jlptCourses}
+              renderItem={renderCourse}
+              keyExtractor={(item) => item.id.toString()}
+              numColumns={2}
+              columnWrapperStyle={{ justifyContent: 'space-between' }}
+            />
+          </View>
+        )}
 
-        {/* Khóa học Kaiwa */}
-        <View className="mb-6">
-          <Text className="text-xl font-semibold mb-2">Khóa học Kaiwa</Text>
-          <FlatList
-            data={kaiwaCourses}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={renderCourse}
-            horizontal
-          />
-        </View>
+        {(selectedCategory === 'all' || selectedCategory === 'kaiwa') && (
+          <View className="mb-6">
+            <Text className="text-2xl font-black mb-3 text-primary">Hội thoại</Text>
+            <FlatList
+              scrollEnabled={false}
+              data={kaiwaCourses}
+              renderItem={renderCourse}
+              keyExtractor={(item) => item.id.toString()}
+              numColumns={2}
+              columnWrapperStyle={{ justifyContent: 'space-between' }}
+            />
+          </View>
+        )}
 
-        {/* Khóa học chuyên ngành */}
-        <View className="mb-6">
-          <Text className="text-xl font-semibold mb-2">Khóa học chuyên ngành</Text>
-          <FlatList
-            data={specialCourses}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={renderCourse}
-            horizontal
-          />
-        </View>
+        {(selectedCategory === 'all' || selectedCategory === 'business') && (
+          <View className="mb-6">
+            <Text className="text-2xl font-black mb-3 text-primary">Khác</Text>
+            <FlatList
+              scrollEnabled={false}
+              data={businessCourses}
+              renderItem={renderCourse}
+              keyExtractor={(item) => item.id.toString()}
+              numColumns={2}
+              columnWrapperStyle={{ justifyContent: 'space-between' }}
+            />
+          </View>
+        )}
       </ScrollView>
 
-      {/* Nút nổi bật với badge giỏ hàng */}
       <TouchableOpacity
-        className="absolute bottom-4 right-4 bg-green-500 p-4 rounded-full shadow-lg"
-        onPress={() => navigation.navigate("Cart")}
+        className="absolute bottom-5 right-5 bg-primary p-3 rounded-full shadow-lg"
+        onPress={() => navigation.navigate('Cart')}
       >
-        <View>
-          <Ionicons name="cart-outline" size={28} color="#fff" />
-          {cartCount > 0 && (
-            <View className="absolute -top-2 -right-2 bg-red-500 rounded-full w-6 h-6 justify-center items-center">
-              <Text className="text-white text-xs font-bold">{cartCount}</Text>
-            </View>
-          )}
-        </View>
+        <Icon name="cart-outline" size={28} color="#fff" />
+        {cartCount > 0 && (
+          <View className="absolute top-[-5px] right-[-5px] bg-red-500 rounded-full w-5 h-5 justify-center items-center">
+            <Text className="text-white text-xs">{cartCount}</Text>
+          </View>
+        )}
       </TouchableOpacity>
+
     </View>
   );
 };

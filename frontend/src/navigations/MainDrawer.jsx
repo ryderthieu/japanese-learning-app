@@ -4,7 +4,9 @@ import MainTab from "./MainTab"
 const MainDrawer = () => {
     const Drawer = createDrawerNavigator()
     return (
-        <Drawer.Navigator>
+        <Drawer.Navigator screenOptions={{
+            headerShown: false
+        }}>
             <Drawer.Screen name="MainTab" component={MainTab} />
         </Drawer.Navigator>
     )

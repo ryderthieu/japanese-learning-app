@@ -40,10 +40,10 @@ const Cart = ({ navigation }) => {
       <View className="bg-white p-4 shadow-lg">
         <View className="flex-row justify-between items-center mb-4">
           <Text className="text-xl font-bold">Tổng cộng:</Text>
-          <Text className="text-xl font-bold text-green-500">{totalPrice} VND</Text>
+          <Text className="text-xl font-bold text-primary">{totalPrice} VND</Text>
         </View>
         <TouchableOpacity
-          className="bg-green-500 p-4 rounded-lg shadow-md"
+          className="bg-primary p-4 rounded-lg shadow-md"
           onPress={() => alert("Thanh toán thành công!")}
         >
           <Text className="text-center text-white text-lg font-bold">Thanh Toán</Text>
