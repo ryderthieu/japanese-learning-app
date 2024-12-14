@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import { SellingCourse } from '../../../components/Card/Card';
 
 const Courses = () => {
   const [cartCount, setCartCount] = useState(0); // Số lượng sản phẩm trong giỏ hàng
@@ -22,38 +23,32 @@ const Courses = () => {
   ];
 
   // Thêm khóa học vào giỏ hàng
-  const addToCart = (course) => {
-    setCartCount(cartCount + 1);
+  const addToCart = useCallback((course) => {
+    setCartCount((prevCount) => prevCount + 1);
     alert(`Thêm ${course.title} vào giỏ hàng!`);
-  };
+  }, []);
+
   const jlptCourses = allCourses.filter(course => course.category === 'Ôn JLPT');
   const kaiwaCourses = allCourses.filter(course => course.category === 'Hội thoại');
   const businessCourses = allCourses.filter(course => course.category === 'Khác');
 
-  // Hiển thị danh sách khóa học
-  const renderCourse = ({ item }) => (
-    <TouchableOpacity className="w-1/2 p-2 mb-4 max-h-[300px]" onPress={() => navigation.navigate('CourseDetail', {item})}>
-      <View className="bg-white p-4 rounded-xl shadow-lg flex flex-col">
-        <Image source={{ uri: item.image }} className="w-full h-32 rounded-lg mb-2" />
-        <View className='border border-white flex-row'>
-          <View className='flex-grow'>
-            <Text className="text-lg font-bold min-h-[50px] align-middle">{item.title}</Text>
-            <Text className="text-lg text-secondary font-bold">{item.level}</Text>
-            <Text className="text-lg text-red-600 font-bold">{item.price === 0 ? 'Miễn phí' : `${item.price} VND`}</Text>
+  const Category = ({data, title}) => (
+    <View className="mb-6">
+            <Text className="text-2xl font-black mb-3 text-primary">{title}</Text>
+            <FlatList
+              data={data}
+              renderItem={({ item }) => (
+                <TouchableOpacity className='w-1/2 p-2 max-h-[300px]' onPress={() => navigation.navigate('CourseDetail', { item })}>
+                  <SellingCourse item={item} addToCart={() => addToCart(item)} />
+                </TouchableOpacity>
+              )}
+              keyExtractor={(item) => item.id.toString()}
+              numColumns={2}
+              columnWrapperStyle={{ justifyContent: 'space-between' }}
+              scrollEnabled={false}
+            />
           </View>
-          <TouchableOpacity
-            onPress={() => addToCart(item)}
-            className='self-end'
-          >
-            <Icon name="cart-outline" size={24} color="#0D308C" />
-          </TouchableOpacity>
-        </View>
-
-      </View>
-    </TouchableOpacity>
-
-  );
-
+  )
   return (
     <View className="flex-1 bg-gray-100">
       <ScrollView className="p-5">
@@ -82,50 +77,19 @@ const Courses = () => {
           >
             <Text className={`${selectedCategory === 'business' ? 'text-white' : 'text-gray-700'}`}>Khác</Text>
           </TouchableOpacity>
-
         </View>
 
         {/* Hiển thị từng danh mục khóa học */}
         {(selectedCategory === 'all' || selectedCategory === 'jlpt') && (
-          <View className="mb-6">
-            <Text className="text-2xl font-black mb-3 text-primary">Ôn JLPT</Text>
-            <FlatList
-              scrollEnabled={false}
-              data={jlptCourses}
-              renderItem={renderCourse}
-              keyExtractor={(item) => item.id.toString()}
-              numColumns={2}
-              columnWrapperStyle={{ justifyContent: 'space-between' }}
-            />
-          </View>
+          <Category data={jlptCourses} title={'Ôn JLPT'}/>
         )}
 
         {(selectedCategory === 'all' || selectedCategory === 'kaiwa') && (
-          <View className="mb-6">
-            <Text className="text-2xl font-black mb-3 text-primary">Hội thoại</Text>
-            <FlatList
-              scrollEnabled={false}
-              data={kaiwaCourses}
-              renderItem={renderCourse}
-              keyExtractor={(item) => item.id.toString()}
-              numColumns={2}
-              columnWrapperStyle={{ justifyContent: 'space-between' }}
-            />
-          </View>
+          <Category data={kaiwaCourses} title={'Hội thoại'}/>
         )}
 
         {(selectedCategory === 'all' || selectedCategory === 'business') && (
-          <View className="mb-6">
-            <Text className="text-2xl font-black mb-3 text-primary">Khác</Text>
-            <FlatList
-              scrollEnabled={false}
-              data={businessCourses}
-              renderItem={renderCourse}
-              keyExtractor={(item) => item.id.toString()}
-              numColumns={2}
-              columnWrapperStyle={{ justifyContent: 'space-between' }}
-            />
-          </View>
+          <Category data={businessCourses} title={'Khác'}/>
         )}
       </ScrollView>
 
@@ -140,7 +104,6 @@ const Courses = () => {
           </View>
         )}
       </TouchableOpacity>
-
     </View>
   );
 };

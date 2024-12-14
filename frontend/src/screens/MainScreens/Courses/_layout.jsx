@@ -1,6 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
-import MyCourses from "./MyCourses";
 import Courses from "./Courses";
 import Cart from "./Cart";
 import CourseDetail from "./CourseDetail";
@@ -34,7 +33,6 @@ export default function CoursesNavigation() {
           ),
         }}
       />
-      <Stack.Screen name="MyCourses" component={MyCourses} />
       <Stack.Screen name="Cart" component={Cart} />
       <Stack.Screen name="CourseDetail" component={CourseDetail} />
     </Stack.Navigator>
