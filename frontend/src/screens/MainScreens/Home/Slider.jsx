@@ -3,7 +3,7 @@ import { Text, View, Image, ScrollView, Dimensions } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import SliderItem from "./SliderItem";
 import Pagination from "./Pagination";
-import { ImageSlider } from "./SliderData";
+import SliderData from "./SliderData";
 import Animated, { useAnimatedRef, useAnimatedScrollHandler, useSharedValue, useDerivedValue, scrollTo } from "react-native-reanimated";
 
 const { width } = Dimensions.get("screen");
@@ -27,7 +27,7 @@ const Slider = ({ itemList }) => {
     if (isAutoPlay) {
       interval.current = setInterval(() => {
         offset.value = offset.value + width;
-      }, 5000);
+      }, 2000);
     } else {
       clearInterval(interval.current);
     }

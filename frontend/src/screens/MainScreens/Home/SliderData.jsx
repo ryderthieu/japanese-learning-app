@@ -1,4 +1,4 @@
-export const ImageSlider = [
+const SliderData = [
     {
       title: "Tiêu đề 1",
       image: require("../../../assets/images/home/slide1.png"),
@@ -25,4 +25,6 @@ export const ImageSlider = [
       description: "Mô tả",
     },
   ];
+
+  export default SliderData
   

@@ -1,12 +1,14 @@
 import {Text, View, Image, ScrollView } from "react-native";
 import React from "react";
 import CircularProgress from "./CircularProgress";
+import Slider from "./Slider";
+import SliderData from "./SliderData";
 
 const Home = () => {
   return (
     <ScrollView>
       <View className="flex-1 flex-col px-2 py-5 bg-gray-100">
-        
+      <Slider itemList={SliderData} />
         <View className="flex flex-row py-5 items-center justify-center bg-white rounded-3xl shadow shadow-slate-300 ">
           <View className="basis-1/4">
             <Image
