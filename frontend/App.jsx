@@ -4,6 +4,7 @@ import AuthStack from "./src/navigations/AuthStack";
 import MainTab from "./src/navigations/MainTab";
 import "./global.css"
 import { AuthProvider } from "./Context/AuthContext";
+import MainDrawer from "./src/navigations/MainDrawer";
 export default function App() {
   const Stack = createNativeStackNavigator()
   return (
@@ -13,7 +14,7 @@ export default function App() {
           screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="AuthStack" component={AuthStack} />
-          <Stack.Screen name="MainTab" component={MainTab} />
+          <Stack.Screen name="MainDrawer" component={MainDrawer} />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthProvider>

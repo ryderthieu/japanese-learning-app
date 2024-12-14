@@ -1,13 +1,13 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import Home from "../screens/MainScreens/Home/Home"
-import Courses from "../screens/MainScreens/Courses/Courses"
+import CoursesNavigation from "../screens/MainScreens/Courses/_layout"
 
 const MainTab = () => {
   const Tab = createBottomTabNavigator()
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Home}/>
-      <Tab.Screen name="Courses" component={Courses}/>
+      <Tab.Screen name="CoursesNavigation" component={CoursesNavigation}/>
     </Tab.Navigator>
   )
 }

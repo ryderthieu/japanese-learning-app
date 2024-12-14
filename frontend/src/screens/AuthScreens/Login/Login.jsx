@@ -18,7 +18,7 @@ const Login = ({navigation}) => {
     .then ((res) => {
       const token = res.data.token
       alert ('Đăng nhập thành công!')
-      navigation.navigate('MainTab')
+      navigation.navigate('MainDrawer')
     })
     .catch((error) => {
 
