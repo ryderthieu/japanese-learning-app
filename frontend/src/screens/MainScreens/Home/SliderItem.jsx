@@ -3,9 +3,7 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import Animated, { Extrapolation, interpolate, useAnimatedStyle } from "react-native-reanimated";
 import Ionicons from "@expo/vector-icons/Ionicons";
-
 const { width } = Dimensions.get("screen");
-
 const SliderItem = ({ item, index, scrollX }) => {
   const rnAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -29,10 +27,9 @@ const SliderItem = ({ item, index, scrollX }) => {
       ],
     };
   });
-
   return (
     <Animated.View style={[styles.itemContainer, rnAnimatedStyle]}>
-      <Image source={item.image} style={{ width: 300, height: 500, borderRadius: 20 }} />
+      <Image source={item.image} style={{ width: 300, height: 200, borderRadius: 20 }} />
       <LinearGradient colors={["transparent", "rgba(0,0,0,0.8)"]} style={styles.background}>
         <View>
           <TouchableOpacity style={styles.icon}>
@@ -47,9 +44,7 @@ const SliderItem = ({ item, index, scrollX }) => {
     </Animated.View>
   );
 };
-
 export default SliderItem;
-
 const styles = StyleSheet.create({
   itemContainer: {
     justifyContent: "center",
@@ -59,7 +54,7 @@ const styles = StyleSheet.create({
   },
   background: {
     position: "absolute",
-    height: 500,
+    height: 200,
     width: 300,
     padding: 20,
     borderRadius: 20,
