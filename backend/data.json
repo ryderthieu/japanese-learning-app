@@ -1,0 +1,1102 @@
+[
+    {
+        "title": "Minna no Nihongo I - Bài 1",
+        "videoId": "YBI4nM5HC4c",
+        "vocabulary": [
+            {
+                "word": "わたし",
+                "kanji": "私",
+                "meaning": "Tôi",
+                "example": [
+                    {
+                        "sentence": "私はタナカです。",
+                        "translation": "Tôi là Tanaka."
+                    },
+                    {
+                        "sentence": "私は学生です。",
+                        "translation": "Tôi là sinh viên."
+                    }
+                ]
+            },
+            {
+                "word": "あなた",
+                "kanji": "",
+                "meaning": "Bạn",
+                "example": [
+                    {
+                        "sentence": "あなたは学生ですか？",
+                        "translation": "Bạn là sinh viên phải không?"
+                    },
+                    {
+                        "sentence": "あなたは日本人ですか？",
+                        "translation": "Bạn là người Nhật phải không?"
+                    }
+                ]
+            },
+            {
+                "word": "えいご",
+                "kanji": "英語",
+                "meaning": "Tiếng Anh",
+                "example": [
+                    {
+                        "sentence": "私は英語を話します。",
+                        "translation": "Tôi nói tiếng Anh."
+                    }
+                ]
+            },
+            {
+                "word": "にほんご",
+                "kanji": "日本語",
+                "meaning": "Tiếng Nhật",
+                "example": [
+                    {
+                        "sentence": "私は日本語を勉強しています。",
+                        "translation": "Tôi đang học tiếng Nhật."
+                    }
+                ]
+            },
+            {
+                "word": "かいしゃいん",
+                "kanji": "会社員",
+                "meaning": "Nhân viên công ty",
+                "example": [
+                    {
+                        "sentence": "私は会社員です。",
+                        "translation": "Tôi là nhân viên công ty."
+                    }
+                ]
+            },
+            {
+                "word": "だいがくせい",
+                "kanji": "大学生",
+                "meaning": "Sinh viên đại học",
+                "example": [
+                    {
+                        "sentence": "私は大学生です。",
+                        "translation": "Tôi là sinh viên đại học."
+                    }
+                ]
+            },
+            {
+                "word": "せんせい",
+                "kanji": "先生",
+                "meaning": "Thầy/Cô giáo",
+                "example": [
+                    {
+                        "sentence": "田中先生は日本語の先生です。",
+                        "translation": "Thầy Tanaka là giáo viên tiếng Nhật."
+                    },
+                    {
+                        "sentence": "あなたは先生ですか？",
+                        "translation": "Bạn là giáo viên phải không?"
+                    }
+                ]
+            },
+            {
+                "word": "しごと",
+                "kanji": "仕事",
+                "meaning": "Công việc",
+                "example": [
+                    {
+                        "sentence": "私は仕事をしています。",
+                        "translation": "Tôi đang làm việc."
+                    }
+                ]
+            },
+            {
+                "word": "どこ",
+                "kanji": "",
+                "meaning": "Ở đâu",
+                "example": [
+                    {
+                        "sentence": "あなたの国はどこですか？",
+                        "translation": "Quốc gia của bạn ở đâu?"
+                    }
+                ]
+            },
+            {
+                "word": "いくら",
+                "kanji": "",
+                "meaning": "Bao nhiêu (dùng để hỏi giá tiền)",
+                "example": [
+                    {
+                        "sentence": "この本はいくらですか？",
+                        "translation": "Cuốn sách này giá bao nhiêu?"
+                    }
+                ]
+            }
+        ],
+        "grammar": [
+            {
+                "rule": "[Tên] です",
+                "meaning": "Câu giới thiệu bản thân",
+                "example": [
+                    {
+                        "sentence": "わたしは田中です。",
+                        "translation": "Tôi là Tanaka."
+                    }
+                ]
+            },
+            {
+                "rule": "[Tên] さん は [Nghề nghiệp] ですか？",
+                "meaning": "Câu hỏi nghề nghiệp",
+                "example": [
+                    {
+                        "sentence": "あなたは学生ですか？",
+                        "translation": "Bạn là sinh viên phải không?"
+                    }
+                ]
+            },
+            {
+                "rule": "[Tên] は [Nghề nghiệp] です",
+                "meaning": "Câu khẳng định nghề nghiệp",
+                "example": [
+                    {
+                        "sentence": "私は会社員です。",
+                        "translation": "Tôi là nhân viên công ty."
+                    }
+                ]
+            },
+            {
+                "rule": "これ/それ/あれ は [Danh từ] です",
+                "meaning": "Câu xác định đồ vật",
+                "example": [
+                    {
+                        "sentence": "これは日本語の本です。",
+                        "translation": "Đây là cuốn sách tiếng Nhật."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Minna no Nihongo I - Bài 2",
+        "videoId": "8GaOeIUHvfc",
+        "vocabulary": [
+            {
+                "word": "これ",
+                "kanji": "",
+                "meaning": "Cái này",
+                "example": [
+                    {
+                        "sentence": "これはペンです。",
+                        "translation": "Đây là cây bút."
+                    }
+                ]
+            },
+            {
+                "word": "それ",
+                "kanji": "",
+                "meaning": "Cái đó",
+                "example": [
+                    {
+                        "sentence": "それはノートです。",
+                        "translation": "Cái đó là cuốn vở."
+                    }
+                ]
+            },
+            {
+                "word": "あれ",
+                "kanji": "",
+                "meaning": "Cái kia",
+                "example": [
+                    {
+                        "sentence": "あれは何ですか？",
+                        "translation": "Cái kia là gì?"
+                    }
+                ]
+            },
+            {
+                "word": "この",
+                "kanji": "",
+                "meaning": "Cái này (dùng trước danh từ)",
+                "example": [
+                    {
+                        "sentence": "この本は面白いです。",
+                        "translation": "Cuốn sách này thú vị."
+                    }
+                ]
+            },
+            {
+                "word": "その",
+                "kanji": "",
+                "meaning": "Cái đó (dùng trước danh từ)",
+                "example": [
+                    {
+                        "sentence": "その人は先生です。",
+                        "translation": "Người đó là thầy giáo."
+                    }
+                ]
+            },
+            {
+                "word": "あの",
+                "kanji": "",
+                "meaning": "Cái kia (dùng trước danh từ)",
+                "example": [
+                    {
+                        "sentence": "あの車は高いです。",
+                        "translation": "Chiếc xe kia đắt."
+                    }
+                ]
+            },
+            {
+                "word": "どの",
+                "kanji": "",
+                "meaning": "Cái nào (dùng trước danh từ)",
+                "example": [
+                    {
+                        "sentence": "どの学生ですか？",
+                        "translation": "Cái nào là sinh viên?"
+                    }
+                ]
+            },
+            {
+                "word": "おなまえ",
+                "kanji": "お名前",
+                "meaning": "Tên (lịch sự)",
+                "example": [
+                    {
+                        "sentence": "お名前は何ですか？",
+                        "translation": "Tên của bạn là gì?"
+                    }
+                ]
+            },
+            {
+                "word": "おかね",
+                "kanji": "お金",
+                "meaning": "Tiền",
+                "example": [
+                    {
+                        "sentence": "お金がありません。",
+                        "translation": "Tôi không có tiền."
+                    }
+                ]
+            },
+            {
+                "word": "わたし",
+                "kanji": "私",
+                "meaning": "Tôi",
+                "example": [
+                    {
+                        "sentence": "私はタナカです。",
+                        "translation": "Tôi là Tanaka."
+                    }
+                ]
+            },
+            {
+                "word": "あなた",
+                "kanji": "",
+                "meaning": "Bạn",
+                "example": [
+                    {
+                        "sentence": "あなたは日本人ですか？",
+                        "translation": "Bạn là người Nhật phải không?"
+                    }
+                ]
+            },
+            {
+                "word": "あの人",
+                "kanji": "あの人",
+                "meaning": "Người kia",
+                "example": [
+                    {
+                        "sentence": "あの人は誰ですか？",
+                        "translation": "Người kia là ai?"
+                    }
+                ]
+            },
+            {
+                "word": "こうこうせい",
+                "kanji": "高校生",
+                "meaning": "Học sinh trung học",
+                "example": [
+                    {
+                        "sentence": "私は高校生です。",
+                        "translation": "Tôi là học sinh trung học."
+                    }
+                ]
+            },
+            {
+                "word": "だいがくせい",
+                "kanji": "大学生",
+                "meaning": "Sinh viên đại học",
+                "example": [
+                    {
+                        "sentence": "私は大学生です。",
+                        "translation": "Tôi là sinh viên đại học."
+                    }
+                ]
+            },
+            {
+                "word": "かいしゃいん",
+                "kanji": "会社員",
+                "meaning": "Nhân viên công ty",
+                "example": [
+                    {
+                        "sentence": "私は会社員です。",
+                        "translation": "Tôi là nhân viên công ty."
+                    }
+                ]
+            },
+            {
+                "word": "せんせい",
+                "kanji": "先生",
+                "meaning": "Thầy/Cô giáo",
+                "example": [
+                    {
+                        "sentence": "田中先生は日本語の先生です。",
+                        "translation": "Thầy Tanaka là giáo viên tiếng Nhật."
+                    }
+                ]
+            }
+        ],
+        "grammar": [
+            {
+                "rule": "[Danh từ] は [Danh từ] です",
+                "meaning": "Câu khẳng định với danh từ",
+                "example": [
+                    {
+                        "sentence": "これは本です。",
+                        "translation": "Đây là cuốn sách."
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ] は [Danh từ] ではありません",
+                "meaning": "Câu phủ định với danh từ",
+                "example": [
+                    {
+                        "sentence": "これはペンではありません。",
+                        "translation": "Đây không phải là cây bút."
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ] は [Danh từ] ですか？",
+                "meaning": "Câu hỏi với danh từ",
+                "example": [
+                    {
+                        "sentence": "これはペンですか？",
+                        "translation": "Đây là cây bút phải không?"
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ] は [Danh từ] ではありませんか？",
+                "meaning": "Câu phủ định có đuôi câu hỏi",
+                "example": [
+                    {
+                        "sentence": "これはペンではありませんか？",
+                        "translation": "Đây không phải là cây bút phải không?"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Minna no Nihongo I - Bài 3",
+        "videoId": "6tn9uUphZx4",
+        "vocabulary": [
+            {
+                "word": "いぬ",
+                "kanji": "犬",
+                "meaning": "Con chó",
+                "example": [
+                    {
+                        "sentence": "犬がいます。",
+                        "translation": "Có một con chó."
+                    }
+                ]
+            },
+            {
+                "word": "ねこ",
+                "kanji": "猫",
+                "meaning": "Con mèo",
+                "example": [
+                    {
+                        "sentence": "猫がいます。",
+                        "translation": "Có một con mèo."
+                    }
+                ]
+            },
+            {
+                "word": "き",
+                "kanji": "木",
+                "meaning": "Cây",
+                "example": [
+                    {
+                        "sentence": "木があります。",
+                        "translation": "Có một cái cây."
+                    }
+                ]
+            },
+            {
+                "word": "とけい",
+                "kanji": "時計",
+                "meaning": "Đồng hồ",
+                "example": [
+                    {
+                        "sentence": "時計があります。",
+                        "translation": "Có một cái đồng hồ."
+                    }
+                ]
+            },
+            {
+                "word": "くるま",
+                "kanji": "車",
+                "meaning": "Xe ô tô",
+                "example": [
+                    {
+                        "sentence": "車があります。",
+                        "translation": "Có một chiếc xe."
+                    }
+                ]
+            },
+            {
+                "word": "うみ",
+                "kanji": "海",
+                "meaning": "Biển",
+                "example": [
+                    {
+                        "sentence": "海があります。",
+                        "translation": "Có biển."
+                    }
+                ]
+            },
+            {
+                "word": "やま",
+                "kanji": "山",
+                "meaning": "Núi",
+                "example": [
+                    {
+                        "sentence": "山があります。",
+                        "translation": "Có một ngọn núi."
+                    }
+                ]
+            },
+            {
+                "word": "じむしょ",
+                "kanji": "事務所",
+                "meaning": "Văn phòng",
+                "example": [
+                    {
+                        "sentence": "事務所があります。",
+                        "translation": "Có một văn phòng."
+                    }
+                ]
+            },
+            {
+                "word": "えき",
+                "kanji": "駅",
+                "meaning": "Ga",
+                "example": [
+                    {
+                        "sentence": "駅があります。",
+                        "translation": "Có một ga."
+                    }
+                ]
+            },
+            {
+                "word": "みせ",
+                "kanji": "店",
+                "meaning": "Cửa hàng",
+                "example": [
+                    {
+                        "sentence": "店があります。",
+                        "translation": "Có một cửa hàng."
+                    }
+                ]
+            },
+            {
+                "word": "かいしゃ",
+                "kanji": "会社",
+                "meaning": "Công ty",
+                "example": [
+                    {
+                        "sentence": "会社があります。",
+                        "translation": "Có một công ty."
+                    }
+                ]
+            },
+            {
+                "word": "こうえん",
+                "kanji": "公園",
+                "meaning": "Công viên",
+                "example": [
+                    {
+                        "sentence": "公園があります。",
+                        "translation": "Có một công viên."
+                    }
+                ]
+            }
+        ],
+        "grammar": [
+            {
+                "rule": "[Danh từ] が あります",
+                "meaning": "Có [Danh từ] (dùng để diễn tả sự hiện diện của vật không sống)",
+                "example": [
+                    {
+                        "sentence": "机があります。",
+                        "translation": "Có một cái bàn."
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ] が います",
+                "meaning": "Có [Danh từ] (dùng để diễn tả sự hiện diện của người hoặc động vật)",
+                "example": [
+                    {
+                        "sentence": "友達がいます。",
+                        "translation": "Có một người bạn."
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ] は [Danh từ] の [Danh từ] です",
+                "meaning": "Cấu trúc mô tả sự sở hữu",
+                "example": [
+                    {
+                        "sentence": "これは私の本です。",
+                        "translation": "Đây là sách của tôi."
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ] は [Danh từ] ではありません",
+                "meaning": "Câu phủ định với danh từ",
+                "example": [
+                    {
+                        "sentence": "これはペンではありません。",
+                        "translation": "Đây không phải là cây bút."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Minna no Nihongo I - Bài 4",
+        "videoId": "eUlvDkLF78I",
+        "vocabulary": [
+            {
+                "word": "いま",
+                "kanji": "今",
+                "meaning": "Bây giờ",
+                "example": [
+                    {
+                        "sentence": "今何時ですか？",
+                        "translation": "Bây giờ là mấy giờ?"
+                    },
+                    {
+                        "sentence": "今は休み時間です。",
+                        "translation": "Bây giờ là giờ nghỉ."
+                    }
+                ]
+            },
+            {
+                "word": "あさ",
+                "kanji": "朝",
+                "meaning": "Buổi sáng",
+                "example": [
+                    {
+                        "sentence": "朝ごはんを食べます。",
+                        "translation": "Tôi ăn sáng."
+                    }
+                ]
+            },
+            {
+                "word": "ひる",
+                "kanji": "昼",
+                "meaning": "Buổi trưa",
+                "example": [
+                    {
+                        "sentence": "昼休みに友達と話します。",
+                        "translation": "Tôi nói chuyện với bạn vào giờ nghỉ trưa."
+                    }
+                ]
+            },
+            {
+                "word": "ばん",
+                "kanji": "晩",
+                "meaning": "Buổi tối",
+                "example": [
+                    {
+                        "sentence": "晩ごはんを作ります。",
+                        "translation": "Tôi nấu bữa tối."
+                    }
+                ]
+            },
+            {
+                "word": "やすみ",
+                "kanji": "休み",
+                "meaning": "Nghỉ/ngày nghỉ",
+                "example": [
+                    {
+                        "sentence": "今日は休みです。",
+                        "translation": "Hôm nay là ngày nghỉ."
+                    }
+                ]
+            },
+            {
+                "word": "しごと",
+                "kanji": "仕事",
+                "meaning": "Công việc",
+                "example": [
+                    {
+                        "sentence": "仕事が終わりました。",
+                        "translation": "Công việc đã xong."
+                    }
+                ]
+            },
+            {
+                "word": "ひるやすみ",
+                "kanji": "昼休み",
+                "meaning": "Nghỉ trưa",
+                "example": [
+                    {
+                        "sentence": "昼休みに公園へ行きます。",
+                        "translation": "Tôi đi công viên vào giờ nghỉ trưa."
+                    }
+                ]
+            },
+            {
+                "word": "かいぎ",
+                "kanji": "会議",
+                "meaning": "Cuộc họp",
+                "example": [
+                    {
+                        "sentence": "明日会議があります。",
+                        "translation": "Ngày mai có cuộc họp."
+                    }
+                ]
+            }
+        ],
+        "grammar": [
+            {
+                "rule": "[Thời gian] に [Hành động]",
+                "meaning": "Diễn tả thời điểm thực hiện hành động",
+                "example": [
+                    {
+                        "sentence": "8時に起きます。",
+                        "translation": "Tôi thức dậy lúc 8 giờ."
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ] は [Danh từ] から [Danh từ] まで です",
+                "meaning": "Diễn tả khoảng thời gian",
+                "example": [
+                    {
+                        "sentence": "仕事は9時から5時までです。",
+                        "translation": "Công việc từ 9 giờ đến 5 giờ."
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ] と [Danh từ]",
+                "meaning": "Nối hai danh từ với nhau",
+                "example": [
+                    {
+                        "sentence": "日本語と英語を勉強します。",
+                        "translation": "Tôi học tiếng Nhật và tiếng Anh."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Minna no Nihongo I - Bài 5",
+        "videoId": "bNfsfokfcfY",
+        "vocabulary": [
+            {
+                "word": "いきます",
+                "kanji": "行きます",
+                "meaning": "Đi",
+                "example": [
+                    {
+                        "sentence": "学校へ行きます。",
+                        "translation": "Tôi đi đến trường."
+                    }
+                ]
+            },
+            {
+                "word": "きます",
+                "kanji": "来ます",
+                "meaning": "Đến",
+                "example": [
+                    {
+                        "sentence": "日本へ来ます。",
+                        "translation": "Tôi đến Nhật Bản."
+                    }
+                ]
+            },
+            {
+                "word": "かえります",
+                "kanji": "帰ります",
+                "meaning": "Trở về",
+                "example": [
+                    {
+                        "sentence": "うちへ帰ります。",
+                        "translation": "Tôi về nhà."
+                    }
+                ]
+            },
+            {
+                "word": "がっこう",
+                "kanji": "学校",
+                "meaning": "Trường học",
+                "example": [
+                    {
+                        "sentence": "毎日学校へ行きます。",
+                        "translation": "Tôi đi học mỗi ngày."
+                    }
+                ]
+            },
+            {
+                "word": "ひこうき",
+                "kanji": "飛行機",
+                "meaning": "Máy bay",
+                "example": [
+                    {
+                        "sentence": "飛行機で東京へ行きます。",
+                        "translation": "Tôi đi Tokyo bằng máy bay."
+                    }
+                ]
+            },
+            {
+                "word": "ふね",
+                "kanji": "船",
+                "meaning": "Tàu thủy",
+                "example": [
+                    {
+                        "sentence": "船で旅行します。",
+                        "translation": "Tôi đi du lịch bằng tàu thủy."
+                    }
+                ]
+            },
+            {
+                "word": "でんしゃ",
+                "kanji": "電車",
+                "meaning": "Tàu điện",
+                "example": [
+                    {
+                        "sentence": "電車で会社へ行きます。",
+                        "translation": "Tôi đi làm bằng tàu điện."
+                    }
+                ]
+            },
+            {
+                "word": "あるいて",
+                "kanji": "歩いて",
+                "meaning": "Đi bộ",
+                "example": [
+                    {
+                        "sentence": "歩いて駅へ行きます。",
+                        "translation": "Tôi đi bộ đến nhà ga."
+                    }
+                ]
+            }
+        ],
+        "grammar": [
+            {
+                "rule": "[Danh từ] へ [Hành động] に 行きます/来ます/帰ります",
+                "meaning": "Diễn tả hành động đi, đến hoặc trở về để làm một việc gì đó",
+                "example": [
+                    {
+                        "sentence": "駅へ友達に会いに行きます。",
+                        "translation": "Tôi đến nhà ga để gặp bạn."
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ] で [Hành động]",
+                "meaning": "Diễn tả phương tiện hoặc địa điểm thực hiện hành động",
+                "example": [
+                    {
+                        "sentence": "電車で大阪へ行きます。",
+                        "translation": "Tôi đi Osaka bằng tàu điện."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Minna no Nihongo I - Bài 6",
+        "videoId": "EcMPO0vFGU8",
+        "vocabulary": [
+            {
+                "word": "たべます",
+                "kanji": "食べます",
+                "meaning": "Ăn",
+                "example": [
+                    {
+                        "sentence": "毎日朝ごはんを食べます。",
+                        "translation": "Tôi ăn sáng mỗi ngày."
+                    }
+                ]
+            },
+            {
+                "word": "のみます",
+                "kanji": "飲みます",
+                "meaning": "Uống",
+                "example": [
+                    {
+                        "sentence": "水を飲みます。",
+                        "translation": "Tôi uống nước."
+                    }
+                ]
+            },
+            {
+                "word": "かいます",
+                "kanji": "買います",
+                "meaning": "Mua",
+                "example": [
+                    {
+                        "sentence": "スーパーで野菜を買います。",
+                        "translation": "Tôi mua rau ở siêu thị."
+                    }
+                ]
+            },
+            {
+                "word": "みます",
+                "kanji": "見ます",
+                "meaning": "Xem",
+                "example": [
+                    {
+                        "sentence": "映画を見ます。",
+                        "translation": "Tôi xem phim."
+                    }
+                ]
+            },
+            {
+                "word": "ききます",
+                "kanji": "聞きます",
+                "meaning": "Nghe",
+                "example": [
+                    {
+                        "sentence": "音楽を聞きます。",
+                        "translation": "Tôi nghe nhạc."
+                    }
+                ]
+            },
+            {
+                "word": "よみます",
+                "kanji": "読みます",
+                "meaning": "Đọc",
+                "example": [
+                    {
+                        "sentence": "本を読みます。",
+                        "translation": "Tôi đọc sách."
+                    }
+                ]
+            },
+            {
+                "word": "かきます",
+                "kanji": "書きます",
+                "meaning": "Viết",
+                "example": [
+                    {
+                        "sentence": "手紙を書きます。",
+                        "translation": "Tôi viết thư."
+                    }
+                ]
+            },
+            {
+                "word": "かします",
+                "kanji": "貸します",
+                "meaning": "Cho mượn",
+                "example": [
+                    {
+                        "sentence": "友達に本を貸します。",
+                        "translation": "Tôi cho bạn mượn sách."
+                    }
+                ]
+            }
+        ],
+        "grammar": [
+            {
+                "rule": "[Danh từ] を [Động từ]",
+                "meaning": "Diễn tả hành động tác động lên danh từ",
+                "example": [
+                    {
+                        "sentence": "本を読みます。",
+                        "translation": "Tôi đọc sách."
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ] をします",
+                "meaning": "Biểu thị hành động thực hiện một việc gì đó",
+                "example": [
+                    {
+                        "sentence": "サッカーをします。",
+                        "translation": "Tôi chơi bóng đá."
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ địa điểm] で [Động từ]",
+                "meaning": "Diễn tả hành động diễn ra tại một địa điểm nào đó",
+                "example": [
+                    {
+                        "sentence": "公園でサッカーをします。",
+                        "translation": "Tôi chơi bóng đá ở công viên."
+                    }
+                ]
+            },
+            {
+                "rule": "どこで [Động từ] か",
+                "meaning": "Hỏi địa điểm diễn ra hành động",
+                "example": [
+                    {
+                        "sentence": "どこで買いますか。",
+                        "translation": "Bạn mua ở đâu?"
+                    }
+                ]
+            },
+            {
+                "rule": "[Động từ] ませんか",
+                "meaning": "Lời mời hoặc rủ rê",
+                "example": [
+                    {
+                        "sentence": "一緒に映画を見ませんか。",
+                        "translation": "Cùng xem phim nhé?"
+                    }
+                ]
+            },
+            {
+                "rule": "[Động từ] ましょう",
+                "meaning": "Đề nghị cùng làm gì đó",
+                "example": [
+                    {
+                        "sentence": "昼ごはんを食べましょう。",
+                        "translation": "Cùng ăn trưa nào."
+                    }
+                ]
+            },
+            {
+                "rule": "。。。か",
+                "meaning": "Câu hỏi lựa chọn",
+                "example": [
+                    {
+                        "sentence": "コーヒーかお茶を飲みます。",
+                        "translation": "Tôi uống cà phê hoặc trà."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Minna no Nihongo I - Bài 7",
+        "videoId": "xpCIReYtPYA",
+        "vocabulary": [
+            {
+                "word": "きります",
+                "kanji": "切ります",
+                "meaning": "Cắt",
+                "example": [
+                    {
+                        "sentence": "紙を切ります。",
+                        "translation": "Tôi cắt giấy."
+                    }
+                ]
+            },
+            {
+                "word": "送ります",
+                "kanji": "送ります",
+                "meaning": "Gửi",
+                "example": [
+                    {
+                        "sentence": "テレビを送ります。",
+                        "translation": "Tôi gửi TV."
+                    }
+                ]
+            },
+            {
+                "word": "あげます",
+                "kanji": "上げます",
+                "meaning": "Cho, tặng",
+                "example": [
+                    {
+                        "sentence": "証明書を上げます。",
+                        "translation": "Tôi tặng chứng chỉ."
+                    }
+                ]
+            },
+            {
+                "word": "もらいます",
+                "kanji": "",
+                "meaning": "Nhận",
+                "example": [
+                    {
+                        "sentence": "友達からプレゼントをもらいます。",
+                        "translation": "Tôi nhận quà từ bạn."
+                    }
+                ]
+            },
+            {
+                "word": "かします",
+                "kanji": "貸します",
+                "meaning": "Cho mượn",
+                "example": [
+                    {
+                        "sentence": "ともだちにものをかします。",
+                        "translation": "Tôi cho bạn mượn đồ."
+                    }
+                ]
+            },
+            {
+                "word": "おしえます",
+                "kanji": "教えます",
+                "meaning": "Dạy, hướng dẫn",
+                "example": [
+                    {
+                        "sentence": "せいとうをおしえます。",
+                        "translation": "Tôi dạy học sinh."
+                    }
+                ]
+            }
+        ],
+        "grammar": [
+            {
+                "rule": "[Danh từ ]と[Danh từ ]",
+                "meaning": "Diễn tả hai danh từ củng lúc xuất hiện trong câu.",
+                "example": [
+                    {
+                        "sentence": "ラーメンとごはんをかいました。",
+                        "translation": "Tôi đã mua ramen và cơm."
+                    }
+                ]
+            },
+            {
+                "rule": "[Danh từ ]に[Danh từ ]を[Động từ ]",
+                "meaning": "Câu có hai tân ngữ: Đối 'tượng nhận hành động' và 'Vật bị tác động'.",
+                "example": [
+                    {
+                        "sentence": "ともだちにプレゼントをあげました。",
+                        "translation": "Tôi đã tặng bạn quà."
+                    }
+                ]
+            },
+            {
+                "rule": "なにを [Động từ ]ますか",
+                "meaning": "Hỏi xem ai đó làm gì.",
+                "example": [
+                    {
+                        "sentence": "なにをあげますか。",
+                        "translation": "Bạn sẽ tặng gì?"
+                    }
+                ]
+            },
+            {
+                "rule": "だれに[Động từ ]ますか",
+                "meaning": "Hỏi xem ai đó làm gì cho ai.",
+                "example": [
+                    {
+                        "sentence": "だれにはんをあげますか。",
+                        "translation": "Bạn sẽ tặng cơm cho ai?"
+                    }
+                ]
+            }
+        ]
+    }
+]

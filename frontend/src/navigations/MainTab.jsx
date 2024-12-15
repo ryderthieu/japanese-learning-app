@@ -5,6 +5,7 @@ import CoursesNavigation from '../screens/MainScreens/Courses/_layout';
 import DocumentStack from '../screens/MainScreens/Documents/_layout';
 import Dictionary from '../screens/MainScreens/Dictionary/Dictionary';
 import Icon from 'react-native-vector-icons/Ionicons';  
+import TestStack from '../screens/MainScreens/Test/_layout';
 
 const MainTab = () => {
   const Tab = createBottomTabNavigator();
@@ -58,6 +59,18 @@ const MainTab = () => {
           headerShown: true,
           tabBarIcon: ({ color, size }) => (
             <Icon name="search" size={size} color={color} />  
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="TestStack"
+        component={TestStack}
+        options={{
+          title: 'Thi thử',
+          headerShown: true,
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="create" size={size} color={color} />  
           ),
         }}
       />
