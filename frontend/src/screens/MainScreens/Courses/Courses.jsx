@@ -5,13 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 import { SellingCourse } from '../../../components/Card/Card';
 
 const Courses = () => {
-  const [cartCount, setCartCount] = useState(0); // Số lượng sản phẩm trong giỏ hàng
+  const [cartCount, setCartCount] = useState(0); 
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [showAll, setShowAll] = useState(false); // Trạng thái xem tất cả khóa học
+  const [showAll, setShowAll] = useState(false);
 
   const navigation = useNavigation();
 
-  // Dữ liệu mẫu cho các khóa học
   const allCourses = [
     { id: 10, title: '2235345111111111', category: 'Ôn JLPT', level: 'N5', image: 'https://via.placeholder.com/150', price: 0},
     { id: 2, title: 'Luyện nghe N4 nâng cao', category: 'Ôn JLPT', level: 'N4', image: 'https://via.placeholder.com/150', price: 250000 },
@@ -24,7 +23,6 @@ const Courses = () => {
     { id: 1, title: 'Minato - Minna no Nihongo 1', category: 'Ôn JLPT', level: 'N5', image: 'https://via.placeholder.com/150', price: 200000 },
   ];
 
-  // Thêm khóa học vào giỏ hàng
   const addToCart = useCallback((course) => {
     setCartCount((prevCount) => prevCount + 1);
     alert(`Thêm ${course.title} vào giỏ hàng!`);
@@ -35,7 +33,7 @@ const Courses = () => {
   const businessCourses = allCourses.filter(course => course.category === 'Khác');
 
   const Category = ({ data, title }) => {
-    const displayData = showAll ? data : data.slice(0, 4); // Hiển thị tối đa 4 khóa học hoặc tất cả nếu showAll = true
+    const displayData = showAll ? data : data.slice(0, 4); 
 
     return (
       <View className="mb-6">
@@ -52,7 +50,6 @@ const Courses = () => {
           columnWrapperStyle={{ justifyContent: 'space-between' }}
           scrollEnabled={false}
         />
-        {/* Hiển thị nút "Xem thêm" nếu còn khóa học */}
         {!showAll && data.length > 4 && (
           <TouchableOpacity onPress={() => setShowAll(true)} className="mt-3">
             <Text className="text-primary text-lg font-bold">Xem thêm</Text>
@@ -106,12 +103,12 @@ const Courses = () => {
       </ScrollView>
 
       <TouchableOpacity
-        className="absolute bottom-5 right-5 bg-primary p-3 rounded-full shadow-lg"
+        className="absolute bottom-16 right-5 bg-primary p-4 rounded-full shadow-lg"
         onPress={() => navigation.navigate('Cart')}
       >
         <Icon name="cart-outline" size={28} color="#fff" />
         {cartCount > 0 && (
-          <View className="absolute top-[-5px] right-[-5px] bg-red-500 rounded-full w-5 h-5 justify-center items-center">
+          <View className="absolute top-[-5px] right-[-5px] bg-red-500 rounded-full w-6 h-6 justify-center items-center">
             <Text className="text-white text-xs">{cartCount}</Text>
           </View>
         )}

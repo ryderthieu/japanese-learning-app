@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import YouTube from 'react-native-youtube-iframe';
+import { GrammarCard, VocabularyCard } from '../../../components/Card/Card';
 
 const LessonDetail = ({ route }) => {
     const { lesson } = route.params;
@@ -30,21 +31,7 @@ const LessonDetail = ({ route }) => {
                     <Text className="text-2xl font-bold text-blue-600 mb-4">Từ vựng</Text>
                     {lesson.vocabulary ? (
                         lesson.vocabulary.map((word, index) => (
-                            <View key={index} className="mb-4 p-4 bg-white rounded-lg shadow-md">
-                                <View className="mb-2">
-                                    <Text className="text-xl font-semibold text-gray-800">{word.kanji}</Text>
-                                    <Text className="text-lg text-gray-600">{word.hiragana}</Text>
-                                </View>
-
-                                <Text className="text-lg text-gray-700 mb-2">{word.meaning}</Text>
-
-                                <View className="mb-2">
-                                    <Text className="text-lg text-gray-800 italic">Câu ví dụ:</Text>
-                                    <Text className="text-lg text-gray-600">{word.exampleSentence}</Text>
-                                </View>
-
-                                <Text className="text-lg text-gray-700 mb-4">Nghĩa: {word.exampleMeaning}</Text>
-                            </View>
+                            <VocabularyCard item={word} key={index}/>
                         ))
                     ) : (
                         <Text className="text-gray-500">Không có từ vựng cho bài học này</Text>
@@ -55,10 +42,11 @@ const LessonDetail = ({ route }) => {
                     <Text className="text-2xl font-bold text-blue-600 mb-4">Ngữ pháp</Text>
                     {lesson.grammar ? (
                         lesson.grammar.map((grammarItem, index) => (
-                            <View key={index} className="mb-4 p-4 bg-gray-50 rounded-lg shadow-md">
-                                <Text className="text-lg text-gray-800 mb-2 font-medium">{grammarItem.rule}</Text>
-                                <Text className="text-lg text-gray-600 italic">{grammarItem.example}</Text>
-                            </View>
+                            // <View key={index} className="mb-4 p-4 bg-gray-50 rounded-lg shadow-md">
+                            //     <Text className="text-lg text-gray-800 mb-2 font-medium">{grammarItem.rule}</Text>
+                            //     <Text className="text-lg text-gray-600 italic">{grammarItem.example}</Text>
+                            // </View>
+                            <GrammarCard item={grammarItem} key={index} />
                         ))
                     ) : (
                         <Text className="text-gray-500">Không có ngữ pháp cho bài học này</Text>

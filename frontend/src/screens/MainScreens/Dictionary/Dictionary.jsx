@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, FlatList, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { VocabularyCard } from "../../../components/Card/Card";
 
 const dictionaryData = [
     {
@@ -74,14 +75,7 @@ const Dictionary = () => {
                     data={results}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) => (
-                        <View className="bg-white p-4 rounded-lg shadow-md mb-4 border-l-4 border-pink-400">
-                            <Text className="text-xl font-bold text-blue-800">{item.kanji} ({item.hiragana})</Text>
-                            <Text className="text-pink-600 mt-1 italic">{item.romanji}</Text>
-                            <Text className="text-gray-700 mt-2">{item.meaning}</Text>
-                            <Text className="text-gray-400 mt-2 italic">
-                                {item.exampleSentence} - {item.exampleMeaning}
-                            </Text>
-                        </View>
+                        <VocabularyCard item={item} />
                     )}
                 />
             ) : (

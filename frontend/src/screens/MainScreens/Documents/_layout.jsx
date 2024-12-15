@@ -7,9 +7,15 @@ const DocumentStack = () => {
     const Stack = createNativeStackNavigator()
   return (
     <Stack.Navigator>
-        <Stack.Screen name='MyCourse' component={LearningMaterials}/>
-        <Stack.Screen name='Lessons' component={Lessons}/>
-        <Stack.Screen name='LessonDetail' component={LessonDetail} />
+        <Stack.Screen name='MyCourse' component={LearningMaterials} options={{
+          title: 'Khóa học của tôi'
+        }}/>
+        <Stack.Screen name='Lessons' component={Lessons} options={({route}) => ({
+          title: route.params?.course.title || 'Danh sách bài học'
+        })}/>
+        <Stack.Screen name='LessonDetail' component={LessonDetail} options={({route}) => ({
+          title: route.params?.lesson.title || 'Chi tiết bài học'
+        })}/>
     </Stack.Navigator>
   )
 }

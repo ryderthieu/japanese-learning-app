@@ -44,7 +44,7 @@ const MainTab = () => {
         name="DocumentStack"
         component={DocumentStack}
         options={{
-          title: 'Khóa học của tôi',
+          title: 'Học tập',
           tabBarIcon: ({ color, size }) => (
             <Icon name="document-text" size={size} color={color} /> 
           ),
@@ -68,7 +68,6 @@ const MainTab = () => {
         component={TestStack}
         options={{
           title: 'Thi thử',
-          headerShown: true,
           tabBarIcon: ({ color, size }) => (
             <Icon name="create" size={size} color={color} />  
           ),

@@ -50,4 +50,31 @@ const CourseInfo = ({ item }) => {
         </View>
     )
 }
-export { SellingCourse, CourseInfo }
+
+const VocabularyCard = ({item}) => {
+    return (
+        <View className="bg-white p-4 rounded-lg shadow-md mb-4 border-l-4 border-pink-400">
+            <Text className="text-xl font-bold text-blue-800">{item.kanji} ({item.hiragana})</Text>
+            <Text className="text-pink-600 mt-1 italic">{item.romanji}</Text>
+            <Text className="text-gray-700 mt-2">{item.meaning}</Text>
+            <Text className="text-gray-400 mt-2 italic">
+                {item.exampleSentence}
+            </Text>
+            <Text className="text-gray-400 mt-2 italic">
+                {item.exampleMeaning}
+            </Text>
+        </View>
+    )
+}
+
+const GrammarCard = ({item}) => {
+    return (
+        <View className="bg-white p-4 rounded-lg shadow-md mb-4 border-l-4 border-pink-400">
+            <Text className="text-xl font-bold text-blue-800">{item.rule}</Text>
+            <Text className="text-gray-700 mt-2">{item.example}</Text>
+
+
+        </View>
+    )
+}
+export { SellingCourse, CourseInfo, VocabularyCard, GrammarCard }

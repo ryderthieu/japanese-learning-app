@@ -5,7 +5,6 @@ import Button from "../../../components/Button/Button";
 
 const CourseDetail = ({ route, navigation }) => {
   const { item } = route.params;
-  console.log(item)
   return (
     <View className="flex-1 bg-gray-100">
       <ScrollView className="p-4">
