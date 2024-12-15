@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import YouTube from 'react-native-youtube-iframe';
 
 const LessonDetail = ({ route }) => {
