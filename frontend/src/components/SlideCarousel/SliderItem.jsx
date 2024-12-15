@@ -31,11 +31,6 @@ const SliderItem = ({ item, index, scrollX }) => {
     <Animated.View style={[styles.itemContainer, rnAnimatedStyle]}>
       <Image source={item.image} style={{ width: 300, height: 200, borderRadius: 20 }} />
       <LinearGradient colors={["transparent", "rgba(0,0,0,0.8)"]} style={styles.background}>
-        <View>
-          <TouchableOpacity style={styles.icon}>
-            <Ionicons name="heart-outline" size={24} color={"#fff"} />
-          </TouchableOpacity>
-        </View>
         <View style={{ gap: 10 }}>
           <Text style={styles.title}>{item.title}</Text>
           <Text style={styles.description}>{item.description}</Text>
@@ -58,7 +53,7 @@ const styles = StyleSheet.create({
     width: 300,
     padding: 20,
     borderRadius: 20,
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
   },
   title: {
     color: "#fff",
@@ -70,10 +65,5 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 12,
     letterSpacing: 1.2,
-  },
-  icon: {
-    backgroundColor: "rgba(0,0,0,0.3)",
-    padding: 5,
-    borderRadius: 30,
   },
 });

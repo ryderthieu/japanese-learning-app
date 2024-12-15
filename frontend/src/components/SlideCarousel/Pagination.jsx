@@ -11,7 +11,7 @@ const Pagination = ({ items, paginationIndex, scrollX }) => {
       {items.map((_, index) => {
         const pgAnimationStyle = useAnimatedStyle(() => {
           const dotWidth = interpolate(
-            scrollX.value,
+            scrollX.value % (items.length * width),
             [(index - 1) * width, index * width, (index + 1) * width],
             [8, 20, 8],
             Extrapolation.CLAMP
@@ -41,7 +41,7 @@ export default Pagination;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    height: 60,
+    height: 40,
     justifyContent: "center",
     alignItems: "center",
   },
