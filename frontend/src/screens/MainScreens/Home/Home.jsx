@@ -1,10 +1,11 @@
-import { Text, View, Image, ScrollView, SafeAreaView } from "react-native";
+import { Text, View, Image, ScrollView, SafeAreaView} from "react-native";
 import React from "react";
 import CircularProgress from "./CircularProgress";
 import Slider from "../../../components/SlideCarousel/Slider";
 import SliderData from "../../../components/SlideCarousel/SliderData";
+import { TouchableOpacity } from "react-native";
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <SafeAreaView>
       <ScrollView>
@@ -60,12 +61,14 @@ const Home = () => {
                 </View>
               </View>
               <View className="flex flex-row justify-between">
-                <View className="flex flex-row justify-between items-center gap-2 px-3 w-[180px] h-24 bg-white rounded-2xl shadow shadow-slate-300 ">
-                  <Image
-                    source={require("../../../assets/images/home/test.png")}
-                  ></Image>
-                  <Text className="font-semibold text-lg">Thi thử</Text>
-                </View>
+                <TouchableOpacity>
+                  <View className="flex flex-row justify-between items-center gap-2 px-3 w-[180px] h-24 bg-white rounded-2xl shadow shadow-slate-300 ">
+                    <Image
+                      source={require("../../../assets/images/home/test.png")}
+                    ></Image>
+                    <Text className="font-semibold text-lg">Thi thử</Text>
+                  </View>
+                </TouchableOpacity>
                 <View className="flex flex-row justify-between items-center gap-2 px-3 w-[180px] h-24 bg-white rounded-2xl shadow shadow-slate-300 ">
                   <Image
                     source={require("../../../assets/images/home/search.png")}
