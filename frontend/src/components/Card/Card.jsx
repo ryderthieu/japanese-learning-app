@@ -6,14 +6,12 @@ const SellingCourse = ({ item, addToCart }) => {
         <View className="w-full">
             <View className="bg-white p-4 rounded-xl shadow-lg flex flex-col">
                 <Image source={{ uri: item.image }} className="w-full h-32 rounded-lg mb-2" />
-                <View className="border border-white flex-row">
-                    <View className="flex-grow">
-                        <Text className="text-lg font-bold min-h-[50px] align-middle">{item.title}</Text>
-                        <Text className="text-lg text-secondary font-bold">{item.level}</Text>
-                        <Text className="text-lg text-red-600 font-bold">
-                            {item.price === 0 ? 'Miễn phí' : `${item.price} VND`}
-                        </Text>
-                    </View>
+                <Text className="text-lg font-bold min-h-[50px] align-middle">{item.title}</Text>
+                <Text className="text-lg text-secondary font-bold">{item.level}</Text>
+                <View className="justify-between flex-row">
+                    <Text className="text-lg text-red-600 font-bold">
+                        {item.price === 0 ? 'Miễn phí' : `${item.price} VND`}
+                    </Text>
                     <TouchableOpacity onPress={addToCart} className="self-end">
                         <Icon name="cart-outline" size={24} color="#0D308C" />
                     </TouchableOpacity>

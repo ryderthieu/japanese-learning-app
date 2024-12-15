@@ -1,9 +1,35 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-const lesson = new Schema({
-    title: {type: String, required: true},
-    course: {type: Number, ref: 'Course'}
+const lessonSchema = new Schema({
+    title: { type: String, required: true },
+    videoId: { type: String, required: true },
+    vocabulary: [
+        {
+            word: { type: String, required: true },
+            kanji: { type: String },
+            meaning: { type: String, required: true },
+            example: [
+                {
+                    sentence: { type: String, required: true },
+                    translation: { type: String, required: true }
+                }
+            ]
+        }
+    ],
+    grammar: [
+        {
+            rule: { type: String, required: true },
+            meaning: { type: String, required: true },
+            example: [
+                {
+                    sentence: { type: String, required: true },
+                    translation: { type: String, required: true }
+                }
+            ]
+        }
+    ],
 });
 
-module.exports = mongoose.model('Lesson', lesson)
+
+module.exports = mongoose.model('Lesson', lessonSchema)
