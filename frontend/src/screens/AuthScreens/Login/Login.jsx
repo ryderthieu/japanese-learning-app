@@ -92,7 +92,7 @@ const Login = ({navigation}) => {
         <View className="flex flex-row mb-5 ">
           <SocialIcon  onPress={() =>navigation.navigate('MainDrawer')} type="facebook" raise={false} />
           <SocialIcon  onPress={() =>navigation.navigate('Survey')} type="google" raise={false} />
-          <SocialIcon type="apple" light={true} raise={false} />
+          <SocialIcon onPress={() =>navigation.navigate('FreeDocument')} type="apple" light={true} raise={false} />
         </View>
         <View className="flex flex-row gap-2 text-base">
           <Text>Chưa có tài khoản?</Text>

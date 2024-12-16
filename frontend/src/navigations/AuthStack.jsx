@@ -7,6 +7,9 @@ import SentOTP from "../screens/AuthScreens/ForgotPassword/SentOTP";
 import ChangePassword from "../screens/AuthScreens/ForgotPassword/ChangePassword";
 import CheckYourLeverl from "../screens/MainScreens/CheckYourLevel/CheckYourLeverl";
 import Survey from "../screens/MainScreens/CheckYourLevel/Survey";
+import FreeDocument from "../screens/MainScreens/FreeDocument/FreeDocument";
+import FreeDocumentAll1 from "../screens/MainScreens/FreeDocument/FreeDocumentAll1";
+import Vocab from "../screens/MainScreens/FreeDocument/Vocab";
 
 const AuthStack = () => {
   const Stack = createNativeStackNavigator();
@@ -22,6 +25,9 @@ const AuthStack = () => {
       <Stack.Screen name="SentOTP" component={SentOTP} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="Survey" component={Survey} />
+      <Stack.Screen name="FreeDocument" component={FreeDocument} />
+      <Stack.Screen name="FreeDocumentAll1" component={FreeDocumentAll1} />
+      <Stack.Screen name="Vocab" component={Vocab} />
     </Stack.Navigator>
   );
 };
