@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer');
-const bcrypt = require('bcrypt')
-
+const bcrypt = require('bcrypt');
+const Course = require('../models/course')
 const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET, {expiresIn: '5d'})
 }
@@ -111,4 +111,27 @@ const resetPassword = async (req, res) => {
     }
 };
 
-module.exports = {login, signup, forgotPassword, resetPassword}
+
+const enrollCourse = async (req, res) => {
+    try {
+        const {courseId} = req.body;
+        const userId = req.user._id
+        const user = await User.findById(userId)
+        if (!mongoose.Types.ObjectId.isValid(courseId)) {
+            return res.status(400).json({ message: "Khóa học không hợp lệ" });
+        }
+        const course = await Course.findById(courseId)
+        if (!course)
+            return res.status(400).json({message: "Khóa học không tồn tại"})
+        if (user.courses.includes(courseId))
+            return res.status(400).json({message: "Người dùng đã đăng ký khóa học này"})
+
+        user.courses.push(courseId)
+        await user.save()
+
+        res.status(200).json({message: 'Đăng ký thành công', courses: user.courses})
+    } catch (error) {
+        res.status(400).json({message: error.message})
+    }
+}
+module.exports = {login, signup, forgotPassword, resetPassword, enrollCourse}

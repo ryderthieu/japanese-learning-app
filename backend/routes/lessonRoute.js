@@ -1,6 +1,7 @@
 const express = require('express')
-const { getLessonsInCourse } = require('../controllers/lessonController')
+const { changeLessonStatus } = require('../controllers/lessonController')
+const { authenticateJWT } = require('../middleware/authMiddleware')
 const router = express.Router()
 
-router.get('/:courseId', getLessonsInCourse)
+router.post('/', authenticateJWT, changeLessonStatus)
 module.exports = router

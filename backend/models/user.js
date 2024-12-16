@@ -6,8 +6,14 @@ const validator = require('validator');
 const userSchema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    lastName: { type: String },
+    firstName: {type: String},
     otp: { type: String },
     otpExpire: { type: Date },
+    courses: [{type: Schema.Types.ObjectId, ref: 'Course'}],
+    completedLessons: [{type: Schema.Types.ObjectId, ref: 'Lesson'}],
+    savedVocabulary: [{type: Schema.Types.ObjectId, ref: 'Vocabulary'}],
+    savedGrammar: [{type: Schema.Types.ObjectId, ref: 'Grammar'}]
 }, {
     timestamps: true
 });
@@ -57,5 +63,4 @@ userSchema.statics.login = async function (email, password) {
     return user;
 };
 
-// Xuất model
 module.exports = mongoose.model('User', userSchema);
