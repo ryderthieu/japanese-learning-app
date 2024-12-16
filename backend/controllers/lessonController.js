@@ -1,20 +1,13 @@
 const mongoose = require('mongoose')
 const Lesson = require('../models/lesson');
 
-const addLesson = async (req, res) => {
+const getLessonsInCourse = async (req, res) => {
     try {
-        const { title, course } = req.body;
-
-        const newLesson = new Lesson({
-            title,
-            course
-        });
-        const savedLesson = await newLesson.save();
-        res.status(201).json(savedLesson);  
-
+        const lessons = await Lesson.find({ course: req.params.courseId });
+        res.json(lessons);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-module.exports = { addLesson}
+module.exports = { getLessonsInCourse}

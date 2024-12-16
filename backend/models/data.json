@@ -1,0 +1,19 @@
+[
+    {
+        "title": "25 bài Minna no Nihongo I",
+        "description": "Nắm vững kiến thức cơ bản N5 thông qua các bài giảng cùng Minato Ngọc Tiệp. Khóa học Minna no Nihongo 1 gồm 25 bài học, cung cấp nền tảng vững chắc về tiếng Nhật dành cho người mới bắt đầu. Đây là chương trình học lý tưởng để làm quen với ngữ pháp, từ vựng, và các kỹ năng giao tiếp cơ bản, giúp bạn tự tin sử dụng tiếng Nhật trong cuộc sống hàng ngày.",
+        "thumbnail": "https://nhatnguohashi.com/upload/baiviet/tai-lieu-n5-ok-5-2590.jpg",
+        "level": "N5",
+        "price": 0,
+        "type" : "JLPT",
+        "lessons": [
+            "675ea55181fe6749f1425460",
+            "675ea55181fe6749f1425461",
+            "675ea55181fe6749f1425462",
+            "675ea55181fe6749f1425463",
+            "675ea55181fe6749f1425464",
+            "675ea55181fe6749f1425465",
+            "675ea55181fe6749f1425466"
+        ]
+    }
+]

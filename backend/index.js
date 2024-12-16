@@ -16,9 +16,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/courses', courseRouter)
-app.use('/api/lesson', lessonRouter)
+app.use('/api/lessons', lessonRouter)
 app.use('/api/vocabulary', vocabularyRouter)
 app.use('/api/user', userRouter)
 
-app.get('/', (req, res) => {res.send('Hello')})
 app.listen(PORT, () => console.log(`Example app listening ${PORT}`))

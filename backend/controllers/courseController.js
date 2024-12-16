@@ -1,32 +1,28 @@
-const mongoose = require('mongoose')
-const Course = require('../models/course')
+const mongoose = require('mongoose');
+const Course = require('../models/course');
 
 const getAllCourses = async (req, res) => {
     try {
-        const courses = await Course.find()
-        res.json(courses)
+        const { level, type } = req.query;
+        const query = {};
 
-    } catch (error) {
-        res.status(500).json({message: error.message})
-    }
-}
+        if (level) query.level = level;
+        if (type) query.type = type;
+        const courses = await Course.find(query).populate('lessons');  
 
-const addCourse = async (req, res) => {
-    try {
-        const { _id, title, description, thumbnail, level } = req.body;
-
-        const newCourse = new Course({
-            title,
-            description,
-            thumbnail,
-            level
-        });
-        const savedCourse = await newCourse.save();
-        res.status(201).json(savedCourse);  
-
+        res.json(courses); 
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-module.exports = {getAllCourses, addCourse}
+const getCourseById = async (req, res) => {
+    try {
+        const course = await Course.findById(req.params.courseId).populate('lessons');
+        if (!course) return res.status(404).json({ message: 'Course not found' });
+        res.json(course);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+module.exports = { getAllCourses, getCourseById };
