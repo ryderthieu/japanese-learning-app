@@ -29,6 +29,7 @@ const lessonSchema = new Schema({
             ]
         }
     ],
+    isCompleted: { type: Boolean, default: false },
 });
 
 
