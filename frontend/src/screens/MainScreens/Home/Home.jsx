@@ -4,11 +4,14 @@ import CircularProgress from "./CircularProgress";
 import Slider from "../../../components/SlideCarousel/Slider";
 import SliderData from "../../../components/SlideCarousel/SliderData";
 import { TouchableOpacity } from "react-native";
+import Header from "./Header";
+
 
 const Home = ({navigation}) => {
   return (
     <SafeAreaView>
       <ScrollView>
+        <Header />
         <View>
           <View>
             <Slider itemList={SliderData} />
