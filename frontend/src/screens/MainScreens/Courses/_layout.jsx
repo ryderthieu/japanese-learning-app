@@ -27,7 +27,7 @@ export default function CoursesNavigation() {
               color="#000"
               onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
               style={{
-                marginRight: 10
+                marginRight: 20
                }}
             />
           ),

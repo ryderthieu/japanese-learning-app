@@ -79,13 +79,13 @@ const Test = ({ route, navigation }) => {
     <View className="mb-4 p-4 bg-white rounded-lg border border-gray-300">
       <Text className="text-lg font-bold mb-2">{item.question}</Text>
       {item.options.map((option, optionIndex) => (
-        <View key={optionIndex} className="flex-row items-center mb-2">
+        <TouchableOpacity key={optionIndex} className="flex-row items-center mb-2 gap-2" onPress = {() => handleAnswer(index, option)}>
           <CheckBox
             isChecked={selectedAnswers[index] === option}
             onClick={() => handleAnswer(index, option)}
           />
           <Text className="text-base text-black">{option}</Text>
-        </View>
+        </TouchableOpacity>
       ))}
     </View>
   );

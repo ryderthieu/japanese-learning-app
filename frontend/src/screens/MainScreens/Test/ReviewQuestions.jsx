@@ -24,7 +24,11 @@ const ReviewQuestions = ({ route, navigation }) => {
 
         return (
           <View key={optionIndex} className="flex-row items-center mb-2">
-            <CheckBox isChecked={isSelected} disabled />
+            <CheckBox 
+              isChecked={isSelected} 
+              disabled 
+              onClick = {() => console.log('Checkbox clicked')}
+            />
             <Text className={`text-base ${optionClass}`}>  {option}</Text>
           </View>
         );
