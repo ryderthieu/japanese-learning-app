@@ -14,13 +14,14 @@ const FreeDocumentComponent = ({ data = [],filter = "all", display="Vertical"}) 
   });
 
   return (
+   <SafeAreaView>
    <ScrollView horizontal={display === 'Horizontal'} showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
-    <View className={`px-2 flex flex-row ${display === 'Vertical' ? 'flex-wrap justify-between' : 'gap-3'} `}> 
+    <View className={`px-2 flex flex-row ${display === 'Vertical' ? 'flex-wrap justify-between' : 'gap-3'} `}> {/* Grid layout */}
       {filteredCourses.map((course, index) => (
-        <View className="w-[365px] h-[125px] flex flex-row bg-white rounded-3xl mb-4 shadow-sm">
-          <View className="relative w-[140px]">
+        <View className="w-[185px] h-[250px] bg-white rounded-3xl shadow-lg overflow-hidden mb-4">
+          <View className="relative">
             {course.status === "completed" && (
-              <View style={{backgroundColor: 'rgba(52, 52, 52, 0.5)'}} className="absolute z-10 inset-0 rounded-t-3xl rounded-s-3xl bg-black flex items-center justify-center">
+              <View style={{backgroundColor: 'rgba(52, 52, 52, 0.5)'}} className="absolute z-10 inset-0 bg-black flex items-center justify-center">
                 <Text className="text-pink-300 font-bold text-xl border-2 border-pink-300 px-4 py-2 rounded-xl">
                   Hoàn thành
                 </Text>
@@ -28,22 +29,26 @@ const FreeDocumentComponent = ({ data = [],filter = "all", display="Vertical"}) 
             )}
             {course.status === "in-progress" && (
               <>
-                <View style={{backgroundColor: 'rgba(52, 52, 52, 0.5)'}} className="absolute z-10 inset-0 bg-black bg-opacity-50 rounded-s-3xl flex items-center justify-center">
-                  <Text className="text-[#4df300] font-extrabold text-4xl ">{
-                    course.progress || 0 
+                <View style={{backgroundColor: 'rgba(52, 52, 52, 0.5)'}} className="absolute z-10 inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                  <Text className="text-[#5A81FA] font-extrabold text-4xl">{
+                    course.progress || 0
                   }%</Text>
                 </View>
+                <View
+                  className="absolute z-20 bottom-0 left-0 bg-[#5A81FA] h-2"
+                  style={{ width: `${course.progress}%` }}
+                ></View>
               </>
             )}
             <Image
-              source= {{uri: course.image}}
-              className="w-[140px] h-[125px] object-cover rounded-s-3xl"
+              source={course.image}
+              className="w-full h-[110px] object-cover"
               resizeMode="cover"
             />
           </View>
 
           {/* Nội dung khóa học */}
-          <View className="flex flex-col p-2 w-[225px]">
+          <View className="p-4">
             <Text 
             className="text-xl font-bold text-[#07152F]" numberOfLines={1}>
               {course.title}
@@ -54,24 +59,24 @@ const FreeDocumentComponent = ({ data = [],filter = "all", display="Vertical"}) 
             >
               {course.description}
             </Text>
-            <View className="mt-4 gap-2">
+            <View className="mt-4 flex-row gap-2">
               {course.status === "completed" && (
-                  <TouchableOpacity onPress={() => navigation.navigate('Vocab')}>
-                    <Text className="text-lg text-right mr-5 font-bold text-green-600">
+                  <TouchableOpacity className="flex-1 py-2 bg-[#F490AF] rounded-md hover:bg-[#FF0854]" onPress={() => navigation.navigate('Vocab')}>
+                    <Text className="text-center font-bold text-white text-sm">
                       Học lại
                     </Text>
                   </TouchableOpacity>
               )}
               {course.status === "not-learned" && (
-                  <TouchableOpacity>
-                    <Text className="text-lg text-right mr-5 font-bold text-[#d50f0f]">
+                  <TouchableOpacity className="flex-1 py-2 bg-[#2B308B] rounded-md hover:bg-blue-700">
+                    <Text className="text-center font-bold text-white text-sm">
                       Bắt đầu học
                     </Text>
                   </TouchableOpacity>
               )}
               {course.status === "in-progress" && (
-                  <TouchableOpacity>
-                    <Text className="text-lg text-right mr-5 font-bold text-[#ff7300]">
+                  <TouchableOpacity className="flex-1 py-2 bg-[#2B308B] rounded-md hover:bg-blue-700">
+                    <Text className="text-center font-bold text-white text-sm">
                       Tiếp tục học
                     </Text>
                   </TouchableOpacity>
@@ -82,6 +87,7 @@ const FreeDocumentComponent = ({ data = [],filter = "all", display="Vertical"}) 
       ))}
     </View>
     </ScrollView>
+    </SafeAreaView>
   );
 };
 
