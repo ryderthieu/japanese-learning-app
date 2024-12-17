@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import FreeDocumentComponent from "./FreeDocumentComponent";
 import coursesData from "./coursesData";
-
+import { SafeAreaView } from "react-native-safe-area-context";
 const FreeDocument = ({navigation}) => {
 
 
