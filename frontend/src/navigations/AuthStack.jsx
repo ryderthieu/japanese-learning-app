@@ -10,6 +10,7 @@ import Survey from "../screens/MainScreens/CheckYourLevel/Survey";
 import FreeDocument from "../screens/MainScreens/FreeDocument/FreeDocument";
 import FreeDocumentAll1 from "../screens/MainScreens/FreeDocument/FreeDocumentAll1";
 import Vocab from "../screens/MainScreens/FreeDocument/Vocab";
+import Kanji from "../screens/MainScreens/FreeDocument/Kanji";
 
 const AuthStack = () => {
   const Stack = createNativeStackNavigator();
@@ -27,7 +28,7 @@ const AuthStack = () => {
       <Stack.Screen name="Survey" component={Survey} />
       <Stack.Screen name="FreeDocument" component={FreeDocument} />
       <Stack.Screen name="FreeDocumentAll1" component={FreeDocumentAll1} />
-      <Stack.Screen name="Vocab" component={Vocab} />
+      <Stack.Screen name="Vocab" component={Kanji} />
     </Stack.Navigator>
   );
 };
