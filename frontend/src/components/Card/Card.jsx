@@ -1,6 +1,8 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
+import * as Speech from 'expo-speech';
+
 const SellingCourse = ({ item, addToCart }) => {
     return (
         <View className="w-full">
@@ -52,9 +54,21 @@ const CourseInfo = ({ item }) => {
 }
 
 const VocabularyCard = ({item}) => {
+        // Hàm để phát âm từ vựng khi người dùng nhấn vào
+        const speak = (word) => {
+            Speech.speak(word, {
+                language: 'ja', // Ngôn ngữ tiếng Nhật
+                pitch: 1, // Độ cao của giọng
+                rate: 1,  // Tốc độ phát âm
+            });
+        };
     return (
         <View className="bg-white p-4 rounded-lg shadow-md mb-4 border-l-4 border-pink-400">
             <Text className="text-xl font-bold text-blue-800">{item.kanji} ({item.hiragana})</Text>
+            <TouchableOpacity onPress={() => speak(item.hiragana)}>
+            <Icon name='volume-medium-outline' size={20}/>
+
+            </TouchableOpacity>
             <Text className="text-pink-600 mt-1 italic">{item.romanji}</Text>
             <Text className="text-gray-700 mt-2">{item.meaning}</Text>
             <Text className="text-gray-400 mt-2 italic">

@@ -1,19 +1,2377 @@
 [
     {
-        "title": "25 bài Minna no Nihongo I",
-        "description": "Nắm vững kiến thức cơ bản N5 thông qua các bài giảng cùng Minato Ngọc Tiệp. Khóa học Minna no Nihongo 1 gồm 25 bài học, cung cấp nền tảng vững chắc về tiếng Nhật dành cho người mới bắt đầu. Đây là chương trình học lý tưởng để làm quen với ngữ pháp, từ vựng, và các kỹ năng giao tiếp cơ bản, giúp bạn tự tin sử dụng tiếng Nhật trong cuộc sống hàng ngày.",
-        "thumbnail": "https://nhatnguohashi.com/upload/baiviet/tai-lieu-n5-ok-5-2590.jpg",
+        "word": "わたし",
+        "kanji": "私",
+        "romanji": "watashi",
+        "kanjiMeaning": "TƯ",
+        "meaning": "Tôi",
         "level": "N5",
-        "price": 0,
-        "type" : "JLPT",
-        "lessons": [
-            "675ea55181fe6749f1425460",
-            "675ea55181fe6749f1425461",
-            "675ea55181fe6749f1425462",
-            "675ea55181fe6749f1425463",
-            "675ea55181fe6749f1425464",
-            "675ea55181fe6749f1425465",
-            "675ea55181fe6749f1425466"
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "私は学生です。",
+                "sentenceMeaning": "Tôi là sinh viên."
+            },
+            {
+                "sentence": "私の名前は山田です。",
+                "sentenceMeaning": "Tên tôi là Yamada."
+            }
+        ]
+    },
+    {
+        "word": "あなた",
+        "kanji": "",
+        "romanji": "anata",
+        "kanjiMeaning": "",
+        "meaning": "Bạn",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "あなたは日本人ですか。",
+                "sentenceMeaning": "Bạn là người Nhật à?"
+            },
+            {
+                "sentence": "あなたの本はどれですか。",
+                "sentenceMeaning": "Cuốn sách của bạn là cuốn nào?"
+            }
+        ]
+    },
+    {
+        "word": "いぬ",
+        "kanji": "犬",
+        "romanji": "inu",
+        "kanjiMeaning": "KHUYỂN",
+        "meaning": "Chó",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "犬が公園で遊んでいます。",
+                "sentenceMeaning": "Con chó đang chơi ở công viên."
+            },
+            {
+                "sentence": "その犬はとてもかわいいです。",
+                "sentenceMeaning": "Con chó đó rất dễ thương."
+            }
+        ]
+    },
+    {
+        "word": "ねこ",
+        "kanji": "猫",
+        "romanji": "neko",
+        "kanjiMeaning": "MIÊU",
+        "meaning": "Mèo",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "猫が庭にいます。",
+                "sentenceMeaning": "Con mèo đang ở trong vườn."
+            },
+            {
+                "sentence": "私は猫が好きです。",
+                "sentenceMeaning": "Tôi thích mèo."
+            }
+        ]
+    },
+    {
+        "word": "アイスクリーム",
+        "kanji": "",
+        "romanji": "aisukuriimu",
+        "kanjiMeaning": "",
+        "meaning": "Kem",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "アイスクリームを食べます。",
+                "sentenceMeaning": "Tôi ăn kem."
+            },
+            {
+                "sentence": "彼女はアイスクリームが大好きです。",
+                "sentenceMeaning": "Cô ấy rất thích kem."
+            }
+        ]
+    },
+    {
+        "word": "さかな",
+        "kanji": "魚",
+        "romanji": "sakana",
+        "kanjiMeaning": "NGƯ",
+        "meaning": "Cá",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "魚が泳いでいます。",
+                "sentenceMeaning": "Con cá đang bơi."
+            },
+            {
+                "sentence": "魚を食べます。",
+                "sentenceMeaning": "Ăn cá."
+            }
+        ]
+    },
+    {
+        "word": "やま",
+        "kanji": "山",
+        "romanji": "yama",
+        "kanjiMeaning": "SƠN",
+        "meaning": "Núi",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "山に登ります。",
+                "sentenceMeaning": "Leo núi."
+            },
+            {
+                "sentence": "あの山は高いです。",
+                "sentenceMeaning": "Ngọn núi kia rất cao."
+            }
+        ]
+    },
+    {
+        "word": "かわ",
+        "kanji": "川",
+        "romanji": "kawa",
+        "kanjiMeaning": "XUYÊN",
+        "meaning": "Sông",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "川が流れています。",
+                "sentenceMeaning": "Con sông đang chảy."
+            },
+            {
+                "sentence": "川で釣りをします。",
+                "sentenceMeaning": "Câu cá ở sông."
+            }
+        ]
+    },
+    {
+        "word": "でんしゃ",
+        "kanji": "電車",
+        "romanji": "densha",
+        "kanjiMeaning": "ĐIỆN XA",
+        "meaning": "Xe điện",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "電車で学校に行きます。",
+                "sentenceMeaning": "Đi đến trường bằng xe điện."
+            },
+            {
+                "sentence": "この電車は速いです。",
+                "sentenceMeaning": "Xe điện này rất nhanh."
+            }
+        ]
+    },
+    {
+        "word": "みず",
+        "kanji": "水",
+        "romanji": "mizu",
+        "kanjiMeaning": "THỦY",
+        "meaning": "Nước",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "水を飲みます。",
+                "sentenceMeaning": "Uống nước."
+            },
+            {
+                "sentence": "水が冷たいです。",
+                "sentenceMeaning": "Nước lạnh."
+            }
+        ]
+    },
+    {
+        "word": "ひと",
+        "kanji": "人",
+        "romanji": "hito",
+        "kanjiMeaning": "NHÂN",
+        "meaning": "Người",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "あの人は先生です。",
+                "sentenceMeaning": "Người đó là giáo viên."
+            },
+            {
+                "sentence": "人が多いです。",
+                "sentenceMeaning": "Có nhiều người."
+            }
+        ]
+    },
+    {
+        "word": "くるま",
+        "kanji": "車",
+        "romanji": "kuruma",
+        "kanjiMeaning": "XA",
+        "meaning": "Xe hơi",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "車を運転します。",
+                "sentenceMeaning": "Lái xe hơi."
+            },
+            {
+                "sentence": "新しい車を買いました。",
+                "sentenceMeaning": "Tôi đã mua một chiếc xe hơi mới."
+            }
+        ]
+    },
+    {
+        "word": "ほん",
+        "kanji": "本",
+        "romanji": "hon",
+        "kanjiMeaning": "BẢN",
+        "meaning": "Sách",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "本を読みます。",
+                "sentenceMeaning": "Đọc sách."
+            },
+            {
+                "sentence": "この本は面白いです。",
+                "sentenceMeaning": "Cuốn sách này thú vị."
+            }
+        ]
+    },
+    {
+        "word": "がっこう",
+        "kanji": "学校",
+        "romanji": "gakkou",
+        "kanjiMeaning": "HỌC HIỆU",
+        "meaning": "Trường học",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "学校に行きます。",
+                "sentenceMeaning": "Đi đến trường."
+            },
+            {
+                "sentence": "学校は楽しいです。",
+                "sentenceMeaning": "Trường học vui."
+            }
+        ]
+    },
+    {
+        "word": "ともだち",
+        "kanji": "友達",
+        "romanji": "tomodachi",
+        "kanjiMeaning": "HỮU ĐẠT",
+        "meaning": "Bạn bè",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "友達と遊びます。",
+                "sentenceMeaning": "Chơi với bạn bè."
+            },
+            {
+                "sentence": "友達がたくさんいます。",
+                "sentenceMeaning": "Có nhiều bạn bè."
+            }
+        ]
+    },
+    {
+        "word": "せんせい",
+        "kanji": "先生",
+        "romanji": "sensei",
+        "kanjiMeaning": "TIÊN SINH",
+        "meaning": "Giáo viên",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "先生に質問します。",
+                "sentenceMeaning": "Hỏi giáo viên."
+            },
+            {
+                "sentence": "先生は優しいです。",
+                "sentenceMeaning": "Giáo viên hiền."
+            }
+        ]
+    },
+    {
+        "word": "いえ",
+        "kanji": "家",
+        "romanji": "ie",
+        "kanjiMeaning": "GIA",
+        "meaning": "Nhà",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "家に帰ります。",
+                "sentenceMeaning": "Về nhà."
+            },
+            {
+                "sentence": "家が大きいです。",
+                "sentenceMeaning": "Nhà lớn."
+            }
+        ]
+    },
+    {
+        "word": "てんき",
+        "kanji": "天気",
+        "romanji": "tenki",
+        "kanjiMeaning": "THIÊN KHÍ",
+        "meaning": "Thời tiết",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "天気がいいです。",
+                "sentenceMeaning": "Thời tiết đẹp."
+            },
+            {
+                "sentence": "天気予報を見ます。",
+                "sentenceMeaning": "Xem dự báo thời tiết."
+            }
+        ]
+    },
+    {
+        "word": "くに",
+        "kanji": "国",
+        "romanji": "kuni",
+        "kanjiMeaning": "QUỐC",
+        "meaning": "Đất nước",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "国に帰ります。",
+                "sentenceMeaning": "Về nước."
+            },
+            {
+                "sentence": "日本は美しい国です。",
+                "sentenceMeaning": "Nhật Bản là một đất nước đẹp."
+            }
+        ]
+    },
+    {
+        "word": "はな",
+        "kanji": "花",
+        "romanji": "hana",
+        "kanjiMeaning": "HOA",
+        "meaning": "Hoa",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "花が咲いています。",
+                "sentenceMeaning": "Hoa đang nở."
+            },
+            {
+                "sentence": "この花は美しいです。",
+                "sentenceMeaning": "Hoa này đẹp."
+            }
+        ]
+    },
+    {
+        "word": "き",
+        "kanji": "木",
+        "romanji": "ki",
+        "kanjiMeaning": "MỘC",
+        "meaning": "Cây",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "木が高いです。",
+                "sentenceMeaning": "Cây cao."
+            },
+            {
+                "sentence": "木の下で休みます。",
+                "sentenceMeaning": "Nghỉ dưới gốc cây."
+            }
+        ]
+    },
+    {
+        "word": "そら",
+        "kanji": "空",
+        "romanji": "sora",
+        "kanjiMeaning": "KHÔNG",
+        "meaning": "Bầu trời",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "空が青いです。",
+                "sentenceMeaning": "Bầu trời xanh."
+            },
+            {
+                "sentence": "空を見上げます。",
+                "sentenceMeaning": "Ngước nhìn bầu trời."
+            }
+        ]
+    },
+    {
+        "word": "うみ",
+        "kanji": "海",
+        "romanji": "umi",
+        "kanjiMeaning": "HẢI",
+        "meaning": "Biển",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "海で泳ぎます。",
+                "sentenceMeaning": "Bơi ở biển."
+            },
+            {
+                "sentence": "海が広いです。",
+                "sentenceMeaning": "Biển rộng."
+            }
+        ]
+    },
+    {
+        "word": "やさい",
+        "kanji": "野菜",
+        "romanji": "yasai",
+        "kanjiMeaning": "DÃ THÁI",
+        "meaning": "Rau",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "野菜を食べます。",
+                "sentenceMeaning": "Ăn rau."
+            },
+            {
+                "sentence": "野菜が好きです。",
+                "sentenceMeaning": "Thích rau."
+            }
+        ]
+    },
+    {
+        "word": "くだもの",
+        "kanji": "果物",
+        "romanji": "kudamono",
+        "kanjiMeaning": "QUẢ VẬT",
+        "meaning": "Trái cây",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "果物を食べます。",
+                "sentenceMeaning": "Ăn trái cây."
+            },
+            {
+                "sentence": "果物が好きです。",
+                "sentenceMeaning": "Thích trái cây."
+            }
+        ]
+    },
+    {
+        "word": "にく",
+        "kanji": "肉",
+        "romanji": "niku",
+        "kanjiMeaning": "NHỤC",
+        "meaning": "Thịt",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "肉を焼きます。",
+                "sentenceMeaning": "Nướng thịt."
+            },
+            {
+                "sentence": "肉が美味しいです。",
+                "sentenceMeaning": "Thịt ngon."
+            }
+        ]
+    },
+    {
+        "word": "さけ",
+        "kanji": "酒",
+        "romanji": "sake",
+        "kanjiMeaning": "TỬU",
+        "meaning": "Rượu",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "酒を飲みます。",
+                "sentenceMeaning": "Uống rượu."
+            },
+            {
+                "sentence": "日本酒が好きです。",
+                "sentenceMeaning": "Thích rượu Nhật."
+            }
+        ]
+    },
+    {
+        "word": "おんがく",
+        "kanji": "音楽",
+        "romanji": "ongaku",
+        "kanjiMeaning": "ÂM NHẠC",
+        "meaning": "Âm nhạc",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "音楽を聴きます。",
+                "sentenceMeaning": "Nghe nhạc."
+            },
+            {
+                "sentence": "音楽が好きです。",
+                "sentenceMeaning": "Thích âm nhạc."
+            }
+        ]
+    },
+    {
+        "word": "えいが",
+        "kanji": "映画",
+        "romanji": "eiga",
+        "kanjiMeaning": "ÁNH HỌA",
+        "meaning": "Phim",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "映画を見ます。",
+                "sentenceMeaning": "Xem phim."
+            },
+            {
+                "sentence": "映画館に行きます。",
+                "sentenceMeaning": "Đi đến rạp chiếu phim."
+            }
+        ]
+    },
+    {
+        "word": "しごと",
+        "kanji": "仕事",
+        "romanji": "shigoto",
+        "kanjiMeaning": "SĨ SỰ",
+        "meaning": "Công việc",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "仕事をします。",
+                "sentenceMeaning": "Làm việc."
+            },
+            {
+                "sentence": "仕事が忙しいです。",
+                "sentenceMeaning": "Công việc bận rộn."
+            }
+        ]
+    },
+    {
+        "word": "がくせい",
+        "kanji": "学生",
+        "romanji": "gakusei",
+        "kanjiMeaning": "HỌC SINH",
+        "meaning": "Học sinh",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "学生です。",
+                "sentenceMeaning": "Là học sinh."
+            },
+            {
+                "sentence": "学生が多いです。",
+                "sentenceMeaning": "Có nhiều học sinh."
+            }
+        ]
+    },
+    {
+        "word": "せかい",
+        "kanji": "世界",
+        "romanji": "sekai",
+        "kanjiMeaning": "THẾ GIỚI",
+        "meaning": "Thế giới",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "世界を旅行します。",
+                "sentenceMeaning": "Du lịch thế giới."
+            },
+            {
+                "sentence": "世界は広いです。",
+                "sentenceMeaning": "Thế giới rộng lớn."
+            }
+        ]
+    },
+    {
+        "word": "でんわ",
+        "kanji": "電話",
+        "romanji": "denwa",
+        "kanjiMeaning": "ĐIỆN THOẠI",
+        "meaning": "Điện thoại",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "電話をかけます。",
+                "sentenceMeaning": "Gọi điện thoại."
+            },
+            {
+                "sentence": "電話が鳴ります。",
+                "sentenceMeaning": "Điện thoại reo."
+            }
+        ]
+    },
+    {
+        "word": "てがみ",
+        "kanji": "手紙",
+        "romanji": "tegami",
+        "kanjiMeaning": "THỦ CHỈ",
+        "meaning": "Thư",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "手紙を書きます。",
+                "sentenceMeaning": "Viết thư."
+            },
+            {
+                "sentence": "手紙を送ります。",
+                "sentenceMeaning": "Gửi thư."
+            }
+        ]
+    },
+    {
+        "word": "えき",
+        "kanji": "駅",
+        "romanji": "eki",
+        "kanjiMeaning": "DỊCH",
+        "meaning": "Ga",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "駅に行きます。",
+                "sentenceMeaning": "Đi đến ga."
+            },
+            {
+                "sentence": "駅で待ちます。",
+                "sentenceMeaning": "Chờ ở ga."
+            }
+        ]
+    },
+    {
+        "word": "みせ",
+        "kanji": "店",
+        "romanji": "mise",
+        "kanjiMeaning": "ĐIẾM",
+        "meaning": "Cửa hàng",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "店で買い物します。",
+                "sentenceMeaning": "Mua sắm ở cửa hàng."
+            },
+            {
+                "sentence": "店が開いています。",
+                "sentenceMeaning": "Cửa hàng đang mở."
+            }
+        ]
+    },
+    {
+        "word": "くつ",
+        "kanji": "靴",
+        "romanji": "kutsu",
+        "kanjiMeaning": "NGOA",
+        "meaning": "Giày",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "靴を履きます。",
+                "sentenceMeaning": "Mang giày."
+            },
+            {
+                "sentence": "新しい靴を買いました。",
+                "sentenceMeaning": "Tôi đã mua giày mới."
+            }
+        ]
+    },
+    {
+        "word": "かさ",
+        "kanji": "傘",
+        "romanji": "kasa",
+        "kanjiMeaning": "TẢN",
+        "meaning": "Ô",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "傘を持って行きます。",
+                "sentenceMeaning": "Mang ô đi."
+            },
+            {
+                "sentence": "傘を忘れました。",
+                "sentenceMeaning": "Quên ô rồi."
+            }
+        ]
+    },
+    {
+        "word": "じしょ",
+        "kanji": "辞書",
+        "romanji": "jisho",
+        "kanjiMeaning": "TỪ THƯ",
+        "meaning": "Từ điển",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "辞書を使います。",
+                "sentenceMeaning": "Sử dụng từ điển."
+            },
+            {
+                "sentence": "辞書を引きます。",
+                "sentenceMeaning": "Tra từ điển."
+            }
+        ]
+    },
+    {
+        "word": "かばん",
+        "kanji": "鞄",
+        "romanji": "kaban",
+        "kanjiMeaning": "BẠC",
+        "meaning": "Cặp sách",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "鞄を持ちます。",
+                "sentenceMeaning": "Mang cặp sách."
+            },
+            {
+                "sentence": "新しい鞄を買いました。",
+                "sentenceMeaning": "Tôi đã mua một chiếc cặp sách mới."
+            }
+        ]
+    },
+    {
+        "word": "いす",
+        "kanji": "椅子",
+        "romanji": "isu",
+        "kanjiMeaning": "Y TỬ",
+        "meaning": "Ghế",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "椅子に座ります。",
+                "sentenceMeaning": "Ngồi trên ghế."
+            },
+            {
+                "sentence": "この椅子は快適です。",
+                "sentenceMeaning": "Chiếc ghế này thoải mái."
+            }
+        ]
+    },
+    {
+        "word": "つくえ",
+        "kanji": "机",
+        "romanji": "tsukue",
+        "kanjiMeaning": "KỶ",
+        "meaning": "Bàn",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "机で勉強します。",
+                "sentenceMeaning": "Học trên bàn."
+            },
+            {
+                "sentence": "机が広いです。",
+                "sentenceMeaning": "Bàn rộng."
+            }
+        ]
+    },
+    {
+        "word": "まど",
+        "kanji": "窓",
+        "romanji": "mado",
+        "kanjiMeaning": "SONG",
+        "meaning": "Cửa sổ",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "窓を開けます。",
+                "sentenceMeaning": "Mở cửa sổ."
+            },
+            {
+                "sentence": "窓から外を見ます。",
+                "sentenceMeaning": "Nhìn ra ngoài từ cửa sổ."
+            }
+        ]
+    },
+    {
+        "word": "かぎ",
+        "kanji": "鍵",
+        "romanji": "kagi",
+        "kanjiMeaning": "KIỆN",
+        "meaning": "Chìa khóa",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "鍵をかけます。",
+                "sentenceMeaning": "Khóa cửa."
+            },
+            {
+                "sentence": "鍵を忘れました。",
+                "sentenceMeaning": "Quên chìa khóa rồi."
+            }
+        ]
+    },
+    {
+        "word": "はし",
+        "kanji": "箸",
+        "romanji": "hashi",
+        "kanjiMeaning": "TRỨ",
+        "meaning": "Đũa",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "箸で食べます。",
+                "sentenceMeaning": "Ăn bằng đũa."
+            },
+            {
+                "sentence": "箸を使います。",
+                "sentenceMeaning": "Sử dụng đũa."
+            }
+        ]
+    },
+    {
+        "word": "さら",
+        "kanji": "皿",
+        "romanji": "sara",
+        "kanjiMeaning": "MÃNH",
+        "meaning": "Đĩa",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "皿を洗います。",
+                "sentenceMeaning": "Rửa đĩa."
+            },
+            {
+                "sentence": "新しい皿を買いました。",
+                "sentenceMeaning": "Tôi đã mua đĩa mới."
+            }
+        ]
+    },
+    {
+        "word": "コップ",
+        "kanji": "",
+        "romanji": "koppu",
+        "kanjiMeaning": "",
+        "meaning": "Cốc",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "コップに水を入れます。",
+                "sentenceMeaning": "Đổ nước vào cốc."
+            },
+            {
+                "sentence": "コップが割れました。",
+                "sentenceMeaning": "Cốc bị vỡ."
+            }
+        ]
+    },
+    {
+        "word": "ナイフ",
+        "kanji": "",
+        "romanji": "naifu",
+        "kanjiMeaning": "",
+        "meaning": "Dao",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "ナイフで切ります。",
+                "sentenceMeaning": "Cắt bằng dao."
+            },
+            {
+                "sentence": "ナイフが鋭いです。",
+                "sentenceMeaning": "Dao sắc."
+            }
+        ]
+    },
+    {
+        "word": "フォーク",
+        "kanji": "",
+        "romanji": "fooku",
+        "kanjiMeaning": "",
+        "meaning": "Nĩa",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "フォークを使います。",
+                "sentenceMeaning": "Sử dụng nĩa."
+            },
+            {
+                "sentence": "フォークが必要です。",
+                "sentenceMeaning": "Cần nĩa."
+            }
+        ]
+    },
+    {
+        "word": "しんぶん",
+        "kanji": "新聞",
+        "romanji": "shinbun",
+        "kanjiMeaning": "TÂN VĂN",
+        "meaning": "Báo",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "新聞を読みます。",
+                "sentenceMeaning": "Đọc báo."
+            },
+            {
+                "sentence": "毎朝新聞を買います。",
+                "sentenceMeaning": "Mua báo mỗi sáng."
+            }
+        ]
+    },
+    {
+        "word": "ざっし",
+        "kanji": "雑誌",
+        "romanji": "zasshi",
+        "kanjiMeaning": "TẠP CHÍ",
+        "meaning": "Tạp chí",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "雑誌を見ます。",
+                "sentenceMeaning": "Xem tạp chí."
+            },
+            {
+                "sentence": "新しい雑誌を買いました。",
+                "sentenceMeaning": "Tôi đã mua tạp chí mới."
+            }
+        ]
+    },
+    {
+        "word": "えんぴつ",
+        "kanji": "鉛筆",
+        "romanji": "enpitsu",
+        "kanjiMeaning": "DUYÊN BÚT",
+        "meaning": "Bút chì",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "鉛筆で書きます。",
+                "sentenceMeaning": "Viết bằng bút chì."
+            },
+            {
+                "sentence": "鉛筆を削ります。",
+                "sentenceMeaning": "Gọt bút chì."
+            }
+        ]
+    },
+    {
+        "word": "けしごむ",
+        "kanji": "消しゴム",
+        "romanji": "keshigomu",
+        "kanjiMeaning": "TIÊU",
+        "meaning": "Tẩy",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "消しゴムを使います。",
+                "sentenceMeaning": "Sử dụng tẩy."
+            },
+            {
+                "sentence": "消しゴムがなくなりました。",
+                "sentenceMeaning": "Hết tẩy rồi."
+            }
+        ]
+    },
+    {
+        "word": "ノート",
+        "kanji": "",
+        "romanji": "nooto",
+        "kanjiMeaning": "",
+        "meaning": "Vở",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "ノートに書きます。",
+                "sentenceMeaning": "Viết vào vở."
+            },
+            {
+                "sentence": "新しいノートを買いました。",
+                "sentenceMeaning": "Tôi đã mua vở mới."
+            }
+        ]
+    },
+    {
+        "word": "ペン",
+        "kanji": "",
+        "romanji": "pen",
+        "kanjiMeaning": "",
+        "meaning": "Bút",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "ペンで書きます。",
+                "sentenceMeaning": "Viết bằng bút."
+            },
+            {
+                "sentence": "新しいペンを買いました。",
+                "sentenceMeaning": "Tôi đã mua bút mới."
+            }
+        ]
+    },
+    {
+        "word": "かみ",
+        "kanji": "紙",
+        "romanji": "kami",
+        "kanjiMeaning": "CHỈ",
+        "meaning": "Giấy",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "紙に書きます。",
+                "sentenceMeaning": "Viết trên giấy."
+            },
+            {
+                "sentence": "紙が足りません。",
+                "sentenceMeaning": "Không đủ giấy."
+            }
+        ]
+    },
+    {
+        "word": "はさみ",
+        "kanji": "鋏",
+        "romanji": "hasami",
+        "kanjiMeaning": "KIỆP",
+        "meaning": "Kéo",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "鋏で切ります。",
+                "sentenceMeaning": "Cắt bằng kéo."
+            },
+            {
+                "sentence": "鋏が鋭いです。",
+                "sentenceMeaning": "Kéo sắc."
+            }
+        ]
+    },
+    {
+        "word": "じかん",
+        "kanji": "時間",
+        "romanji": "jikan",
+        "kanjiMeaning": "THỜI GIAN",
+        "meaning": "Thời gian",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "時間があります。",
+                "sentenceMeaning": "Có thời gian."
+            },
+            {
+                "sentence": "時間が足りません。",
+                "sentenceMeaning": "Không đủ thời gian."
+            }
+        ]
+    },
+    {
+        "word": "ひる",
+        "kanji": "昼",
+        "romanji": "hiru",
+        "kanjiMeaning": "TRÚ",
+        "meaning": "Buổi trưa",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "昼ご飯を食べます。",
+                "sentenceMeaning": "Ăn trưa."
+            },
+            {
+                "sentence": "昼は暑いです。",
+                "sentenceMeaning": "Buổi trưa nóng."
+            }
+        ]
+    },
+    {
+        "word": "ばん",
+        "kanji": "晩",
+        "romanji": "ban",
+        "kanjiMeaning": "VÃN",
+        "meaning": "Buổi tối",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "晩ご飯を食べます。",
+                "sentenceMeaning": "Ăn tối."
+            },
+            {
+                "sentence": "晩は涼しいです。",
+                "sentenceMeaning": "Buổi tối mát mẻ."
+            }
+        ]
+    },
+    {
+        "word": "あさ",
+        "kanji": "朝",
+        "romanji": "asa",
+        "kanjiMeaning": "TRIỀU",
+        "meaning": "Buổi sáng",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "朝ご飯を食べます。",
+                "sentenceMeaning": "Ăn sáng."
+            },
+            {
+                "sentence": "朝は早いです。",
+                "sentenceMeaning": "Buổi sáng sớm."
+            }
+        ]
+    },
+    {
+        "word": "よる",
+        "kanji": "夜",
+        "romanji": "yoru",
+        "kanjiMeaning": "DẠ",
+        "meaning": "Đêm",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "夜に寝ます。",
+                "sentenceMeaning": "Ngủ vào ban đêm."
+            },
+            {
+                "sentence": "夜は静かです。",
+                "sentenceMeaning": "Ban đêm yên tĩnh."
+            }
+        ]
+    },
+    {
+        "word": "ひ",
+        "kanji": "日",
+        "romanji": "hi",
+        "kanjiMeaning": "NHẬT",
+        "meaning": "Ngày",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "今日はいい日です。",
+                "sentenceMeaning": "Hôm nay là một ngày tốt."
+            },
+            {
+                "sentence": "日が昇ります。",
+                "sentenceMeaning": "Mặt trời mọc."
+            }
+        ]
+    },
+    {
+        "word": "つき",
+        "kanji": "月",
+        "romanji": "tsuki",
+        "kanjiMeaning": "NGUYỆT",
+        "meaning": "Mặt trăng",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "月が綺麗です。",
+                "sentenceMeaning": "Mặt trăng đẹp."
+            },
+            {
+                "sentence": "月を見ます。",
+                "sentenceMeaning": "Ngắm trăng."
+            }
+        ]
+    },
+    {
+        "word": "ほし",
+        "kanji": "星",
+        "romanji": "hoshi",
+        "kanjiMeaning": "TINH",
+        "meaning": "Ngôi sao",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "星が輝いています。",
+                "sentenceMeaning": "Ngôi sao đang tỏa sáng."
+            },
+            {
+                "sentence": "星を見ます。",
+                "sentenceMeaning": "Ngắm sao."
+            }
+        ]
+    },
+    {
+        "word": "かぜ",
+        "kanji": "風",
+        "romanji": "kaze",
+        "kanjiMeaning": "PHONG",
+        "meaning": "Gió",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "風が吹いています。",
+                "sentenceMeaning": "Gió đang thổi."
+            },
+            {
+                "sentence": "風が強いです。",
+                "sentenceMeaning": "Gió mạnh."
+            }
+        ]
+    },
+    {
+        "word": "あめ",
+        "kanji": "雨",
+        "romanji": "ame",
+        "kanjiMeaning": "VŨ",
+        "meaning": "Mưa",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "雨が降っています。",
+                "sentenceMeaning": "Mưa đang rơi."
+            },
+            {
+                "sentence": "雨が止みました。",
+                "sentenceMeaning": "Mưa đã tạnh."
+            }
+        ]
+    },
+    {
+        "word": "ゆき",
+        "kanji": "雪",
+        "romanji": "yuki",
+        "kanjiMeaning": "TUYẾT",
+        "meaning": "Tuyết",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "雪が降っています。",
+                "sentenceMeaning": "Tuyết đang rơi."
+            },
+            {
+                "sentence": "雪が積もっています。",
+                "sentenceMeaning": "Tuyết đang chất đống."
+            }
+        ]
+    },
+    {
+        "word": "たいよう",
+        "kanji": "太陽",
+        "romanji": "taiyou",
+        "kanjiMeaning": "THÁI DƯƠNG",
+        "meaning": "Mặt trời",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "太陽が昇ります。",
+                "sentenceMeaning": "Mặt trời mọc."
+            },
+            {
+                "sentence": "太陽が沈みます。",
+                "sentenceMeaning": "Mặt trời lặn."
+            }
+        ]
+    },
+    {
+        "word": "つち",
+        "kanji": "土",
+        "romanji": "tsuchi",
+        "kanjiMeaning": "THỔ",
+        "meaning": "Đất",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "土を掘ります。",
+                "sentenceMeaning": "Đào đất."
+            },
+            {
+                "sentence": "土が乾いています。",
+                "sentenceMeaning": "Đất khô."
+            }
+        ]
+    },
+    {
+        "word": "もり",
+        "kanji": "森",
+        "romanji": "mori",
+        "kanjiMeaning": "SÂM",
+        "meaning": "Rừng",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "森を歩きます。",
+                "sentenceMeaning": "Đi bộ trong rừng."
+            },
+            {
+                "sentence": "森が広いです。",
+                "sentenceMeaning": "Rừng rộng."
+            }
+        ]
+    },
+    {
+        "word": "たまご",
+        "kanji": "卵",
+        "romanji": "tamago",
+        "kanjiMeaning": "NOÃN",
+        "meaning": "Trứng",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "卵を食べます。",
+                "sentenceMeaning": "Ăn trứng."
+            },
+            {
+                "sentence": "卵を割ります。",
+                "sentenceMeaning": "Đập trứng."
+            }
+        ]
+    },
+    {
+        "word": "にんじん",
+        "kanji": "人参",
+        "romanji": "ninjin",
+        "kanjiMeaning": "NHÂN THAM",
+        "meaning": "Cà rốt",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "人参を切ります。",
+                "sentenceMeaning": "Cắt cà rốt."
+            },
+            {
+                "sentence": "人参が好きです。",
+                "sentenceMeaning": "Thích cà rốt."
+            }
+        ]
+    },
+    {
+        "word": "じゃがいも",
+        "kanji": "じゃが芋",
+        "romanji": "jagaimo",
+        "kanjiMeaning": "DỤ",
+        "meaning": "Khoai tây",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "じゃが芋を茹でます。",
+                "sentenceMeaning": "Luộc khoai tây."
+            },
+            {
+                "sentence": "じゃが芋が美味しいです。",
+                "sentenceMeaning": "Khoai tây ngon."
+            }
+        ]
+    },
+    {
+        "word": "たまねぎ",
+        "kanji": "玉ねぎ",
+        "romanji": "tamanegi",
+        "kanjiMeaning": "NGỌC",
+        "meaning": "Hành tây",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "玉ねぎを切ります。",
+                "sentenceMeaning": "Cắt hành tây."
+            },
+            {
+                "sentence": "玉ねぎが辛いです。",
+                "sentenceMeaning": "Hành tây cay."
+            }
+        ]
+    },
+    {
+        "word": "きゅうり",
+        "kanji": "胡瓜",
+        "romanji": "kyuuri",
+        "kanjiMeaning": "HỒ QUA",
+        "meaning": "Dưa chuột",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "胡瓜を食べます。",
+                "sentenceMeaning": "Ăn dưa chuột."
+            },
+            {
+                "sentence": "胡瓜が新鮮です。",
+                "sentenceMeaning": "Dưa chuột tươi."
+            }
+        ]
+    },
+    {
+        "word": "なす",
+        "kanji": "茄子",
+        "romanji": "nasu",
+        "kanjiMeaning": "GIA TỬ",
+        "meaning": "Cà tím",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "茄子を焼きます。",
+                "sentenceMeaning": "Nướng cà tím."
+            },
+            {
+                "sentence": "茄子が好きです。",
+                "sentenceMeaning": "Thích cà tím."
+            }
+        ]
+    },
+    {
+        "word": "とうもろこし",
+        "kanji": "玉蜀黍",
+        "romanji": "toumorokoshi",
+        "kanjiMeaning": "NGỌC THỤC THỬ",
+        "meaning": "Ngô",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "玉蜀黍を茹でます。",
+                "sentenceMeaning": "Luộc ngô."
+            },
+            {
+                "sentence": "玉蜀黍が甘いです。",
+                "sentenceMeaning": "Ngô ngọt."
+            }
+        ]
+    },
+    {
+        "word": "ほうれんそう",
+        "kanji": "菠薐草",
+        "romanji": "hourensou",
+        "kanjiMeaning": "BA LĂNG THẢO",
+        "meaning": "Rau chân vịt",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "菠薐草を炒めます。",
+                "sentenceMeaning": "Xào rau chân vịt."
+            },
+            {
+                "sentence": "菠薐草が健康に良いです。",
+                "sentenceMeaning": "Rau chân vịt tốt cho sức khỏe."
+            }
+        ]
+    },
+    {
+        "word": "れんこん",
+        "kanji": "蓮根",
+        "romanji": "renkon",
+        "kanjiMeaning": "LIÊN CĂN",
+        "meaning": "Ngó sen",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "蓮根を煮ます。",
+                "sentenceMeaning": "Nấu ngó sen."
+            },
+            {
+                "sentence": "蓮根が美味しいです。",
+                "sentenceMeaning": "Ngó sen ngon."
+            }
+        ]
+    },
+    {
+        "word": "だいこん",
+        "kanji": "大根",
+        "romanji": "daikon",
+        "kanjiMeaning": "ĐẠI CĂN",
+        "meaning": "Củ cải trắng",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "大根を切ります。",
+                "sentenceMeaning": "Cắt củ cải trắng."
+            },
+            {
+                "sentence": "大根が新鮮です。",
+                "sentenceMeaning": "Củ cải trắng tươi."
+            }
+        ]
+    },
+    {
+        "word": "きんぎょ",
+        "kanji": "金魚",
+        "romanji": "kingyo",
+        "kanjiMeaning": "KIM NGƯ",
+        "meaning": "Cá vàng",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "金魚を飼います。",
+                "sentenceMeaning": "Nuôi cá vàng."
+            },
+            {
+                "sentence": "金魚が泳いでいます。",
+                "sentenceMeaning": "Cá vàng đang bơi."
+            }
+        ]
+    },
+    {
+        "word": "うさぎ",
+        "kanji": "兎",
+        "romanji": "usagi",
+        "kanjiMeaning": "THỎ",
+        "meaning": "Thỏ",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "兎が跳ねています。",
+                "sentenceMeaning": "Thỏ đang nhảy."
+            },
+            {
+                "sentence": "兎が可愛いです。",
+                "sentenceMeaning": "Thỏ dễ thương."
+            }
+        ]
+    },
+    {
+        "word": "とり",
+        "kanji": "鳥",
+        "romanji": "tori",
+        "kanjiMeaning": "ĐIỂU",
+        "meaning": "Chim",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "鳥が飛んでいます。",
+                "sentenceMeaning": "Chim đang bay."
+            },
+            {
+                "sentence": "鳥の声が聞こえます。",
+                "sentenceMeaning": "Nghe tiếng chim hót."
+            }
+        ]
+    },
+    {
+        "word": "さる",
+        "kanji": "猿",
+        "romanji": "saru",
+        "kanjiMeaning": "VIÊN",
+        "meaning": "Khỉ",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "猿が木に登ります。",
+                "sentenceMeaning": "Khỉ leo cây."
+            },
+            {
+                "sentence": "猿が賢いです。",
+                "sentenceMeaning": "Khỉ thông minh."
+            }
+        ]
+    },
+    {
+        "word": "ぞう",
+        "kanji": "象",
+        "romanji": "zou",
+        "kanjiMeaning": "TƯỢNG",
+        "meaning": "Voi",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "象が大きいです。",
+                "sentenceMeaning": "Voi to."
+            },
+            {
+                "sentence": "象が歩いています。",
+                "sentenceMeaning": "Voi đang đi."
+            }
+        ]
+    },
+    {
+        "word": "くも",
+        "kanji": "雲",
+        "romanji": "kumo",
+        "kanjiMeaning": "VÂN",
+        "meaning": "Mây",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "雲が多いです。",
+                "sentenceMeaning": "Nhiều mây."
+            },
+            {
+                "sentence": "雲が動いています。",
+                "sentenceMeaning": "Mây đang di chuyển."
+            }
+        ]
+    },
+    {
+        "word": "はなび",
+        "kanji": "花火",
+        "romanji": "hanabi",
+        "kanjiMeaning": "HOA HỎA",
+        "meaning": "Pháo hoa",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "花火を見ます。",
+                "sentenceMeaning": "Xem pháo hoa."
+            },
+            {
+                "sentence": "花火が綺麗です。",
+                "sentenceMeaning": "Pháo hoa đẹp."
+            }
+        ]
+    },
+    {
+        "word": "おかし",
+        "kanji": "お菓子",
+        "romanji": "okashi",
+        "kanjiMeaning": "QUẢ TỬ",
+        "meaning": "Bánh kẹo",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "お菓子を食べます。",
+                "sentenceMeaning": "Ăn bánh kẹo."
+            },
+            {
+                "sentence": "お菓子が好きです。",
+                "sentenceMeaning": "Thích bánh kẹo."
+            }
+        ]
+    },
+    {
+        "word": "おちゃ",
+        "kanji": "お茶",
+        "romanji": "ocha",
+        "kanjiMeaning": "TRÀ",
+        "meaning": "Trà",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "お茶を飲みます。",
+                "sentenceMeaning": "Uống trà."
+            },
+            {
+                "sentence": "お茶が美味しいです。",
+                "sentenceMeaning": "Trà ngon."
+            }
+        ]
+    },
+    {
+        "word": "みそしる",
+        "kanji": "味噌汁",
+        "romanji": "misoshiru",
+        "kanjiMeaning": "VỊ TẰNG TRẤP",
+        "meaning": "Súp miso",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "味噌汁を飲みます。",
+                "sentenceMeaning": "Uống súp miso."
+            },
+            {
+                "sentence": "味噌汁が温かいです。",
+                "sentenceMeaning": "Súp miso ấm."
+            }
+        ]
+    },
+    {
+        "word": "さとう",
+        "kanji": "砂糖",
+        "romanji": "satou",
+        "kanjiMeaning": "SA ĐƯỜNG",
+        "meaning": "Đường (sugar)",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "砂糖を入れます。",
+                "sentenceMeaning": "Cho đường vào."
+            },
+            {
+                "sentence": "砂糖が甘いです。",
+                "sentenceMeaning": "Đường ngọt."
+            }
+        ]
+    },
+    {
+        "word": "しお",
+        "kanji": "塩",
+        "romanji": "shio",
+        "kanjiMeaning": "DIÊM",
+        "meaning": "Muối",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "塩をかけます。",
+                "sentenceMeaning": "Rắc muối."
+            },
+            {
+                "sentence": "塩がしょっぱいです。",
+                "sentenceMeaning": "Muối mặn."
+            }
+        ]
+    },
+    {
+        "word": "しょうゆ",
+        "kanji": "醤油",
+        "romanji": "shouyu",
+        "kanjiMeaning": "TƯƠNG DU",
+        "meaning": "Nước tương",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "醤油を使います。",
+                "sentenceMeaning": "Sử dụng nước tương."
+            },
+            {
+                "sentence": "醤油が美味しいです。",
+                "sentenceMeaning": "Nước tương ngon."
+            }
+        ]
+    },
+    {
+        "word": "こしょう",
+        "kanji": "胡椒",
+        "romanji": "koshou",
+        "kanjiMeaning": "HỒ TIÊU",
+        "meaning": "Hạt tiêu",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "胡椒をかけます。",
+                "sentenceMeaning": "Rắc hạt tiêu."
+            },
+            {
+                "sentence": "胡椒が辛いです。",
+                "sentenceMeaning": "Hạt tiêu cay."
+            }
+        ]
+    },
+    {
+        "word": "みりん",
+        "kanji": "味醂",
+        "romanji": "mirin",
+        "kanjiMeaning": "VỊ LÂN",
+        "meaning": "Rượu mirin",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "味醂を使います。",
+                "sentenceMeaning": "Sử dụng rượu mirin."
+            },
+            {
+                "sentence": "味醂が甘いです。",
+                "sentenceMeaning": "Rượu mirin ngọt."
+            }
+        ]
+    },
+    {
+        "word": "くすり",
+        "kanji": "薬",
+        "romanji": "kusuri",
+        "kanjiMeaning": "DƯỢC",
+        "meaning": "Thuốc",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "薬を飲みます。",
+                "sentenceMeaning": "Uống thuốc."
+            },
+            {
+                "sentence": "薬が苦いです。",
+                "sentenceMeaning": "Thuốc đắng."
+            }
+        ]
+    },
+    {
+        "word": "けが",
+        "kanji": "怪我",
+        "romanji": "kega",
+        "kanjiMeaning": "QUÁI NGÃ",
+        "meaning": "Vết thương",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "怪我をしました。",
+                "sentenceMeaning": "Bị thương."
+            },
+            {
+                "sentence": "怪我が治りました。",
+                "sentenceMeaning": "Vết thương đã lành."
+            }
+        ]
+    },
+    {
+        "word": "ねつ",
+        "kanji": "熱",
+        "romanji": "netsu",
+        "kanjiMeaning": "NHIỆT",
+        "meaning": "Sốt",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "熱があります。",
+                "sentenceMeaning": "Bị sốt."
+            },
+            {
+                "sentence": "熱が下がりました。",
+                "sentenceMeaning": "Hạ sốt."
+            }
+        ]
+    },
+    {
+        "word": "かぜ",
+        "kanji": "風邪",
+        "romanji": "kaze",
+        "kanjiMeaning": "PHONG TÀ",
+        "meaning": "Cảm lạnh",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "風邪をひきました。",
+                "sentenceMeaning": "Bị cảm lạnh."
+            },
+            {
+                "sentence": "風邪が治りました。",
+                "sentenceMeaning": "Khỏi cảm lạnh."
+            }
+        ]
+    },
+    {
+        "word": "びょうき",
+        "kanji": "病気",
+        "romanji": "byouki",
+        "kanjiMeaning": "BỆNH KHÍ",
+        "meaning": "Bệnh",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "病気になりました。",
+                "sentenceMeaning": "Bị bệnh."
+            },
+            {
+                "sentence": "病気が治りました。",
+                "sentenceMeaning": "Khỏi bệnh."
+            }
+        ]
+    },
+    {
+        "word": "いしゃ",
+        "kanji": "医者",
+        "romanji": "isha",
+        "kanjiMeaning": "Y GIẢ",
+        "meaning": "Bác sĩ",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "医者に診てもらいます。",
+                "sentenceMeaning": "Được bác sĩ khám."
+            },
+            {
+                "sentence": "医者が親切です。",
+                "sentenceMeaning": "Bác sĩ thân thiện."
+            }
+        ]
+    },
+    {
+        "word": "かんごし",
+        "kanji": "看護師",
+        "romanji": "kangoshi",
+        "kanjiMeaning": "KHÁN HỘ SƯ",
+        "meaning": "Y tá",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "看護師が手伝います。",
+                "sentenceMeaning": "Y tá giúp đỡ."
+            },
+            {
+                "sentence": "看護師が優しいです。",
+                "sentenceMeaning": "Y tá hiền."
+            }
+        ]
+    },
+    {
+        "word": "しんさつ",
+        "kanji": "診察",
+        "romanji": "shinsatsu",
+        "kanjiMeaning": "CHẨN SÁT",
+        "meaning": "Khám bệnh",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "診察を受けます。",
+                "sentenceMeaning": "Khám bệnh."
+            },
+            {
+                "sentence": "診察が終わりました。",
+                "sentenceMeaning": "Khám bệnh xong."
+            }
+        ]
+    },
+    {
+        "word": "しゅじゅつ",
+        "kanji": "手術",
+        "romanji": "shujutsu",
+        "kanjiMeaning": "THỦ THUẬT",
+        "meaning": "Phẫu thuật",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "手術を受けます。",
+                "sentenceMeaning": "Phẫu thuật."
+            },
+            {
+                "sentence": "手術が成功しました。",
+                "sentenceMeaning": "Phẫu thuật thành công."
+            }
+        ]
+    },
+    {
+        "word": "けんこう",
+        "kanji": "健康",
+        "romanji": "kenkou",
+        "kanjiMeaning": "KIỆN KHANG",
+        "meaning": "Sức khỏe",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "健康に気をつけます。",
+                "sentenceMeaning": "Chú ý đến sức khỏe."
+            },
+            {
+                "sentence": "健康が大切です。",
+                "sentenceMeaning": "Sức khỏe quan trọng."
+            }
+        ]
+    },
+    {
+        "word": "びょういん",
+        "kanji": "病院",
+        "romanji": "byouin",
+        "kanjiMeaning": "BỆNH VIỆN",
+        "meaning": "Bệnh viện",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "病院に行きます。",
+                "sentenceMeaning": "Đi đến bệnh viện."
+            },
+            {
+                "sentence": "病院で診察を受けます。",
+                "sentenceMeaning": "Khám bệnh ở bệnh viện."
+            }
+        ]
+    },
+    {
+        "word": "しんごう",
+        "kanji": "信号",
+        "romanji": "shingou",
+        "kanjiMeaning": "TÍN HIỆU",
+        "meaning": "Đèn giao thông",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "信号を待ちます。",
+                "sentenceMeaning": "Chờ đèn giao thông."
+            },
+            {
+                "sentence": "信号が青になりました。",
+                "sentenceMeaning": "Đèn giao thông đã chuyển xanh."
+            }
+        ]
+    },
+    {
+        "word": "こうさてん",
+        "kanji": "交差点",
+        "romanji": "kousaten",
+        "kanjiMeaning": "GIAO SAI ĐIỂM",
+        "meaning": "Ngã tư",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "交差点を渡ります。",
+                "sentenceMeaning": "Băng qua ngã tư."
+            },
+            {
+                "sentence": "交差点で待ちます。",
+                "sentenceMeaning": "Chờ ở ngã tư."
+            }
+        ]
+    },
+    {
+        "word": "みち",
+        "kanji": "道",
+        "romanji": "michi",
+        "kanjiMeaning": "ĐẠO",
+        "meaning": "Đường",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "道を歩きます。",
+                "sentenceMeaning": "Đi bộ trên đường."
+            },
+            {
+                "sentence": "道が広いです。",
+                "sentenceMeaning": "Đường rộng."
+            }
+        ]
+    },
+    {
+        "word": "はし",
+        "kanji": "橋",
+        "romanji": "hashi",
+        "kanjiMeaning": "KIỀU",
+        "meaning": "Cầu",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "橋を渡ります。",
+                "sentenceMeaning": "Băng qua cầu."
+            },
+            {
+                "sentence": "橋が長いです。",
+                "sentenceMeaning": "Cầu dài."
+            }
+        ]
+    },
+    {
+        "word": "くうこう",
+        "kanji": "空港",
+        "romanji": "kuukou",
+        "kanjiMeaning": "KHÔNG CẢNG",
+        "meaning": "Sân bay",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "空港に行きます。",
+                "sentenceMeaning": "Đi đến sân bay."
+            },
+            {
+                "sentence": "空港で待ちます。",
+                "sentenceMeaning": "Chờ ở sân bay."
+            }
+        ]
+    },
+    {
+        "word": "ひこうき",
+        "kanji": "飛行機",
+        "romanji": "hikouki",
+        "kanjiMeaning": "PHI HÀNH CƠ",
+        "meaning": "Máy bay",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "飛行機に乗ります。",
+                "sentenceMeaning": "Lên máy bay."
+            },
+            {
+                "sentence": "飛行機が飛びます。",
+                "sentenceMeaning": "Máy bay bay."
+            }
+        ]
+    },
+    {
+        "word": "ふね",
+        "kanji": "船",
+        "romanji": "fune",
+        "kanjiMeaning": "THUYỀN",
+        "meaning": "Thuyền",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "船に乗ります。",
+                "sentenceMeaning": "Lên thuyền."
+            },
+            {
+                "sentence": "船が出発します。",
+                "sentenceMeaning": "Thuyền khởi hành."
+            }
+        ]
+    },
+    {
+        "word": "じてんしゃ",
+        "kanji": "自転車",
+        "romanji": "jitensha",
+        "kanjiMeaning": "TỰ CHUYỂN XA",
+        "meaning": "Xe đạp",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "自転車に乗ります。",
+                "sentenceMeaning": "Đi xe đạp."
+            },
+            {
+                "sentence": "新しい自転車を買いました。",
+                "sentenceMeaning": "Tôi đã mua xe đạp mới."
+            }
+        ]
+    },
+    {
+        "word": "バス",
+        "kanji": "",
+        "romanji": "basu",
+        "kanjiMeaning": "",
+        "meaning": "Xe buýt",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "バスに乗ります。",
+                "sentenceMeaning": "Lên xe buýt."
+            },
+            {
+                "sentence": "バスが来ました。",
+                "sentenceMeaning": "Xe buýt đã đến."
+            }
+        ]
+    },
+    {
+        "word": "でんしゃ",
+        "kanji": "電車",
+        "romanji": "densha",
+        "kanjiMeaning": "ĐIỆN XA",
+        "meaning": "Xe điện",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "電車で学校に行きます。",
+                "sentenceMeaning": "Đi đến trường bằng xe điện."
+            },
+            {
+                "sentence": "この電車は速いです。",
+                "sentenceMeaning": "Xe điện này rất nhanh."
+            }
+        ]
+    },
+    {
+        "word": "たくしー",
+        "kanji": "タクシー",
+        "romanji": "takushii",
+        "kanjiMeaning": "",
+        "meaning": "Taxi",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "タクシーを呼びます。",
+                "sentenceMeaning": "Gọi taxi."
+            },
+            {
+                "sentence": "タクシーで行きます。",
+                "sentenceMeaning": "Đi bằng taxi."
+            }
+        ]
+    },
+    {
+        "word": "しんかんせん",
+        "kanji": "新幹線",
+        "romanji": "shinkansen",
+        "kanjiMeaning": "TÂN CÁN TUYẾN",
+        "meaning": "Tàu siêu tốc",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "新幹線に乗ります。",
+                "sentenceMeaning": "Lên tàu siêu tốc."
+            },
+            {
+                "sentence": "新幹線が速いです。",
+                "sentenceMeaning": "Tàu siêu tốc rất nhanh."
+            }
+        ]
+    },
+    {
+        "word": "ちかてつ",
+        "kanji": "地下鉄",
+        "romanji": "chikatetsu",
+        "kanjiMeaning": "ĐỊA HẠ THIẾT",
+        "meaning": "Tàu điện ngầm",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "地下鉄に乗ります。",
+                "sentenceMeaning": "Lên tàu điện ngầm."
+            },
+            {
+                "sentence": "地下鉄が便利です。",
+                "sentenceMeaning": "Tàu điện ngầm tiện lợi."
+            }
+        ]
+    },
+    {
+        "word": "こうえん",
+        "kanji": "公園",
+        "romanji": "kouen",
+        "kanjiMeaning": "CÔNG VIÊN",
+        "meaning": "Công viên",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "公園で遊びます。",
+                "sentenceMeaning": "Chơi ở công viên."
+            },
+            {
+                "sentence": "公園が広いです。",
+                "sentenceMeaning": "Công viên rộng."
+            }
+        ]
+    },
+    {
+        "word": "びじゅつかん",
+        "kanji": "美術館",
+        "romanji": "bijutsukan",
+        "kanjiMeaning": "MỸ THUẬT QUÁN",
+        "meaning": "Bảo tàng mỹ thuật",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "美術館に行きます。",
+                "sentenceMeaning": "Đi đến bảo tàng mỹ thuật."
+            },
+            {
+                "sentence": "美術館で絵を見ます。",
+                "sentenceMeaning": "Xem tranh ở bảo tàng mỹ thuật."
+            }
+        ]
+    },
+    {
+        "word": "としょかん",
+        "kanji": "図書館",
+        "romanji": "toshokan",
+        "kanjiMeaning": "ĐỒ THƯ QUÁN",
+        "meaning": "Thư viện",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "図書館で本を借ります。",
+                "sentenceMeaning": "Mượn sách ở thư viện."
+            },
+            {
+                "sentence": "図書館が静かです。",
+                "sentenceMeaning": "Thư viện yên tĩnh."
+            }
+        ]
+    },
+    {
+        "word": "えいがかん",
+        "kanji": "映画館",
+        "romanji": "eigakan",
+        "kanjiMeaning": "ÁNH HỌA QUÁN",
+        "meaning": "Rạp chiếu phim",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "映画館で映画を見ます。",
+                "sentenceMeaning": "Xem phim ở rạp chiếu phim."
+            },
+            {
+                "sentence": "映画館が大きいです。",
+                "sentenceMeaning": "Rạp chiếu phim lớn."
+            }
+        ]
+    },
+    {
+        "word": "ゆうえんち",
+        "kanji": "遊園地",
+        "romanji": "yuuenchi",
+        "kanjiMeaning": "DU VIÊN ĐỊA",
+        "meaning": "Khu vui chơi",
+        "level": "N5",
+        "category": "Danh từ",
+        "example": [
+            {
+                "sentence": "遊園地で遊びます。",
+                "sentenceMeaning": "Chơi ở khu vui chơi."
+            },
+            {
+                "sentence": "遊園地が楽しいです。",
+                "sentenceMeaning": "Khu vui chơi vui."
+            }
         ]
     }
 ]
