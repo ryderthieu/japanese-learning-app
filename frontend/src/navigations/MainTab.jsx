@@ -6,6 +6,7 @@ import DocumentStack from '../screens/MainScreens/Documents/_layout';
 import Dictionary from '../screens/MainScreens/Dictionary/Dictionary';
 import Icon from 'react-native-vector-icons/Ionicons';  
 import TestStack from '../screens/MainScreens/Test/_layout';
+import HomeNavigation from '../screens/MainScreens/Home/_layout';
 
 const MainTab = () => {
   const Tab = createBottomTabNavigator();
@@ -19,8 +20,8 @@ const MainTab = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="HomeNavigation"
+        component={HomeNavigation}
         options={{
           title: 'Trang chủ',
           tabBarIcon: ({ color, size }) => (

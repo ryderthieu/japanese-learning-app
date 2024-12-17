@@ -26,9 +26,7 @@ const AuthStack = () => {
       <Stack.Screen name="SentOTP" component={SentOTP} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="Survey" component={Survey} />
-      <Stack.Screen name="FreeDocument" component={FreeDocument} />
-      <Stack.Screen name="FreeDocumentAll1" component={FreeDocumentAll1} />
-      <Stack.Screen name="Vocab" component={Kanji} />
+
     </Stack.Navigator>
   );
 };

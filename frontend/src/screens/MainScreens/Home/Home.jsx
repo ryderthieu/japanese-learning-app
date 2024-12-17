@@ -46,14 +46,14 @@ const Home = ({navigation}) => {
                 Danh mục
               </Text>
               <View className="flex flex-row justify-between">
-                <View className="flex flex-row justify-between items-center gap-2 px-3 w-[180px] h-24 bg-white rounded-2xl shadow shadow-slate-300 ">
+                <TouchableOpacity className="flex flex-row justify-between items-center gap-2 px-3 w-[180px] h-24 bg-white rounded-2xl shadow shadow-slate-300 " onPress={() => navigation.navigate('FreeDocumentNavigation')}>
                   <Image
                     source={require("../../../assets/images/home/document.png")}
                   ></Image>
                   <Text className="font-semibold text-lg">
                     Tài liệu {"\n"} offline
                   </Text>
-                </View>
+                </TouchableOpacity>
                 <View className="flex flex-row justify-between items-center gap-2 px-3 w-[180px] h-24 bg-white rounded-2xl shadow shadow-slate-300 ">
                   <Image
                     source={require("../../../assets/images/home/online_course.png")}
