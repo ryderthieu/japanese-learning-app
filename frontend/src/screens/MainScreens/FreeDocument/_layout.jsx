@@ -11,8 +11,8 @@ const FreeDocumentNavigation = () => {
   return (
     <Stack.Navigator>
         <Stack.Screen name='FreeDocument' component={FreeDocument}/>
-        <Stack.Screen name='Vocab' component={Vocab}/>
-        <Stack.Screen name='Kanji' component={Kanji}/>
+        <Stack.Screen name='Vocab' component={Vocab} options={{headerShown: false}}/>
+        <Stack.Screen name='Kanji' component={Kanji} options={{headerShown: false}}/>
         <Stack.Screen name="FreeDocumentAll1" component={FreeDocumentAll1} />
     </Stack.Navigator>
   )
