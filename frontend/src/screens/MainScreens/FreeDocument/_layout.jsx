@@ -7,6 +7,8 @@ import Vocab from './Vocab'
 import Kanji from './Kanji'
 import FreeDocumentAll1 from './FreeDocumentAll1'
 import DocumentLevel from './DocumentLevel'
+import VocabList from './VocabList'
+import KanjiList from './KanjiList'
 
 const FreeDocumentNavigation = () => {
     const Stack = createNativeStackNavigator()
@@ -17,6 +19,8 @@ const FreeDocumentNavigation = () => {
         <Stack.Screen name='SelectKanjiLesson' component={SelectKanjiLesson}/>
         <Stack.Screen name='Vocab' component={Kanji} options={{headerShown: false}}/>
         <Stack.Screen name='Kanji' component={Kanji} options={{headerShown: false}}/>
+        <Stack.Screen name='VocabList' component={VocabList} options={{headerShown: false}}/>
+        <Stack.Screen name='KanjiList' component={KanjiList} options={{headerShown: false}}/>
         <Stack.Screen name="FreeDocumentAll1" component={DocumentLevel} />
     </Stack.Navigator>
   )

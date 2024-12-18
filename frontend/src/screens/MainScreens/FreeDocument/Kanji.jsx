@@ -220,4 +220,4 @@ const Kanji = ({ navigation }) => {
   );
 };
 
-export default Kanji;
+export default Kanji

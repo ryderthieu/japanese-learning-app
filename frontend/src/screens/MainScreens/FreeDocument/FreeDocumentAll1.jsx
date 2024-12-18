@@ -25,4 +25,4 @@ const FreeDocumentAll1 = () => {
   );
 };
 
-export default FreeDocumentAll1;
+export default FreeDocumentAll1

@@ -1,6 +1,6 @@
 const N4LessonData = {
     vocab: [
-        { id: 1, title: "Cuộc sống hàng ngày", description: "Từ vựng về các hoạt động trong sinh hoạt thường ngày.",image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        { id: 1, title: "Cuộc sống hàng ngày", description: "Từ vựng về các hoạt động trong sinh hoạt thường ngày.",image: "https://via.placeholder.com/140x125",status: 'completed' },
         { id: 2, title: "Hẹn hò và giải trí", description: "Từ vựng sử dụng khi đi chơi và xem phim.",image: "https://via.placeholder.com/140x125",status: 'not-learned' },
         { id: 3, title: "Nấu ăn và ăn uống", description: "Từ vựng về nguyên liệu, nấu ăn và gọi món.",image: "https://via.placeholder.com/140x125",status: 'not-learned' },
         { id: 4, title: "Cảm xúc và trạng thái", description: "Từ vựng chỉ cảm xúc như vui, buồn, lo lắng.",image: "https://via.placeholder.com/140x125",status: 'not-learned' },
@@ -12,7 +12,7 @@ const N4LessonData = {
         { id: 10, title: "Tự nhiên và thời tiết", description: "Từ vựng về cảnh quan thiên nhiên và thời tiết.",image: "https://via.placeholder.com/140x125",status: 'not-learned' },
     ],
     kanji: [
-        { id: 1, title: "Kanji động từ cơ bản", description: "Đi, đến, về, làm, nghỉ.",image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        { id: 1, title: "Kanji động từ cơ bản", description: "Đi, đến, về, làm, nghỉ.",image: "https://via.placeholder.com/140x125",status: 'completed' },
         { id: 2, title: "Kanji cảm xúc", description: "Vui, buồn, đau, mệt, lo lắng." ,image: "https://via.placeholder.com/140x125",status: 'not-learned'},
         { id: 3, title: "Kanji nghề nghiệp", description: "Nhân viên, bác sĩ, giáo viên, kỹ sư.",image: "https://via.placeholder.com/140x125",status: 'not-learned' },
         { id: 4, title: "Kanji nhà cửa", description: "Phòng, nhà bếp, cửa, tường." ,image: "https://via.placeholder.com/140x125",status: 'not-learned'},
@@ -37,4 +37,4 @@ const N4LessonData = {
     ]
 };
 
-export default N4LessonData;
+export default N4LessonData

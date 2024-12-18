@@ -72,4 +72,4 @@ const coursesData = [
     }
 ];
 
-export default coursesData;
+export default coursesData

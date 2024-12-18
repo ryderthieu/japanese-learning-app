@@ -21,7 +21,7 @@ const FreeDocumentComponent = ({ data = [],filter = "all", display="Vertical"}) 
         <View className="w-[185px] h-[250px] bg-white rounded-3xl shadow-lg overflow-hidden mb-4">
           <View className="relative">
             {course.status === "completed" && (
-              <View style={{backgroundColor: 'rgba(52, 52, 52, 0.5)'}} className="absolute z-10 inset-0 bg-black flex items-center justify-center">
+              <View style={{backgroundColor: 'rgba(52, 52, 52, 0.5)'}} className="absolute z-10 inset-0 bg-black flex items-center justify-center ">
                 <Text className="text-pink-300 font-bold text-xl border-2 border-pink-300 px-4 py-2 rounded-xl">
                   Hoàn thành
                 </Text>

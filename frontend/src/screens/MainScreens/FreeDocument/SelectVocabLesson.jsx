@@ -13,6 +13,10 @@ import N5LessonData from "./data/N5LessonData";
 const SelectVocabLesson = ({navigation, route}) => {
 
   const { level } = route.params;
+  const { topic } = route.params;
+
+  console.log('Người dùng chọn level ' + level + ' và topic ' + topic)
+
   let data = [];
   switch (level) {
     case 'N5':
@@ -35,7 +39,7 @@ const SelectVocabLesson = ({navigation, route}) => {
    <SafeAreaView>
    <ScrollView>
     <View className="flex flex-col bg-slate-100 gap-7">
-            <FreeDocumentComponent data={data} display="Vertical" />
+            <FreeDocumentComponent data={data} level={level} topic={topic} />
     </View>
     
     </ScrollView>
@@ -43,4 +47,4 @@ const SelectVocabLesson = ({navigation, route}) => {
   );
 };
 
-export default SelectVocabLesson;
+export default SelectVocabLesson

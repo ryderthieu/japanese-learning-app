@@ -184,4 +184,4 @@ const Vocab = ({ navigation }) => {
   );
 };
 
-export default Vocab;
+export default Vocab
