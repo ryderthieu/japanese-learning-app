@@ -4,8 +4,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Home from './Home'
 import FreeDocumentNavigation from '../FreeDocument/_layout'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { useEffect } from 'react'
 
-const HomeNavigation = ({ navigation }) => {
+const HomeNavigation = ({ navigation, route }) => {
     const Stack = createNativeStackNavigator()
     return (
         <Stack.Navigator>
@@ -26,7 +27,7 @@ const HomeNavigation = ({ navigation }) => {
                 ),
                 title: ''
             }} />
-            <Stack.Screen name='FreeDocumentNavigation' component={FreeDocumentNavigation} />
+            <Stack.Screen name='FreeDocumentNavigation' component={FreeDocumentNavigation} options={{headerShown: false}}  />
         </Stack.Navigator>
     )
 }

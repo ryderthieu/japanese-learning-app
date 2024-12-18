@@ -15,7 +15,6 @@ const FreeDocumentComponent = ({ data = [],filter = "all", level ="không có" ,
   });
 
   return (
-   <ScrollView showsVerticalScrollIndicator={false}>
     <View className="px-2 flex flex-col justify-center items-center gap-5"> 
       {filteredCourses.map((course, index) => (
         <View key={course.id} className="w-[365px] h-[125px] flex flex-row bg-white rounded-3xl shadow-sm">
@@ -100,7 +99,6 @@ const FreeDocumentComponent = ({ data = [],filter = "all", level ="không có" ,
         </View>
       ))}
     </View>
-    </ScrollView>
   );
 };
 

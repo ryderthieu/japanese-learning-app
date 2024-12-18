@@ -22,7 +22,7 @@ const DocumentLevel = ({navigation}) => {
             <View className="flex flex-col px-4 gap-5">
               
               <View className="flex flex-row justify-between">
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectVocabLesson', {level: 'N5', topic: 'Vocab'})}>
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectVocabLesson', {level: 'N5', topic: 'Vocab'})}>
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -32,7 +32,7 @@ const DocumentLevel = ({navigation}) => {
                   </Text>
                 </TouchableOpacity>
                 
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectKanjiLesson', {level: 'N5', topic: 'Kanji'})}>
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectKanjiLesson', {level: 'N5', topic: 'Kanji'})}>
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -45,7 +45,7 @@ const DocumentLevel = ({navigation}) => {
 
               <View className="flex flex-row justify-between">
                 
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm">
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -56,7 +56,7 @@ const DocumentLevel = ({navigation}) => {
                 </TouchableOpacity>
 
                 
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm">
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -78,7 +78,7 @@ const DocumentLevel = ({navigation}) => {
             <View className="flex flex-col px-4 gap-5">
               
               <View className="flex flex-row justify-between">
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectVocabLesson', {level: 'N4', topic: 'Vocab'})}>
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectVocabLesson', {level: 'N4', topic: 'Vocab'})}>
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -88,7 +88,7 @@ const DocumentLevel = ({navigation}) => {
                   </Text>
                 </TouchableOpacity>
                 
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectKanjiLesson', {level: 'N4', topic: 'Kanji'})}>
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectKanjiLesson', {level: 'N4', topic: 'Kanji'})}>
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -101,7 +101,7 @@ const DocumentLevel = ({navigation}) => {
 
               <View className="flex flex-row justify-between">
                 
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm">
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -112,7 +112,7 @@ const DocumentLevel = ({navigation}) => {
                 </TouchableOpacity>
 
                
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm">
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -134,7 +134,7 @@ const DocumentLevel = ({navigation}) => {
             <View className="flex flex-col px-4 gap-5">
               
               <View className="flex flex-row justify-between">
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectVocabLesson', {level: 'N3', topic: 'Vocab'})}>
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectVocabLesson', {level: 'N3', topic: 'Vocab'})}>
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -144,7 +144,7 @@ const DocumentLevel = ({navigation}) => {
                   </Text>
                 </TouchableOpacity>
             
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectKanjiLesson', {level: 'N3', topic: 'Kanji'})}>
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectKanjiLesson', {level: 'N3', topic: 'Kanji'})}>
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -157,7 +157,7 @@ const DocumentLevel = ({navigation}) => {
 
               <View className="flex flex-row justify-between">
                 
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm">
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -168,7 +168,7 @@ const DocumentLevel = ({navigation}) => {
                 </TouchableOpacity>
 
                 
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm">
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -190,7 +190,7 @@ const DocumentLevel = ({navigation}) => {
             <View className="flex flex-col px-4 gap-5">
               
               <View className="flex flex-row justify-between">
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectVocabLesson', {level: 'N2', topic: 'Vocab'})}>
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectVocabLesson', {level: 'N2', topic: 'Vocab'})}>
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -200,7 +200,7 @@ const DocumentLevel = ({navigation}) => {
                   </Text>
                 </TouchableOpacity>
                 
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectKanjiLesson', {level: 'N2', topic: 'Kanji'})}>
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectKanjiLesson', {level: 'N2', topic: 'Kanji'})}>
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -213,7 +213,7 @@ const DocumentLevel = ({navigation}) => {
 
               <View className="flex flex-row justify-between">
                 
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm">
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -224,7 +224,7 @@ const DocumentLevel = ({navigation}) => {
                 </TouchableOpacity>
 
                 
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm">
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -246,7 +246,7 @@ const DocumentLevel = ({navigation}) => {
             <View className="flex flex-col px-4 gap-5">
             
               <View className="flex flex-row justify-between">
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectVocabLesson', {level: 'N1', topic: 'Vocab'})}>
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectVocabLesson', {level: 'N1', topic: 'Vocab'})}>
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -256,7 +256,7 @@ const DocumentLevel = ({navigation}) => {
                   </Text>
                 </TouchableOpacity>
                 
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectKanjiLesson', {level: 'N1', topic: 'Kanji'})}>
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm" onPress={() => navigation.navigate('SelectKanjiLesson', {level: 'N1', topic: 'Kanji'})}>
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -269,7 +269,7 @@ const DocumentLevel = ({navigation}) => {
 
               <View className="flex flex-row justify-between">
               
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm">
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"
@@ -280,7 +280,7 @@ const DocumentLevel = ({navigation}) => {
                 </TouchableOpacity>
 
               
-                <TouchableOpacity className="w-[48%] bg-gray-100 rounded-lg p-4 items-center shadow-sm">
+                <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
                   <Image
                     source={{ uri: "https://via.placeholder.com/50" }} 
                     className="w-12 h-12 mb-2"

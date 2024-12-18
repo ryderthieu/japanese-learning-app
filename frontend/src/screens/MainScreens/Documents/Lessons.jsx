@@ -286,14 +286,14 @@ const lessons = [
 
 const Lessons = ({ route, navigation }) => {
     const { course } = route.params;
-    const [modalVisible, setModalVisible] = useState(false); // Trạng thái mở modal
+    const [modalVisible, setModalVisible] = useState(false); // Trạng thái mở modal 
     const [filter, setFilter] = useState("all"); // Bộ lọc: tất cả, đã học, chưa học
     const [filteredLessons, setFilteredLessons] = useState(lessons); // Danh sách bài học đã lọc
 
     const [open, setOpen] = useState(false); // Trạng thái mở dropdown
     const [items, setItems] = useState([
         { label: "Tất cả", value: "all" },
-        { label: "Đã học", value: "completed" },
+        { label: "Đã học", value: "completed" }, 
         { label: "Chưa học", value: "incomplete" },
     ]);
     const handleFilter = () => {

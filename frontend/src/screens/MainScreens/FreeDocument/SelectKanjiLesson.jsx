@@ -36,14 +36,9 @@ const SelectKanjiLesson = ({navigation, route}) => {
       break;
   }
   return (
-   <SafeAreaView>
-   <ScrollView>
-    <View className="flex flex-col bg-slate-100 gap-7">
-            <FreeDocumentComponent data={data} level={level} topic={topic}/>
-    </View>
-    
-    </ScrollView>
-    </SafeAreaView>
+    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingVertical: 20}}>
+    <FreeDocumentComponent data={data} level={level} topic={topic} />
+  </ScrollView>
   );
 };
 
