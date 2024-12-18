@@ -6,6 +6,7 @@ import Setting from "../screens/OtherScreens/Setting/Setting";
 import Notification from "../screens/OtherScreens/Notification/Notification";
 import Help from "../screens/OtherScreens/Help/Help";
 import Icon from "react-native-vector-icons/Ionicons";
+import NotificationNavigation from "../screens/OtherScreens/Notification/_layout";
 
 const Drawer = createDrawerNavigator();
 
@@ -69,9 +70,10 @@ const MainDrawer = () => {
                 }}
             />
             <Drawer.Screen
-                name="Notification"
-                component={Notification}
+                name="NotificationNavigation"
+                component={NotificationNavigation}
                 options={{
+                    headerShown: false,
                     title: "Thông báo",
                     drawerIcon: ({ color, size }) => (
                         <Icon name="notifications-outline" color={color} size={size} />
