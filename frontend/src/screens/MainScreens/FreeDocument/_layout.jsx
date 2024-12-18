@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { useEffect } from 'react'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import SelectVocabLesson from './SelectVocabLesson'
@@ -9,18 +9,30 @@ import FreeDocumentAll1 from './FreeDocumentAll1'
 import DocumentLevel from './DocumentLevel'
 import VocabList from './VocabList'
 import KanjiList from './KanjiList'
+import { Icon } from '@rneui/themed'
+import { TouchableOpacity, Text } from 'react-native'
 
-const FreeDocumentNavigation = () => {
+const FreeDocumentNavigation = ({navigation}) => {
     const Stack = createNativeStackNavigator()
   return (
     <Stack.Navigator>
-        <Stack.Screen name='DocumentLevel' component={DocumentLevel}/>
-        <Stack.Screen name='SelectVocabLesson' component={SelectVocabLesson}/>
-        <Stack.Screen name='SelectKanjiLesson' component={SelectKanjiLesson}/>
-        <Stack.Screen name='Vocab' component={Kanji} options={{headerShown: false}}/>
-        <Stack.Screen name='Kanji' component={Kanji} options={{headerShown: false}}/>
-        <Stack.Screen name='VocabList' component={VocabList} options={{headerShown: false}}/>
-        <Stack.Screen name='KanjiList' component={KanjiList} options={{headerShown: false}}/>
+        <Stack.Screen name='DocumentLevel' component={DocumentLevel} options={{
+                    headerShown: true,
+                    headerLeft: () => (
+                        <TouchableOpacity className='flex z-10 flex-row justify-center items-center -ml-4' onPress={() => navigation.goBack()}>
+                          <Icon name="chevron-back-outline" type='ionicon' size={29} color={'#007AFF'} />
+                          <Text className='text-[#007AFF] text-xl'>Back</Text>
+                        </TouchableOpacity>
+                    ),
+                    title: 'Tài liệu offline',
+                }}
+            />
+        <Stack.Screen name='SelectVocabLesson' component={SelectVocabLesson} options={{title: 'Danh sách bài học'}}/>
+        <Stack.Screen name='SelectKanjiLesson' component={SelectKanjiLesson} options={{title: 'Danh sách bài học'}}/>
+        <Stack.Screen name='Vocab' component={Vocab} options={{title: 'Học từ vựng'}}/>
+        <Stack.Screen name='Kanji' component={Kanji} options={{title: 'Học kanji'}}/>
+        <Stack.Screen name='VocabList' component={VocabList} options={{title: 'Danh sách từ vựng'}}/>
+        <Stack.Screen name='KanjiList' component={KanjiList} options={{title: 'Danh sách kanji'}}/>
         <Stack.Screen name="FreeDocumentAll1" component={DocumentLevel} />
     </Stack.Navigator>
   )
