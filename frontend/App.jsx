@@ -1,10 +1,9 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AuthStack from "./src/navigations/AuthStack";
-import MainTab from "./src/navigations/MainTab";
 import "./global.css"
-import { AuthProvider } from "./Context/AuthContext";
 import MainDrawer from "./src/navigations/MainDrawer";
+import { AuthProvider } from "./src/context/AuthContext";
 export default function App() {
   const Stack = createNativeStackNavigator()
   return (
@@ -19,6 +18,5 @@ export default function App() {
       </NavigationContainer>
     </AuthProvider>
   );
-
 }
 
