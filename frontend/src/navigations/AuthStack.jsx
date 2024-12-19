@@ -7,10 +7,6 @@ import SentOTP from "../screens/AuthScreens/ForgotPassword/SentOTP";
 import ChangePassword from "../screens/AuthScreens/ForgotPassword/ChangePassword";
 import CheckYourLeverl from "../screens/MainScreens/CheckYourLevel/CheckYourLeverl";
 import Survey from "../screens/MainScreens/CheckYourLevel/Survey";
-import FreeDocument from "../screens/MainScreens/FreeDocument/SelectVocabLesson";
-import FreeDocumentAll1 from "../screens/MainScreens/FreeDocument/FreeDocumentAll1";
-import Vocab from "../screens/MainScreens/FreeDocument/Vocab";
-import Kanji from "../screens/MainScreens/FreeDocument/Kanji";
 
 const AuthStack = () => {
   const Stack = createNativeStackNavigator();

@@ -8,7 +8,7 @@ import N1KanjiData from "./data/N1KanjiData";
 
 import { Icon } from "@rneui/themed";
 
-const KanjiList = ({route}) => {
+const KanjiList = ({navigation, route}) => {
 
     const { LessonId } = route.params;
     const { level } = route.params;
@@ -46,7 +46,7 @@ const KanjiList = ({route}) => {
         keyExtractor={(item) => item.id.toString()}
         style={{ overflow: "visible" }}
         renderItem={({ item }) => (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Kanji', { level: level ,LessonId: LessonId, KanjiId: item.id })}>
             <View className="relative flex-row gap-3 items-center justify-between p-3 mb-3 bg-white rounded-2xl border border-gray-200">
               {/* Thanh màu hồng */}
               <View className="absolute w-2 h-11 bg-pink-400 rounded-full -left-[3px]" />
@@ -57,7 +57,7 @@ const KanjiList = ({route}) => {
                   {item.kanji}
                 </Text>
                 <Text className="text-sm text-gray-500">
-                  {`(${item.furigana})`}
+                  {`(${item.onyomi} / ${item.kunyomi})`}
                 </Text>
               </View>
 
