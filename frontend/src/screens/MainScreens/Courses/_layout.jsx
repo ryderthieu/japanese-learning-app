@@ -4,39 +4,42 @@ import Courses from "./Courses";
 import Cart from "./Cart";
 import CourseDetail from "./CourseDetail";
 import Icon from "react-native-vector-icons/Ionicons";
+import { CartProvider } from "../../../context/CartContext";
 
 export default function CoursesNavigation() {
   const Stack = createNativeStackNavigator();
   const navigation = useNavigation();
-
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: true,
-      }}
-    >
-      <Stack.Screen
-        name="Courses"
-        component={Courses}
-        options={{
-          title: "Khóa học",
-          headerLeft: () => (
-            <Icon
-              name="menu-outline"
-              size={24}
-              color="#000"
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-              style={{
-                marginRight: 20
-               }}
-            />
-          ),
+    <CartProvider>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: true,
         }}
-      />
-      <Stack.Screen name="Cart" component={Cart} />
-      <Stack.Screen name="CourseDetail" component={CourseDetail} options={({route}) => ({
-        title: route.params?.item.title
-      })}/>
-    </Stack.Navigator>
+      >
+        <Stack.Screen
+          name="Courses"
+          component={Courses}
+          options={{
+            title: "Khóa học",
+            headerLeft: () => (
+              <Icon
+                name="menu-outline"
+                size={24}
+                color="#000"
+                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                style={{
+                  marginRight: 20
+                }}
+              />
+            ),
+          }}
+        />
+        <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="CourseDetail" component={CourseDetail} options={({ route }) => ({
+          title: route.params?.item.title
+        })} />
+      </Stack.Navigator>
+    </CartProvider>
+
   );
 }

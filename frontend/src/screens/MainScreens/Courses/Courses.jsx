@@ -1,11 +1,16 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useContext } from 'react';
 import { View, Text, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SellingCourse } from '../../../components/Card/Card';
 import axios from 'axios';
+import { AuthContext } from '../../../context/AuthContext';
+import { CartContext } from '../../../context/CartContext';
 const Courses = () => {
+  const {token} = useContext(AuthContext)
   const [cartCount, setCartCount] = useState(0); 
+  const {cartItems, setRefresh} = useContext(CartContext)
+  
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showAll, setShowAll] = useState(false);
 
@@ -22,15 +27,30 @@ const Courses = () => {
         console.error('Lỗi khi gọi API:', error);
       }
     };
-
     fetchCourses();
   }, []); 
 
+  useEffect(() => {
+    console.log(token)
+    setCartCount(cartItems.length)
+  }, [cartItems])
 
-  const addToCart = useCallback((course) => {
-    setCartCount((prevCount) => prevCount + 1);
-    alert(`Thêm ${course.title} vào giỏ hàng!`);
-  }, []);
+  const addToCart = async (course) => {
+    try {
+      await axios.post("http://192.168.1.47:3000/api/user/add-to-cart", { courseId: course._id },
+        {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+
+      });
+      setRefresh(prev => !prev)
+      alert('Thêm khóa học vào giỏ hàng thành công!')
+
+    } catch (error){
+      console.log('Lỗi', error.message);
+    }
+  };
 
   const jlptCourses = allCourses.filter(course => course.type === 'JLPT');
   const kaiwaCourses = allCourses.filter(course => course.type === 'kaiwa');

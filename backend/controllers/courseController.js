@@ -18,7 +18,12 @@ const getAllCourses = async (req, res) => {
 
 const getCourseById = async (req, res) => {
     try {
-        const course = await Course.findById(req.params.courseId).populate('lessons');
+        const courseId = req.params.courseId;
+        if (!mongoose.Types.ObjectId.isValid(courseId)) {
+              return res.status(400).json({ message: "Khóa học không hợp lệ" });
+            }
+        const course = await Course.findById(courseId).populate('lessons');
+        console.log(course)
         if (!course) return res.status(404).json({ message: 'Course not found' });
         res.json(course);
     } catch (error) {

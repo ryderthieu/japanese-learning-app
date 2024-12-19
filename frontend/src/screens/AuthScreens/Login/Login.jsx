@@ -1,29 +1,33 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
 import axios from 'axios';
+import { AuthContext } from "../../../context/AuthContext";
 
 const Login = ({navigation}) => {
+  const {login} = useContext(AuthContext)
+
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   
   const handleLogin = async () => {
-    // axios.post('http://10.0.2.2:3000/api/user/login', {
-    //   email: email,
-    //   password: password
-    // })
-    // .then ((res) => {
-    //   const token = res.data.token
-    //   alert ('Đăng nhập thành công!')
+    axios.post('http://192.168.1.47:3000/api/user/login', {
+      email: email,
+      password: password
+    })
+    .then ((res) => {
+      const token = res.data.token
+      alert ('Đăng nhập thành công!')
       navigation.navigate('MainDrawer')
-    // })
-    // .catch((error) => {
+      login(token)
+    })
+    .catch((error) => {
 
-    //   alert (error.response.data.error)
-    // }) 
+      alert (error.response.data.error)
+    }) 
   }
 
   return (

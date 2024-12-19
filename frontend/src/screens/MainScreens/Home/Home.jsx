@@ -91,7 +91,7 @@ const Home = ({ navigation }) => {
             </Text>
           </View>
           <View className="bg-white rounded-3xl h-28 justify-center items-center shadow-md">
-            <Text className="text-center text-gray-500">Bỏ component vào đây</Text>
+            <Text className="text-center text-gray-500">Bạn chưa học</Text>
           </View>
         </View>
 

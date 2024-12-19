@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Button from "../../../components/Button/Button";
-
+import { CartContext } from "../../../context/CartContext";
+import { AuthContext } from "../../../context/AuthContext";
+import axios from "axios";
 const CourseDetail = ({ route, navigation }) => {
   const { item } = route.params;
+  const { setRefresh } = useContext(CartContext)
+  const {token} = useContext(AuthContext)
+
+  const addToCart = async (course) => {
+    try {
+      await axios.post("http://192.168.1.47:3000/api/user/add-to-cart", { courseId: course._id },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+
+        });
+      setRefresh(prev => !prev)
+      alert('Thêm khóa học vào giỏ hàng thành công!')
+
+    } catch (error) {
+      console.log('Lỗi', error.message);
+    }
+  };
   return (
     <View className="flex-1 bg-gray-100">
       <ScrollView className="p-4">
@@ -14,8 +35,10 @@ const CourseDetail = ({ route, navigation }) => {
         <Text className="text-lg text-gray-700 mb-4">
           {item.description}
         </Text>
-        
-        <Button title = 'Thêm vào giỏ hàng'/>
+
+        <TouchableOpacity onPress={() => addToCart(item)}>
+          <Button title='Thêm vào giỏ hàng' />
+        </TouchableOpacity>
 
       </ScrollView>
     </View>

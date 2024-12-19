@@ -13,7 +13,8 @@ const userSchema = new Schema({
     courses: [{type: Schema.Types.ObjectId, ref: 'Course'}],
     completedLessons: [{type: Schema.Types.ObjectId, ref: 'Lesson'}],
     savedVocabulary: [{type: Schema.Types.ObjectId, ref: 'Vocabulary'}],
-    savedGrammar: [{type: Schema.Types.ObjectId, ref: 'Grammar'}]
+    savedGrammar: [{type: Schema.Types.ObjectId, ref: 'Grammar'}],
+    cart: [{type: Schema.Types.ObjectId, ref: 'Course'}]
 }, {
     timestamps: true
 });
