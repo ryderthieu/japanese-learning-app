@@ -7,8 +7,10 @@ const SellingCourse = ({ item, addToCart }) => {
     return (
         <View className="w-full">
             <View className="bg-white p-4 rounded-xl shadow-lg flex flex-col">
-                <Image source={{ uri: item.image }} className="w-full h-32 rounded-lg mb-2" />
-                <Text className="text-lg font-bold min-h-[50px] align-middle">{item.title}</Text>
+                <Image source={{ uri: item.thumbnail }} className="w-full h-32 rounded-lg mb-2" />
+                <Text className="text-lg font-bold min-h-[50px] align-middle">{item.title.length > 26
+                    ? `${item.title.substring(0, 26)}...`
+                    : item.title}</Text>
                 <Text className="text-lg text-secondary font-bold">{item.level}</Text>
                 <View className="justify-between flex-row">
                     <Text className="text-lg text-red-600 font-bold">
@@ -53,35 +55,50 @@ const CourseInfo = ({ item }) => {
     )
 }
 
-const VocabularyCard = ({item}) => {
-        // Hàm để phát âm từ vựng khi người dùng nhấn vào
-        const speak = (word) => {
-            Speech.speak(word, {
-                language: 'ja', // Ngôn ngữ tiếng Nhật
-                pitch: 1, // Độ cao của giọng
-                rate: 1,  // Tốc độ phát âm
-            });
-        };
+
+const VocabularyCard = ({ item }) => {
+    const speak = (word) => {
+        Speech.speak(word, {
+            language: 'ja',
+            pitch: 1,
+            rate: 1,
+        });
+    };
+
     return (
-        <View className="bg-white p-4 rounded-lg shadow-md mb-4 border-l-4 border-pink-400">
-            <Text className="text-xl font-bold text-blue-800">{item.kanji} ({item.hiragana})</Text>
-            <TouchableOpacity onPress={() => speak(item.hiragana)}>
-            <Icon name='volume-medium-outline' size={20}/>
+        <View className="bg-white p-5 rounded-lg shadow-lg mb-6 border-l-4 border-pink-500 relative">
+            <View className="flex-row justify-between items-center  border-gray-300 pb-2">
+                <Text className="text-2xl font-semibold text-blue-700">{`${item.kanji ? item.kanji : item.word}`}</Text>
+                <TouchableOpacity onPress={() => speak(item.word)}>
+                    <Icon name="volume-medium-outline" size={28} color="#FF4081" />
+                </TouchableOpacity>
+            </View>
 
-            </TouchableOpacity>
-            <Text className="text-pink-600 mt-1 italic">{item.romanji}</Text>
-            <Text className="text-gray-700 mt-2">{item.meaning}</Text>
-            <Text className="text-gray-400 mt-2 italic">
-                {item.exampleSentence}
-            </Text>
-            <Text className="text-gray-400 mt-2 italic">
-                {item.exampleMeaning}
-            </Text>
+            {item.kanji && (
+                <Text className="text-lg font-semibold text-blue-700 mb-2">{item.word}</Text>
+            )}
+
+            <Text className="text-pink-500 mt-1 italic">{item.romanji}</Text>
+
+            <Text className="text-gray-800 mt-2 text-base">{item.meaning}</Text>
+
+            <Text className="text-xl font-semibold mt-4 text-blue-600">Ví dụ</Text>
+
+            {item.example.map((example, index) => (
+                <View key={index} className="mb-3">
+                    <Text className="text-gray-800 mt-1">{example.sentence}</Text>
+                    <Text className="text-gray-600 mt-1 italic">{example.sentenceMeaning}</Text>
+                </View>
+            ))}
         </View>
-    )
-}
 
-const GrammarCard = ({item}) => {
+    );
+};
+
+export default VocabularyCard;
+
+
+const GrammarCard = ({ item }) => {
     return (
         <View className="bg-white p-4 rounded-lg shadow-md mb-4 border-l-4 border-pink-400">
             <Text className="text-xl font-bold text-blue-800">{item.rule}</Text>

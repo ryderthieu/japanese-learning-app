@@ -29,7 +29,7 @@ const Help = () => {
   };
 
   const handleEmailSupport = () => {
-    const email = "mailto:22521386@gm.uit.edu.vn?subject=Hỗ trợ khách hàng&body=Vui lòng nhập nội dung cần hỗ trợ:";
+    const email = "mailto:22521396@gm.uit.edu.vn?subject=Hỗ trợ khách hàng&body=Vui lòng nhập nội dung cần hỗ trợ:";
     Linking.openURL(email);
   };
 
@@ -82,7 +82,7 @@ const Help = () => {
           >
             <Ionicons name="mail-outline" size={20} color="blue" />
             <Text className="ml-2 text-base text-blue-600 font-bold">Email:</Text>
-            <Text className="ml-2 text-base text-blue-600"> 22521386@gm.uit.edu.vn</Text>
+            <Text className="ml-2 text-base text-blue-600"> 22521396@gm.uit.edu.vn</Text>
           </TouchableOpacity>
 
           <TouchableOpacity

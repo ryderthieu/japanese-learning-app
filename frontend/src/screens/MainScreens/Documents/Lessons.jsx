@@ -5,7 +5,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 const lessons = [
     {
-        id: 1, title: 'Ngữ pháp Minna 1 - Bài 1', isCompleted: true, videoUrl: 'YBI4nM5HC4c', vocabulary: [
+        id: 1, title: 'Ngữ pháp Minna 1 - Bài 1', isCompleted: true, videoUrl: 'psZ1g9fMfeo', vocabulary: [
             {
                 kanji: "私",
                 hiragana: "わたし",

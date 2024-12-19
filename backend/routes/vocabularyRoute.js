@@ -1,7 +1,7 @@
 const express = require('express')
-const { getVocabularyByLesson} = require('../controllers/vocabularyController')
+const { searchVocabulary} = require('../controllers/vocabularyController')
 
 const router = express.Router()
 
-router.get('/lesson/:slug', getVocabularyByLesson)
+router.get('/search', searchVocabulary);
 module.exports = router

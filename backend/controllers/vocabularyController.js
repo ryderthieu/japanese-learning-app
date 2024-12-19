@@ -1,37 +1,34 @@
 const mongoose = require('mongoose');
 const Vocabulary = require('../models/vocabulary');
 
-const getMeaningByVocabulary = async (req, res) => {
-    const { slug } = req.params;
-    try {
-        const words = await Vocabulary.find({
-            $or: [{ vocabulary: slug }, { kanji: slug }] 
-        });
 
-        if (words.length === 0) {
-            return res.status(404).json({ message: "No vocabulary found." });
-        }
+const searchVocabulary = async (req, res) => {
+  try {
+    const { query } = req.query;  
 
-        res.json(words); 
-
-    } catch (error) {
-        res.status(500).json({ message: error.message }); 
+    if (!query) {
+      return res.status(400).json({ message: 'Vui lòng cung cấp từ khóa tìm kiếm.' });
     }
-}
 
-const getVocabularyByLesson = async (req, res) => {
-    const { slug } = req.params;
-    try {
-        const words = await Vocabulary.find({ lesson: slug });
+    const results = await Vocabulary.find({
+      $or: [
+        { word: { $regex: query, $options: 'i' } }, 
+        { kanji: { $regex: query, $options: 'i' } },
+        { romanji: { $regex: query, $options: 'i' } },
+        { meaning: { $regex: query, $options: 'i' } } 
+      ]
+    });
 
-        if (words.length === 0) {
-            return res.status(404).json({ message: "No vocabulary found." });
-        }
-
-        res.json(words); 
-
-    } catch (error) {
-        res.status(500).json({ message: error.message }); 
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Không tìm thấy kết quả nào.' });
     }
-}
-module.exports = { getMeaningByVocabulary, getVocabularyByLesson }
+
+    res.status(200).json(results);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Đã có lỗi xảy ra trong quá trình tìm kiếm.' });
+  }
+};
+
+module.exports = { searchVocabulary };
+

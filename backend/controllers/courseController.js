@@ -8,7 +8,7 @@ const getAllCourses = async (req, res) => {
 
         if (level) query.level = level;
         if (type) query.type = type;
-        const courses = await Course.find(query).populate('lessons');  
+        const courses = await Course.find(query);  
 
         res.json(courses); 
     } catch (error) {
