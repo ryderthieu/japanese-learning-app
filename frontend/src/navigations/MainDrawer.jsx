@@ -7,6 +7,7 @@ import Notification from "../screens/OtherScreens/Notification/Notification";
 import Help from "../screens/OtherScreens/Help/Help";
 import Icon from "react-native-vector-icons/Ionicons";
 import NotificationNavigation from "../screens/OtherScreens/Notification/_layout";
+import SettingNavigation from "../screens/OtherScreens/Setting/_layout";
 
 const Drawer = createDrawerNavigator();
 
@@ -61,7 +62,7 @@ const MainDrawer = () => {
             />
             <Drawer.Screen
                 name="Setting"
-                component={Setting}
+                component={SettingNavigation}
                 options={{
                     title: "Cài đặt",
                     drawerIcon: ({ color, size }) => (
