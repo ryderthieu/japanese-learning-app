@@ -7,8 +7,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Home = ({ navigation }) => {
   return (
-    <SafeAreaView className="flex-1 bg-gray-50">
-      <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
+    <ScrollView>
+    <SafeAreaView className="flex flex-col ">
+      
         <View className="mb-6">
           <Slider itemList={SliderData} />
         </View>
@@ -118,8 +119,9 @@ const Home = ({ navigation }) => {
             </View>
           </View>
         </View>
-      </ScrollView>
+      
     </SafeAreaView>
+    </ScrollView>
   );
 };
 

@@ -20,7 +20,7 @@ const FreeDocumentComponent = ({ data = [],filter = "all", level ="không có" ,
         <View key={course.id} className="w-[365px] h-[125px] flex flex-row bg-white rounded-3xl shadow-sm">
           <View className="relative w-[140px]">
             {course.status === "completed" ? (
-              <View style={{backgroundColor: 'rgba(52, 52, 52, 0.5)'}} className="absolute z-10 inset-0 rounded-s-3xl bg-black flex items-center justify-center">
+              <View style={{backgroundColor: 'rgba(52, 52, 52, 0.5)'}} className="absolute z-10 inset-0 rounded-tl-3xl rounded-bl-3xl bg-black flex items-center justify-center">
                 <Text className="text-pink-300 font-bold text-xl border-2 border-pink-300 px-4 py-2 rounded-xl">
                   Hoàn thành
                 </Text>
@@ -28,7 +28,7 @@ const FreeDocumentComponent = ({ data = [],filter = "all", level ="không có" ,
             ) : null}
             {course.status === "in-progress" ? (
               <>
-                <View style={{backgroundColor: 'rgba(52, 52, 52, 0.5)'}} className="absolute z-10 inset-0 bg-black bg-opacity-50 rounded-s-3xl flex items-center justify-center">
+                <View style={{backgroundColor: 'rgba(52, 52, 52, 0.5)'}} className="absolute z-10 inset-0 bg-black bg-opacity-50 rounded-tl-3xl rounded-bl-3xl flex items-center justify-center">
                   <Text className="text-[#4df300] font-extrabold text-4xl ">{
                     course.progress || 0 
                   }%</Text>
@@ -37,7 +37,7 @@ const FreeDocumentComponent = ({ data = [],filter = "all", level ="không có" ,
             ) : null} 
             <Image
               source= {{uri: course.image}}
-              className="w-[140px] h-[125px] object-cover rounded-s-3xl"
+              className="w-[140px] h-[125px] object-cover rounded-tl-3xl  rounded-bl-3xl"
               resizeMode="cover"
             />
           </View>
