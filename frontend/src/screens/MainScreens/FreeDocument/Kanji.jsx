@@ -9,132 +9,52 @@ import {
 } from "react-native";
 import Swiper from "react-native-swiper";
 import { Icon } from "@rneui/themed";
+import N5KanjiData from "./data/N5KanjiData";
+import N4KanjiData from "./data/N4KanjiData";
+import N3KanjiData from "./data/N3KanjiData";
+import N2KanjiData from "./data/N2KanjiData";
+import N1KanjiData from "./data/N1KanjiData";
 
-const kanjiData = [
-    {
-      id: 1,
-      kanji: "書",
-      onyomi: "ショ",
-      kunyomi: "か",
-      meaning: "「THƯ」",
-      img: require("./VC1.png"),
-      examples: [
-        {
-          word: "書",
-          reading: "かく",
-          meaning: "Viết",
-        },
-        {
-          word: "図書館",
-          reading: "としょかん",
-          meaning: "Thư viện",
-        },
-        {
-          word: "書道",
-          reading: "しょどう",
-          meaning: "Thư pháp",
-        },
-      ],
-    },
-    {
-      id: 2,
-      kanji: "読",
-      onyomi: "ドク",
-      kunyomi: "よ",
-      meaning: "「ĐỘC」",
-      img: require("./VC1.png"),
-      examples: [
-        {
-          word: "読む",
-          reading: "よむ",
-          meaning: "Đọc",
-        },
-        {
-          word: "読書",
-          reading: "どくしょ",
-          meaning: "Việc đọc sách",
-        },
-        {
-          word: "音読",
-          reading: "おんどく",
-          meaning: "Đọc thành tiếng",
-        },
-      ],
-    },
-    {
-      id: 3,
-      kanji: "見",
-      onyomi: "ケン",
-      kunyomi: "み",
-      meaning: "「KIẾN」",
-      img: require("./VC1.png"),
-      examples: [
-        {
-          word: "見る",
-          reading: "みる",
-          meaning: "Nhìn, xem",
-        },
-        {
-          word: "見学",
-          reading: "けんがく",
-          meaning: "Tham quan học hỏi",
-        },
-        {
-          word: "意見",
-          reading: "いけん",
-          meaning: "Ý kiến",
-        },
-      ],
-    },
-    {
-      id: 4,
-      kanji: "飲",
-      onyomi: "イン",
-      kunyomi: "の",
-      meaning: "「ẨM」",
-      img: require("./VC1.png"),
-      examples: [
-        {
-          word: "飲む",
-          reading: "のむ",
-          meaning: "Uống",
-        },
-        {
-          word: "飲食",
-          reading: "いんしょく",
-          meaning: "Ăn uống",
-        },
-        {
-          word: "飲料水",
-          reading: "いんりょうすい",
-          meaning: "Nước uống",
-        },
-      ],
-    },
-  ];
   
-
-const Kanji = ({ navigation }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const Kanji = ({ navigation, route }) => {
+  const { LessonId } = route.params;
+  const { level } = route.params;
+  const { KanjiId } = route.params;
+  console.log('Mã kanji' + KanjiId)
+    
+  const [currentIndex, setCurrentIndex] = useState(KanjiId - 1);
+    
+  let data = [];
+  switch (level) {
+    case 'N5':
+      data = N5KanjiData[`lesson${LessonId}`];
+      break;
+    case 'N4':
+      data = N4KanjiData[`lesson${LessonId}`];
+      break;
+    case 'N3':
+      data = N3KanjiData[`lesson${LessonId}`];
+      break;
+    case 'N2':
+      data = N2KanjiData[`lesson${LessonId}`];
+      break;
+    default:
+      data = N1KanjiData[`lesson${LessonId}`];
+      break; 
+  }
+  console.log(' Trình độ ' + level +' Kanji bài ' +LessonId +  ' Kanji thứ ' + KanjiId)
 
   return (
     <SafeAreaView className="flex-1">
-      <TouchableOpacity
-        className="left-5 flex flex-row items-center mb-5"
-        onPress={() => navigation.goBack()}
-      >
-        <Icon name="chevron-back-outline" type="ionicon" color="#00aced" />
-        <Text className="text-base text-[#00aced]">Quay lại</Text>
-      </TouchableOpacity>
       <View className="flex-1 flex-col bg-gray-100">
         {/* Thanh tiến trình */}
         <View className="flex flex-col mb-10">
-          <Text className="text-xl text-center font-bold mb-2">{`${currentIndex + 1}/${kanjiData.length}`}</Text>
+          <Text className="text-xl text-center font-bold mb-2">{`${currentIndex + 1}/${data.length}`}</Text>
           <View className="flex flex-row bg-gray-300 h-2 rounded-full">
             <View
               className="bg-blue-500 h-2 rounded-full"
               style={{
-                width: `${((currentIndex + 1) / kanjiData.length) * 100}%`,
+                width: `${((currentIndex + 1) / data.length) * 100}%`,
               }}
             />
           </View>
@@ -149,7 +69,7 @@ const Kanji = ({ navigation }) => {
           showsButtons={false}
           bounces={true}
         >
-          {kanjiData.map((card) => (
+          {data.map((card) => (
             <View
               key={card.id}
               className="flex h-[500px] w-auto bg-white rounded-3xl shadow-md mx-4 p-6"
@@ -205,7 +125,7 @@ const Kanji = ({ navigation }) => {
           <TouchableOpacity
             onPress={() =>
               setCurrentIndex((prev) =>
-                Math.min(prev + 1, kanjiData.length - 1)
+                Math.min(prev + 1, data.length - 1)
               )
             }
             className="bg-[#F490AF] w-[160px] px-5 py-5 rounded-2xl"

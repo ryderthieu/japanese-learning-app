@@ -47,7 +47,7 @@ const VocabList = ({navigation, route}) => {
             keyExtractor={(item) => item.id.toString()}
             style={{overflow: 'visible'}}
             renderItem={({ item }) => (
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Vocab', { level: level ,LessonId: LessonId, VocabId: item.id })}>
                     <View className="relative flex-row gap-3 items-center justify-between p-3 mb-3 bg-white rounded-2xl border border-gray-200">
                     {/* Thanh màu hồng */}
                     <View className="absolute w-2 h-11 bg-pink-400 rounded-full -left-[3px]" />

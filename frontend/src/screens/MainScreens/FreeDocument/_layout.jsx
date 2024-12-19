@@ -1,11 +1,9 @@
-import { useEffect } from 'react'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import SelectVocabLesson from './SelectVocabLesson'
 import SelectKanjiLesson from './SelectKanjiLesson'
 import Vocab from './Vocab'
 import Kanji from './Kanji'
-import FreeDocumentAll1 from './FreeDocumentAll1'
 import DocumentLevel from './DocumentLevel'
 import VocabList from './VocabList'
 import KanjiList from './KanjiList'
@@ -28,12 +26,11 @@ const FreeDocumentNavigation = ({navigation}) => {
                 }}
             />
         <Stack.Screen name='SelectVocabLesson' component={SelectVocabLesson} options={{title: 'Danh sách bài học'}}/>
-        <Stack.Screen name='SelectKanjiLesson' component={SelectKanjiLesson} options={{title: 'Danh sách bài học'}}/>
-        <Stack.Screen name='Vocab' component={Vocab} options={{title: 'Học từ vựng'}}/>
-        <Stack.Screen name='Kanji' component={Kanji} options={{title: 'Học kanji'}}/>
         <Stack.Screen name='VocabList' component={VocabList} options={{title: 'Danh sách từ vựng'}}/>
+        <Stack.Screen name='Vocab' component={Vocab} options={{title: 'Học từ vựng'}}/>
+        <Stack.Screen name='SelectKanjiLesson' component={SelectKanjiLesson} options={{title: 'Danh sách bài học'}}/>
         <Stack.Screen name='KanjiList' component={KanjiList} options={{title: 'Danh sách kanji'}}/>
-        <Stack.Screen name="FreeDocumentAll1" component={DocumentLevel} />
+        <Stack.Screen name='Kanji' component={Kanji} options={{title: 'Học kanji'}}/>
     </Stack.Navigator>
   )
 }

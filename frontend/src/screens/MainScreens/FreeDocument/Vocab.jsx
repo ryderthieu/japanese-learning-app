@@ -10,96 +10,55 @@ import {
 import Swiper from "react-native-swiper";
 import { Icon } from "@rneui/themed";
 import { Animated } from "react-native";
+import N5VocabData from './data/N5VocabData'; 
+import N4VocabData from './data/N4VocabData';
+import N3VocabData from './data/N3VocabData';
+import N2VocabData from './data/N2VocabData';
+import N1VocabData from './data/N1VocabData';
 
-const vocabData = [
-  {
-    id: 1,
-    word: "書く",
-    furigana: "かく [THƯ]",
-    type: "Động từ nhóm I",
-    stars: 1,
-    img: require("./VC1.png"),
-    examples: [
-      {
-        title: "Vẽ",
-        sentence: "書く時音楽を聞きます。",
-        translation: "Khi tôi vẽ, tôi nghe nhạc.",
-      },
-      {
-        title: "Viết",
-        sentence: "私の愛について彼にわざわざ手紙を書く。",
-        translation: "Tôi cố tình viết thư cho anh ấy về tình cảm của tôi.",
-      },
-    ],
-  },
-  {
-    id: 2,
-    word: "読む",
-    furigana: "よむ [ĐỘC]",
-    type: "Động từ nhóm I",
-    stars: 2,
-    img: require("./VC1.png"),
-    examples: [
-      {
-        title: "Đọc sách",
-        sentence: "本を読むのが好きです。",
-        translation: "Tôi thích đọc sách.",
-      },
-    ],
-  },
-  {
-    id: 3,
-    word: "見る",
-    furigana: "みる [KIẾN]",
-    type: "Động từ nhóm II",
-    stars: 3,
-    img: require("./VC1.png"),
-    examples: [
-      {
-        title: "Nhìn",
-        sentence: "星を見るのが好きです。",
-        translation: "Tôi thích ngắm sao.",
-      },
-    ],
-  },
-  {
-    id: 4,
-    word: "飲む",
-    furigana: "のむ [ẨM]",
-    type: "Động từ nhóm I",
-    stars: 2,
-    img: require("./VC1.png"),
-    examples: [
-      {
-        title: "Uống nước",
-        sentence: "水を飲むのが必要です。",
-        translation: "Cần uống nước.",
-      },
-    ],
-  },
-];
 
-const Vocab = ({ navigation }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const Vocab = ({ navigation, route }) => {
+  
+  const { LessonId } = route.params;
+  const { level } = route.params;
+  const { VocabId } = route.params;
+  
+  const [currentIndex, setCurrentIndex] = useState(VocabId - 1);
+    
 
+  console.log('Người dùng chọn bài ' + LessonId + ' và level ' + level)
+    
+  let data = [];
+  switch (level) {
+    case 'N5':
+      data = N5VocabData[`lesson${LessonId}`];
+      break;
+    case 'N4':
+      data = N4VocabData[`lesson${LessonId}`];
+      break;
+    case 'N3':
+      data = N3VocabData[`lesson${LessonId}`];
+      break;
+    case 'N2':
+      data = N2VocabData[`lesson${LessonId}`];
+      break;
+    default:
+      data = N1VocabData[`lesson${LessonId}`];
+      break; 
+  }
+  console.log(' Trình độ ' + level +' Từ vựng Bài ' +LessonId +  ' Vocab thứ ' + VocabId)
+  
   return (
     <SafeAreaView className="flex-1">
-      <TouchableOpacity
-        className="left-5 flex flex-row items-center mb-5"
-        onPress={() => navigation.goBack()}
-      >
-        <Icon name="chevron-back-outline" type="ionicon" color="#00aced" />
-        <Text className="text-base text-[#00aced]">Quay lại</Text>
-      </TouchableOpacity>
       <View className="flex-1 flex-col bg-gray-100">
         {/* Thanh tiến trình */}
         <View className="flex flex-col mb-10">
-          <Text className="text-xl text-center font-bold mb-2">{`${currentIndex + 1}/${vocabData.length}`}</Text>
+          <Text className="text-xl text-center font-bold mb-2">{`${currentIndex + 1}/${data.length}`}</Text>
           <View className="flex flex-row bg-gray-300 h-2 rounded-full">
             <View
               className="bg-blue-500 h-2 rounded-full"
               style={{
-                width: `${((currentIndex + 1) / vocabData.length) * 100}%`,
+                width: `${((currentIndex + 1) / data.length) * 100}%`,
               }}
             />
           </View>
@@ -114,7 +73,7 @@ const Vocab = ({ navigation }) => {
           showsButtons={false}
           bounces={true}
         >
-          {vocabData.map((card) => (
+          {data.map((card) => (
             <View
               key={card.id}
               className="flex h-[500px] w-auto bg-white rounded-3xl shadow-md mx-4 p-6"
@@ -169,7 +128,7 @@ const Vocab = ({ navigation }) => {
           <TouchableOpacity
             onPress={() =>
               setCurrentIndex((prev) =>
-                Math.min(prev + 1, vocabData.length - 1)
+                Math.min(prev + 1, data.length - 1)
               )
             }
             className="bg-[#F490AF] w-[160px] px-5 py-5 rounded-2xl"
