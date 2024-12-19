@@ -8,12 +8,11 @@ const CourseDetail = ({ route, navigation }) => {
   return (
     <View className="flex-1 bg-gray-100">
       <ScrollView className="p-4">
-        <Image source={{ uri: item.image }} className="w-full h-48 rounded-lg mb-4" />
+        <Image source={{ uri: item.thumbnail }} className="w-full h-full rounded-lg mb-4" resizeMode="contain" />
         <Text className="text-2xl font-bold mb-2">{item.title}</Text>
         <Text className="text-gray-500 text-lg mb-4">Giá: {item.price} VND</Text>
         <Text className="text-lg text-gray-700 mb-4">
-          Đây là khóa học được thiết kế dành riêng cho những ai muốn nâng cao kỹ năng tiếng Nhật.
-          Nội dung bao gồm bài học chi tiết, bài tập thực hành và hỗ trợ 24/7 từ giảng viên.
+          {item.description}
         </Text>
         
         <Button title = 'Thêm vào giỏ hàng'/>

@@ -34,7 +34,9 @@ export default function CoursesNavigation() {
         }}
       />
       <Stack.Screen name="Cart" component={Cart} />
-      <Stack.Screen name="CourseDetail" component={CourseDetail} />
+      <Stack.Screen name="CourseDetail" component={CourseDetail} options={({route}) => ({
+        title: route.params?.item.title
+      })}/>
     </Stack.Navigator>
   );
 }

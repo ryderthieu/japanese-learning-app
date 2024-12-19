@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SellingCourse } from '../../../components/Card/Card';
-
+import axios from 'axios';
 const Courses = () => {
   const [cartCount, setCartCount] = useState(0); 
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -11,26 +11,30 @@ const Courses = () => {
 
   const navigation = useNavigation();
 
-  const allCourses = [
-    { id: 10, title: '2235345111111111', category: 'Ôn JLPT', level: 'N5', image: 'https://via.placeholder.com/150', price: 0},
-    { id: 2, title: 'Luyện nghe N4 nâng cao', category: 'Ôn JLPT', level: 'N4', image: 'https://via.placeholder.com/150', price: 250000 },
-    { id: 3, title: 'Kanji N3', category: 'Ôn JLPT', level: 'N3', image: 'https://via.placeholder.com/150', price: 300000 },
-    { id: 4, title: 'Ngữ pháp N2', category: 'Ôn JLPT', level: 'N2', image: 'https://via.placeholder.com/150', price: 350000 },
-    { id: 5, title: 'Kaiwa cơ bản', category: 'Hội thoại', level: 'N5', image: 'https://via.placeholder.com/150', price: 400000 },
-    { id: 6, title: 'Kaiwa nâng cao', category: 'Hội thoại', level: 'N2', image: 'https://via.placeholder.com/150', price: 500000 },
-    { id: 7, title: 'Tiếng Nhật kinh doanh', category: 'Khác', level: 'N1', image: 'https://via.placeholder.com/150', price: 600000 },
-    { id: 8, title: 'Tiếng Nhật IT', category: 'Khác', level: 'N2', image: 'https://via.placeholder.com/150', price: 700000 },
-    { id: 1, title: 'Minato - Minna no Nihongo 1', category: 'Ôn JLPT', level: 'N5', image: 'https://via.placeholder.com/150', price: 200000 },
-  ];
+  const [allCourses, setAllCourses] = useState([{_id: '', title: '', description: '', level: '', price: '', thumbnail: '',type: '', lessons: []}]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get('http://192.168.1.47:3000/api/courses'); 
+        setAllCourses(response.data)
+      } catch (error) {
+        console.error('Lỗi khi gọi API:', error);
+      }
+    };
+
+    fetchCourses();
+  }, []); 
+
 
   const addToCart = useCallback((course) => {
     setCartCount((prevCount) => prevCount + 1);
     alert(`Thêm ${course.title} vào giỏ hàng!`);
   }, []);
 
-  const jlptCourses = allCourses.filter(course => course.category === 'Ôn JLPT');
-  const kaiwaCourses = allCourses.filter(course => course.category === 'Hội thoại');
-  const businessCourses = allCourses.filter(course => course.category === 'Khác');
+  const jlptCourses = allCourses.filter(course => course.type === 'JLPT');
+  const kaiwaCourses = allCourses.filter(course => course.type === 'kaiwa');
+  const otherCourses = allCourses.filter(course => course.type === 'other');
 
   const Category = ({ data, title }) => {
     const displayData = showAll ? data : data.slice(0, 4); 
@@ -45,7 +49,7 @@ const Courses = () => {
               <SellingCourse item={item} addToCart={() => addToCart(item)} />
             </TouchableOpacity>
           )}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item._id.toString()}
           numColumns={2}
           columnWrapperStyle={{ justifyContent: 'space-between' }}
           scrollEnabled={false}
@@ -98,7 +102,7 @@ const Courses = () => {
         )}
 
         {(selectedCategory === 'all' || selectedCategory === 'business') && (
-          <Category data={businessCourses} title={'Khác'} />
+          <Category data={otherCourses} title={'Khác'} />
         )}
       </ScrollView>
 

@@ -1,64 +1,38 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, FlatList, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import axios from 'axios';
 import { VocabularyCard } from "../../../components/Card/Card";
-
-const dictionaryData = [
-    {
-        kanji: "私",
-        hiragana: "わたし",
-        romanji: "watashi",
-        meaning: "Tôi",
-        exampleSentence: "私は学生です。",
-        exampleMeaning: "Tôi là học sinh."
-    },
-    {
-        kanji: "食べる",
-        hiragana: "たべる",
-        romanji: "taberu",
-        meaning: "Ăn",
-        exampleSentence: "ご飯を食べる。",
-        exampleMeaning: "Ăn cơm."
-    },
-    {
-        kanji: "学校",
-        hiragana: "がっこう",
-        romanji: "gakkou",
-        meaning: "Trường học",
-        exampleSentence: "学校に行きます。",
-        exampleMeaning: "Tôi đi đến trường."
-    },
-    {
-        kanji: "車",
-        hiragana: "くるま",
-        romanji: "kuruma",
-        meaning: "Xe hơi",
-        exampleSentence: "車を運転する。",
-        exampleMeaning: "Lái xe hơi."
-    }
-];
 
 const Dictionary = () => {
     const [searchText, setSearchText] = useState('');
     const [results, setResults] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-    const handleSearch = (text) => {
+    const handleSearch = async (text) => {
         setSearchText(text);
 
-        // Lọc dữ liệu dựa trên từ nhập vào (Kanji, Hiragana, Romanji, hoặc nghĩa)
-        const filteredResults = dictionaryData.filter((word) =>
-            word.kanji.includes(text) ||
-            word.hiragana.includes(text) ||
-            word.romanji.includes(text.toLowerCase()) ||
-            word.meaning.includes(text)
-        );
+        if (text.trim() === '') {
+            setResults([]);
+            return;
+        }
 
-        setResults(filteredResults);
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await axios.get(`http://192.168.1.47:3000/api/vocabulary/search?query=${text}`);
+            setResults(response.data);
+        } catch (err) {
+            console.log(err);
+            setError('Không tìm thấy kết quả nào hoặc có lỗi kết nối.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <View className="flex-1 bg-blue-50 p-4">
-            {/* Thanh tìm kiếm */}
             <View className="flex-row items-center bg-white rounded-lg shadow-md p-3 mb-4">
                 <Icon name="search" size={20} color="#1E3A8A" className="mr-2" />
                 <TextInput
@@ -69,17 +43,20 @@ const Dictionary = () => {
                 />
             </View>
 
-            {/* Hiển thị kết quả */}
-            {results.length > 0 ? (
+            {loading && <Text className="text-center text-gray-500">Đang tìm kiếm...</Text>}
+
+            {error && <Text className="text-center text-red-500">{error}</Text>}
+
+            {searchText === '' ? (
+                <Text className="text-center text-gray-500 mt-4">Vui lòng nhập từ để tra cứu.</Text>
+            ) : results.length > 0 ? (
                 <FlatList
                     data={results}
                     keyExtractor={(item, index) => index.toString()}
-                    renderItem={({ item }) => (
-                        <VocabularyCard item={item} />
-                    )}
+                    renderItem={({ item }) => <VocabularyCard item={item} />}
                 />
             ) : (
-                searchText !== '' && (
+                !loading && (
                     <Text className="text-gray-500 text-center mt-4">Không tìm thấy kết quả nào.</Text>
                 )
             )}
