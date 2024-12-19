@@ -7,9 +7,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Home = ({ navigation }) => {
   return (
-    <SafeAreaView className="flex-1 bg-gray-50">
-      <ScrollView contentContainerStyle={{ paddingBottom: 30 }}>
-        <View className="mb-6">
+    <ScrollView className="flex flex-col pt-5" showsVerticalScrollIndicator={false}>
+        <View className="mb-3">
           <Slider itemList={SliderData} />
         </View>
 
@@ -81,7 +80,7 @@ const Home = ({ navigation }) => {
         </View>
 
         <View className="mx-5 mt-10">
-          <Text className="text-3xl font-bold text-[#2B308B] mb-5">Lịch sử</Text>
+          <Text className="text-3xl font-bold text-[#2B308B]">Lịch sử</Text>
           <View className="flex-row justify-end gap-5 mb-5">
             <Text className="px-7 py-2 bg-white rounded-3xl text-[#2B308B] font-semibold">
               Bài học
@@ -95,31 +94,30 @@ const Home = ({ navigation }) => {
           </View>
         </View>
 
-        <View className="mx-5 mt-10">
+        <View className="mx-5 mt-10 mb-10">
           <Text className="text-3xl font-bold text-[#2B308B] mb-5">Đã lưu</Text>
           <View className="flex-row justify-between">
-            <View className="flex flex-col justify-center items-center w-[120px] h-[120px] bg-white rounded-3xl shadow-md">
-              <View className="w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
+            <View className="flex flex-col justify-center items-center w-[110px] h-[110px] bg-white rounded-3xl shadow-md">
+              <View className="flex w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
                 <Text className="font-bold text-white text-4xl">10</Text>
               </View>
-              <Text className="font-bold text-xl mt-3 text-[#2B308B]">Từ vựng</Text>
+              <Text className="font-bold text-xl mt-2 text-[#2B308B]">Từ vựng</Text>
             </View>
-            <View className="flex flex-col justify-center items-center w-[120px] h-[120px] bg-white rounded-3xl shadow-md">
+            <View className="flex flex-col justify-center items-center w-[110px] h-[110px] bg-white rounded-3xl shadow-md">
               <View className="w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
                 <Text className="font-bold text-white text-4xl">15</Text>
               </View>
-              <Text className="font-bold text-xl mt-3 text-[#2B308B]">Ngữ pháp</Text>
+              <Text className="font-bold text-xl mt-2 text-[#2B308B]">Ngữ pháp</Text>
             </View>
-            <View className="flex flex-col justify-center items-center w-[120px] h-[120px] bg-white rounded-3xl shadow-md">
+            <View className="flex flex-col justify-center items-center w-[110px] h-[110px] bg-white rounded-3xl shadow-md">
               <View className="w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
                 <Text className="font-bold text-white text-4xl">17</Text>
               </View>
-              <Text className="font-bold text-xl mt-3 text-[#2B308B]">Câu hỏi</Text>
+              <Text className="font-bold text-xl mt-2 text-[#2B308B]">Câu hỏi</Text>
             </View>
           </View>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
