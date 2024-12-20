@@ -5,8 +5,11 @@ import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
 import axios from 'axios';
 import { AuthContext } from "../../../context/AuthContext";
+import { LoadingContext } from "../../../context/LoadingContext";
+import Loading from "../../../components/Loading/Loading";
 
 const Login = ({navigation}) => {
+  // const {isLoading, setIsLoading} = useContext(LoadingContext)
   const {login} = useContext(AuthContext)
 
   const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -14,22 +17,26 @@ const Login = ({navigation}) => {
   const [password, setPassword] = useState('')
   
   const handleLogin = async () => {
-    axios.post('http://192.168.1.47:3000/api/user/login', {
+    // setIsLoading(true)
+    await axios.post('http://10.0.2.2:3000/api/user/login', {
       email: email,
       password: password
     })
     .then ((res) => {
       const token = res.data.token
       alert ('Đăng nhập thành công!')
-      navigation.navigate('MainDrawer')
       login(token)
     })
     .catch((error) => {
 
       alert (error.response.data.error)
     }) 
+    // .finally (() => {
+    //   setIsLoading(false)
+    // })
   }
-
+  // if (isLoading)
+  //   return <Loading />
   return (
 
     <SafeAreaView>

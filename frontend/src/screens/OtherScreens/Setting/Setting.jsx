@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, Image, Switch, TouchableOpacity } from 'react-native';
 import { Icon } from '@rneui/themed';
+import { AuthContext } from '../../../context/AuthContext';
 
 const Setting = ({ navigation }) => {
   const [isReminderExpanded, setIsReminderExpanded] = useState(false); // State để kiểm soát việc thu gọn
-
+  const {logout} = useContext(AuthContext)
+  const handleLogout = () => {
+    logout(); 
+    navigation.navigate('MainStack')
+  }
   return (
     <View className="flex-1 bg-slate-100 px-4 py-6 gap-5">
       {/* Header */}
@@ -63,7 +68,7 @@ const Setting = ({ navigation }) => {
       </View>
 
       {/* Logout Button */}
-      <TouchableOpacity className="bg-red-500 rounded-lg py-3 mt-6 items-center">
+      <TouchableOpacity className="bg-red-500 rounded-lg py-3 mt-6 items-center" onPress={handleLogout}>
         <Text className="text-white text-base font-bold">Đăng xuất</Text>
       </TouchableOpacity>
     </View>

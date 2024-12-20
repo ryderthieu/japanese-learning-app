@@ -21,7 +21,7 @@ const Dictionary = () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get(`http://192.168.1.47:3000/api/vocabulary/search?query=${text}`);
+            const response = await axios.get(`http://10.0.2.2:3000/api/vocabulary/search?query=${text}`);
             setResults(response.data);
         } catch (err) {
             console.log(err);
@@ -32,7 +32,7 @@ const Dictionary = () => {
     };
 
     return (
-        <View className="flex-1 bg-blue-50 p-4">
+        <View className="flex-1 bg-gray-100 p-4">
             <View className="flex-row items-center bg-white rounded-lg shadow-md p-3 mb-4">
                 <Icon name="search" size={20} color="#1E3A8A" className="mr-2" />
                 <TextInput

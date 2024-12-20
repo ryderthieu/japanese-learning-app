@@ -61,7 +61,7 @@ const MainDrawer = () => {
                 }}
             />
             <Drawer.Screen
-                name="Setting"
+                name="SettingNavigation"
                 component={SettingNavigation}
                 options={{
                     title: "Cài đặt",

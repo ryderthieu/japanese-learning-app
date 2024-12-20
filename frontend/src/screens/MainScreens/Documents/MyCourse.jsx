@@ -4,15 +4,19 @@ import { CourseInfo } from '../../../components/Card/Card';
 import { AuthContext } from '../../../context/AuthContext';
 import axios from 'axios';
 import { useIsFocused } from '@react-navigation/native';
+import { LoadingContext } from '../../../context/LoadingContext';
+import Loading from '../../../components/Loading/Loading';
 
 const MyCourses = ({ navigation }) => {
   const isFocus = useIsFocused()
   const {token} = useContext(AuthContext)
   const [allCourses, setAllCourses] = useState ([]);
+  const {isLoading, setIsLoading} = useContext(LoadingContext)
   useEffect(() => {
     const fetchData = async () => {
         try {
-          const response = await axios.get("http://192.168.1.47:3000/api/user/get-user-courses", {
+          setIsLoading(true)
+          const response = await axios.get("http://10.0.2.2:3000/api/user/get-user-courses", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -20,11 +24,15 @@ const MyCourses = ({ navigation }) => {
           setAllCourses(response.data.courses);
         } catch (error) {
           console.log(error.message)
+        } finally {
+          setIsLoading(false)
         }
       };
   
       fetchData(); 
 }, [isFocus])
+
+  if (isLoading) return <Loading />
   return (
     <View className="flex-1 p-4">
       <FlatList

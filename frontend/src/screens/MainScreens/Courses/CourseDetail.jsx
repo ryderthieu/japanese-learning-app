@@ -12,7 +12,7 @@ const CourseDetail = ({ route, navigation }) => {
 
   const addToCart = async (course) => {
     try {
-      await axios.post("http://192.168.1.47:3000/api/user/add-to-cart", { courseId: course._id },
+      await axios.post("http://10.0.2.2:3000/api/user/add-to-cart", { courseId: course._id },
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -7,7 +7,7 @@ const LevelSelect = ({ navigation }) => {
   };
 
   return (
-    <View className="flex-1 justify-center items-center bg-blue-50 p-6">
+    <View className="flex-1 justify-center items-center bg-gray-100 p-6">
       <Text className="text-3xl font-bold text-blue-900 mb-12">Chọn cấp độ JLPT</Text>
       {['N5', 'N4', 'N3', 'N2', 'N1'].map((level) => (
         <TouchableOpacity

@@ -6,25 +6,30 @@ import { SellingCourse } from '../../../components/Card/Card';
 import axios from 'axios';
 import { AuthContext } from '../../../context/AuthContext';
 import { CartContext } from '../../../context/CartContext';
+import { LoadingContext } from '../../../context/LoadingContext';
+import Loading from '../../../components/Loading/Loading';
 const Courses = () => {
   const {token} = useContext(AuthContext)
   const [cartCount, setCartCount] = useState(0); 
   const {cartItems, setRefresh} = useContext(CartContext)
-  
+  const {isLoading, setIsLoading} = useContext(LoadingContext)
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showAll, setShowAll] = useState(false);
 
   const navigation = useNavigation();
 
   const [allCourses, setAllCourses] = useState([{_id: '', title: '', description: '', level: '', price: '', thumbnail: '',type: '', lessons: []}]);
-
+  
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get('http://192.168.1.47:3000/api/courses'); 
+        setIsLoading(true)
+        const response = await axios.get('http://10.0.2.2:3000/api/courses'); 
         setAllCourses(response.data)
       } catch (error) {
         console.error('Lỗi khi gọi API:', error);
+      } finally {
+        setIsLoading(false)
       }
     };
     fetchCourses();
@@ -37,7 +42,7 @@ const Courses = () => {
 
   const addToCart = async (course) => {
     try {
-      await axios.post("http://192.168.1.47:3000/api/user/add-to-cart", { courseId: course._id },
+      await axios.post("http://10.0.2.2:3000/api/user/add-to-cart", { courseId: course._id },
         {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -82,6 +87,7 @@ const Courses = () => {
       </View>
     );
   };
+  if (isLoading) return <Loading />
 
   return (
     <View className="flex-1 bg-gray-100">

@@ -5,15 +5,39 @@ import TestSelect from './TestSelect'
 import Test from './Test'
 import TestResult from './TestResult'
 import ReviewQuestions from './ReviewQuestions'
+import { useNavigation } from '@react-navigation/native'
+import Icon from 'react-native-vector-icons/Ionicons'
 const TestStack = () => {
-    const Stack = createNativeStackNavigator()
+  const Stack = createNativeStackNavigator()
+  const navigation = useNavigation()
   return (
     <Stack.Navigator>
-        <Stack.Screen name='LevelSelect' component={LevelSelect}/>
-        <Stack.Screen name='TestSelect' component={TestSelect}/>
-        <Stack.Screen name='Test' component={Test}/>
-        <Stack.Screen name='TestResult' component={TestResult}/>
-        <Stack.Screen name='ReviewQuestions' component={ReviewQuestions}/>
+      <Stack.Screen name='LevelSelect' component={LevelSelect} options={{
+        title: 'Thi thử',
+        headerLeft: () => (
+          <Icon
+            name="menu-outline"
+            size={24}
+            color="#000"
+            onPress={() => navigation.openDrawer()}
+            style={{
+              marginRight: 20
+            }}
+          />
+        ),
+      }} />
+      <Stack.Screen name='TestSelect' component={TestSelect} options={{
+        title: 'Chọn đề thi'
+      }} />
+      <Stack.Screen name='Test' component={Test} options={(route) => ({
+        title: 'Kiểm tra'
+      })} />
+      <Stack.Screen name='TestResult' component={TestResult} options={{
+        title: 'Kết quả'
+      }} />
+      <Stack.Screen name='ReviewQuestions' component={ReviewQuestions} options={{
+        title: 'Xem lại'
+      }} />
     </Stack.Navigator>
   )
 }

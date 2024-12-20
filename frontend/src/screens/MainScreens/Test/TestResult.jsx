@@ -13,7 +13,7 @@ const TestResult = ({ navigation, route }) => {
   };
 
   return (
-    <View className="flex-1 justify-center items-center p-4">
+    <View className="flex-1 justify-center items-center p-4 bg-gray-100">
       <Text className="text-2xl font-bold mb-5">Kết quả thi</Text>
       <Text className="text-lg">Điểm: {score}/{totalQuestions}</Text>
       <Text className="text-lg mb-5">Thời gian hoàn thành: 45 phút</Text>

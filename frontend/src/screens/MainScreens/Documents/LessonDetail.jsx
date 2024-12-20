@@ -11,7 +11,7 @@ const LessonDetail = ({ route }) => {
     const {token} = useContext(AuthContext)
     const markLessonComplete = async () => {
         try {
-            await axios.post(`http://192.168.1.47:3000/api/user/add-completed-lesson/${lesson._id}`, {}, {
+            await axios.post(`http://10.0.2.2:3000/api/user/add-completed-lesson/${lesson._id}`, {}, {
                 headers: {
                     'Authorization': `Bearer ${token}` 
                     }
