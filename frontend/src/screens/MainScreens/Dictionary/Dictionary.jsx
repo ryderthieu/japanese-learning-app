@@ -3,6 +3,7 @@ import { View, Text, TextInput, FlatList, TouchableOpacity } from "react-native"
 import Icon from "react-native-vector-icons/Ionicons";
 import axios from 'axios';
 import { VocabularyCard } from "../../../components/Card/Card";
+import LottieView from 'lottie-react-native';
 
 const Dictionary = () => {
     const [searchText, setSearchText] = useState('');
@@ -48,7 +49,17 @@ const Dictionary = () => {
             {error && <Text className="text-center text-red-500">{error}</Text>}
 
             {searchText === '' ? (
-                <Text className="text-center text-gray-500 mt-4">Vui lòng nhập từ để tra cứu.</Text>
+                <View className="">
+                    <Text className="text-center text-gray-500 mt-4 mb-[150px]">Vui lòng nhập từ để tra cứu.</Text>
+
+                    <LottieView
+                        source={require('../../../assets/animate/search.json')}
+                        autoPlay
+                        loop
+                        style = {{width: 300, height: 300, alignSelf: 'center'}}
+                        speed={3}
+                    />
+                </View>
             ) : results.length > 0 ? (
                 <FlatList
                     data={results}

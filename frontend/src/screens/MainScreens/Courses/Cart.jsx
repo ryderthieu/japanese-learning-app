@@ -5,8 +5,11 @@ import CheckBox from 'react-native-check-box';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { AuthContext } from "../../../context/AuthContext";
 import { CartContext } from "../../../context/CartContext";
+import { useNavigation } from "@react-navigation/native";
+import LottieView from "lottie-react-native";
 
-const Cart = ({ route, navigation }) => {
+const Cart = ({ route }) => {
+  const navigation = useNavigation()
   const { token } = useContext(AuthContext)
   const { cartItems, setRefresh } = useContext(CartContext)
   const [totalPrice, setTotalPrice] = useState(0);
@@ -53,7 +56,7 @@ const Cart = ({ route, navigation }) => {
 
   const removeFromCart = async (courses) => {
     try {
-      await axios.post("http://192.168.1.47:3000/api/user/remove-from-cart", { courses: courses },
+      await axios.post("http://10.0.2.2:3000/api/user/remove-from-cart", { courses: courses },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -68,23 +71,25 @@ const Cart = ({ route, navigation }) => {
 
   const handlePayment = async () => {
     const courses = selectedItems.map(v => v._id)
-    if (courses.length === 0){
+    if (courses.length === 0) {
       alert('Bạn chưa chọn')
       return
     }
     console.log(courses)
     try {
-      await axios.post("http://192.168.1.47:3000/api/user/add-courses", { courses },
+      await axios.post("http://10.0.2.2:3000/api/user/add-courses", { courses },
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-      removeFromCart(courses)
+      await removeFromCart(courses)
       alert('Thanh toán thành công')
+      setTotalPrice(0)
+      // console.log(navigation)
     } catch (error) {
       alert('Lỗi: Bạn đã có khóa học')
-    } 
+    }
   }
   const renderCartItem = ({ item }) => (
     <View className="flex-row items-center bg-white shadow-lg rounded-lg p-4 mb-4 gap-4">
@@ -108,12 +113,25 @@ const Cart = ({ route, navigation }) => {
 
   return (
     <View className="flex-1 bg-gray-100">
-      <FlatList
-        data={cartItems}
-        keyExtractor={(item) => item._id.toString()}
-        renderItem={renderCartItem}
-        contentContainerStyle={{ padding: 16 }}
-      />
+      {cartItems.length > 0 ? (
+        <FlatList
+          data={cartItems}
+          keyExtractor={(item) => item._id.toString()}
+          renderItem={renderCartItem}
+          contentContainerStyle={{ padding: 16 }}
+        />
+      ) : (
+        <View className="flex-col items-center bg-white shadow-lg rounded-lg p-4 mb-4 gap-4 flex-1 justify-center">
+          <LottieView
+            source={require('../../../assets/animate/nodata.json')}
+            autoPlay
+            loop
+            style={{ width: 300, height: 300, alignSelf: 'center' }}
+            speed={3}
+          />
+        </View>
+      )}
+
 
       <View className="bg-white p-4 shadow-lg">
         <View className="flex-row justify-between items-center mb-4">

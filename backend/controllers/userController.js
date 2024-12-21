@@ -81,19 +81,45 @@ const forgotPassword = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
-const resetPassword = async (req, res) => {
-  const { otp, newPassword } = req.body;
+const cofirmOtp = async (req, res) => {
+  const { otp, email } = req.body;
 
   try {
-    const user = await User.findOne({ otp });
+    const user = await User.findOne({ email });
 
     if (!user) {
-      throw new Error("OTP không hợp lệ!");
+      return res.status(404).json({ error: "Người dùng không tồn tại!" });
+    }
+    console.log(otp)
+
+    if (user.otp !== otp) {
+      return res.status(400).json({ error: "Mã OTP không đúng!" });
     }
 
     if (user.otpExpire < Date.now()) {
-      throw new Error("Mã OTP đã hết hạn!");
+      return res.status(400).json({ error: "Mã OTP đã hết hạn!" });
+    }
+    user.otp = undefined;
+    user.otpExpire = undefined;
+    await user.save();
+
+    res.status(200).json({ message: "Xác nhận OTP thành công!" });
+  } catch (error) {
+    res.status(500).json({ error: "Đã xảy ra lỗi, vui lòng thử lại!" });
+  }
+}
+const resetPassword = async (req, res) => {
+  const { email, newPassword } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(401).json({ message: "Người dùng không tồn tại" });
+    }
+
+    if (user.otpExpire < Date.now()) {
+      return res.status(402).json({ message: "OTP đã hết hạn" });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -104,11 +130,12 @@ const resetPassword = async (req, res) => {
     user.otpExpire = undefined;
     await user.save();
 
-    res.status(200).json({ message: "Mật khẩu đã được cập nhật thành công!" });
+    return res.status(200).json({ message: "Mật khẩu đã được cập nhật thành công!" });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    return res.status(400).json({ error: error.message });
   }
 };
+
 
 const enrollCourse = async (req, res) => {
   try {
@@ -339,4 +366,5 @@ module.exports = {
   getUserCourses,
   getCourseLessons,
   addCompletedLesson,
+  cofirmOtp
 };

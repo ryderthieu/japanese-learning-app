@@ -3,18 +3,24 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
+import axios from "axios";
 
 const ForgotPassword = ({ navigation }) => {
+  const [email, setEmail] = useState('')
+  const handleSendOtp = async () => {
+    try {
+      const response = await axios.post("http://10.0.2.2:3000/api/user/forgot-password", { email });
+
+      alert('Mã otp đã gửi đến email của bạn');
+      navigation.navigate("SentOTP", {email});
+    } catch (error) {
+      console.log(error.message)
+      alert( error.response?.data?.error || "Đã xảy ra lỗi!");
+    }
+  }
   return (
     <SafeAreaView>
       <View className="flex flex-col items-center gap-5 w-screen h-screen px-5 py-10">
-        <TouchableOpacity
-          className="absolute left-5 flex flex-row items-center"
-          onPress={() => navigation.goBack()}
-        >
-          <Icon name="chevron-back-outline" type="ionicon" color="#00aced" />
-          <Text className="text-base text-[#00aced]">Quay lại</Text>
-        </TouchableOpacity>
         <Image source={require("../../../assets/images/forgotpass.png")}></Image>
         <Input
           containerStyle={{
@@ -32,19 +38,23 @@ const ForgotPassword = ({ navigation }) => {
           }}
           placeholder="Địa chỉ email đã đăng ký"
           leftIcon={{ type: "ant-design", name: "mail" }}
+          onChangeText={setEmail}
+          value={email}
         />
         <Button
           title={"Gửi mã OTP"}
           buttonStyle={{
-            width: "100%",
-            height: 50,
+            padding: 10,
+            paddingHorizontal: 20,
             backgroundColor: "#F490AF",
             borderRadius: 20,
+
           }}
           titleStyle={{
             fontWeight: "bold",
+            textAlign: 'center'
           }}
-          onPress={() => navigation.navigate("SentOTP")}
+          onPress={handleSendOtp}
         />
       </View>
     </SafeAreaView>

@@ -11,10 +11,13 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
+import axios from "axios";
 
-const SentOTP = ({ navigation }) => {
+
+const SentOTP = ({route, navigation }) => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
-
+  const {email} = route.params
+  console.log(email)
   const handleChange = (text, index) => {
     if (/^\d$/.test(text)) {
       const newOtp = [...otp];
@@ -38,9 +41,17 @@ const SentOTP = ({ navigation }) => {
       }
     }
   };
-
   const inputs = [];
-
+  const handleConfirm = async () => {
+    try {
+      await axios.post('http://10.0.2.2:3000/api/user/forgot-password', {otp: otp.toString(), email: email })
+      alert('Nhập mã otp thành công, vui lòng nhập mật khẩu mới')
+      navigation.navigate("ChangePassword", {email})
+      console.log(email)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
   return (
     <SafeAreaView>
       <View className="flex flex-col items-center gap-5 w-screen h-screen px-5 py-10">
@@ -68,15 +79,15 @@ const SentOTP = ({ navigation }) => {
         <Button
           title={"Xác nhận"}
           buttonStyle={{
-            width: "100%",
-            height: 50,
+            paddingVertical: 10,
+            paddingHorizontal: 20,
             backgroundColor: "#F490AF",
             borderRadius: 20,
           }}
           titleStyle={{
             fontWeight: "bold",
           }}
-          onPress={() => navigation.navigate("ChangePassword")}
+          onPress={handleConfirm}
         />
       </View>
     </SafeAreaView>

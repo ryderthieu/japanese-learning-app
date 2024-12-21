@@ -34,7 +34,9 @@ export default function CoursesNavigation() {
             ),
           }}
         />
-        <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="Cart" component={Cart} options={{
+          title: 'Giỏ hàng'
+        }}/>
         <Stack.Screen name="CourseDetail" component={CourseDetail} options={({ route }) => ({
           title: route.params?.item.title
         })} />

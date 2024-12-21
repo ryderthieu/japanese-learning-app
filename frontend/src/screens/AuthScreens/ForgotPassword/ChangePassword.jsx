@@ -10,9 +10,22 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
-
-const ForgotPassword = ({ navigation }) => {
+import axios from "axios";
+const ForgotPassword = ({ route, navigation }) => {
+  const {email} = route.params
+  console.log('param', route.params)
   const [isPasswordVisible, setPasswordVisible] = useState(false);
+  const [newPassword, setNewPassword] = useState('')
+  const handleConfirm = async () => {
+    console.log(email, newPassword)
+    try {
+      await axios.post('http://10.0.2.2:3000/api/user/reset-password', {newPassword: newPassword, email: email })
+      alert('Đổi mật khẩu thành công, vui lòng đăng nhập lại')
+      navigation.navigate('Login')
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
   return (
     <SafeAreaView>
       <View className="flex flex-col items-center gap-1 w-screen h-screen px-5 py-10">
@@ -46,6 +59,8 @@ const ForgotPassword = ({ navigation }) => {
             name: isPasswordVisible ? "eye-off" : "eye",
             onPress: () => setPasswordVisible(!isPasswordVisible),
           }}
+          onChangeText={setNewPassword}
+          value={newPassword}
         />
         <Input
           containerStyle={{
@@ -73,15 +88,15 @@ const ForgotPassword = ({ navigation }) => {
         <Button
           title={"Đổi mật khẩu"}
           buttonStyle={{
-            width: "100%",
-            height: 50,
+            paddingVertical: 10,
+            paddingHorizontal: 20,
             backgroundColor: "#F490AF",
             borderRadius: 20,
           }}
           titleStyle={{
             fontWeight: "bold",
           }}
-          onPress={() => navigation.navigate("Login")}
+          onPress={handleConfirm}
         />
       </View>
     </SafeAreaView>

@@ -4,8 +4,10 @@ import YouTube from 'react-native-youtube-iframe';
 import { GrammarCard, VocabularyCard } from '../../../components/Card/Card';
 import axios from 'axios';  // Để thực hiện API request
 import { AuthContext } from '../../../context/AuthContext';
+import { useNavigation } from '@react-navigation/native';
 
 const LessonDetail = ({ route }) => {
+    const navigation = useNavigation()
     const { lesson } = route.params;
     const [videoEnded, setVideoEnded] = useState(false);
     const {token} = useContext(AuthContext)
@@ -16,7 +18,7 @@ const LessonDetail = ({ route }) => {
                     'Authorization': `Bearer ${token}` 
                     }
             });
-            console.log('sucess')
+            navigation.goBack()
         } catch (error) {
             console.error('Đánh dấu hoàn thành thất bại:', error);
         }
