@@ -7,6 +7,10 @@ const vocabulary = new Schema({
     romanji: {type: String},
     meaning: {type: String, required: true},
     kanjiMeaning: {type: String},
+    example: [{
+        sentences: {type: String},
+        translation: {type: String}
+    }],
     type: {type: String},
     lesson: {type: Number, ref: 'Lesson'}
 });

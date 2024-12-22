@@ -242,9 +242,7 @@ const addCourses = async (req, res) => {
 
     if (alreadyRegisteredCourses.length > 0) {
       return res.status(400).json({
-        message: `Khóa học ${alreadyRegisteredCourses.join(
-          ", "
-        )} đã được đăng ký trước đó`,
+        message: `Khóa học đã được đăng ký trước đó`,
       });
     }
 
@@ -339,11 +337,8 @@ const addCompletedLesson = async (req, res) => {
       return res.status(404).json({ message: "Người dùng không tồn tại." });
     }
 
-    if (user.completedLessons.includes(lessonId)) {
-      return res.status(400).json({ message: "Bài học đã được hoàn thành rồi." });
-    }
-
-    user.completedLessons.push(lessonId);
+    if (!user.completedLessons.includes(lessonId))
+      user.completedLessons.push(lessonId);
 
     await user.save();
     res.status(200).json({ message: "Bài học đã được hoàn thành." });
@@ -353,6 +348,29 @@ const addCompletedLesson = async (req, res) => {
   }
 };
 
+
+
+
+
+const saveQuestion = async (req, res) => {
+  try {
+    const {questionId} = req.params
+    const userId = req.user._id;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "Người dùng không tồn tại." });
+    }
+    if (!user.savedQuestion.includes(questionId))
+      user.savedQuestion.push(questionId);
+    else
+      user.savedQuestion = user.savedQuestion.filter((v) => v!==questionId)
+
+    await user.save()
+    res.status(200).json({ message: "Thay đổi trạng thái câu hỏi thành công" });
+  } catch {
+    res.status(400).json({ message: "Lỗi khi lưu câu hỏi." });
+  }
+}
 module.exports = {
   login,
   signup,
@@ -366,5 +384,6 @@ module.exports = {
   getUserCourses,
   getCourseLessons,
   addCompletedLesson,
-  cofirmOtp
+  cofirmOtp,
+  saveQuestion
 };
