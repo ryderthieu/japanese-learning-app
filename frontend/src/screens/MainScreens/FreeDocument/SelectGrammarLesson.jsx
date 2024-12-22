@@ -7,7 +7,6 @@ import Loading from "../../../components/Loading/Loading";
 
 const SelectGrammarLesson = ({ navigation, route }) => {
   const { level } = route.params;
-  const { topic } = route.params;
   const [allLessons, setAllLessons] = useState([]);
   const {isLoading, setIsLoading} = useContext(LoadingContext)
   const getAllLessons = async (level) => {
@@ -20,12 +19,12 @@ const SelectGrammarLesson = ({ navigation, route }) => {
         const response = await axios.get(`${BASE_URL}/grammar/get-lesson?level=${level}&lessonNumber=${pageNumber}`);
 
         if (response.data.length === 0) {
-          break; // Nếu không còn dữ liệu, thoát vòng lặp
+          break; 
         }
 
         const formattedLessons = {
           title: `Bài ${pageNumber}`,
-          image: 'https://honya.vn/uploads/images/aio/__thumbs/7-3.jpg/7-3__600x600.jpg', // Ví dụ hình ảnh
+          image: 'https://honya.vn/uploads/images/aio/__thumbs/7-3.jpg/7-3__600x600.jpg', 
           grammars: response.data || [],
         };
 

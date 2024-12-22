@@ -94,13 +94,13 @@ const Login = ({navigation}) => {
             onPress={handleLogin}
           />
         </View>
-        <Text className="mt-10 mb-5 text-base">Hoặc đăng nhập bằng</Text>
+        {/* <Text className="mt-10 mb-5 text-base">Hoặc đăng nhập bằng</Text>
         <View className="flex flex-row mb-5 ">
           <SocialIcon  onPress={() =>navigation.navigate('MainDrawer')} type="facebook" raise={false} />
           <SocialIcon  onPress={() =>navigation.navigate('Survey')} type="google" raise={false} />
           <SocialIcon onPress={() =>navigation.navigate('FreeDocument')} type="apple" light={true} raise={false} />
-        </View>
-        <View className="flex flex-row gap-2 text-base">
+        </View> */}
+        <View className="flex flex-row gap-2 text-base mt-3">
           <Text>Chưa có tài khoản?</Text>
           <Text className="text-[#2B308B] font-bold" onPress={() => navigation.navigate('Register')}>Đăng ký</Text>
         </View>

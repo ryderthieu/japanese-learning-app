@@ -1,45 +1,101 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
-import FreeDocumentComponent from "./FreeDocumentComponent";
-import coursesData from "./coursesData";
-import { SafeAreaView } from "react-native-safe-area-context";
-import N1LessonData from "./data/N1LessonData";
-import N2LessonData from "./data/N2LessonData";
-import N3LessonData from "./data/N3LessonData";
-import N4LessonData from "./data/N4LessonData";
-import N5LessonData from "./data/N5LessonData";
-
-
-const SelectKanjiLesson = ({navigation, route}) => {
-
+import React, { useContext, useEffect, useState } from "react";
+import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
+import axios from "axios";
+import BASE_URL from "../../../api/config";
+import { LoadingContext } from "../../../context/LoadingContext";
+import Loading from "../../../components/Loading/Loading";
+const SelectKanjiLesson = ({ navigation, route }) => {
   const { level } = route.params;
-  const { topic } = route.params;
-  console.log('Người dùng chọn level ' + level + ' và topic ' + topic)
+  const [allLessons, setAllLessons] = useState([]);
+  const {isLoading, setIsLoading} = useContext(LoadingContext)
+  const getAllLessons = async (level) => {
+    let allLessons = [];
+    let pageNumber = 1;
 
+    while (true) {
+      try {
+        setIsLoading(true)
+        const response = await axios.get(`${BASE_URL}/vocabulary/get-lesson?level=${level}&lessonNumber=${pageNumber}`);
 
-  let data = [];
-  switch (level) {
-    case 'N5':
-      data = N5LessonData.kanji;
-      break;
-    case 'N4':
-      data = N4LessonData.kanji;
-      break;
-    case 'N3':
-      data = N3LessonData.kanji;
-      break;
-    case 'N2':
-      data = N2LessonData.kanji;
-      break;
-    default:
-      data = N1LessonData.kanji;
-      break;
-  }
+        if (response.data.length === 0) {
+          break; 
+        }
+
+        const formattedLessons = {
+          title: `Bài ${pageNumber}`,
+          image: 'https://saigontimestravel.com/wp-content/uploads/2024/01/du-lich-nhat-ban-thang-5-1.jpg', 
+          grammars: response.data || [],
+        };
+
+        allLessons.push(formattedLessons);
+        pageNumber++;
+      } catch (error) {
+        console.error("Lỗi khi lấy khóa học:", error.response?.data?.message || error);
+        break;
+      } finally {
+        setIsLoading(false)
+
+      }
+    }
+
+    setAllLessons(allLessons);
+  };
+
+  useEffect(() => {
+    getAllLessons(level);
+  }, [level]);
+
+  const handleLessonPress = (lesson) => {
+    navigation.navigate("VocabularyLessonDetail", { lesson });
+  };
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity
+      onPress={() => handleLessonPress(item)}
+      className="mb-4 p-4 bg-white rounded-xl shadow-md"
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginHorizontal: 10,
+        marginBottom: 20,
+        elevation: 5,  
+      }}
+    >
+      <Image
+        source={{ uri: item.image }}
+        className="w-16 h-16 rounded-lg"
+        style={{ marginRight: 15 }}
+      />
+      
+      {/* Card bên phải: Tiêu đề bài học */}
+      <View className="flex-1">
+        <Text className="text-xl font-semibold">{item.title}</Text>
+        <Text className="text-gray-500 mt-2">Nhấp vào để xem chi tiết</Text>
+      </View>
+      
+      {/* Thêm icon hoặc bất kỳ thành phần nào nếu cần */}
+    </TouchableOpacity>
+  );
+
+  if (isLoading) return <Loading />
+
   return (
-    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{paddingVertical: 20}}>
-    <FreeDocumentComponent data={data} level={level} topic={topic} />
-  </ScrollView>
+    <View className="px-4 py-6">
+      {allLessons.length > 0 ? (
+        <FlatList
+          data={allLessons}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => index.toString()}
+          showsVerticalScrollIndicator={false}
+        />
+      ) : (
+        <View className="flex-1 justify-center items-center gap-4">
+          <Image source={require("./empty.png")} className="w-64 h-64" />
+          <Text className="text-gray-400 text-xl">Không có dữ liệu</Text>
+        </View>
+      )}
+    </View>
   );
 };
 
-export default SelectKanjiLesson
+export default SelectKanjiLesson;

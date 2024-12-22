@@ -1,76 +1,124 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, Image, Switch, TouchableOpacity } from 'react-native';
-import { Icon } from '@rneui/themed';
+import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons'
 import { AuthContext } from '../../../context/AuthContext';
+const ExampleData = [
+  { label: 'Tên', value: 'Huỳnh Văn Thiệu' },
+  { label: 'Email', value: '22521396@gmail.com' },
+  { label: 'Sinh nhật', value: '17/10/2004' },
+]
 
 const Setting = ({ navigation }) => {
-  const [isReminderExpanded, setIsReminderExpanded] = useState(false); // State để kiểm soát việc thu gọn
+  const [isEditing, setIsEditing] = useState(false);
+  const [userData, setUserData] = useState(ExampleData);
+  const [showButtons, setShowButtons] = useState(true); 
   const {logout} = useContext(AuthContext)
+  const handleEditPress = () => {
+    setIsEditing(true); 
+    setShowButtons(false); 
+  };
+
+  const handleSavePress = () => {
+    setIsEditing(false); 
+    setShowButtons(true); 
+  };
+
+  const handleCancelPress = () => {
+    setIsEditing(false); 
+    setShowButtons(true); 
+  };
+
+  const handleChangeText = (text, index) => {
+    const newData = [...userData];
+    if (userData[index].label !== 'Email') {
+      newData[index].value = text; 
+      setUserData(newData);
+    }
+  };
+
   const handleLogout = () => {
-    logout(); 
-    navigation.navigate('MainStack')
-  }
+    logout()
+    console.log('Đăng xuất');
+    navigation.navigate('MainStack'); 
+  };
+
   return (
-    <View className="flex-1 bg-slate-100 px-4 py-6 gap-5">
-      {/* Header */}
-      <View className="flex flex-row items-center h-[100px] bg-white rounded-3xl px-5">
+    <View className="flex-1 bg-gray-100 px-6 pt-6">
+      <View className="items-center mb-6">
         <Image
-          source={{ uri: 'https://via.placeholder.com/80' }}
-          className="w-20 h-20 rounded-full mr-4"
+          source={{ uri: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/07/anh-nu-cute-55.jpg' }}
+          className="w-48 h-48 rounded-full mb-3"
         />
-        <View>
-          <Text className="text-lg font-bold">Trần Nhật Trường</Text>
-          <Text className="text-gray-500">22251584@gm.uit.edu.vn</Text>
+      </View>
+
+      {!isEditing && (
+        <TouchableOpacity
+          className="flex-row justify-between items-center"
+          onPress={handleEditPress}
+        >
+          <Icon name='create-outline' size={28} className='absolute right-0'/>
+
+        </TouchableOpacity>
+      )}
+      {userData.map((item, index) => (
+        <View key={index} className="mb-4">
+          <Text className="text-gray-500 mb-2 text-lg">{item.label}</Text>
+
+          {isEditing && item.label !== 'Email' ? (
+            <TextInput
+              className="border border-gray-300 rounded-lg px-3 py-2 text-gray-700 bg-white text-lg"
+              value={item.value}
+              onChangeText={(text) => handleChangeText(text, index)} 
+            />
+          ) : item.label === 'Email' && isEditing ? (
+            <TextInput
+              className="border border-gray-300 rounded-lg px-3 py-2 text-gray-700 bg-gray-200 text-lg"
+              value={item.value}
+              editable={false} 
+              selectTextOnFocus={false} 
+            />
+          ) : (
+            <Text className="text-gray-700 text-lg">{item.value}</Text>
+          )}
         </View>
+      ))}
+
+
+
+      {isEditing && (
+        <View className="flex-row justify-between">
+          <TouchableOpacity
+            className="bg-green-500 rounded-lg py-3 items-center mb-4 shadow-md flex-1 mr-2"
+            onPress={handleSavePress} 
+          >
+            <Text className="text-white text-lg font-bold">Lưu</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            className="bg-red-500 rounded-lg py-3 items-center mb-4 shadow-md flex-1 ml-2"
+            onPress={handleCancelPress} 
+          >
+            <Text className="text-white text-lg font-bold">Hủy</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
+      {showButtons && (
         <TouchableOpacity
-          className="ml-auto"
-          onPress={() => navigation.navigate('EditAccount')}
+          className="bg-green-500 rounded-lg py-3 items-center mb-4 shadow-md"
+          onPress={() => navigation.navigate('ChangePassword')}
         >
-          <Icon name="edit" type="material" size={24} color="#007AFF" />
+          <Text className="text-white text-lg font-bold">Đổi mật khẩu</Text>
         </TouchableOpacity>
-      </View>
+      )}
 
-      {/* Ngôn ngữ */}
-      <View className="flex flex-row justify-between items-center h-[60px] bg-white rounded-3xl px-5">
-        <Text className="text-base font-medium">Ngôn ngữ</Text>
-        <Text className="text-blue-500">Tiếng Việt</Text>
-      </View>
-
-      {/* Nhắc nhở học tập */}
-      <View className="flex flex-col bg-white rounded-3xl px-5 py-5">
+      {showButtons && (
         <TouchableOpacity
-          onPress={() => setIsReminderExpanded(!isReminderExpanded)}
-          className="flex flex-row justify-between items-center"
+          className="bg-red-500 rounded-lg py-3 items-center shadow-md"
+          onPress={handleLogout}
         >
-          <Text className="text-base font-medium mb-2">Nhắc nhở học tập</Text>
-          <Icon
-            name={isReminderExpanded ? 'chevron-up-outline' : 'chevron-down-outline'}
-            type="ionicon"
-            color={'#007AFF'}
-          />
+          <Text className="text-white text-lg font-bold">Đăng xuất</Text>
         </TouchableOpacity>
-        {isReminderExpanded ? (
-          <View className='mt-5'>
-            {['07:30', '11:30', '17:30'].map((time, index) => (
-              <View key={index} className="flex-row justify-between items-center mb-5">
-                <Text className='text-xl'>{time}</Text>
-                <Switch value={false} />
-              </View>
-            ))}
-          </View>
-        ) : null}
-      </View>
-
-      {/* Dark Mode */}
-      <View className="flex-row justify-between items-center px-5 bg-white rounded-3xl h-[60px]">
-        <Text className="text-base font-medium">Chế độ tối</Text>
-        <Switch value={false} />
-      </View>
-
-      {/* Logout Button */}
-      <TouchableOpacity className="bg-red-500 rounded-lg py-3 mt-6 items-center" onPress={handleLogout}>
-        <Text className="text-white text-base font-bold">Đăng xuất</Text>
-      </TouchableOpacity>
+      )}
     </View>
   );
 };

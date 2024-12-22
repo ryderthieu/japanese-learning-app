@@ -131,7 +131,7 @@ const Home = ({ navigation }) => {
 
       </View>
 
-      <View className="mx-5 mt-10">
+      {/* <View className="mx-5 mt-10">
         <Text className="text-3xl font-bold text-[#2B308B]">Lịch sử</Text>
         <View className="flex-row justify-end gap-5 mb-5">
           <Text className="px-7 py-2 bg-white rounded-3xl text-[#2B308B] font-semibold">
@@ -144,7 +144,7 @@ const Home = ({ navigation }) => {
         <View className="bg-white rounded-3xl h-28 justify-center items-center shadow-md">
           <Text className="text-center text-gray-500">Bạn chưa học</Text>
         </View>
-      </View>
+      </View> */}
 
       <View className="mx-5 mt-10 mb-10">
         <Text className="text-3xl font-bold text-[#2B308B] mb-5">Đã lưu</Text>

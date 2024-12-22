@@ -12,6 +12,7 @@ import Test from './Test'
 import { Icon } from '@rneui/themed'
 import { TouchableOpacity, Text } from 'react-native'
 import GrammarLessonDetail from './GrammarLessonDetail'
+import VocabularyLessonDetail from './VocabularyLessonDetail'
 
 const FreeDocumentNavigation = ({ navigation }) => {
   const Stack = createNativeStackNavigator()
@@ -38,6 +39,10 @@ const FreeDocumentNavigation = ({ navigation }) => {
       <Stack.Screen name='GrammarLessonDetail' component={GrammarLessonDetail} options={({ route }) => ({
         title: route.params.lesson.title
       })} />
+      <Stack.Screen name='VocabularyLessonDetail' component={VocabularyLessonDetail} options={({ route }) => ({
+        title: route.params.lesson.title
+      })} />
+      <Stack.Screen name='Test' component={Test} options={{title: 'Ôn tập'}} />
     </Stack.Navigator>
   )
 }

@@ -33,7 +33,8 @@ const TestStack = () => {
         title: 'Kiểm tra'
       })} />
       <Stack.Screen name='TestResult' component={TestResult} options={{
-        title: 'Kết quả'
+        title: 'Kết quả',
+        headerShown: false
       }} />
       <Stack.Screen name='ReviewQuestions' component={ReviewQuestions} options={{
         title: 'Xem lại'

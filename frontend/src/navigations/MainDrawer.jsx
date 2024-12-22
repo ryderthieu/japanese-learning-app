@@ -35,15 +35,15 @@ const MainDrawer = () => {
                     backgroundColor: "#FFFFFF",
                     width: 300,
                 },
-                drawerActiveTintColor: "#F490AF", 
-                drawerInactiveTintColor: "#333333", 
+                drawerActiveTintColor: "#F490AF",
+                drawerInactiveTintColor: "#333333",
                 drawerLabelStyle: {
                     fontSize: 16,
                 },
                 headerStyle: {
-                    backgroundColor: "#F490AF", 
+                    backgroundColor: "#F490AF",
                 },
-                headerTintColor: "#FFFFFF", 
+                headerTintColor: "#FFFFFF",
                 headerTitleStyle: {
                     fontWeight: "bold",
                 },
@@ -68,6 +68,7 @@ const MainDrawer = () => {
                     drawerIcon: ({ color, size }) => (
                         <Icon name="settings-outline" color={color} size={size} />
                     ),
+                    headerShown: false,
                 }}
             />
             <Drawer.Screen
