@@ -139,7 +139,7 @@ const resetPassword = async (req, res) => {
 const getInfo = async (req, res) => {
   try {
     const userId = req.user._id
-    const user = await User.findById(userId)
+    const user = await User.findById(userId).populate('savedVocabulary').populate('savedGrammar')
     res.status(200).json(user)
   } catch (error) {
     res.status(400).json({message: error.message})

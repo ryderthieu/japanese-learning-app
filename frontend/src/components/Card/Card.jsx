@@ -73,9 +73,10 @@ const VocabularyCard = ({ item }) => {
                     },
                 });
 
-                if (response.data.savedVocabulary.includes(item._id.toString())) {
+                if (response.data.savedVocabulary.some(vocabulary => vocabulary._id.toString() === item._id.toString())) {
                     setIsSaved(true);
                 }
+
             } catch (error) {
                 console.error("Lỗi khi kiểm tra trạng thái lưu:", error);
             }
@@ -165,7 +166,7 @@ const GrammarCard = ({ item }) => {
                     },
                 });
 
-                if (response.data.savedGrammar.includes(item._id.toString())) {
+                if (response.data.savedGrammar.some(grammar => grammar._id.toString() === item._id.toString())) {
                     setIsSaved(true);
                 }
             } catch (error) {

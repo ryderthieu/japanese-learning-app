@@ -6,6 +6,8 @@ import FreeDocumentNavigation from '../FreeDocument/_layout'
 import SurveyNavigation from '../Survey/_layout'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useEffect } from 'react'
+import SavedVocabulary from './SavedVocabulary'
+import SavedGrammar from './SavedGrammar'
 
 const HomeNavigation = ({ navigation, route }) => {
     const Stack = createNativeStackNavigator()
@@ -30,6 +32,9 @@ const HomeNavigation = ({ navigation, route }) => {
             }} />
             <Stack.Screen name='FreeDocumentNavigation' component={FreeDocumentNavigation} options={{headerShown: false}}  />
             <Stack.Screen name='SurveyNavigation' component={SurveyNavigation} options={{headerShown: false}}  />
+            <Stack.Screen name='SavedVocabulary' component={SavedVocabulary} options={{title: 'Từ vựng đã lưu'}}/>
+            <Stack.Screen name='SavedGrammar' component={SavedGrammar} options={{title: 'Ngữ pháp đã lưu'}}/>
+
         </Stack.Navigator>
     )
 }

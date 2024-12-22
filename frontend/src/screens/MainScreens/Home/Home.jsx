@@ -149,22 +149,22 @@ const Home = ({ navigation }) => {
       <View className="mx-5 mt-10 mb-10">
         <Text className="text-3xl font-bold text-[#2B308B] mb-5">Đã lưu</Text>
         <View className="flex-row justify-around">
-          <View className="flex flex-col justify-center items-center w-[140px] h-[140px] bg-white rounded-3xl shadow-md">
+          <TouchableOpacity className="flex flex-col justify-center items-center w-[140px] h-[140px] bg-white rounded-3xl shadow-md" onPress={() => navigation.navigate('SavedVocabulary', {savedVocabulary})}>
             <View className="flex w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
               <Text className="font-bold text-white text-4xl">{savedVocabulary.length}</Text>
             </View>
             <Text className="font-bold text-xl mt-2 text-[#2B308B]">
               Từ vựng
             </Text>
-          </View>
-          <View className="flex flex-col justify-center items-center w-[140px] h-[140px] bg-white rounded-3xl shadow-md">
+          </TouchableOpacity>
+          <TouchableOpacity className="flex flex-col justify-center items-center w-[140px] h-[140px] bg-white rounded-3xl shadow-md" onPress={() => navigation.navigate('SavedGrammar', {savedGrammar})}>
             <View className="w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
               <Text className="font-bold text-white text-4xl">{savedGrammar.length}</Text>
             </View>
             <Text className="font-bold text-xl mt-2 text-[#2B308B]">
               Ngữ pháp
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
