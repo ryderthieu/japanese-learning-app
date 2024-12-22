@@ -6,7 +6,8 @@ const TestSchema = new mongoose.Schema({
   description: { type: String }, 
   sections: [
     {
-      name: { type: String, required: true, enum: ['Từ vựng', 'Ngữ pháp', 'Nghe hiểu'] }, 
+      name: { type: String, required: true}, 
+      audio: {type: String},
       subsections: [
         {
           title: { type: String, required: true }, 
@@ -14,7 +15,6 @@ const TestSchema = new mongoose.Schema({
           questions: [
             {
               content: { type: String, required: true }, // Nội dung câu hỏi
-              questionType: { type: String, required: true, enum: ['Trắc nghiệm', 'Điền từ', 'Nghe'] }, 
               format: { type: mongoose.Schema.Types.Mixed, required: true },
               explanation: { type: String }, 
             },

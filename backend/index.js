@@ -21,4 +21,3 @@ app.use('/api/vocabulary', vocabularyRouter)
 app.use('/api/user', userRouter)
 app.use('/api/grammar', grammarRouter)
 app.listen(PORT, () => console.log(`Example app listening ${PORT}`))
-
