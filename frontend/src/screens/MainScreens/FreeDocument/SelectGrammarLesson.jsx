@@ -36,20 +36,28 @@ const SelectGrammarLesson = ({ navigation, route }) => {
   }
   console.log(data.length);
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ paddingVertical: 20 }}
-    >
       <View className="px-3">
-        {data ? (
-            data.map((grammarItem, index) => (
-            <GrammarCard item={grammarItem} key={index} />
-            ))
+        {data.length ? (
+          <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingVertical: 20 }}
+        >
+          <View className="px-3">
+            {data.map((grammarItem, index) => (
+              <GrammarCard item={grammarItem} key={index} />
+            ))}
+          </View>
+        </ScrollView>
         ) : (
-            <Text className="text-gray-500">Không có ngữ pháp cho bài học này</Text>
+          <View className="h-[100%] justify-center items-center gap-2">
+            <Image
+              source={require("./empty.png")}
+              style={{ width: 250, height: 250 }}
+            />
+            <Text className="text-gray-400 text-xl ">Không có dữ liệu</Text>
+          </View>
         )}
       </View>
-    </ScrollView>
   );
 };
 
