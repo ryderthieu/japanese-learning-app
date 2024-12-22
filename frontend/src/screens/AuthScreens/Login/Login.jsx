@@ -8,35 +8,30 @@ import { AuthContext } from "../../../context/AuthContext";
 import { LoadingContext } from "../../../context/LoadingContext";
 import Loading from "../../../components/Loading/Loading";
 import BASE_URL from "../../../api/config";
+import { ModalContext } from "../../../context/ModalContext";
 const Login = ({navigation}) => {
-  // const {isLoading, setIsLoading} = useContext(LoadingContext)
   const {login} = useContext(AuthContext)
-
+  const {openModal} = useContext(ModalContext)
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   
   const handleLogin = async () => {
-    // setIsLoading(true)
     await axios.post(`${BASE_URL}/user/login`, {
       email: email,
       password: password
     })
     .then ((res) => {
       const token = res.data.token
-      alert ('Đăng nhập thành công!')
+      openModal({type: 'success', message: 'Đăng nhập thành công!'})
       login(token)
     })
     .catch((error) => {
-
-      alert (error.response.data.error)
+      openModal({type: 'error', messsage: error.response.data.error})
     }) 
-    // .finally (() => {
-    //   setIsLoading(false)
-    // })
+
   }
-  // if (isLoading)
-  //   return <Loading />
+
   return (
 
     <SafeAreaView>

@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
 import LottieView from "lottie-react-native";
 import axios from "axios";
 import BASE_URL from "../../../api/config";
+import { ModalContext } from "../../../context/ModalContext";
 const ForgotPassword = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const handleSendOtp = async () => {

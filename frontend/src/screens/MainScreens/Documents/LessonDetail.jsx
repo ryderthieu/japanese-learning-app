@@ -6,11 +6,13 @@ import axios from 'axios';  // Để thực hiện API request
 import { AuthContext } from '../../../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import BASE_URL from '../../../api/config';
+import { ModalContext } from '../../../context/ModalContext';
 const LessonDetail = ({ route }) => {
     const navigation = useNavigation()
     const { lesson } = route.params;
     const [videoEnded, setVideoEnded] = useState(false);
     const {token} = useContext(AuthContext)
+    const {openModal} = useContext(ModalContext)
     const markLessonComplete = async () => {
         try {
             await axios.post(`${BASE_URL}/user/add-completed-lesson/${lesson._id}`, {}, {
@@ -20,7 +22,7 @@ const LessonDetail = ({ route }) => {
             });
             navigation.goBack()
         } catch (error) {
-            console.error('Đánh dấu hoàn thành thất bại:', error);
+            openModal({type: 'error', message: error.response.data.message})
         }
     };
 
