@@ -5,8 +5,7 @@ import Register from "../screens/AuthScreens/Register/Register";
 import ForgotPassword from "../screens/AuthScreens/ForgotPassword/ForgotPassword";
 import SentOTP from "../screens/AuthScreens/ForgotPassword/SentOTP";
 import ChangePassword from "../screens/AuthScreens/ForgotPassword/ChangePassword";
-import CheckYourLeverl from "../screens/MainScreens/CheckYourLevel/CheckYourLeverl";
-import Survey from "../screens/MainScreens/CheckYourLevel/Survey";
+import Survey from "../screens/MainScreens/Survey/Survey";
 
 const AuthStack = () => {
   const Stack = createNativeStackNavigator();

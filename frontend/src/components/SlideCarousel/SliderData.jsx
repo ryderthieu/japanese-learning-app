@@ -1,28 +1,28 @@
 const SliderData = [
     {
-      title: "Tiêu đề 1",
-      image: require("../../assets/images/home/slide1.png"),
-      description: "Mô tả",
+      title: "Học tiếng Nhật miễn phí",
+      image: require("../../assets/images/home/slide1.jpg"),
+      description: "",
     },
     {
-      title: "Tiêu đề 2",
+      title: "Dành cho kỹ sư CNTT",
       image: require("../../assets/images/home/slide2.png"),
-      description: "Mô tả",
+      description: "",
     },
     {
-      title: "Tiêu đề 3",
-      image: require("../../assets/images/home/slide3.png"),
-      description: "Mô tả",
+      title: "5 lý do nên học Sakura Japanese",
+      image: require("../../assets/images/home/slide3.jpg"),
+      description: "",
     },
     {
-      title: "Tiêu đề 4",
+      title: "Dành cho người mới",
       image: require("../../assets/images/home/slide4.png"),
-      description: "Mô tả",
+      description: "",
     },
     {
-      title: "Tiêu đề 5",
-      image: require("../../assets/images/home/slide5.png"),
-      description: "Mô tả",
+      title: "Học cùng người Nhật",
+      image: require("../../assets/images/home/slide5.jpg"),
+      description: "",
     },
   ];
 
