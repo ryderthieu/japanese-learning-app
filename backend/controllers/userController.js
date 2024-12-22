@@ -136,6 +136,15 @@ const resetPassword = async (req, res) => {
   }
 };
 
+const getInfo = async (req, res) => {
+  try {
+    const userId = req.user._id
+    const user = await User.findById(userId)
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(400).json({message: error.message})
+  }
+}
 
 const enrollCourse = async (req, res) => {
   try {
@@ -349,9 +358,6 @@ const addCompletedLesson = async (req, res) => {
 };
 
 
-
-
-
 const saveQuestion = async (req, res) => {
   try {
     const {questionId} = req.params
@@ -385,5 +391,6 @@ module.exports = {
   getCourseLessons,
   addCompletedLesson,
   cofirmOtp,
-  saveQuestion
+  saveQuestion,
+  getInfo
 };

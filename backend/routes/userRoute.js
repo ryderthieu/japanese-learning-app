@@ -12,7 +12,8 @@ const {
   getUserCourses,
   getCourseLessons,
   addCompletedLesson,
-  cofirmOtp
+  cofirmOtp,
+  getInfo
 } = require("../controllers/userController");
 const { authenticateJWT } = require("../middleware/authMiddleware");
 
@@ -31,4 +32,5 @@ router.post("/add-courses", authenticateJWT, addCourses);
 router.get("/get-user-courses", authenticateJWT, getUserCourses);
 router.get("/get-course-lessons/:courseId", authenticateJWT, getCourseLessons)
 router.post("/add-completed-lesson/:lessonId", authenticateJWT, addCompletedLesson)
+router.get("/", authenticateJWT, getInfo)
 module.exports = router;

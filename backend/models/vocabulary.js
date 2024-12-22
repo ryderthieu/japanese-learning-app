@@ -7,12 +7,12 @@ const vocabulary = new Schema({
     romanji: {type: String},
     meaning: {type: String, required: true},
     kanjiMeaning: {type: String},
+    level: {type: String, enum : ["N5", "N4", "N3", "N2", "N1"]},
     example: [{
         sentences: {type: String},
         translation: {type: String}
     }],
-    type: {type: String},
-    lesson: {type: Number, ref: 'Lesson'}
+    category: {type: String},
 });
 
 module.exports = mongoose.model('Vocabulary', vocabulary)

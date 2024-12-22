@@ -1,13 +1,33 @@
 import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import CircularProgress from './CircularProgress';
 import Slider from '../../../components/SlideCarousel/Slider';
 import SliderData from '../../../components/SlideCarousel/SliderData';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Overlay from '../../../components/Overlay/Overlay';
-
+import BASE_URL from '../../../api/config';
+import { AuthContext } from '../../../context/AuthContext';
+import axios from 'axios';
+import { useIsFocused } from '@react-navigation/native';
 const Home = ({ navigation }) => {
-
+  const { token } = useContext(AuthContext)
+  const [savedVocabulary, setSavedVocabulary] = useState([]);
+  const [savedGrammar, setSavedGrammar] = useState([])
+  const isFocus = useIsFocused()
+  const fetchSavedData = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/user`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+      setSavedVocabulary(response.data.savedVocabulary);
+      setSavedGrammar(response.data.savedGrammar)
+    } catch (error) {
+      console.error('Lỗi khi lấy dữ liệu:', error);
+    }
+  };
+  useEffect(() => {
+    fetchSavedData();
+  }, [isFocus])
   return (
     <ScrollView className="flex flex-col pt-5" showsVerticalScrollIndicator={false}>
       <View>
@@ -65,7 +85,7 @@ const Home = ({ navigation }) => {
               </Text>
             </TouchableOpacity>
           </View>
-      
+
 
           <View className="flex-row justify-around mt-5 gap-4">
             <TouchableOpacity
@@ -88,7 +108,7 @@ const Home = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-        
+
       </View>
 
       <View className="mx-5 mt-10">
@@ -108,24 +128,18 @@ const Home = ({ navigation }) => {
 
       <View className="mx-5 mt-10 mb-10">
         <Text className="text-3xl font-bold text-[#2B308B] mb-5">Đã lưu</Text>
-        <View className="flex-row justify-between">
-          <View className="flex flex-col justify-center items-center w-[110px] h-[110px] bg-white rounded-3xl shadow-md">
+        <View className="flex-row justify-around">
+          <View className="flex flex-col justify-center items-center w-[140px] h-[140px] bg-white rounded-3xl shadow-md">
             <View className="flex w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
-              <Text className="font-bold text-white text-4xl">10</Text>
+              <Text className="font-bold text-white text-4xl">{savedVocabulary.length}</Text>
             </View>
             <Text className="font-bold text-xl mt-2 text-[#2B308B]">Từ vựng</Text>
           </View>
-          <View className="flex flex-col justify-center items-center w-[110px] h-[110px] bg-white rounded-3xl shadow-md">
+          <View className="flex flex-col justify-center items-center w-[140px] h-[140px] bg-white rounded-3xl shadow-md">
             <View className="w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
-              <Text className="font-bold text-white text-4xl">15</Text>
+              <Text className="font-bold text-white text-4xl">{savedGrammar.length}</Text>
             </View>
             <Text className="font-bold text-xl mt-2 text-[#2B308B]">Ngữ pháp</Text>
-          </View>
-          <View className="flex flex-col justify-center items-center w-[110px] h-[110px] bg-white rounded-3xl shadow-md">
-            <View className="w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
-              <Text className="font-bold text-white text-4xl">17</Text>
-            </View>
-            <Text className="font-bold text-xl mt-2 text-[#2B308B]">Câu hỏi</Text>
           </View>
         </View>
       </View>

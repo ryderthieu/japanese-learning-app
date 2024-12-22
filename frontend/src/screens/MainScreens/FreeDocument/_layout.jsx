@@ -10,29 +10,33 @@ import VocabList from './VocabList'
 import KanjiList from './KanjiList'
 import { Icon } from '@rneui/themed'
 import { TouchableOpacity, Text } from 'react-native'
+import GrammarLessonDetail from './GrammarLessonDetail'
 
-const FreeDocumentNavigation = ({navigation}) => {
-    const Stack = createNativeStackNavigator()
+const FreeDocumentNavigation = ({ navigation }) => {
+  const Stack = createNativeStackNavigator()
   return (
     <Stack.Navigator>
-        <Stack.Screen name='DocumentLevel' component={DocumentLevel} options={{
-                    headerShown: true,
-                    // headerLeft: () => (
-                    //     <TouchableOpacity className='flex z-10 flex-row justify-center items-center -ml-4' onPress={() => navigation.goBack()}>
-                    //       <Icon name="chevron-back-outline" type='ionicon' size={29} color={'#007AFF'} />
-                    //       <Text className='text-[#007AFF] text-xl'>Back</Text>
-                    //     </TouchableOpacity>
-                    // ),
-                    title: 'Tài liệu offline',
-                }}
-            />
-        <Stack.Screen name='SelectVocabLesson' component={SelectVocabLesson} options={{title: 'Danh sách bài học'}}/>
-        <Stack.Screen name='VocabList' component={VocabList} options={{title: 'Danh sách từ vựng'}}/>
-        <Stack.Screen name='Vocab' component={Vocab} options={{title: 'Học từ vựng'}}/>
-        <Stack.Screen name='SelectKanjiLesson' component={SelectKanjiLesson} options={{title: 'Danh sách bài học'}}/>
-        <Stack.Screen name='KanjiList' component={KanjiList} options={{title: 'Danh sách kanji'}}/>
-        <Stack.Screen name='Kanji' component={Kanji} options={{title: 'Học kanji'}}/>
-        <Stack.Screen name='SelectGrammarLesson' component={SelectGrammarLesson} options={{title: 'Danh sách ngữ pháp'}}/>
+      <Stack.Screen name='DocumentLevel' component={DocumentLevel} options={{
+        headerShown: true,
+        // headerLeft: () => (
+        //     <TouchableOpacity className='flex z-10 flex-row justify-center items-center -ml-4' onPress={() => navigation.goBack()}>
+        //       <Icon name="chevron-back-outline" type='ionicon' size={29} color={'#007AFF'} />
+        //       <Text className='text-[#007AFF] text-xl'>Back</Text>
+        //     </TouchableOpacity>
+        // ),
+        title: 'Tài liệu offline',
+      }}
+      />
+      <Stack.Screen name='SelectVocabLesson' component={SelectVocabLesson} options={{ title: 'Danh sách bài học' }} />
+      <Stack.Screen name='VocabList' component={VocabList} options={{ title: 'Danh sách từ vựng' }} />
+      <Stack.Screen name='Vocab' component={Vocab} options={{ title: 'Học từ vựng' }} />
+      <Stack.Screen name='SelectKanjiLesson' component={SelectKanjiLesson} options={{ title: 'Danh sách bài học' }} />
+      <Stack.Screen name='KanjiList' component={KanjiList} options={{ title: 'Danh sách kanji' }} />
+      <Stack.Screen name='Kanji' component={Kanji} options={{ title: 'Học kanji' }} />
+      <Stack.Screen name='SelectGrammarLesson' component={SelectGrammarLesson} options={{ title: 'Danh sách ngữ pháp' }} />
+      <Stack.Screen name='GrammarLessonDetail' component={GrammarLessonDetail} options={({ route }) => ({
+        title: route.params.lesson.title
+      })} />
     </Stack.Navigator>
   )
 }

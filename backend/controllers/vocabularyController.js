@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Vocabulary = require('../models/vocabulary');
-
+const User = require('../models/user')
 
 const searchVocabulary = async (req, res) => {
   try {
@@ -31,22 +31,55 @@ const searchVocabulary = async (req, res) => {
 };
 const saveVocabulary = async (req, res) => {
   try {
-    const {vocabularyId} = req.params
+    const {vocabularyId} = req.body
     const userId = req.user._id;
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "Người dùng không tồn tại." });
     }
-    if (!user.savedVocabulary.includes(vocabularyId))
+
+    if (!user.savedVocabulary.includes(vocabularyId)) {
       user.savedVocabulary.push(vocabularyId);
-    else
-      user.savedVocabulary = user.savedVocabulary.filter((v) => v!==vocabularyId)
+    } else {
+      user.savedVocabulary = user.savedVocabulary.filter((v) => v.toString() !== vocabularyId);
+    }
 
     await user.save()
+    console.log(user.savedVocabulary)
+
     res.status(200).json({ message: "Thay đổi trạng thái từ vựng thành công" });
   } catch {
     res.status(400).json({ message: "Lỗi khi lưu từ vựng." });
   }
 }
-module.exports = { searchVocabulary, saveVocabulary };
+const getLessons = async (req, res) => {
+    try {
+        const { level, lessonNumber = 1 } = req.query; 
+        const limit = 10;  
+
+        const skip = (lessonNumber - 1) * limit;  
+
+        const query = level ? { level } : {};  
+
+        const vocabularies = await Vocabulary.find(query)
+            .skip(skip)  
+            .limit(limit);
+
+        res.json(vocabularies);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+const getSavedVocabulary = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const user = await User.findById(userId).populate('savedVocabulary');
+        const vocabularies = user.savedVocabulary || []
+        res.json(vocabularies);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+module.exports = { searchVocabulary, saveVocabulary, getLessons, getSavedVocabulary };
 
