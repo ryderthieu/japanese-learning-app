@@ -1,23 +1,35 @@
-import { Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
-import CircularProgress from './CircularProgress';
-import Slider from '../../../components/SlideCarousel/Slider';
-import SliderData from '../../../components/SlideCarousel/SliderData';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Overlay from '../../../components/Overlay/Overlay';
+import { Text, View, Image, ScrollView, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import CircularProgress from "./CircularProgress";
+import Slider from "../../../components/SlideCarousel/Slider";
+import SliderData from "../../../components/SlideCarousel/SliderData";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Overlay from "../../../components/Overlay/Overlay";
 
 const Home = ({ navigation }) => {
-
   return (
-    <ScrollView className="flex flex-col pt-5" showsVerticalScrollIndicator={false}>
+    <ScrollView
+      className="flex flex-col pt-5"
+      showsVerticalScrollIndicator={false}
+    >
       <View>
         <View className="mb-3">
           <Slider itemList={SliderData} />
         </View>
-
+        <View className="flex-row items-center justify-between p-4 bg-white borderrounded-lg shadow-lg mx-5 mb-6 rounded-xl">
+          <View>
+            <Text className="text-lg font-bold text-[#2B308B]">KHẢO SÁT</Text>
+            <Text className="text-sm text-gray-500">
+              Giúp chúng tôi hiểu bạn hơn
+            </Text>
+          </View>
+          <TouchableOpacity className="px-4 py-2 border border-[#2B308B] rounded-md" onPress={() => navigation.navigate('SurveyNavigation')}>
+            <Text className="text-[#2B308B] font-semibold">Bắt đầu</Text>
+          </TouchableOpacity>
+        </View>
         <View className="flex-row items-center justify-between bg-white mx-5 p-4 rounded-xl shadow-md mb-6">
           <Image
-            source={require('../../../assets/images/home/learned-time.png')}
+            source={require("../../../assets/images/home/learned-time.png")}
             className="w-16 h-16"
           />
           <View className="flex-1 ml-5">
@@ -27,7 +39,7 @@ const Home = ({ navigation }) => {
             <Text className="text-3xl font-bold text-[#2B308B]">
               3/
               <Text className="text-2xl font-bold text-[#2B308B]">
-                10{' '}
+                10{" "}
                 <Text className="text-xl font-bold text-gray-500">minutes</Text>
               </Text>
             </Text>
@@ -43,52 +55,57 @@ const Home = ({ navigation }) => {
           <View className="flex-row justify-around gap-4">
             <TouchableOpacity
               className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
-              onPress={() => navigation.navigate('FreeDocumentNavigation')}
+              onPress={() => navigation.navigate("FreeDocumentNavigation")}
             >
               <Image
-                source={require('../../../assets/images/home/document.png')}
+                source={require("../../../assets/images/home/document.png")}
                 className="w-12 h-12"
               />
               <Text className="font-semibold text-lg text-[#2B308B]">
-                Tài liệu {'\n'}offline
+                Tài liệu {"\n"}offline
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
-              onPress={() => navigation.navigate('CoursesNavigation')}>
+              onPress={() => navigation.navigate("CoursesNavigation")}
+            >
               <Image
-                source={require('../../../assets/images/home/online_course.png')}
+                source={require("../../../assets/images/home/online_course.png")}
                 className="w-12 h-12"
               />
               <Text className="font-semibold text-lg text-[#2B308B]">
-                Khóa học {'\n'}online
+                Khóa học {"\n"}online
               </Text>
             </TouchableOpacity>
           </View>
-      
 
           <View className="flex-row justify-around mt-5 gap-4">
             <TouchableOpacity
               className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
-              onPress={() => navigation.navigate('TestStack')}>
+              onPress={() => navigation.navigate("TestStack")}
+            >
               <Image
-                source={require('../../../assets/images/home/test.png')}
+                source={require("../../../assets/images/home/test.png")}
                 className="w-12 h-12"
               />
-              <Text className="font-semibold text-lg text-[#2B308B]">Thi thử</Text>
+              <Text className="font-semibold text-lg text-[#2B308B]">
+                Thi thử
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
               className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
-              onPress={() => navigation.navigate('Dictionary')}>
+              onPress={() => navigation.navigate("Dictionary")}
+            >
               <Image
-                source={require('../../../assets/images/home/search.png')}
+                source={require("../../../assets/images/home/search.png")}
                 className="w-12 h-12"
               />
-              <Text className="font-semibold text-lg text-[#2B308B]">Tra từ</Text>
+              <Text className="font-semibold text-lg text-[#2B308B]">
+                Tra từ
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
-        
       </View>
 
       <View className="mx-5 mt-10">
@@ -113,19 +130,25 @@ const Home = ({ navigation }) => {
             <View className="flex w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
               <Text className="font-bold text-white text-4xl">10</Text>
             </View>
-            <Text className="font-bold text-xl mt-2 text-[#2B308B]">Từ vựng</Text>
+            <Text className="font-bold text-xl mt-2 text-[#2B308B]">
+              Từ vựng
+            </Text>
           </View>
           <View className="flex flex-col justify-center items-center w-[110px] h-[110px] bg-white rounded-3xl shadow-md">
             <View className="w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
               <Text className="font-bold text-white text-4xl">15</Text>
             </View>
-            <Text className="font-bold text-xl mt-2 text-[#2B308B]">Ngữ pháp</Text>
+            <Text className="font-bold text-xl mt-2 text-[#2B308B]">
+              Ngữ pháp
+            </Text>
           </View>
           <View className="flex flex-col justify-center items-center w-[110px] h-[110px] bg-white rounded-3xl shadow-md">
             <View className="w-[60px] h-[60px] justify-center items-center mt-4 bg-secondary rounded-2xl">
               <Text className="font-bold text-white text-4xl">17</Text>
             </View>
-            <Text className="font-bold text-xl mt-2 text-[#2B308B]">Câu hỏi</Text>
+            <Text className="font-bold text-xl mt-2 text-[#2B308B]">
+              Câu hỏi
+            </Text>
           </View>
         </View>
       </View>

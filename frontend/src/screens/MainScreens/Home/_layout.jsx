@@ -3,6 +3,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Home from './Home'
 import FreeDocumentNavigation from '../FreeDocument/_layout'
+import SurveyNavigation from '../Survey/_layout'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useEffect } from 'react'
 
@@ -28,6 +29,7 @@ const HomeNavigation = ({ navigation, route }) => {
                 title: ''
             }} />
             <Stack.Screen name='FreeDocumentNavigation' component={FreeDocumentNavigation} options={{headerShown: false}}  />
+            <Stack.Screen name='SurveyNavigation' component={SurveyNavigation} options={{headerShown: false}}  />
         </Stack.Navigator>
     )
 }
