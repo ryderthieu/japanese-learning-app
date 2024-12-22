@@ -56,7 +56,8 @@ const DocumentLevel = ({ navigation }) => {
             <Text className="text-center text-lg font-semibold">Ngữ pháp</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
+          <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm"
+           onPress={() => navigation.navigate('Test', { level: selectedLevel, topic: 'Test' })}>
             <TestIcon />
             <Text className="text-center text-lg font-semibold">Ôn tập</Text>
           </TouchableOpacity>

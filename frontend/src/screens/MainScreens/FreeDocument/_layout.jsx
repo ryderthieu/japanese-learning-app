@@ -8,6 +8,7 @@ import Kanji from './Kanji'
 import DocumentLevel from './DocumentLevel'
 import VocabList from './VocabList'
 import KanjiList from './KanjiList'
+import Test from './Test'
 import { Icon } from '@rneui/themed'
 import { TouchableOpacity, Text } from 'react-native'
 
@@ -33,6 +34,7 @@ const FreeDocumentNavigation = ({navigation}) => {
         <Stack.Screen name='KanjiList' component={KanjiList} options={{title: 'Danh sách kanji'}}/>
         <Stack.Screen name='Kanji' component={Kanji} options={{title: 'Học kanji'}}/>
         <Stack.Screen name='SelectGrammarLesson' component={SelectGrammarLesson} options={{title: 'Danh sách ngữ pháp'}}/>
+        <Stack.Screen name='Test' component={Test} options={{title: 'Ôn tập'}}/>
     </Stack.Navigator>
   )
 }
