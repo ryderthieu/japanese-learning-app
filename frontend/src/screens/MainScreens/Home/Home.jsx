@@ -50,7 +50,9 @@ const Home = ({ navigation }) => {
                 Tài liệu {'\n'}offline
               </Text>
             </TouchableOpacity>
-            <View className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4">
+            <TouchableOpacity 
+            className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
+            onPress={() => navigation.navigate('CoursesNavigation')}>
               <Image
                 source={require('../../../assets/images/home/online_course.png')}
                 className="w-12 h-12"
@@ -58,24 +60,28 @@ const Home = ({ navigation }) => {
               <Text className="font-semibold text-lg text-[#2B308B]">
                 Khóa học {'\n'}online
               </Text>
-            </View>
+            </TouchableOpacity>
           </View>
 
           <View className="flex-row justify-around mt-5 gap-4">
-            <TouchableOpacity className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4">
+            <TouchableOpacity 
+            className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
+            onPress={() => navigation.navigate('TestStack')}>
               <Image
                 source={require('../../../assets/images/home/test.png')}
                 className="w-12 h-12"
               />
               <Text className="font-semibold text-lg text-[#2B308B]">Thi thử</Text>
             </TouchableOpacity>
-            <View className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4">
+            <TouchableOpacity 
+            className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
+            onPress={() => navigation.navigate('Dictionary')}>
               <Image
                 source={require('../../../assets/images/home/search.png')}
                 className="w-12 h-12"
               />
               <Text className="font-semibold text-lg text-[#2B308B]">Tra từ</Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
 
