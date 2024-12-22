@@ -1,12 +1,14 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView, Animated } from "react-native";
+import { ModalContext } from "../../../context/ModalContext";
 import SurveyOption from "./SurveyOption";
 import SurveyData from "./SurveyData";
 
-const Survey = () => {
+const Survey = ({navigation}) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Câu hỏi hiện tại
   const [selectedOption, setSelectedOption] = useState(null); // Option được chọn
   const progress = useRef(new Animated.Value(0)).current; // Animated value cho thanh tiến trình
+  const {openModal} = useContext(ModalContext)
 
   const currentQuestion = SurveyData[currentQuestionIndex];
 
@@ -24,7 +26,8 @@ const Survey = () => {
       }).start();
     } else {
       // Kết thúc khảo sát
-      alert("Khảo sát đã hoàn thành!");
+      openModal({type: 'success', message: 'Cảm ơn bạn đã tham gia khảo sát!'})
+      navigation.navigate('Home')
     }
   };
 
@@ -38,10 +41,9 @@ const Survey = () => {
   }, [currentQuestionIndex]);
 
   return (
-    <SafeAreaView>
       <View className="flex flex-col w-screen h-screen px-2 py-5 bg-slate-100">
         {/* Thanh tiến trình */}
-        <View className="w-full h-2 mb-5 bg-gray-300 rounded-full">
+        <View className="w-full h-2 mt-8 mb-5 bg-gray-300 rounded-full">
           <Animated.View
             className="h-2 bg-green-500 rounded-full"
             style={{
@@ -53,7 +55,7 @@ const Survey = () => {
           />
         </View>
 
-        <ScrollView className="flex-grow px-2 py-5">
+        <ScrollView className="flex-grow px-2 py-5" showsVerticalScrollIndicator={false}>
           <View className="flex flex-row px-2 gap-3 mb-16">
             {/* Hình hoa anh đào */}
             <Image
@@ -86,7 +88,6 @@ const Survey = () => {
           </Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
   );
 };
 
