@@ -2,6 +2,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import SelectVocabLesson from './SelectVocabLesson'
 import SelectKanjiLesson from './SelectKanjiLesson'
+import SelectGrammarLesson from './SelectGrammarLesson'
 import Vocab from './Vocab'
 import Kanji from './Kanji'
 import DocumentLevel from './DocumentLevel'
@@ -31,6 +32,7 @@ const FreeDocumentNavigation = ({navigation}) => {
         <Stack.Screen name='SelectKanjiLesson' component={SelectKanjiLesson} options={{title: 'Danh sách bài học'}}/>
         <Stack.Screen name='KanjiList' component={KanjiList} options={{title: 'Danh sách kanji'}}/>
         <Stack.Screen name='Kanji' component={Kanji} options={{title: 'Học kanji'}}/>
+        <Stack.Screen name='SelectGrammarLesson' component={SelectGrammarLesson} options={{title: 'Danh sách ngữ pháp'}}/>
     </Stack.Navigator>
   )
 }

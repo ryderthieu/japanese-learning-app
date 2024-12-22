@@ -11,8 +11,8 @@ const N3LessonData = {
         { id: 2, title: "Kanji tự nhiên", description: "Núi, rừng, sông, biển." ,image: "https://via.placeholder.com/140x125",status: 'not-learned'},
     ],
     grammar: [
-        { id: 1, title: "Cấu trúc ～ようにする", description: "Thể hiện sự nỗ lực làm gì đó." },
-        { id: 2, title: "Cấu trúc ～ことにする", description: "Diễn đạt quyết định cá nhân." }
+        { id: 1, title: "Cấu trúc ～ようにする", description: "Thể hiện sự nỗ lực làm gì đó.", image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        { id: 2, title: "Cấu trúc ～ことにする", description: "Diễn đạt quyết định cá nhân.", image: "https://via.placeholder.com/140x125",status: 'not-learned' }
     ]
 };
 

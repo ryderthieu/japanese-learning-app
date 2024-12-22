@@ -54,16 +54,60 @@ const N5LessonData = {
         { id: 25, title: "Kanji số nhỏ", description: "Số 1 đến số 10 chi tiết." , image: "https://via.placeholder.com/140x125",status: 'not-learned'}
     ],
     grammar: [
-        { id: 1, title: "Câu khẳng định", description: "Cấu trúc: N + です." },
-        { id: 2, title: "Câu phủ định", description: "Cấu trúc: N + じゃありません." },
-        { id: 3, title: "Hỏi có/không", description: "Cấu trúc câu hỏi với ですか." },
-        { id: 4, title: "Đại từ chỉ thị", description: "Các từ như これ、それ、あれ." },
-        { id: 5, title: "Trợ từ の", description: "Cách sử dụng trợ từ の để chỉ sở hữu." },
-        { id: 6, title: "Trợ từ も", description: "Cách sử dụng trợ từ も để nói 'cũng'." },
-        { id: 7, title: "Động từ quá khứ", description: "Cách chia động từ ở thể quá khứ." },
-        { id: 8, title: "Động từ hiện tại", description: "Cách chia động từ ở thể hiện tại." },
-        { id: 9, title: "Trợ từ へ và に", description: "Trợ từ chỉ hướng và nơi chốn." },
-        { id: 10, title: "Trợ từ で", description: "Chỉ phương tiện và địa điểm." }
+        {
+            id: 1,
+            rule: "N + です",
+            meaning: "Dùng để khẳng định một danh từ trong câu.",
+            example: [
+                        { sentence: "わたしは学生です。", translation: "Tôi là học sinh." },
+                        { sentence: "これ は ペン です。", translation: "Đây là một cái bút." }
+                    ] 
+                
+        },
+        {
+            id: 2,
+            rule: "N + じゃありません",
+            meaning: "Dùng để phủ định một danh từ trong câu.",
+            example: [
+                        { sentence: "わたし は 学生 じゃありません。", translation: "Tôi không phải là học sinh." },
+                        { sentence: "それ は 猫 じゃありません。", translation: "Đó không phải là con mèo." }
+                    ]
+        },
+        {
+            id: 3,
+            rule: "Câu khẳng định/phủ định + か",
+            example: [
+                        { sentence: "あなた は 学生 ですか。", translation: "Bạn có phải là học sinh không?" },
+                        { sentence: "これは 本 ですか。", translation: "Đây là quyển sách phải không?" }
+                    ]
+        },
+        {
+            id: 4,
+            rule: "これ、それ、あれ",
+            meaning: "Dùng để chỉ đồ vật tùy theo vị trí so với người nói và người nghe.",
+            example: [
+                        { sentence: "これ は 私 の ペン です。", translation: "Cái này là bút của tôi." },
+                        { sentence: "あれ は 山 です。", translation: "Kia là núi." }
+                    ]
+        },
+        {
+            id: 5,
+            rule: "N1 の N2",
+            meaning: "Dùng để thể hiện sự sở hữu giữa hai danh từ.",
+            example: [
+                        { sentence: "これは 田中さん の 車 です。", translation: "Đây là xe của anh Tanaka." },
+                        { sentence: "わたし の 本。", translation: "Quyển sách của tôi." }
+                    ]
+                },
+        {
+            id: 6,
+            rule: "N + も + V",
+            meaning: "Dùng để nói 'cũng', thay thế cho は.",
+            example: [
+                        { sentence: "わたし も 学生 です。", translation: "Tôi cũng là học sinh." },
+                        { sentence: "田中さん も 学生 です。", translation: "Anh Tanaka cũng là học sinh." }
+                    ]
+        },
     ]
 };
 
