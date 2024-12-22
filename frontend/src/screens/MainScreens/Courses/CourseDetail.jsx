@@ -5,6 +5,7 @@ import Button from "../../../components/Button/Button";
 import { CartContext } from "../../../context/CartContext";
 import { AuthContext } from "../../../context/AuthContext";
 import axios from "axios";
+import BASE_URL from "../../../api/config";
 const CourseDetail = ({ route, navigation }) => {
   const { item } = route.params;
   const { setRefresh } = useContext(CartContext)
@@ -12,7 +13,7 @@ const CourseDetail = ({ route, navigation }) => {
 
   const addToCart = async (course) => {
     try {
-      await axios.post("http://10.0.2.2:3000/api/user/add-to-cart", { courseId: course._id },
+      await axios.post(`${BASE_URL}/user/add-to-cart`, { courseId: course._id },
         {
           headers: {
             Authorization: `Bearer ${token}`,

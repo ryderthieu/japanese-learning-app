@@ -7,6 +7,7 @@ import { useIsFocused } from '@react-navigation/native';
 import { LoadingContext } from '../../../context/LoadingContext';
 import Loading from '../../../components/Loading/Loading';
 import LottieView from 'lottie-react-native';
+import BASE_URL from '../../../api/config';
 const MyCourses = ({ navigation }) => {
   const isFocus = useIsFocused()
   const { token } = useContext(AuthContext)
@@ -16,7 +17,7 @@ const MyCourses = ({ navigation }) => {
     const fetchData = async () => {
       try {
         setIsLoading(true)
-        const response = await axios.get("http://10.0.2.2:3000/api/user/get-user-courses", {
+        const response = await axios.get(`${BASE_URL}/user/get-user-courses`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

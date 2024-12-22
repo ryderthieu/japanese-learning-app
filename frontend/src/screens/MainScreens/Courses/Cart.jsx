@@ -7,7 +7,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import { CartContext } from "../../../context/CartContext";
 import { useNavigation } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
-
+import BASE_URL from "../../../api/config";
 const Cart = ({ route }) => {
   const navigation = useNavigation()
   const { token } = useContext(AuthContext)
@@ -56,7 +56,7 @@ const Cart = ({ route }) => {
 
   const removeFromCart = async (courses) => {
     try {
-      await axios.post("http://10.0.2.2:3000/api/user/remove-from-cart", { courses: courses },
+      await axios.post(`${BASE_URL}/user/remove-from-cart`, { courses: courses },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -77,7 +77,7 @@ const Cart = ({ route }) => {
     }
     console.log(courses)
     try {
-      await axios.post("http://10.0.2.2:3000/api/user/add-courses", { courses },
+      await axios.post(`${BASE_URL}/user/add-courses`, { courses },
         {
           headers: {
             Authorization: `Bearer ${token}`,

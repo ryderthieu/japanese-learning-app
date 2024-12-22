@@ -5,7 +5,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 import axios from "axios";
 import { AuthContext } from "../../../context/AuthContext";
 import { useIsFocused } from "@react-navigation/native";
-
+import BASE_URL from "../../../api/config";
 const Lessons = ({ route, navigation }) => {
     const isFocus = useIsFocused()
     const {token} = useContext(AuthContext)
@@ -24,7 +24,7 @@ const Lessons = ({ route, navigation }) => {
     useEffect(() => {
         const getLesson = async () => {
             try {
-                const response = await axios.get(`http://10.0.2.2:3000/api/user/get-course-lessons/${course._id}`, {
+                const response = await axios.get(`${BASE_URL}/user/get-course-lessons/${course._id}`, {
                     headers: {
                         'Authorization': `Bear ${token}` 
                         }

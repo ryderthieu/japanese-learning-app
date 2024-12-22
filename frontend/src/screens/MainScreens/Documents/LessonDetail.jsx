@@ -5,7 +5,7 @@ import { GrammarCard, VocabularyCard } from '../../../components/Card/Card';
 import axios from 'axios';  // Để thực hiện API request
 import { AuthContext } from '../../../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
-
+import BASE_URL from '../../../api/config';
 const LessonDetail = ({ route }) => {
     const navigation = useNavigation()
     const { lesson } = route.params;
@@ -13,7 +13,7 @@ const LessonDetail = ({ route }) => {
     const {token} = useContext(AuthContext)
     const markLessonComplete = async () => {
         try {
-            await axios.post(`http://10.0.2.2:3000/api/user/add-completed-lesson/${lesson._id}`, {}, {
+            await axios.post(`${BASE_URL}/user/add-completed-lesson/${lesson._id}`, {}, {
                 headers: {
                     'Authorization': `Bearer ${token}` 
                     }

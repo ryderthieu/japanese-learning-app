@@ -11,6 +11,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
 import axios from "axios";
+import BASE_URL from "../../../api/config";
 const ForgotPassword = ({ route, navigation }) => {
   const {email} = route.params
   console.log('param', route.params)
@@ -19,7 +20,7 @@ const ForgotPassword = ({ route, navigation }) => {
   const handleConfirm = async () => {
     console.log(email, newPassword)
     try {
-      await axios.post('http://10.0.2.2:3000/api/user/reset-password', {newPassword: newPassword, email: email })
+      await axios.post(`${BASE_URL}/user/reset-password`, {newPassword: newPassword, email: email })
       alert('Đổi mật khẩu thành công, vui lòng đăng nhập lại')
       navigation.navigate('Login')
     } catch (error) {

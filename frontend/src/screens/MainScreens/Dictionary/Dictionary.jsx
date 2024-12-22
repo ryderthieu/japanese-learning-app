@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import axios from 'axios';
 import { VocabularyCard } from "../../../components/Card/Card";
 import LottieView from 'lottie-react-native';
-
+import BASE_URL from "../../../api/config";
 const Dictionary = () => {
     const [searchText, setSearchText] = useState('');
     const [results, setResults] = useState([]);
@@ -22,7 +22,7 @@ const Dictionary = () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get(`http://10.0.2.2:3000/api/vocabulary/search?query=${text}`);
+            const response = await axios.get(`${BASE_URL}/vocabulary/search?query=${text}`);
             setResults(response.data);
         } catch (err) {
             console.log(err);

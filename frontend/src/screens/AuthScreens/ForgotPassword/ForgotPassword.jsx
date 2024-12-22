@@ -4,12 +4,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
 import axios from "axios";
-
+import BASE_URL from "../../../api/config";
 const ForgotPassword = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const handleSendOtp = async () => {
     try {
-      const response = await axios.post("http://10.0.2.2:3000/api/user/forgot-password", { email });
+      const response = await axios.post(`${BASE_URL}/user/forgot-password`, { email });
 
       alert('Mã otp đã gửi đến email của bạn');
       navigation.navigate("SentOTP", {email});

@@ -7,7 +7,7 @@ import axios from 'axios';
 import { AuthContext } from "../../../context/AuthContext";
 import { LoadingContext } from "../../../context/LoadingContext";
 import Loading from "../../../components/Loading/Loading";
-
+import BASE_URL from "../../../api/config";
 const Login = ({navigation}) => {
   // const {isLoading, setIsLoading} = useContext(LoadingContext)
   const {login} = useContext(AuthContext)
@@ -18,7 +18,7 @@ const Login = ({navigation}) => {
   
   const handleLogin = async () => {
     // setIsLoading(true)
-    await axios.post('http://10.0.2.2:3000/api/user/login', {
+    await axios.post(`${BASE_URL}/user/login`, {
       email: email,
       password: password
     })

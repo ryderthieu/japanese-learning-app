@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
 import axios from "axios";
+import BASE_URL from "../../../api/config";
 const Register = ({ navigation }) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [name, setName] = useState('')
@@ -12,7 +13,7 @@ const Register = ({ navigation }) => {
   const [confirmPassword, setConfirmPassword] = useState('')
 
   const handleSignup = async () => {
-    axios.post('http://10.0.2.2:3000/api/user/signup', {
+    axios.post(`${BASE_URL}/user/signup`, {
       email: email,
       password: password
     })
