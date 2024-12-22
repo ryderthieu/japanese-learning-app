@@ -18,16 +18,16 @@ const DocumentLevel = ({ navigation }) => {
   // Dữ liệu trình độ
   const levels = ["N5", "N4", "N3", "N2", "N1"];
   const contentByLevel = {
-    N5: { title: "Trình độ N5", image: "https://via.placeholder.com/600x300" },
-    N4: { title: "Trình độ N4", image: "https://via.placeholder.com/600x300" },
-    N3: { title: "Trình độ N3", image: "https://via.placeholder.com/600x300" },
-    N2: { title: "Trình độ N2", image: "https://via.placeholder.com/600x300" },
-    N1: { title: "Trình độ N1", image: "https://via.placeholder.com/600x300" },
+    N5: { title: "Trình độ N5", image: require("./N5-banner.png") } ,
+    N4: { title: "Trình độ N4", image: require("./N4-banner.png") },
+    N3: { title: "Trình độ N3", image: require("./N3-banner.png") },
+    N2: { title: "Trình độ N2", image: require("./N2-banner.png") },
+    N1: { title: "Trình độ N1", image: require("./N1-banner.png") },
   };
 
   const renderContent = () => (
     <View className="flex flex-col gap-5">
-      <Image source={{ uri: contentByLevel[selectedLevel].image }} className="w-full h-48" />
+      <Image source={contentByLevel[selectedLevel].image} className="w-full h-48" />
       <Text className="text-black font-bold text-xl">{contentByLevel[selectedLevel].title}</Text>
       <View className="flex flex-col px-4 gap-5">
         <View className="flex flex-row justify-between">
@@ -49,7 +49,9 @@ const DocumentLevel = ({ navigation }) => {
         </View>
 
         <View className="flex flex-row justify-between">
-          <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm">
+          <TouchableOpacity className="w-[48%] bg-white rounded-lg p-4 items-center shadow-sm"
+           onPress={() => navigation.navigate('SelectGrammarLesson', { level: selectedLevel, topic: 'Grammar' })}
+          >
             <GrammarIcon />
             <Text className="text-center text-lg font-semibold">Ngữ pháp</Text>
           </TouchableOpacity>

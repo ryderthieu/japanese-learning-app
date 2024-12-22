@@ -7,69 +7,109 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Overlay from '../../../components/Overlay/Overlay';
 
 const Home = ({ navigation }) => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalType, setModalType] = useState("success");
-  const [modalMessage, setModalMessage] = useState("");
-  const openModal = (type, message) => {
-    setModalType(type);
-    setModalMessage(message);
-    setModalVisible(true);
-  };
+
   return (
     <ScrollView className="flex flex-col pt-5" showsVerticalScrollIndicator={false}>
-      <View className="mb-3">
-        <Slider itemList={SliderData} />
-      </View>
-
-      <View className="flex-row items-center justify-between bg-white mx-5 p-4 rounded-xl shadow-md mb-6">
-        <Image
-          source={require('../../../assets/images/home/learned-time.png')}
-          className="w-16 h-16"
-        />
-        <View className="flex-1 ml-5">
-          <Text className="text-lg font-semibold text-[#2B308B]">
-            Thời gian đã học hôm nay
-          </Text>
-          <Text className="text-3xl font-bold text-[#2B308B]">
-            3/
-            <Text className="text-2xl font-bold text-[#2B308B]">
-              10{' '}
-              <Text className="text-xl font-bold text-gray-500">minutes</Text>
-            </Text>
-          </Text>
-        </View>
-        <CircularProgress percentage={20} />
-      </View>
-
-      <View className="mx-5">
-        <Text className="text-3xl font-bold text-[#2B308B] mb-5">
-          Danh mục
-        </Text>
-
-        <View className="flex-row justify-around gap-4">
-          <TouchableOpacity
-            className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
-            onPress={() => navigation.navigate('FreeDocumentNavigation')}
-          >
-            <Image
-              source={require('../../../assets/images/home/document.png')}
-              className="w-12 h-12"
-            />
-            <Text className="font-semibold text-lg text-[#2B308B]">
-              Tài liệu {'\n'}offline
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4" onPress={() => openModal('warning', 'Thành công')}>
-            <Image
-              source={require('../../../assets/images/home/online_course.png')}
-              className="w-12 h-12"
-            />
-            <Text className="font-semibold text-lg text-[#2B308B]">
-              Khóa học {'\n'}online
-            </Text>
-          </TouchableOpacity>
+      <View>
+        <View className="mb-3">
+          <Slider itemList={SliderData} />
         </View>
 
+        <View className="flex-row items-center justify-between bg-white mx-5 p-4 rounded-xl shadow-md mb-6">
+          <Image
+            source={require('../../../assets/images/home/learned-time.png')}
+            className="w-16 h-16"
+          />
+          <View className="flex-1 ml-5">
+            <Text className="text-lg font-semibold text-[#2B308B]">
+              Thời gian đã học hôm nay
+            </Text>
+            <Text className="text-3xl font-bold text-[#2B308B]">
+              3/
+              <Text className="text-2xl font-bold text-[#2B308B]">
+                10{' '}
+                <Text className="text-xl font-bold text-gray-500">minutes</Text>
+              </Text>
+            </Text>
+          </View>
+          <CircularProgress percentage={20} />
+        </View>
+
+        <View className="mx-5">
+          <Text className="text-3xl font-bold text-[#2B308B] mb-5">
+            Danh mục
+          </Text>
+
+          <View className="flex-row justify-around gap-4">
+            <TouchableOpacity
+              className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
+              onPress={() => navigation.navigate('FreeDocumentNavigation')}
+            >
+              <Image
+                source={require('../../../assets/images/home/document.png')}
+                className="w-12 h-12"
+              />
+              <Text className="font-semibold text-lg text-[#2B308B]">
+                Tài liệu {'\n'}offline
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
+              onPress={() => navigation.navigate('CoursesNavigation')}>
+              <Image
+                source={require('../../../assets/images/home/online_course.png')}
+                className="w-12 h-12"
+              />
+              <Text className="font-semibold text-lg text-[#2B308B]">
+                Khóa học {'\n'}online
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <View className="flex-row justify-around gap-4">
+            <TouchableOpacity
+              className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
+              onPress={() => navigation.navigate('FreeDocumentNavigation')}
+            >
+              <Image
+                source={require('../../../assets/images/home/document.png')}
+                className="w-12 h-12"
+              />
+              <Text className="font-semibold text-lg text-[#2B308B]">
+                Tài liệu {'\n'}offline
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4" onPress={() => openModal('warning', 'Thành công')}>
+              <Image
+                source={require('../../../assets/images/home/online_course.png')}
+                className="w-12 h-12"
+              />
+              <Text className="font-semibold text-lg text-[#2B308B]">
+                Khóa học {'\n'}online
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View className="flex-row justify-around mt-5 gap-4">
+            <TouchableOpacity
+              className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
+              onPress={() => navigation.navigate('TestStack')}>
+              <Image
+                source={require('../../../assets/images/home/test.png')}
+                className="w-12 h-12"
+              />
+              <Text className="font-semibold text-lg text-[#2B308B]">Thi thử</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
+              onPress={() => navigation.navigate('Dictionary')}>
+              <Image
+                source={require('../../../assets/images/home/search.png')}
+                className="w-12 h-12"
+              />
+              <Text className="font-semibold text-lg text-[#2B308B]">Tra từ</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
         <View className="flex-row justify-around mt-5 gap-4">
           <TouchableOpacity className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4">
             <Image
@@ -126,16 +166,6 @@ const Home = ({ navigation }) => {
           </View>
         </View>
       </View>
-      <View className='absolute top-1/2 left-1/2'>
-        <Overlay
-          isVisible={modalVisible}
-          onClose={() => setModalVisible(false)}
-          type={modalType}
-          message={modalMessage}
-          title={'Thông báo'}
-        />
-      </View>
-
     </ScrollView>
   );
 };

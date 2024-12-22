@@ -7,7 +7,7 @@ const N2LessonData = {
         { id: 1, title: "Kanji văn hóa", description: "Diễn đạt các hoạt động văn hóa và nghệ thuật.",image: "https://via.placeholder.com/140x125",status: 'completed' }
     ],
     grammar: [
-        { id: 1, title: "Cấu trúc ～わけだ", description: "Diễn tả kết luận logic từ sự việc đã nêu." }
+        { id: 1, title: "Cấu trúc ～わけだ", description: "Diễn tả kết luận logic từ sự việc đã nêu.", image: "https://via.placeholder.com/140x125",status: 'not-learned' }
     ]
 };
 

@@ -24,16 +24,16 @@ const N4LessonData = {
         { id: 10, title: "Kanji du lịch", description: "Đi, nghỉ, khách sạn, địa điểm." ,image: "https://via.placeholder.com/140x125",status: 'not-learned'},
     ],
     grammar: [
-        { id: 1, title: "Thể て và ứng dụng", description: "Cách chia và sử dụng thể て trong câu." },
-        { id: 2, title: "Thể khả năng", description: "Cấu trúc để diễn đạt khả năng làm gì đó." },
-        { id: 3, title: "Thể ý định", description: "Cách sử dụng thể ý định để diễn đạt dự định." },
-        { id: 4, title: "Thể mệnh lệnh và cấm chỉ", description: "Cách chia động từ và sử dụng trong mệnh lệnh." },
-        { id: 5, title: "Cấu trúc ～たり～たりする", description: "Liệt kê các hành động không theo thứ tự." },
-        { id: 6, title: "Điều kiện ～ば", description: "Cách diễn đạt điều kiện 'nếu' với ～ば." },
-        { id: 7, title: "Cấu trúc ～のに", description: "Cách sử dụng ～のに để diễn tả sự bất ngờ." },
-        { id: 8, title: "Cấu trúc ～そうです", description: "Dùng để diễn đạt phỏng đoán hoặc trông có vẻ." },
-        { id: 9, title: "Cấu trúc ～ようです", description: "Cách sử dụng để diễn tả suy đoán mang tính chủ quan." },
-        { id: 10, title: "Cấu trúc ～すぎる", description: "Diễn đạt sự quá mức, quá nhiều." }
+        // { id: 1, title: "Thể て và ứng dụng", description: "Cách chia và sử dụng thể て trong câu.", image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        // { id: 2, title: "Thể khả năng", description: "Cấu trúc để diễn đạt khả năng làm gì đó.", image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        // { id: 3, title: "Thể ý định", description: "Cách sử dụng thể ý định để diễn đạt dự định.", image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        // { id: 4, title: "Thể mệnh lệnh và cấm chỉ", description: "Cách chia động từ và sử dụng trong mệnh lệnh.", image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        // { id: 5, title: "Cấu trúc ～たり～たりする", description: "Liệt kê các hành động không theo thứ tự.", image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        // { id: 6, title: "Điều kiện ～ば", description: "Cách diễn đạt điều kiện 'nếu' với ～ば.", image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        // { id: 7, title: "Cấu trúc ～のに", description: "Cách sử dụng ～のに để diễn tả sự bất ngờ.", image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        // { id: 8, title: "Cấu trúc ～そうです", description: "Dùng để diễn đạt phỏng đoán hoặc trông có vẻ.", image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        // { id: 9, title: "Cấu trúc ～ようです", description: "Cách sử dụng để diễn tả suy đoán mang tính chủ quan.", image: "https://via.placeholder.com/140x125",status: 'not-learned' },
+        // { id: 10, title: "Cấu trúc ～すぎる", description: "Diễn đạt sự quá mức, quá nhiều.", image: "https://via.placeholder.com/140x125",status: 'not-learned' }
     ]
 };
 
