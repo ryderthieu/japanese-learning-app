@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import CheckBox from 'react-native-check-box';
 
 const Test = ({ route, navigation }) => {
@@ -56,7 +56,6 @@ const Test = ({ route, navigation }) => {
   };
 
   const handleFinishTest = () => {
-    Alert.alert('Kết quả', `Điểm số của bạn là: ${score} / ${questions.length}`);
     navigation.navigate('TestResult', { score, total: questions.length, questions: questions, answers: selectedAnswers });
   };
 

@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import Button from "../../../components/Button/Button";
 import { CartContext } from "../../../context/CartContext";
 import { AuthContext } from "../../../context/AuthContext";
 import axios from "axios";
 import BASE_URL from "../../../api/config";
+import { ModalContext } from "../../../context/ModalContext";
 const CourseDetail = ({ route, navigation }) => {
   const { item } = route.params;
   const { setRefresh } = useContext(CartContext)
   const {token} = useContext(AuthContext)
-
+  const {openModal} = useContext(ModalContext)
   const addToCart = async (course) => {
     try {
       await axios.post(`${BASE_URL}/user/add-to-cart`, { courseId: course._id },
@@ -21,10 +21,10 @@ const CourseDetail = ({ route, navigation }) => {
 
         });
       setRefresh(prev => !prev)
-      alert('Thêm khóa học vào giỏ hàng thành công!')
+      openModal({type: 'success', message: 'Thêm khóa học vào giỏ hàng thành công!'})
 
     } catch (error) {
-      console.log('Lỗi', error.message);
+      openModal({type: 'error', message: error.response.data.message})
     }
   };
   return (

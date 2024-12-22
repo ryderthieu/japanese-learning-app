@@ -1,21 +1,22 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../../../api/config";
+import { ModalContext } from "../../../context/ModalContext";
 const ForgotPassword = ({ navigation }) => {
   const [email, setEmail] = useState('')
+  const {openModal} = useContext(ModalContext)
   const handleSendOtp = async () => {
     try {
       const response = await axios.post(`${BASE_URL}/user/forgot-password`, { email });
 
-      alert('Mã otp đã gửi đến email của bạn');
+      openModal({message: 'Mã OTP đã được gửi đến email của bạn!'})
       navigation.navigate("SentOTP", {email});
     } catch (error) {
-      console.log(error.message)
-      alert( error.response?.data?.error || "Đã xảy ra lỗi!");
+      openModal({type: 'error', message: error.response.data.message})
     }
   }
   return (

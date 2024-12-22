@@ -8,11 +8,13 @@ import { LoadingContext } from '../../../context/LoadingContext';
 import Loading from '../../../components/Loading/Loading';
 import LottieView from 'lottie-react-native';
 import BASE_URL from '../../../api/config';
+import { ModalContext } from '../../../context/ModalContext';
 const MyCourses = ({ navigation }) => {
   const isFocus = useIsFocused()
   const { token } = useContext(AuthContext)
   const [allCourses, setAllCourses] = useState([]);
   const { isLoading, setIsLoading } = useContext(LoadingContext)
+  const {openModal} = useContext(ModalContext)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,7 +26,7 @@ const MyCourses = ({ navigation }) => {
         });
         setAllCourses(response.data.courses);
       } catch (error) {
-        console.log(error.message)
+        openModal({type: 'error', message: error.response.data.message})
       } finally {
         setIsLoading(false)
       }

@@ -8,13 +8,14 @@ import { CartContext } from "../../../context/CartContext";
 import { useNavigation } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
 import BASE_URL from "../../../api/config";
+import { ModalContext } from "../../../context/ModalContext";
 const Cart = ({ route }) => {
   const navigation = useNavigation()
   const { token } = useContext(AuthContext)
   const { cartItems, setRefresh } = useContext(CartContext)
   const [totalPrice, setTotalPrice] = useState(0);
   const [selectedItems, setSelectedItems] = useState([]);
-
+  const {openModal} = useContext(ModalContext)
   useEffect(() => {
     const fetchData = () => {
       try {
@@ -22,7 +23,7 @@ const Cart = ({ route }) => {
         setTotalPrice(total);
       } catch (error) {
         console.error("Lỗi khi tính tổng giỏ hàng:", error);
-        Alert.alert("Lỗi", "Không thể tải giỏ hàng");
+        openModal({type: 'error', message: "Không thể tải giỏ hàng"});
       }
     };
 
@@ -40,18 +41,7 @@ const Cart = ({ route }) => {
   };
 
   const handleRemoveItem = (item) => {
-    Alert.alert("Xóa", `Xóa ${item.title} khỏi giỏ hàng!`, [
-      {
-        text: "Hủy",
-        style: "cancel",
-      },
-      {
-        text: "Xóa",
-        onPress: () => {
-          removeFromCart([item._id])
-        },
-      },
-    ]);
+    openModal({type: 'confirm', message: `Xóa ${item.title} khỏi giỏ hàng!`, onConfirm: () => () => removeFromCart([item._id])})
   };
 
   const removeFromCart = async (courses) => {
@@ -64,15 +54,16 @@ const Cart = ({ route }) => {
         }
       )
       setRefresh(prev => !prev)
+      openModal({type: 'success', message: 'Xóa thành công!'})
     } catch (error) {
-      console.error("Lỗi khi xóa khỏi giỏ hàng:", error);
+      openModal({type: 'error', message: error.response.data.message})
     }
   }
 
   const handlePayment = async () => {
     const courses = selectedItems.map(v => v._id)
     if (courses.length === 0) {
-      alert('Bạn chưa chọn')
+      openModal({message: 'Bạn chưa chọn khóa học để thanh toán!'})
       return
     }
     console.log(courses)
@@ -84,11 +75,10 @@ const Cart = ({ route }) => {
           },
         });
       await removeFromCart(courses)
-      alert('Thanh toán thành công')
+      openModal({type: 'success', message: 'Thanh toán thành công!'})
       setTotalPrice(0)
-      // console.log(navigation)
     } catch (error) {
-      alert('Lỗi: Bạn đã có khóa học')
+      openModal({type: 'error', message: error.response.data.message})
     }
   }
   const renderCartItem = ({ item }) => (

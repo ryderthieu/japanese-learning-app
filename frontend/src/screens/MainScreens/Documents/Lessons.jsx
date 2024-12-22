@@ -6,9 +6,11 @@ import axios from "axios";
 import { AuthContext } from "../../../context/AuthContext";
 import { useIsFocused } from "@react-navigation/native";
 import BASE_URL from "../../../api/config";
+import { ModalContext } from "../../../context/ModalContext";
 const Lessons = ({ route, navigation }) => {
     const isFocus = useIsFocused()
     const {token} = useContext(AuthContext)
+    const {openModal} = useContext(ModalContext)
     const { course } = route.params;
     const [modalVisible, setModalVisible] = useState(false); // Trạng thái mở modal 
     const [filter, setFilter] = useState("all"); // Bộ lọc: tất cả, đã học, chưa học
@@ -32,7 +34,7 @@ const Lessons = ({ route, navigation }) => {
                 setLessons(response.data.lessons)
                 setFilteredLessons(response.data.lessons)
             } catch (error) {
-                console.log(error.message);
+                openModal({type: 'error', message: error.response.data.message})
             }
         };
     

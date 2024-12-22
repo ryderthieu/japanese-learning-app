@@ -9,17 +9,21 @@ import { CartContext } from '../../../context/CartContext';
 import { LoadingContext } from '../../../context/LoadingContext';
 import Loading from '../../../components/Loading/Loading';
 import BASE_URL from '../../../api/config';
+import { ModalContext } from '../../../context/ModalContext';
 const Courses = () => {
   const {token} = useContext(AuthContext)
   const [cartCount, setCartCount] = useState(0); 
   const {cartItems, setRefresh} = useContext(CartContext)
   const {isLoading, setIsLoading} = useContext(LoadingContext)
+  const {openModal, closeModal} = useContext(ModalContext)
+
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showAll, setShowAll] = useState(false);
 
   const navigation = useNavigation();
 
   const [allCourses, setAllCourses] = useState([{_id: '', title: '', description: '', level: '', price: '', thumbnail: '',type: '', lessons: []}]);
+    
   
   useEffect(() => {
     const fetchCourses = async () => {
@@ -28,7 +32,7 @@ const Courses = () => {
         const response = await axios.get(`${BASE_URL}/courses`); 
         setAllCourses(response.data)
       } catch (error) {
-        console.error('Lỗi khi gọi API:', error);
+        openModal({type: 'error', message: error.response.data.message})
       } finally {
         setIsLoading(false)
       }
@@ -42,7 +46,6 @@ const Courses = () => {
   }, [cartItems])
 
   const addToCart = async (course) => {
-    console.log('hello')
     try {
       await axios.post(`${BASE_URL}/user/add-to-cart`, { courseId: course._id },
         {
@@ -52,10 +55,11 @@ const Courses = () => {
 
       });
       setRefresh(prev => !prev)
-      alert('Thêm khóa học vào giỏ hàng thành công!')
+      
+      openModal({type: 'success', message: 'Thêm khóa học vào giỏ hàng thành công!'})
 
     } catch (error){
-      console.log('Lỗi', error.message);
+      openModal({type: 'error', message: error.response.data.message})
     }
   };
 
