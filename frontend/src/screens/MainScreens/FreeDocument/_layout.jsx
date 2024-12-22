@@ -17,12 +17,12 @@ const FreeDocumentNavigation = ({navigation}) => {
     <Stack.Navigator>
         <Stack.Screen name='DocumentLevel' component={DocumentLevel} options={{
                     headerShown: true,
-                    headerLeft: () => (
-                        <TouchableOpacity className='flex z-10 flex-row justify-center items-center -ml-4' onPress={() => navigation.goBack()}>
-                          <Icon name="chevron-back-outline" type='ionicon' size={29} color={'#007AFF'} />
-                          <Text className='text-[#007AFF] text-xl'>Back</Text>
-                        </TouchableOpacity>
-                    ),
+                    // headerLeft: () => (
+                    //     <TouchableOpacity className='flex z-10 flex-row justify-center items-center -ml-4' onPress={() => navigation.goBack()}>
+                    //       <Icon name="chevron-back-outline" type='ionicon' size={29} color={'#007AFF'} />
+                    //       <Text className='text-[#007AFF] text-xl'>Back</Text>
+                    //     </TouchableOpacity>
+                    // ),
                     title: 'Tài liệu offline',
                 }}
             />

@@ -1,5 +1,5 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
 import * as Speech from 'expo-speech';
 
@@ -46,7 +46,7 @@ const CourseInfo = ({ item }) => {
                         <View className="mt-3 bg-gray-300 h-2 rounded-2xl flex-row w-[200px]">
                             <View
                                 className="h-full bg-secondary"
-                                style={{ width: `${item.progress}%` }} // Phần trăm hoàn thành
+                                style={{ width: `${item.progress}%` }}
                             />
                         </View>
                         <Text className='text-lg text-secondary font-bold'>{`${item.progress}%`}</Text>
@@ -59,6 +59,8 @@ const CourseInfo = ({ item }) => {
 
 
 const VocabularyCard = ({ item }) => {
+    const [isSaved, setIsSaved] = useState(false);
+
     const speak = (word) => {
         Speech.speak(word, {
             language: 'ja',
@@ -67,20 +69,34 @@ const VocabularyCard = ({ item }) => {
         });
     };
 
+    const handleSave = () => {
+        setIsSaved(!isSaved); 
+    };
+
     return (
         <View className="bg-white p-5 rounded-lg shadow-lg mb-6 border-l-4 border-pink-500 relative">
-            <View className="flex-row justify-between items-center  border-gray-300 pb-2">
+            <View className="flex-row justify-between items-center border-gray-300 pb-2">
                 <Text className="text-2xl font-semibold text-blue-700">{`${item.kanji ? item.kanji : item.word}`}</Text>
-                <TouchableOpacity onPress={() => speak(item.word)}>
-                    <Icon name="volume-medium-outline" size={28} color="#FF4081" />
-                </TouchableOpacity>
+                
+                <View className="flex-col gap-10 items-center absolute right-0 top-0">
+                    <TouchableOpacity onPress={() => speak(item.word)}>
+                        <Icon name="volume-medium-outline" size={28} color="#FF4081" />
+                    </TouchableOpacity>
+                    
+                    <TouchableOpacity onPress={handleSave}>
+                        <Icon 
+                            name={isSaved ? "heart" : "heart-outline"}
+                            size={24} 
+                            color={isSaved ? "#FF4081" : "#FF4081"} 
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
 
             {item.kanji && (
                 <Text className="text-lg font-semibold text-blue-700 mb-2">{item.word}</Text>
             )}
-            {item.romanji && <Text className="text-pink-500 mt-1 italic">{item.romanji}</Text> }
-            
+            {item.romanji && <Text className="text-pink-500 mt-1 italic">{item.romanji}</Text>}
 
             <Text className="text-gray-800 mt-2 text-base">{item.meaning}</Text>
 
@@ -93,7 +109,6 @@ const VocabularyCard = ({ item }) => {
                 </View>
             ))}
         </View>
-
     );
 };
 
