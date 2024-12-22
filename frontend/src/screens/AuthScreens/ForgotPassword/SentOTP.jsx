@@ -11,13 +11,14 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
+import LottieView from "lottie-react-native";
 import axios from "axios";
 import BASE_URL from "../../../api/config";
 
-const SentOTP = ({route, navigation }) => {
+const SentOTP = ({ route, navigation }) => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
-  const {email} = route.params
-  console.log(email)
+  const { email } = route.params;
+  console.log(email);
   const handleChange = (text, index) => {
     if (/^\d$/.test(text)) {
       const newOtp = [...otp];
@@ -44,25 +45,27 @@ const SentOTP = ({route, navigation }) => {
   const inputs = [];
   const handleConfirm = async () => {
     try {
-      await axios.post(`${BASE_URL}/user/forgot-password`, {otp: otp.toString(), email: email })
-      alert('Nhập mã otp thành công, vui lòng nhập mật khẩu mới')
-      navigation.navigate("ChangePassword", {email})
-      console.log(email)
+      await axios.post(`${BASE_URL}/user/forgot-password`, {
+        otp: otp.toString(),
+        email: email,
+      });
+      alert("Nhập mã otp thành công, vui lòng nhập mật khẩu mới");
+      navigation.navigate("ChangePassword", { email });
+      console.log(email);
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-  }
+  };
   return (
     <SafeAreaView>
-      <View className="flex flex-col items-center gap-5 w-screen h-screen px-5 py-10">
-        <TouchableOpacity
-          className="absolute left-5 flex flex-row items-center"
-          onPress={() => navigation.goBack()}
-        >
-          <Icon name="chevron-back-outline" type="ionicon" color="#00aced" />
-          <Text className="text-base text-[#00aced]">Quay lại</Text>
-        </TouchableOpacity>
-        <Image source={require("../../../assets/images/sentemail.png")}></Image>
+      <View className="flex flex-col items-center gap-5 w-screen h-screen px-5">
+        <LottieView
+          source={require("../../../assets/animate/SendOTP.json")}
+          autoPlay
+          loop
+          style={{ width: 300, height: 300, alignSelf: "center" }}
+          speed={2}
+        />
         <View className="flex flex-row gap-3">
           {otp.map((digit, index) => (
             <TextInput

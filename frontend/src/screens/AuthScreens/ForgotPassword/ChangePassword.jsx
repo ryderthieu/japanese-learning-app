@@ -10,34 +10,37 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
+import LottieView from "lottie-react-native";
 import axios from "axios";
 import BASE_URL from "../../../api/config";
 const ForgotPassword = ({ route, navigation }) => {
-  const {email} = route.params
-  console.log('param', route.params)
+  const { email } = route.params;
+  console.log("param", route.params);
   const [isPasswordVisible, setPasswordVisible] = useState(false);
-  const [newPassword, setNewPassword] = useState('')
+  const [newPassword, setNewPassword] = useState("");
   const handleConfirm = async () => {
-    console.log(email, newPassword)
+    console.log(email, newPassword);
     try {
-      await axios.post(`${BASE_URL}/user/reset-password`, {newPassword: newPassword, email: email })
-      alert('Đổi mật khẩu thành công, vui lòng đăng nhập lại')
-      navigation.navigate('Login')
+      await axios.post(`${BASE_URL}/user/reset-password`, {
+        newPassword: newPassword,
+        email: email,
+      });
+      alert("Đổi mật khẩu thành công, vui lòng đăng nhập lại");
+      navigation.navigate("Login");
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-  }
+  };
   return (
     <SafeAreaView>
-      <View className="flex flex-col items-center gap-1 w-screen h-screen px-5 py-10">
-        <TouchableOpacity
-          className="absolute left-5 flex flex-row items-center"
-          onPress={() => navigation.goBack()}
-        >
-          <Icon name="chevron-back-outline" type="ionicon" color="#00aced" />
-          <Text className="text-base text-[#00aced]">Quay lại</Text>
-        </TouchableOpacity>
-        <Image source={require("../../../assets/images/changepass.png")}></Image>
+      <View className="flex flex-col items-center gap-1 w-screen h-screen px-5">
+        <LottieView
+          source={require("../../../assets/animate/ChangePassword.json")}
+          autoPlay
+          loop
+          style={{ width: 300, height: 300, alignSelf: "center" }}
+          speed={1}
+        />
         <Input
           containerStyle={{
             width: "full",

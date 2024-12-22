@@ -3,25 +3,35 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
+import LottieView from "lottie-react-native";
 import axios from "axios";
 import BASE_URL from "../../../api/config";
 const ForgotPassword = ({ navigation }) => {
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState("");
   const handleSendOtp = async () => {
     try {
-      const response = await axios.post(`${BASE_URL}/user/forgot-password`, { email });
+      const response = await axios.post(`${BASE_URL}/user/forgot-password`, {
+        email,
+      });
 
-      alert('Mã otp đã gửi đến email của bạn');
-      navigation.navigate("SentOTP", {email});
+      alert("Mã otp đã gửi đến email của bạn");
+      navigation.navigate("SentOTP", { email });
     } catch (error) {
-      console.log(error.message)
-      alert( error.response?.data?.error || "Đã xảy ra lỗi!");
+      console.log(error.message);
+      alert(error.response?.data?.error || "Đã xảy ra lỗi!");
     }
-  }
+  };
   return (
     <SafeAreaView>
-      <View className="flex flex-col items-center gap-5 w-screen h-screen px-5 py-10">
-        <Image source={require("../../../assets/images/forgotpass.png")}></Image>
+      <View className="flex flex-col items-center w-screen h-screen px-5">
+        <LottieView
+          source={require("../../../assets/animate/ForgotPassword.json")}
+          autoPlay
+          loop
+          style={{ width: 300, height: 300, alignSelf: "center" }}
+          speed={3}
+        />
+
         <Input
           containerStyle={{
             width: "100%",
@@ -48,11 +58,10 @@ const ForgotPassword = ({ navigation }) => {
             paddingHorizontal: 20,
             backgroundColor: "#F490AF",
             borderRadius: 20,
-
           }}
           titleStyle={{
             fontWeight: "bold",
-            textAlign: 'center'
+            textAlign: "center",
           }}
           onPress={handleSendOtp}
         />
