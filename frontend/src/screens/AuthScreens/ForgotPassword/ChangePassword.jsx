@@ -19,6 +19,7 @@ const ForgotPassword = ({ route, navigation }) => {
   console.log("param", route.params);
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [newPassword, setNewPassword] = useState("");
+  const {openModal} = useContext(ModalContext)
   const handleConfirm = async () => {
     console.log(email, newPassword);
     try {
@@ -26,10 +27,10 @@ const ForgotPassword = ({ route, navigation }) => {
         newPassword: newPassword,
         email: email,
       });
-      alert("Đổi mật khẩu thành công, vui lòng đăng nhập lại");
+      openModal({type: 'success', message: "Đổi mật khẩu thành công, vui lòng đăng nhập lại"});
       navigation.navigate("Login");
     } catch (error) {
-      console.log(error.message);
+      openModal({type: 'error', message: error.response.message})
     }
   };
   return (

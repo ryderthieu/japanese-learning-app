@@ -3,9 +3,9 @@ import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import { Icon } from '@rneui/themed';
 
 const ExampleData = [
-    { label: 'Tên', value: 'Trần Nhật Trường' },
+    { label: 'Tên', value: 'Huynh Van Thieu' },
     { label: 'Tên đăng nhập', value: 'tnt171' },
-    { label: 'Email', value: '22251584@gm.uit.edu.vn' },
+    { label: 'Email', value: 'ryderthieu666@gmail.com' },
     { label: 'Sinh nhật', value: '17/10/2004' },
 ]
 

@@ -18,7 +18,8 @@ const login = async (req, res) => {
 
     res.status(200).json({ email, token });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.log(error.message)
+    res.status(400).json({ message: error.message });
   }
 };
 
@@ -31,6 +32,8 @@ const signup = async (req, res) => {
       .status(200)
       .json({ message: "Đăng ký thành công! Vui lòng đăng nhập để tiếp tục." });
   } catch (error) {
+    console.log(error.message)
+
     res.status(400).json({ error: error.message });
   }
 };

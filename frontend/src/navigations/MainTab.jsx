@@ -66,7 +66,7 @@ const MainTab = () => {
             <Icon
               name="menu-outline"
               size={24}
-              color="#000"
+              color="#fff"
               onPress={() => navigation.openDrawer()}
               style={{
                 marginRight: 20,
@@ -74,6 +74,9 @@ const MainTab = () => {
               }}
             />
           ),
+          headerStyle: {backgroundColor: '#F490AF'},
+          headerTitleStyle: {color: '#fff'},
+          headerTintColor: '#fff'
         }}
       />
 

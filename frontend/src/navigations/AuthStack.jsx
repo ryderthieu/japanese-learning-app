@@ -13,6 +13,9 @@ const AuthStack = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        headerStyle: { backgroundColor: '#F490AF' },
+        headerTitleStyle: { color: '#fff' },
+        headerTintColor: '#fff'
       }}
     >
       <Stack.Screen name="Login" component={Login} />
@@ -24,11 +27,11 @@ const AuthStack = () => {
       <Stack.Screen name="SentOTP" component={SentOTP} options={{
         title: "Quên mật khẩu",
         headerShown: true
-      }}/>
+      }} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} options={{
-                title: "Quên mật khẩu",
-                headerShown: true
-        
+        title: "Quên mật khẩu",
+        headerShown: true
+
       }} />
       <Stack.Screen name="Survey" component={Survey} />
 

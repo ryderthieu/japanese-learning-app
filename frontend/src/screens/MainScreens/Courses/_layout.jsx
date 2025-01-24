@@ -14,6 +14,9 @@ export default function CoursesNavigation() {
       <Stack.Navigator
         screenOptions={{
           headerShown: true,
+          headerStyle: {backgroundColor: '#F490AF'},
+          headerTitleStyle: {color: '#fff'},
+          headerTintColor: '#fff'
         }}
       >
         <Stack.Screen
@@ -25,7 +28,7 @@ export default function CoursesNavigation() {
               <Icon
                 name="menu-outline"
                 size={24}
-                color="#000"
+                color="#fff"
                 onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
                 style={{
                   marginRight: 20

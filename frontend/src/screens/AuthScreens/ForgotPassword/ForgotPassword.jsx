@@ -9,17 +9,18 @@ import BASE_URL from "../../../api/config";
 import { ModalContext } from "../../../context/ModalContext";
 const ForgotPassword = ({ navigation }) => {
   const [email, setEmail] = useState("");
+  const {openModal} = useContext(ModalContext)
   const handleSendOtp = async () => {
     try {
       const response = await axios.post(`${BASE_URL}/user/forgot-password`, {
         email,
       });
 
-      alert("Mã otp đã gửi đến email của bạn");
+      openModal({type: 'success', messsage: "Mã otp đã gửi đến email của bạn"});
       navigation.navigate("SentOTP", { email });
     } catch (error) {
       console.log(error.message);
-      alert(error.response?.data?.error || "Đã xảy ra lỗi!");
+      openModal({type: 'error', message: error.response.data.message})
     }
   };
   return (

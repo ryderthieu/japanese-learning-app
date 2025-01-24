@@ -19,6 +19,7 @@ import { ModalContext } from "../../../context/ModalContext";
 const SentOTP = ({ route, navigation }) => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const { email } = route.params;
+  const {openModal} = useContext(ModalContext)
   console.log(email);
   const handleChange = (text, index) => {
     if (/^\d$/.test(text)) {
@@ -50,11 +51,10 @@ const SentOTP = ({ route, navigation }) => {
         otp: otp.toString(),
         email: email,
       });
-      alert("Nhập mã otp thành công, vui lòng nhập mật khẩu mới");
+      openModal({type: 'success', message: "Nhập mã otp thành công, vui lòng nhập mật khẩu mới"});
       navigation.navigate("ChangePassword", { email });
-      console.log(email);
     } catch (error) {
-      console.log(error.message);
+      openModal({type: 'error', message: error.response.data.message})
     }
   };
   return (

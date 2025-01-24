@@ -11,14 +11,18 @@ const TestStack = () => {
   const Stack = createNativeStackNavigator()
   const navigation = useNavigation()
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{
+      headerStyle: { backgroundColor: '#F490AF' },
+      headerTitleStyle: { color: '#fff' },
+      headerTintColor: '#fff'
+    }}>
       <Stack.Screen name='LevelSelect' component={LevelSelect} options={{
         title: 'Thi thử',
         headerLeft: () => (
           <Icon
             name="menu-outline"
             size={24}
-            color="#000"
+            color="#fff"
             onPress={() => navigation.openDrawer()}
             style={{
               marginRight: 20

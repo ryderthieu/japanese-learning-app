@@ -3,8 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { AuthContext } from '../../../context/AuthContext';
 const ExampleData = [
-  { label: 'Tên', value: 'Huỳnh Văn Thiệu' },
-  { label: 'Email', value: '22521396@gmail.com' },
+  { label: 'Tên', value: 'Huynh Van Thieu' },
+  { label: 'Email', value: 'ryderthieu666@gmail.com' },
   { label: 'Sinh nhật', value: '17/10/2004' },
 ]
 

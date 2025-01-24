@@ -23,6 +23,7 @@ const Register = ({ navigation }) => {
       navigation.navigate('Login')
     })
     .catch((error) => {
+      console.log(error.response.data.error)
       openModal({type: 'error', message: error.response.data.error})
     }) 
   }

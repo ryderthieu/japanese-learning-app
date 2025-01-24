@@ -17,6 +17,7 @@ const Login = ({navigation}) => {
   const [password, setPassword] = useState('')
   
   const handleLogin = async () => {
+    console.log(email, password)
     await axios.post(`${BASE_URL}/user/login`, {
       email: email,
       password: password
@@ -27,7 +28,8 @@ const Login = ({navigation}) => {
       login(token)
     })
     .catch((error) => {
-      openModal({type: 'error', messsage: error.response.data.error})
+      console.log(error.response.data.message)
+      openModal({type: 'error', message: error.response.data.message})
     }) 
 
   }

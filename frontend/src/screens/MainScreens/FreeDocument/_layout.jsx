@@ -17,7 +17,11 @@ import VocabularyLessonDetail from './VocabularyLessonDetail'
 const FreeDocumentNavigation = ({ navigation }) => {
   const Stack = createNativeStackNavigator()
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{
+      headerStyle: { backgroundColor: '#F490AF' },
+      headerTitleStyle: { color: '#fff' },
+      headerTintColor: '#fff'
+    }}>
       <Stack.Screen name='DocumentLevel' component={DocumentLevel} options={{
         headerShown: true,
         // headerLeft: () => (
@@ -42,7 +46,7 @@ const FreeDocumentNavigation = ({ navigation }) => {
       <Stack.Screen name='VocabularyLessonDetail' component={VocabularyLessonDetail} options={({ route }) => ({
         title: route.params.lesson.title
       })} />
-      <Stack.Screen name='Test' component={Test} options={{title: 'Ôn tập'}} />
+      <Stack.Screen name='Test' component={Test} options={{ title: 'Ôn tập' }} />
     </Stack.Navigator>
   )
 }
