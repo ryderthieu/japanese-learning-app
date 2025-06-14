@@ -3,9 +3,9 @@ import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
-import axios from "axios";
-import BASE_URL from "../../../api/config";
 import { ModalContext } from "../../../context/ModalContext";
+import userService from "../../../api/userService";
+
 const Register = ({ navigation }) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [name, setName] = useState('')
@@ -13,19 +13,20 @@ const Register = ({ navigation }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const {openModal} = useContext(ModalContext)
+
   const handleSignup = async () => {
-    axios.post(`${BASE_URL}/user/signup`, {
-      email: email,
-      password: password
-    })
-    .then ((res) => {
+    try {
+      await userService.signup({
+        name,
+        email,
+        password
+      });
       openModal({type: 'success', message: 'Đăng ký thành công!'})
       navigation.navigate('Login')
-    })
-    .catch((error) => {
-      console.log(error.response.data.error)
-      openModal({type: 'error', message: error.response.data.error})
-    }) 
+    } catch (error) {
+      console.log(error.response?.data?.error)
+      openModal({type: 'error', message: error.response?.data?.error || 'Đăng ký thất bại'})
+    }
   }
 
   return (

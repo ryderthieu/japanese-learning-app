@@ -3,12 +3,12 @@ import React, { useContext } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
-import axios from 'axios';
 import { AuthContext } from "../../../context/AuthContext";
 import { LoadingContext } from "../../../context/LoadingContext";
 import Loading from "../../../components/Loading/Loading";
-import BASE_URL from "../../../api/config";
 import { ModalContext } from "../../../context/ModalContext";
+import userService from "../../../api/userService";
+
 const Login = ({navigation}) => {
   const {login} = useContext(AuthContext)
   const {openModal} = useContext(ModalContext)
@@ -17,21 +17,18 @@ const Login = ({navigation}) => {
   const [password, setPassword] = useState('')
   
   const handleLogin = async () => {
-    console.log(email, password)
-    await axios.post(`${BASE_URL}/user/login`, {
-      email: email,
-      password: password
-    })
-    .then ((res) => {
-      const token = res.data.token
+    try {
+      const response = await userService.login({
+        email: email,
+        password: password
+      });
+      const token = response.token;
       openModal({type: 'success', message: 'Đăng nhập thành công!'})
       login(token)
-    })
-    .catch((error) => {
-      console.log(error.response.data.message)
-      openModal({type: 'error', message: error.response.data.message})
-    }) 
-
+    } catch (error) {
+      console.log(error.response?.data?.message)
+      openModal({type: 'error', message: error.response?.data?.message || 'Đăng nhập thất bại'})
+    }
   }
 
   return (

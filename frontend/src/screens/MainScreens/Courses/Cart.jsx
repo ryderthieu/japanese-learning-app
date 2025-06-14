@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { View, Text, FlatList, TouchableOpacity, Image, Alert } from "react-native";
 import CheckBox from 'react-native-check-box';
@@ -7,8 +6,9 @@ import { AuthContext } from "../../../context/AuthContext";
 import { CartContext } from "../../../context/CartContext";
 import { useNavigation } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
-import BASE_URL from "../../../api/config";
 import { ModalContext } from "../../../context/ModalContext";
+import userService from "../../../api/userService";
+
 const Cart = ({ route }) => {
   const navigation = useNavigation()
   const { token } = useContext(AuthContext)
@@ -16,6 +16,7 @@ const Cart = ({ route }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [selectedItems, setSelectedItems] = useState([]);
   const {openModal} = useContext(ModalContext)
+
   useEffect(() => {
     const fetchData = () => {
       try {
@@ -41,22 +42,16 @@ const Cart = ({ route }) => {
   };
 
   const handleRemoveItem = (item) => {
-    openModal({type: 'confirm', message: `Xóa ${item.title} khỏi giỏ hàng!`, onConfirm: () => () => removeFromCart([item._id])})
+    openModal({type: 'confirm', message: `Xóa ${item.title} khỏi giỏ hàng!`, onConfirm: () => removeFromCart([item._id])})
   };
 
   const removeFromCart = async (courses) => {
     try {
-      await axios.post(`${BASE_URL}/user/remove-from-cart`, { courses: courses },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      await userService.removeFromCart({ courses });
       setRefresh(prev => !prev)
       openModal({type: 'success', message: 'Xóa thành công!'})
     } catch (error) {
-      openModal({type: 'error', message: error.response.data.message})
+      openModal({type: 'error', message: error.response?.data?.message || 'Lỗi khi xóa khỏi giỏ hàng'})
     }
   }
 
@@ -66,21 +61,16 @@ const Cart = ({ route }) => {
       openModal({message: 'Bạn chưa chọn khóa học để thanh toán!'})
       return
     }
-    console.log(courses)
     try {
-      await axios.post(`${BASE_URL}/user/add-courses`, { courses },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+      await userService.addCourses({ courses });
       await removeFromCart(courses)
       openModal({type: 'success', message: 'Thanh toán thành công!'})
       setTotalPrice(0)
     } catch (error) {
-      openModal({type: 'error', message: error.response.data.message})
+      openModal({type: 'error', message: error.response?.data?.message || 'Lỗi khi thanh toán'})
     }
   }
+
   const renderCartItem = ({ item }) => (
     <View className="flex-row items-center bg-white shadow-lg rounded-lg p-4 mb-4 gap-4">
       <CheckBox

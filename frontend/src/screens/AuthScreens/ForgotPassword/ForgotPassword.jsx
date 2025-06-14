@@ -4,25 +4,24 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
 import LottieView from "lottie-react-native";
-import axios from "axios";
-import BASE_URL from "../../../api/config";
 import { ModalContext } from "../../../context/ModalContext";
+import userService from "../../../api/userService";
+
 const ForgotPassword = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const {openModal} = useContext(ModalContext)
+
   const handleSendOtp = async () => {
     try {
-      const response = await axios.post(`${BASE_URL}/user/forgot-password`, {
-        email,
-      });
-
-      openModal({type: 'success', messsage: "Mã otp đã gửi đến email của bạn"});
+      await userService.forgotPassword(email);
+      openModal({type: 'success', message: "Mã otp đã gửi đến email của bạn"});
       navigation.navigate("SentOTP", { email });
     } catch (error) {
       console.log(error.message);
-      openModal({type: 'error', message: error.response.data.message})
+      openModal({type: 'error', message: error.response?.data?.message || 'Gửi OTP thất bại'})
     }
   };
+
   return (
     <SafeAreaView>
       <View className="flex flex-col items-center w-screen h-screen px-5">

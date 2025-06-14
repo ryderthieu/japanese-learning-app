@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
-import axios from "axios";
-import BASE_URL from "../../../api/config";
 import { LoadingContext } from "../../../context/LoadingContext";
 import Loading from "../../../components/Loading/Loading";
+import vocabularyService from "../../../api/vocabularyService";
 
 const SelectVocabLesson = ({ navigation, route }) => {
   const { level } = route.params;
   const [allLessons, setAllLessons] = useState([]);
   const {isLoading, setIsLoading} = useContext(LoadingContext)
+
   const getAllLessons = async (level) => {
     let allLessons = [];
     let pageNumber = 1;
@@ -16,16 +16,16 @@ const SelectVocabLesson = ({ navigation, route }) => {
     while (true) {
       try {
         setIsLoading(true)
-        const response = await axios.get(`${BASE_URL}/vocabulary/get-lesson?level=${level}&lessonNumber=${pageNumber}`);
+        const response = await vocabularyService.getLessons({ level, lessonNumber: pageNumber });
 
-        if (response.data.length === 0) {
+        if (response.length === 0) {
           break; 
         }
 
         const formattedLessons = {
           title: `Bài ${pageNumber}`,
           image: 'https://newwindows.edu.vn/wp-content/uploads/2023/09/5-3-1024x1024.png', 
-          grammars: response.data || [],
+          grammars: response || [],
         };
 
         allLessons.push(formattedLessons);
@@ -35,7 +35,6 @@ const SelectVocabLesson = ({ navigation, route }) => {
         break;
       } finally {
         setIsLoading(false)
-
       }
     }
 

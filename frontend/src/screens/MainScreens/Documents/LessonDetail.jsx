@@ -2,27 +2,24 @@ import React, { useContext, useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import YouTube from 'react-native-youtube-iframe';
 import { GrammarCard, VocabularyCard } from '../../../components/Card/Card';
-import axios from 'axios';  // Để thực hiện API request
 import { AuthContext } from '../../../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
-import BASE_URL from '../../../api/config';
 import { ModalContext } from '../../../context/ModalContext';
+import userService from '../../../api/userService';
+
 const LessonDetail = ({ route }) => {
     const navigation = useNavigation()
     const { lesson } = route.params;
     const [videoEnded, setVideoEnded] = useState(false);
     const {token} = useContext(AuthContext)
     const {openModal} = useContext(ModalContext)
+
     const markLessonComplete = async () => {
         try {
-            await axios.post(`${BASE_URL}/user/add-completed-lesson/${lesson._id}`, {}, {
-                headers: {
-                    'Authorization': `Bearer ${token}` 
-                    }
-            });
+            await userService.addCompletedLesson(lesson._id);
             navigation.goBack()
         } catch (error) {
-            openModal({type: 'error', message: error.response.data.message})
+            openModal({type: 'error', message: error.response?.data?.message || 'Có lỗi xảy ra'})
         }
     };
 

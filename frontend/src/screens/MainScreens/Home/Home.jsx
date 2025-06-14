@@ -3,31 +3,30 @@ import React, { useState, useEffect, useContext } from 'react';
 import CircularProgress from './CircularProgress';
 import Slider from '../../../components/SlideCarousel/Slider';
 import SliderData from '../../../components/SlideCarousel/SliderData';
-import BASE_URL from '../../../api/config';
 import { AuthContext } from '../../../context/AuthContext';
-import axios from 'axios';
 import { useIsFocused } from '@react-navigation/native';
+import userService from '../../../api/userService';
+
 const Home = ({ navigation }) => {
   const { token } = useContext(AuthContext)
   const [savedVocabulary, setSavedVocabulary] = useState([]);
   const [savedGrammar, setSavedGrammar] = useState([])
   const isFocus = useIsFocused()
+
   const fetchSavedData = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/user`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-      setSavedVocabulary(response.data.savedVocabulary);
-      setSavedGrammar(response.data.savedGrammar)
+      const response = await userService.getUserInfo();
+      setSavedVocabulary(response.savedVocabulary);
+      setSavedGrammar(response.savedGrammar)
     } catch (error) {
       console.error('Lỗi khi lấy dữ liệu:', error);
     }
   };
+
   useEffect(() => {
     fetchSavedData();
   }, [isFocus])
+
   return (
     <ScrollView
       className="flex flex-col pt-5"

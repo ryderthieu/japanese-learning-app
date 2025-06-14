@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
-import axios from "axios";
-import BASE_URL from "../../../api/config";
 import { LoadingContext } from "../../../context/LoadingContext";
 import Loading from "../../../components/Loading/Loading";
+import vocabularyService from "../../../api/vocabularyService";
+
 const SelectKanjiLesson = ({ navigation, route }) => {
   const { level } = route.params;
   const [allLessons, setAllLessons] = useState([]);
   const {isLoading, setIsLoading} = useContext(LoadingContext)
+
   const getAllLessons = async (level) => {
     let allLessons = [];
     let pageNumber = 1;
@@ -15,26 +16,25 @@ const SelectKanjiLesson = ({ navigation, route }) => {
     while (true) {
       try {
         setIsLoading(true)
-        const response = await axios.get(`${BASE_URL}/vocabulary/get-lesson?level=${level}&lessonNumber=${pageNumber}`);
+        const response = await vocabularyService.getLessons({ level, lessonNumber: pageNumber });
 
-        if (response.data.length === 0) {
+        if (!response || response.length === 0) {
           break; 
         }
 
         const formattedLessons = {
           title: `Bài ${pageNumber}`,
           image: 'https://saigontimestravel.com/wp-content/uploads/2024/01/du-lich-nhat-ban-thang-5-1.jpg', 
-          grammars: response.data || [],
+          vocabularies: response || [],
         };
 
         allLessons.push(formattedLessons);
         pageNumber++;
       } catch (error) {
-        console.error("Lỗi khi lấy khóa học:", error.response?.data?.message || error);
+        console.error("Lỗi khi lấy bài học:", error.response?.data?.message || error);
         break;
       } finally {
         setIsLoading(false)
-
       }
     }
 

@@ -3,30 +3,25 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import Button from "../../../components/Button/Button";
 import { CartContext } from "../../../context/CartContext";
 import { AuthContext } from "../../../context/AuthContext";
-import axios from "axios";
-import BASE_URL from "../../../api/config";
 import { ModalContext } from "../../../context/ModalContext";
+import userService from "../../../api/userService";
+
 const CourseDetail = ({ route, navigation }) => {
   const { item } = route.params;
   const { setRefresh } = useContext(CartContext)
   const {token} = useContext(AuthContext)
   const {openModal} = useContext(ModalContext)
+
   const addToCart = async (course) => {
     try {
-      await axios.post(`${BASE_URL}/user/add-to-cart`, { courseId: course._id },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-
-        });
+      await userService.addToCart({ courseId: course._id });
       setRefresh(prev => !prev)
       openModal({type: 'success', message: 'Thêm khóa học vào giỏ hàng thành công!'})
-
     } catch (error) {
-      openModal({type: 'error', message: error.response.data.message})
+      openModal({type: 'error', message: error.response?.data?.message || 'Lỗi khi thêm vào giỏ hàng'})
     }
   };
+
   return (
     <View className="flex-1 bg-gray-100">
       <ScrollView className="p-4">

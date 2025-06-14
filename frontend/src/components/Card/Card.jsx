@@ -2,9 +2,11 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, { useContext, useState, useEffect } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
 import * as Speech from 'expo-speech';
-import BASE_URL from '../../api/config';
-import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
+import userService from '../../api/userService';
+import vocabularyService from '../../api/vocabularyService';
+import grammarService from '../../api/grammarService';
+
 const SellingCourse = ({ item, addToCart }) => {
     return (
         <View className="w-full">
@@ -25,8 +27,8 @@ const SellingCourse = ({ item, addToCart }) => {
             </View>
         </View>
     )
-
 };
+
 const CourseInfo = ({ item }) => {
     return (
         <View className="w-full">
@@ -45,7 +47,7 @@ const CourseInfo = ({ item }) => {
                         <Text className='text-lg font-normal'>{item.status}</Text>
                     </View>
                     <View className='flex-row gap-2 align-middle'>
-                        <View className="mt-3 bg-gray-300 h-2 rounded-2xl flex-row w-[200px]">
+                        <View className="mt-3 bg-gray-300 h-2 rounded-2xl flex-row w-[185px]">
                             <View
                                 className="h-full bg-secondary"
                                 style={{ width: `${item.progress}%` }}
@@ -59,7 +61,6 @@ const CourseInfo = ({ item }) => {
     )
 }
 
-
 const VocabularyCard = ({ item }) => {
     const [isSaved, setIsSaved] = useState(false);
     const { token } = useContext(AuthContext);
@@ -67,16 +68,10 @@ const VocabularyCard = ({ item }) => {
     useEffect(() => {
         const checkSavedStatus = async () => {
             try {
-                const response = await axios.get(`${BASE_URL}/user`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-
-                if (response.data.savedVocabulary.some(vocabulary => vocabulary._id.toString() === item._id.toString())) {
+                const response = await userService.getUserInfo();
+                if (response.savedVocabulary.some(vocabulary => vocabulary._id.toString() === item._id.toString())) {
                     setIsSaved(true);
                 }
-
             } catch (error) {
                 console.error("Lỗi khi kiểm tra trạng thái lưu:", error);
             }
@@ -87,19 +82,10 @@ const VocabularyCard = ({ item }) => {
 
     const handleSave = async () => {
         try {
-            await axios.post(
-                `${BASE_URL}/vocabulary/save-vocabulary`,
-                { vocabularyId: item._id },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
-
+            await vocabularyService.saveVocabulary({ vocabularyId: item._id });
             setIsSaved((prev) => !prev);
         } catch (error) {
-            console.error("Lỗi khi thay đổi trạng thái lưu:", error);
+            console.error("Lỗi khi thay đổi trạng thái lưu:", error.response);
         }
     };
 
@@ -150,9 +136,6 @@ const VocabularyCard = ({ item }) => {
     );
 };
 
-
-
-
 const GrammarCard = ({ item }) => {
     const [isSaved, setIsSaved] = useState(false);
     const { token } = useContext(AuthContext);
@@ -160,13 +143,8 @@ const GrammarCard = ({ item }) => {
     useEffect(() => {
         const checkSavedStatus = async () => {
             try {
-                const response = await axios.get(`${BASE_URL}/user`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-
-                if (response.data.savedGrammar.some(grammar => grammar._id.toString() === item._id.toString())) {
+                const response = await userService.getUserInfo();
+                if (response.savedGrammar.some(grammar => grammar._id.toString() === item._id.toString())) {
                     setIsSaved(true);
                 }
             } catch (error) {
@@ -179,21 +157,13 @@ const GrammarCard = ({ item }) => {
 
     const handleSave = async () => {
         try {
-            await axios.post(
-                `${BASE_URL}/grammar/save-grammar`,
-                { grammarId: item._id },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
-
+            await grammarService.saveGrammar({ grammarId: item._id });
             setIsSaved((prev) => !prev);
         } catch (error) {
-            console.error("Lỗi khi thay đổi trạng thái lưu:", error);
+            console.error("Lỗi khi thay đổi trạng thái lưu:", error.response.data.message);
         }
     };
+
     return (
         <View className="bg-white p-5 rounded-lg shadow-lg mb-6 border-l-4 border-pink-500 relative">
             <View className='flex-row'>
@@ -225,7 +195,5 @@ const GrammarCard = ({ item }) => {
         </View>
     );
 };
-
-
 
 export { SellingCourse, CourseInfo, VocabularyCard, GrammarCard }

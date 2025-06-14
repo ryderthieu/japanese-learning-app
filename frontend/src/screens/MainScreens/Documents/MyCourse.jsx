@@ -2,31 +2,28 @@ import React, { useContext, useEffect, useState } from 'react';
 import { View, FlatList, TouchableOpacity, Text } from 'react-native';
 import { CourseInfo } from '../../../components/Card/Card';
 import { AuthContext } from '../../../context/AuthContext';
-import axios from 'axios';
 import { useIsFocused } from '@react-navigation/native';
 import { LoadingContext } from '../../../context/LoadingContext';
 import Loading from '../../../components/Loading/Loading';
 import LottieView from 'lottie-react-native';
-import BASE_URL from '../../../api/config';
 import { ModalContext } from '../../../context/ModalContext';
+import userService from '../../../api/userService';
+
 const MyCourses = ({ navigation }) => {
   const isFocus = useIsFocused()
   const { token } = useContext(AuthContext)
   const [allCourses, setAllCourses] = useState([]);
   const { isLoading, setIsLoading } = useContext(LoadingContext)
   const {openModal} = useContext(ModalContext)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true)
-        const response = await axios.get(`${BASE_URL}/user/get-user-courses`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setAllCourses(response.data.courses);
+        const response = await userService.getUserCourses();
+        setAllCourses(response.courses);
       } catch (error) {
-        openModal({type: 'error', message: error.response.data.message})
+        openModal({type: 'error', message: error.response?.data?.message || 'Có lỗi xảy ra'})
       } finally {
         setIsLoading(false)
       }

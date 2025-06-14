@@ -3,13 +3,14 @@ import { View, Text, FlatList, TouchableOpacity, ScrollView } from 'react-native
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SellingCourse } from '../../../components/Card/Card';
-import axios from 'axios';
 import { AuthContext } from '../../../context/AuthContext';
 import { CartContext } from '../../../context/CartContext';
 import { LoadingContext } from '../../../context/LoadingContext';
 import Loading from '../../../components/Loading/Loading';
-import BASE_URL from '../../../api/config';
 import { ModalContext } from '../../../context/ModalContext';
+import courseService from '../../../api/courseService';
+import userService from '../../../api/userService';
+
 const Courses = () => {
   const {token} = useContext(AuthContext)
   const [cartCount, setCartCount] = useState(0); 
@@ -24,15 +25,14 @@ const Courses = () => {
 
   const [allCourses, setAllCourses] = useState([{_id: '', title: '', description: '', level: '', price: '', thumbnail: '',type: '', lessons: []}]);
     
-  
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         setIsLoading(true)
-        const response = await axios.get(`${BASE_URL}/courses`); 
-        setAllCourses(response.data)
+        const response = await courseService.getAllCourses();
+        setAllCourses(response)
       } catch (error) {
-        openModal({type: 'error', message: error.response.data.message})
+        openModal({type: 'error', message: error.response?.data?.message || 'Lỗi khi tải khóa học'})
       } finally {
         setIsLoading(false)
       }
@@ -41,25 +41,16 @@ const Courses = () => {
   }, []); 
 
   useEffect(() => {
-    console.log(token)
     setCartCount(cartItems.length)
   }, [cartItems])
 
   const addToCart = async (course) => {
     try {
-      await axios.post(`${BASE_URL}/user/add-to-cart`, { courseId: course._id },
-        {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-
-      });
+      await userService.addToCart({ courseId: course._id });
       setRefresh(prev => !prev)
-      
       openModal({type: 'success', message: 'Thêm khóa học vào giỏ hàng thành công!'})
-
-    } catch (error){
-      openModal({type: 'error', message: error.response.data.message})
+    } catch (error) {
+      openModal({type: 'error', message: error.response?.data?.message || 'Lỗi khi thêm vào giỏ hàng'})
     }
   };
 

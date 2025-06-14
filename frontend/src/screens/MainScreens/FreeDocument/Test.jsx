@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { View, Text, TouchableOpacity, Modal, FlatList } from "react-native";
-import axios from "axios";
 import { LoadingContext } from '../../../context/LoadingContext';
-import BASE_URL from "../../../api/config";
+import vocabularyService from "../../../api/vocabularyService";
 
 const Test = ({ route }) => {
   const { level } = route.params;
@@ -21,17 +20,15 @@ const Test = ({ route }) => {
     while (true) {
       try {
         setIsLoading(true);
-        const response = await axios.get(
-          `${BASE_URL}/vocabulary/get-lesson?level=${level}&lessonNumber=${pageNumber}`
-        );
+        const response = await vocabularyService.getLesson({ level, lessonNumber: pageNumber });
 
-        if (response.data.length === 0) {
+        if (response.length === 0) {
           break;
         }
 
         const formattedLessons = {
           title: `Bài ${pageNumber}`,
-          vocabulary: response.data || [],
+          vocabulary: response || [],
         };
 
         allLessons.push(formattedLessons);

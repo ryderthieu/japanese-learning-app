@@ -2,11 +2,11 @@ import { View, FlatList, TouchableOpacity, Text, Image, Modal, Button } from "re
 import { useState, useEffect, useContext } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons'
 import DropDownPicker from "react-native-dropdown-picker";
-import axios from "axios";
 import { AuthContext } from "../../../context/AuthContext";
 import { useIsFocused } from "@react-navigation/native";
-import BASE_URL from "../../../api/config";
 import { ModalContext } from "../../../context/ModalContext";
+import userService from "../../../api/userService";
+
 const Lessons = ({ route, navigation }) => {
     const isFocus = useIsFocused()
     const {token} = useContext(AuthContext)
@@ -26,15 +26,11 @@ const Lessons = ({ route, navigation }) => {
     useEffect(() => {
         const getLesson = async () => {
             try {
-                const response = await axios.get(`${BASE_URL}/user/get-course-lessons/${course._id}`, {
-                    headers: {
-                        'Authorization': `Bear ${token}` 
-                        }
-                })
-                setLessons(response.data.lessons)
-                setFilteredLessons(response.data.lessons)
+                const response = await userService.getCourseLessons(course._id);
+                setLessons(response.lessons)
+                setFilteredLessons(response.lessons)
             } catch (error) {
-                openModal({type: 'error', message: error.response.data.message})
+                openModal({type: 'error', message: error.response?.data?.message || 'Có lỗi xảy ra'})
             }
         };
     

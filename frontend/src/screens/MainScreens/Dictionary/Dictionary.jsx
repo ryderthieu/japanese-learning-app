@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, FlatList, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import axios from 'axios';
 import { VocabularyCard } from "../../../components/Card/Card";
 import LottieView from 'lottie-react-native';
-import BASE_URL from "../../../api/config";
+import vocabularyService from "../../../api/vocabularyService";
+
 const Dictionary = () => {
     const [searchText, setSearchText] = useState('');
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
     const handleSearch = async (text) => {
         setSearchText(text);
 
@@ -21,8 +22,8 @@ const Dictionary = () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.get(`${BASE_URL}/vocabulary/search?query=${text}`);
-            setResults(response.data);
+            const response = await vocabularyService.searchVocabulary({ query: text });
+            setResults(response);
         } catch (err) {
             console.log(err);
             setError('Không tìm thấy kết quả nào hoặc có lỗi kết nối.');
