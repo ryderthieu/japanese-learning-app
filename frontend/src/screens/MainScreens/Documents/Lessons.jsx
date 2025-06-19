@@ -26,10 +26,14 @@ const Lessons = ({ route, navigation }) => {
     useEffect(() => {
         const getLesson = async () => {
             try {
+                console.log('Course data:', course); // Debug course data
+                console.log('Course ID:', course._id); // Debug course ID
                 const response = await userService.getCourseLessons(course._id);
+                console.log('API response:', response); // Debug API response
                 setLessons(response.lessons)
                 setFilteredLessons(response.lessons)
             } catch (error) {
+                console.log('Error:', error); // Debug error
                 openModal({type: 'error', message: error.response?.data?.message || 'Có lỗi xảy ra'})
             }
         };

@@ -1,23 +1,30 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../screens/MainScreens/Home/Home';
 import CoursesNavigation from '../screens/MainScreens/Courses/_layout';
 import DocumentStack from '../screens/MainScreens/Documents/_layout';
 import Dictionary from '../screens/MainScreens/Dictionary/Dictionary';
 import Icon from 'react-native-vector-icons/Ionicons';
-import TestStack from '../screens/MainScreens/Test/_layout';
 import HomeNavigation from '../screens/MainScreens/Home/_layout';
-import { useNavigation } from '@react-navigation/native';
+import JLPTNavigation from '../screens/MainScreens/JLPT/_layout';
 
 const MainTab = () => {
   const Tab = createBottomTabNavigator();
-  const navigation = useNavigation()
+  
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#F490AF',
         tabBarInactiveTintColor: 'gray',
+        tabBarStyle: {
+          height: 60,
+          paddingBottom: 8,
+          paddingTop: 8,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: '600',
+        },
       }}
     >
       <Tab.Screen
@@ -27,6 +34,17 @@ const MainTab = () => {
           title: 'Trang chủ',
           tabBarIcon: ({ color, size }) => (
             <Icon name="home" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="JLPTNavigation"
+        component={JLPTNavigation}
+        options={{
+          title: 'Thi thử',
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="school" size={size} color={color} />
           ),
         }}
       />
@@ -62,32 +80,9 @@ const MainTab = () => {
           tabBarIcon: ({ color, size }) => (
             <Icon name="search" size={size} color={color} />
           ),
-          headerLeft: () => (
-            <Icon
-              name="menu-outline"
-              size={24}
-              color="#fff"
-              onPress={() => navigation.openDrawer()}
-              style={{
-                marginRight: 20,
-                marginLeft: 20
-              }}
-            />
-          ),
           headerStyle: {backgroundColor: '#F490AF'},
           headerTitleStyle: {color: '#fff'},
           headerTintColor: '#fff'
-        }}
-      />
-
-      <Tab.Screen
-        name="TestStack"
-        component={TestStack}
-        options={{
-          title: 'Thi thử',
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="create" size={size} color={color} />
-          ),
         }}
       />
     </Tab.Navigator>

@@ -8,7 +8,7 @@ const vocabulary = new Schema({
     meaning: {type: String, required: true},
     kanjiMeaning: {type: String},
     level: {type: String, enum : ["N5", "N4", "N3", "N2", "N1"]},
-    example: [{
+    examples: [{
         sentences: {type: String},
         translation: {type: String}
     }],

@@ -1,0 +1,1819 @@
+[
+  {
+    "_id": {
+      "$oid": "675ea55181fe6749f1425460"
+    },
+    "title": "Minna no Nihongo I - Bài 1",
+    "videoId": "YBI4nM5HC4c",
+    "vocabulary": [
+      {
+        "$oid": "6761b69381fe6749f14257d8"
+      },
+      {
+        "$oid": "6761b69381fe6749f14257d9"
+      },
+      "6853aa2a0bdd36c2f0fd9cc7",
+      "6853aa2a0bdd36c2f0fd9cc8",
+      "6853aa2a0bdd36c2f0fd9cc9",
+      "6853aa2a0bdd36c2f0fd9cca",
+      {
+        "$oid": "6761b69381fe6749f14257e7"
+      },
+      {
+        "$oid": "6767ed3f16b1dc13f81e2fae"
+      },
+      "6853aa2a0bdd36c2f0fd9ccb",
+      "6853aa2a0bdd36c2f0fd9ccc"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ccd",
+      "6853aa2a0bdd36c2f0fd9cce",
+      "6853aa2a0bdd36c2f0fd9ccf",
+      "6853aa2a0bdd36c2f0fd9cd0"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "675ea55181fe6749f1425461"
+    },
+    "title": "Minna no Nihongo I - Bài 2",
+    "videoId": "8GaOeIUHvfc",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9cd1",
+      "6853aa2a0bdd36c2f0fd9cd2",
+      "6853aa2a0bdd36c2f0fd9cd3",
+      "6853aa2a0bdd36c2f0fd9cd4",
+      "6853aa2a0bdd36c2f0fd9cd5",
+      "6853aa2a0bdd36c2f0fd9cd6",
+      "6853aa2a0bdd36c2f0fd9cd7",
+      "6853aa2a0bdd36c2f0fd9cd8",
+      "6853aa2a0bdd36c2f0fd9cd9",
+      {
+        "$oid": "6761b69381fe6749f14257d8"
+      },
+      {
+        "$oid": "6761b69381fe6749f14257d9"
+      },
+      "6853aa2a0bdd36c2f0fd9cda",
+      "6853aa2a0bdd36c2f0fd9cdb",
+      "6853aa2a0bdd36c2f0fd9cca",
+      "6853aa2a0bdd36c2f0fd9cc9",
+      {
+        "$oid": "6761b69381fe6749f14257e7"
+      }
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9cdc",
+      "6853aa2a0bdd36c2f0fd9cdd",
+      "6853aa2a0bdd36c2f0fd9cde",
+      "6853aa2a0bdd36c2f0fd9cdf"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "675ea55181fe6749f1425462"
+    },
+    "title": "Minna no Nihongo I - Bài 3",
+    "videoId": "6tn9uUphZx4",
+    "vocabulary": [
+      {
+        "$oid": "6767ed3f16b1dc13f81e2fa1"
+      },
+      {
+        "$oid": "6767ed3f16b1dc13f81e2fa2"
+      },
+      {
+        "$oid": "6761b69381fe6749f14257ec"
+      },
+      {
+        "$oid": "6767ed3f16b1dc13f81e2fa5"
+      },
+      {
+        "$oid": "6767ed3f16b1dc13f81e2f90"
+      },
+      {
+        "$oid": "6761b69381fe6749f14257ee"
+      },
+      {
+        "$oid": "6761b69381fe6749f14257de"
+      },
+      "6853aa2a0bdd36c2f0fd9ce0",
+      {
+        "$oid": "6761b69381fe6749f14257fa"
+      },
+      {
+        "$oid": "6761b69381fe6749f14257fb"
+      },
+      "6853aa2a0bdd36c2f0fd9ce1",
+      {
+        "$oid": "6761b69381fe6749f1425850"
+      }
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ce2",
+      "6853aa2a0bdd36c2f0fd9ce3",
+      "6853aa2a0bdd36c2f0fd9ce4",
+      "6853aa2a0bdd36c2f0fd9cdd"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "675ea55181fe6749f1425463"
+    },
+    "title": "Minna no Nihongo I - Bài 4",
+    "videoId": "eUlvDkLF78I",
+    "vocabulary": [
+      {
+        "$oid": "6767ed3f16b1dc13f81e2f5a"
+      },
+      {
+        "$oid": "6761b69381fe6749f1425814"
+      },
+      {
+        "$oid": "6761b69381fe6749f1425812"
+      },
+      {
+        "$oid": "6761b69381fe6749f1425813"
+      },
+      "6853aa2a0bdd36c2f0fd9ce5",
+      {
+        "$oid": "6767ed3f16b1dc13f81e2fae"
+      },
+      "6853aa2a0bdd36c2f0fd9ce6",
+      "6853aa2a0bdd36c2f0fd9ce7"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ce8",
+      "6853aa2a0bdd36c2f0fd9ce9",
+      "6853aa2a0bdd36c2f0fd9cea"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "675ea55181fe6749f1425464"
+    },
+    "title": "Minna no Nihongo I - Bài 5",
+    "videoId": "bNfsfokfcfY",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9ceb",
+      "6853aa2a0bdd36c2f0fd9cec",
+      "6853aa2a0bdd36c2f0fd9ced",
+      {
+        "$oid": "6761b69381fe6749f14257e5"
+      },
+      {
+        "$oid": "6761b69381fe6749f1425848"
+      },
+      {
+        "$oid": "6761b69381fe6749f1425849"
+      },
+      {
+        "$oid": "6767ed3f16b1dc13f81e2f62"
+      },
+      "6853aa2a0bdd36c2f0fd9cee"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9cef",
+      "6853aa2a0bdd36c2f0fd9cf0"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "675ea55181fe6749f1425465"
+    },
+    "title": "Minna no Nihongo I - Bài 6",
+    "videoId": "EcMPO0vFGU8",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9cf1",
+      "6853aa2a0bdd36c2f0fd9cf2",
+      "6853aa2a0bdd36c2f0fd9cf3",
+      "6853aa2a0bdd36c2f0fd9cf4",
+      "6853aa2a0bdd36c2f0fd9cf5",
+      "6853aa2a0bdd36c2f0fd9cf6",
+      "6853aa2a0bdd36c2f0fd9cf7",
+      "6853aa2a0bdd36c2f0fd9cf8"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9cf9",
+      "6853aa2a0bdd36c2f0fd9cfa",
+      "6853aa2a0bdd36c2f0fd9cfb",
+      "6853aa2a0bdd36c2f0fd9cfc",
+      "6853aa2a0bdd36c2f0fd9cfd",
+      "6853aa2a0bdd36c2f0fd9cfe",
+      "6853aa2a0bdd36c2f0fd9cff"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "675ea55181fe6749f1425466"
+    },
+    "title": "Minna no Nihongo I - Bài 7",
+    "videoId": "xpCIReYtPYA",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9d00",
+      "6853aa2a0bdd36c2f0fd9d01",
+      "6853aa2a0bdd36c2f0fd9d02",
+      "6853aa2a0bdd36c2f0fd9d03",
+      "6853aa2a0bdd36c2f0fd9cf8",
+      "6853aa2a0bdd36c2f0fd9d04"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d05",
+      "6853aa2a0bdd36c2f0fd9d06",
+      "6853aa2a0bdd36c2f0fd9d07",
+      "6853aa2a0bdd36c2f0fd9d08"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763b76d81fe6749f1425a22"
+    },
+    "title": "Minna no Nihongo II - Bài 26",
+    "videoId": "Bofc2RvFxpg",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9cf4",
+      "6853aa2a0bdd36c2f0fd9d09",
+      "6853aa2a0bdd36c2f0fd9d0a",
+      "6853aa2a0bdd36c2f0fd9d0b",
+      "6853aa2a0bdd36c2f0fd9d0c",
+      "6853aa2a0bdd36c2f0fd9d0d",
+      "6853aa2a0bdd36c2f0fd9d0e",
+      "6853aa2a0bdd36c2f0fd9d0f",
+      "6853aa2a0bdd36c2f0fd9d10",
+      "6853aa2a0bdd36c2f0fd9d11"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d12",
+      "6853aa2a0bdd36c2f0fd9d13",
+      "6853aa2a0bdd36c2f0fd9d14"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763b76d81fe6749f1425a23"
+    },
+    "title": "Minna no Nihongo II - Bài 27",
+    "videoId": "liZ6SLCEbb4",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9d15",
+      "6853aa2a0bdd36c2f0fd9d16",
+      "6853aa2a0bdd36c2f0fd9d17",
+      "6853aa2a0bdd36c2f0fd9d18",
+      "6853aa2a0bdd36c2f0fd9d19",
+      "6853aa2a0bdd36c2f0fd9d1a",
+      "6853aa2a0bdd36c2f0fd9d1b",
+      "6853aa2a0bdd36c2f0fd9d1c",
+      "6853aa2a0bdd36c2f0fd9d1d",
+      "6853aa2a0bdd36c2f0fd9d1e"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d1f",
+      "6853aa2a0bdd36c2f0fd9d20",
+      "6853aa2a0bdd36c2f0fd9d21"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763b76d81fe6749f1425a24"
+    },
+    "title": "Minna no Nihongo II - Bài 28",
+    "videoId": "0laezztlrR8",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9d22",
+      "6853aa2a0bdd36c2f0fd9d23",
+      "6853aa2a0bdd36c2f0fd9d24",
+      "6853aa2a0bdd36c2f0fd9d25",
+      "6853aa2a0bdd36c2f0fd9d26",
+      "6853aa2a0bdd36c2f0fd9d27",
+      "6853aa2a0bdd36c2f0fd9d28",
+      "6853aa2a0bdd36c2f0fd9d29",
+      "6853aa2a0bdd36c2f0fd9d2a",
+      "6853aa2a0bdd36c2f0fd9d2b"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d2c",
+      "6853aa2a0bdd36c2f0fd9d2d",
+      "6853aa2a0bdd36c2f0fd9d2e"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763b76d81fe6749f1425a25"
+    },
+    "title": "Minna no Nihongo II - Bài 29",
+    "videoId": "1AWzdFh93ck",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9d2f",
+      "6853aa2a0bdd36c2f0fd9d30",
+      "6853aa2a0bdd36c2f0fd9d31",
+      "6853aa2a0bdd36c2f0fd9d32",
+      "6853aa2a0bdd36c2f0fd9d33",
+      "6853aa2a0bdd36c2f0fd9d34",
+      "6853aa2a0bdd36c2f0fd9d35",
+      "6853aa2a0bdd36c2f0fd9d36",
+      "6853aa2a0bdd36c2f0fd9d16",
+      "6853aa2a0bdd36c2f0fd9d1c"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d37",
+      "6853aa2a0bdd36c2f0fd9d38",
+      "6853aa2a0bdd36c2f0fd9d39"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763b76d81fe6749f1425a26"
+    },
+    "title": "Minna no Nihongo II - Bài 30",
+    "videoId": "WswI2TCwC6U",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9d3a",
+      "6853aa2a0bdd36c2f0fd9d3b",
+      "6853aa2a0bdd36c2f0fd9d3c",
+      "6853aa2a0bdd36c2f0fd9d3d",
+      "6853aa2a0bdd36c2f0fd9d3e",
+      "6853aa2a0bdd36c2f0fd9d3f",
+      "6853aa2a0bdd36c2f0fd9d40",
+      "6853aa2a0bdd36c2f0fd9d41",
+      "6853aa2a0bdd36c2f0fd9d42",
+      "6853aa2a0bdd36c2f0fd9d43"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d44",
+      "6853aa2a0bdd36c2f0fd9d45",
+      "6853aa2a0bdd36c2f0fd9d46"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763b76d81fe6749f1425a27"
+    },
+    "title": "Minna no Nihongo II - Bài 31",
+    "videoId": "x2Fcv1NnUPY",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9d47",
+      "6853aa2a0bdd36c2f0fd9d48",
+      "6853aa2a0bdd36c2f0fd9d49",
+      "6853aa2a0bdd36c2f0fd9d0d",
+      "6853aa2a0bdd36c2f0fd9d4a",
+      "6853aa2a0bdd36c2f0fd9d4b",
+      "6853aa2a0bdd36c2f0fd9d4c",
+      "6853aa2a0bdd36c2f0fd9d4d",
+      "6853aa2a0bdd36c2f0fd9d4e",
+      {
+        "$oid": "6767eecb16b1dc13f81e2fe5"
+      }
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d4f",
+      "6853aa2a0bdd36c2f0fd9d50",
+      "6853aa2a0bdd36c2f0fd9d51"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763b76d81fe6749f1425a28"
+    },
+    "title": "Minna no Nihongo II - Bài 32",
+    "videoId": "vDZdFJp54WU",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9d52",
+      "6853aa2a0bdd36c2f0fd9d53",
+      "6853aa2a0bdd36c2f0fd9d54",
+      "6853aa2a0bdd36c2f0fd9d55",
+      "6853aa2a0bdd36c2f0fd9d56",
+      "6853aa2a0bdd36c2f0fd9d33",
+      "6853aa2a0bdd36c2f0fd9d34",
+      "6853aa2a0bdd36c2f0fd9d57",
+      "6853aa2a0bdd36c2f0fd9d58",
+      "6853aa2a0bdd36c2f0fd9d59"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d5a",
+      "6853aa2a0bdd36c2f0fd9d5b",
+      "6853aa2a0bdd36c2f0fd9d5c"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763b76d81fe6749f1425a29"
+    },
+    "title": "Minna no Nihongo II - Bài 33",
+    "videoId": "uxcqiuwQ3ds",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9d5d",
+      "6853aa2a0bdd36c2f0fd9d5e",
+      "6853aa2a0bdd36c2f0fd9d5f",
+      "6853aa2a0bdd36c2f0fd9d60",
+      "6853aa2a0bdd36c2f0fd9d61",
+      "6853aa2a0bdd36c2f0fd9d62",
+      "6853aa2a0bdd36c2f0fd9d63",
+      "6853aa2a0bdd36c2f0fd9d64",
+      "6853aa2a0bdd36c2f0fd9d65",
+      "6853aa2a0bdd36c2f0fd9d66"
+    ],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d67",
+      "6853aa2a0bdd36c2f0fd9d68",
+      "6853aa2a0bdd36c2f0fd9d69"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a34"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 1",
+    "videoId": "n2nCUD8ipGg",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d6a",
+      "6853aa2a0bdd36c2f0fd9d6b",
+      "6853aa2a0bdd36c2f0fd9d6c"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a35"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 2",
+    "videoId": "4l49YJygl1Y",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d6d",
+      "6853aa2a0bdd36c2f0fd9d6e",
+      "6853aa2a0bdd36c2f0fd9d6f"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a36"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 3",
+    "videoId": "1X6hBpTassc",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d70",
+      "6853aa2a0bdd36c2f0fd9d71",
+      "6853aa2a0bdd36c2f0fd9d72"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a37"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 4",
+    "videoId": "F7uNktSviY",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d73",
+      "6853aa2a0bdd36c2f0fd9d74",
+      "6853aa2a0bdd36c2f0fd9d75"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a38"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 5",
+    "videoId": "mJiUsJZqscY",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d76",
+      "6853aa2a0bdd36c2f0fd9d77",
+      "6853aa2a0bdd36c2f0fd9d78"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a39"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 6",
+    "videoId": "4qKXlL6nfiE",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d79",
+      "6853aa2a0bdd36c2f0fd9d7a",
+      "6853aa2a0bdd36c2f0fd9d7b"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a3a"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 7",
+    "videoId": "BQ9SYYTo4Ac",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d7c",
+      "6853aa2a0bdd36c2f0fd9d6d",
+      "6853aa2a0bdd36c2f0fd9d7d"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a3b"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 8",
+    "videoId": "GTlPxjsW4rw",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d7e",
+      "6853aa2a0bdd36c2f0fd9d7f",
+      "6853aa2a0bdd36c2f0fd9d5c"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a3c"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 9",
+    "videoId": "OuRfmNVGSbc",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d80",
+      "6853aa2a0bdd36c2f0fd9d12",
+      "6853aa2a0bdd36c2f0fd9d81"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a3d"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 10",
+    "videoId": "sp23ZK8cKS4",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d82",
+      "6853aa2a0bdd36c2f0fd9d83",
+      "6853aa2a0bdd36c2f0fd9d84"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a3e"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 11",
+    "videoId": "wjspg5vovZ8",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d6d",
+      "6853aa2a0bdd36c2f0fd9d85",
+      "6853aa2a0bdd36c2f0fd9d86"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a3f"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 12",
+    "videoId": "9jFX8i0sszU",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d6f",
+      "6853aa2a0bdd36c2f0fd9d87",
+      "6853aa2a0bdd36c2f0fd9d88"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a40"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 13",
+    "videoId": "vSOBWWTb42Q",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d89",
+      "6853aa2a0bdd36c2f0fd9d8a",
+      "6853aa2a0bdd36c2f0fd9d8b"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a41"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 14",
+    "videoId": "RChKLZ3C9Bg",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d8c",
+      "6853aa2a0bdd36c2f0fd9d8d",
+      "6853aa2a0bdd36c2f0fd9d8e"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a42"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 15",
+    "videoId": "zmCUwTXxvb0",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d8f",
+      "6853aa2a0bdd36c2f0fd9d6a",
+      "6853aa2a0bdd36c2f0fd9d90"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a43"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 16",
+    "videoId": "86EmdusKjkY",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d76",
+      "6853aa2a0bdd36c2f0fd9d91",
+      "6853aa2a0bdd36c2f0fd9d7a"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a44"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 17",
+    "videoId": "xuicSiDmbWs",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d92",
+      "6853aa2a0bdd36c2f0fd9d93",
+      "6853aa2a0bdd36c2f0fd9d94"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a45"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 18",
+    "videoId": "cCY1bcFik_Y",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d81",
+      "6853aa2a0bdd36c2f0fd9d6d",
+      "6853aa2a0bdd36c2f0fd9d95"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a46"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 19",
+    "videoId": "w7E-84Hof2I",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d96",
+      "6853aa2a0bdd36c2f0fd9d97",
+      "6853aa2a0bdd36c2f0fd9d5c"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c0de81fe6749f1425a47"
+    },
+    "title": "Shinkanzen Master Grammar N3 - Bài 20",
+    "videoId": "zCFytS0QDHA",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9d98",
+      "6853aa2a0bdd36c2f0fd9d99"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763c74381fe6749f1425a4e"
+    },
+    "title": "Mimikara Oboeru N3 - Bài 1 - Từ vựng",
+    "videoId": "244qEymDrBA",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9d9a",
+      "6853aa2a0bdd36c2f0fd9d9b",
+      {
+        "$oid": "6767f16616b1dc13f81e2ffb"
+      },
+      "6853aa2a0bdd36c2f0fd9d9c",
+      {
+        "$oid": "6767ed3f16b1dc13f81e2f9e"
+      },
+      "6853aa2a0bdd36c2f0fd9d9d",
+      {
+        "$oid": "6767f29a16b1dc13f81e3085"
+      },
+      "6853aa2a0bdd36c2f0fd9d9e",
+      "6853aa2a0bdd36c2f0fd9d9f",
+      {
+        "$oid": "6767f16616b1dc13f81e2ffd"
+      },
+      "6853aa2a0bdd36c2f0fd9da0",
+      {
+        "$oid": "6767f16616b1dc13f81e3001"
+      },
+      "6853aa2a0bdd36c2f0fd9da1",
+      "6853aa2a0bdd36c2f0fd9da2",
+      "6853aa2a0bdd36c2f0fd9da3",
+      "6853aa2a0bdd36c2f0fd9da4",
+      {
+        "$oid": "6767f29a16b1dc13f81e3066"
+      },
+      "6853aa2a0bdd36c2f0fd9da5",
+      {
+        "$oid": "6767f29a16b1dc13f81e3069"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3008"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3009"
+      },
+      "6853aa2a0bdd36c2f0fd9da6",
+      "6853aa2a0bdd36c2f0fd9da7",
+      "6853aa2a0bdd36c2f0fd9da8",
+      "6853aa2a0bdd36c2f0fd9da9",
+      "6853aa2a0bdd36c2f0fd9daa",
+      {
+        "$oid": "6761b69381fe6749f14257e5"
+      }
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763c74381fe6749f1425a4f"
+    },
+    "title": "Mimikara Oboeru N3 - Bài 2 - Từ vựng",
+    "videoId": "rOqcoKJlZEc",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9dab",
+      "6853aa2a0bdd36c2f0fd9ce1",
+      "6853aa2a0bdd36c2f0fd9dac",
+      {
+        "$oid": "6767f16616b1dc13f81e300d"
+      },
+      "6853aa2a0bdd36c2f0fd9dad",
+      {
+        "$oid": "6767f16616b1dc13f81e300e"
+      },
+      "6853aa2a0bdd36c2f0fd9dae",
+      "6853aa2a0bdd36c2f0fd9daf",
+      "6853aa2a0bdd36c2f0fd9db0",
+      "6853aa2a0bdd36c2f0fd9db1",
+      "6853aa2a0bdd36c2f0fd9db2",
+      "6853aa2a0bdd36c2f0fd9db3",
+      {
+        "$oid": "6767f29a16b1dc13f81e306e"
+      },
+      "6853aa2a0bdd36c2f0fd9db4",
+      "6853aa2a0bdd36c2f0fd9db5",
+      "6853aa2a0bdd36c2f0fd9db6",
+      "6853aa2a0bdd36c2f0fd9db7",
+      "6853aa2a0bdd36c2f0fd9db8",
+      {
+        "$oid": "6767f16616b1dc13f81e3014"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3014"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3052"
+      },
+      {
+        "$oid": "6761b69381fe6749f1425847"
+      },
+      {
+        "$oid": "6761b69381fe6749f1425838"
+      },
+      {
+        "$oid": "6761b69381fe6749f14257f0"
+      },
+      {
+        "$oid": "6761b69381fe6749f14257ea"
+      },
+      {
+        "$oid": "6767ed3f16b1dc13f81e2f90"
+      }
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763c74381fe6749f1425a50"
+    },
+    "title": "Mimikara Oboeru N3 - Bài 3 - Từ vựng",
+    "videoId": "SfMW-Bz_eDQ",
+    "vocabulary": [
+      {
+        "$oid": "6767f16616b1dc13f81e3046"
+      },
+      {
+        "$oid": "6761b69381fe6749f1425839"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3043"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3048"
+      },
+      {
+        "$oid": "6761b69381fe6749f1425841"
+      },
+      "6853aa2a0bdd36c2f0fd9db9",
+      "6853aa2a0bdd36c2f0fd9dba",
+      "6853aa2a0bdd36c2f0fd9dbb",
+      "6853aa2a0bdd36c2f0fd9dbc",
+      "6853aa2a0bdd36c2f0fd9dbd",
+      "6853aa2a0bdd36c2f0fd9dbe",
+      "6853aa2a0bdd36c2f0fd9dbf",
+      "6853aa2a0bdd36c2f0fd9dc0",
+      "6853aa2a0bdd36c2f0fd9dc1",
+      "6853aa2a0bdd36c2f0fd9dc2",
+      "6853aa2a0bdd36c2f0fd9dc3",
+      "6853aa2a0bdd36c2f0fd9dc4",
+      "6853aa2a0bdd36c2f0fd9dc5",
+      "6853aa2a0bdd36c2f0fd9dc6",
+      "6853aa2a0bdd36c2f0fd9dc7",
+      "6853aa2a0bdd36c2f0fd9dc8",
+      "6853aa2a0bdd36c2f0fd9dc9",
+      "6853aa2a0bdd36c2f0fd9dca",
+      {
+        "$oid": "6767ed3f16b1dc13f81e2fae"
+      },
+      "6853aa2a0bdd36c2f0fd9dcb"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763c74381fe6749f1425a51"
+    },
+    "title": "Mimikara Oboeru N3 - Bài 4 - Từ vựng",
+    "videoId": "HwnEPCgbWd0",
+    "vocabulary": [
+      {
+        "$oid": "6767eecb16b1dc13f81e2fbc"
+      },
+      "6853aa2a0bdd36c2f0fd9dcc",
+      {
+        "$oid": "6767eecb16b1dc13f81e2fc4"
+      },
+      "6853aa2a0bdd36c2f0fd9dcd",
+      "6853aa2a0bdd36c2f0fd9dce",
+      {
+        "$oid": "6767ed3f16b1dc13f81e2f7c"
+      },
+      "6853aa2a0bdd36c2f0fd9dcf",
+      "6853aa2a0bdd36c2f0fd9dd0",
+      {
+        "$oid": "6767eecb16b1dc13f81e2fd1"
+      },
+      "6853aa2a0bdd36c2f0fd9dd1",
+      {
+        "$oid": "6767eecb16b1dc13f81e2fcb"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e304c"
+      },
+      "6853aa2a0bdd36c2f0fd9dd2",
+      "6853aa2a0bdd36c2f0fd9dd3",
+      "6853aa2a0bdd36c2f0fd9dd4",
+      {
+        "$oid": "6767f16616b1dc13f81e3034"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3030"
+      },
+      "6853aa2a0bdd36c2f0fd9dd5",
+      "6853aa2a0bdd36c2f0fd9dd6",
+      "6853aa2a0bdd36c2f0fd9dd7",
+      {
+        "$oid": "6761b69381fe6749f142584f"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3039"
+      },
+      "6853aa2a0bdd36c2f0fd9dd8",
+      {
+        "$oid": "6767eecb16b1dc13f81e2ff0"
+      }
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763c74381fe6749f1425a52"
+    },
+    "title": "Mimikara Oboeru N3 - Bài 5 - Từ vựng",
+    "videoId": "3jOhn-hFy5c",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9dd9",
+      "6853aa2a0bdd36c2f0fd9dda",
+      "6853aa2a0bdd36c2f0fd9ddb",
+      "6853aa2a0bdd36c2f0fd9ddc",
+      "6853aa2a0bdd36c2f0fd9ddd",
+      {
+        "$oid": "6767eecb16b1dc13f81e2ff4"
+      },
+      "6853aa2a0bdd36c2f0fd9dde",
+      {
+        "$oid": "6767ed3f16b1dc13f81e2f62"
+      },
+      {
+        "$oid": "6767eecb16b1dc13f81e2ff7"
+      },
+      {
+        "$oid": "6767ed3f16b1dc13f81e2fa5"
+      },
+      "6853aa2a0bdd36c2f0fd9ddf",
+      "6853aa2a0bdd36c2f0fd9de0",
+      "6853aa2a0bdd36c2f0fd9de1",
+      {
+        "$oid": "6767ed3f16b1dc13f81e2f5e"
+      },
+      "6853aa2a0bdd36c2f0fd9de2",
+      "6853aa2a0bdd36c2f0fd9de3",
+      "6853aa2a0bdd36c2f0fd9de4",
+      "6853aa2a0bdd36c2f0fd9de5",
+      "6853aa2a0bdd36c2f0fd9de6",
+      "6853aa2a0bdd36c2f0fd9de7",
+      "6853aa2a0bdd36c2f0fd9de8",
+      "6853aa2a0bdd36c2f0fd9de9",
+      "6853aa2a0bdd36c2f0fd9dea",
+      "6853aa2a0bdd36c2f0fd9deb"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763c74381fe6749f1425a53"
+    },
+    "title": "Mimikara Oboeru N3 - Bài 6 - Từ vựng",
+    "videoId": "uM2stmMmg6s",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9dec",
+      "6853aa2a0bdd36c2f0fd9ded",
+      "6853aa2a0bdd36c2f0fd9dee",
+      "6853aa2a0bdd36c2f0fd9def",
+      "6853aa2a0bdd36c2f0fd9df0",
+      "6853aa2a0bdd36c2f0fd9df1",
+      "6853aa2a0bdd36c2f0fd9df2",
+      "6853aa2a0bdd36c2f0fd9df3",
+      "6853aa2a0bdd36c2f0fd9df4",
+      {
+        "$oid": "6767ed3f16b1dc13f81e2f60"
+      },
+      "6853aa2a0bdd36c2f0fd9df5",
+      "6853aa2a0bdd36c2f0fd9df4",
+      "6853aa2a0bdd36c2f0fd9df6",
+      "6853aa2a0bdd36c2f0fd9df7",
+      "6853aa2a0bdd36c2f0fd9df8",
+      "6853aa2a0bdd36c2f0fd9df9",
+      {
+        "$oid": "6761b69381fe6749f142583c"
+      },
+      "6853aa2a0bdd36c2f0fd9dfa",
+      {
+        "$oid": "6761b69381fe6749f1425848"
+      },
+      "6853aa2a0bdd36c2f0fd9dfb",
+      "6853aa2a0bdd36c2f0fd9dfc",
+      "6853aa2a0bdd36c2f0fd9dfd"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763c74381fe6749f1425a54"
+    },
+    "title": "Mimikara Oboeru N3 - Bài 7 - Từ vựng",
+    "videoId": "XffPoWbTNz4",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9dfe",
+      "6853aa2a0bdd36c2f0fd9dff",
+      "6853aa2a0bdd36c2f0fd9e00",
+      "6853aa2a0bdd36c2f0fd9e01",
+      "6853aa2a0bdd36c2f0fd9e02",
+      "6853aa2a0bdd36c2f0fd9e03",
+      "6853aa2a0bdd36c2f0fd9e04",
+      "6853aa2a0bdd36c2f0fd9e05",
+      "6853aa2a0bdd36c2f0fd9e06",
+      "6853aa2a0bdd36c2f0fd9e07",
+      "6853aa2a0bdd36c2f0fd9e08",
+      "6853aa2a0bdd36c2f0fd9e09",
+      "6853aa2a0bdd36c2f0fd9e0a",
+      "6853aa2a0bdd36c2f0fd9e0b",
+      "6853aa2a0bdd36c2f0fd9e0c",
+      "6853aa2a0bdd36c2f0fd9e0d",
+      "6853aa2a0bdd36c2f0fd9e0e",
+      "6853aa2a0bdd36c2f0fd9e0f",
+      "6853aa2a0bdd36c2f0fd9e10",
+      "6853aa2a0bdd36c2f0fd9e11"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763c74381fe6749f1425a55"
+    },
+    "title": "Mimikara Oboeru N3 - Bài 8 - Từ vựng",
+    "videoId": "4NQ3k4Z0qkA",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9e12",
+      "6853aa2a0bdd36c2f0fd9e13",
+      "6853aa2a0bdd36c2f0fd9e14",
+      "6853aa2a0bdd36c2f0fd9e15",
+      "6853aa2a0bdd36c2f0fd9e16",
+      "6853aa2a0bdd36c2f0fd9e17",
+      "6853aa2a0bdd36c2f0fd9e18",
+      "6853aa2a0bdd36c2f0fd9e19",
+      "6853aa2a0bdd36c2f0fd9e1a",
+      "6853aa2a0bdd36c2f0fd9e1b",
+      "6853aa2a0bdd36c2f0fd9e0f",
+      "6853aa2a0bdd36c2f0fd9e0d",
+      "6853aa2a0bdd36c2f0fd9e13",
+      "6853aa2a0bdd36c2f0fd9e14",
+      "6853aa2a0bdd36c2f0fd9e15",
+      "6853aa2a0bdd36c2f0fd9e16"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763c74381fe6749f1425a56"
+    },
+    "title": "Mimikara Oboeru N3 - Bài 9 - Từ vựng",
+    "videoId": "v2C6-Tt9AkY",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9e1c",
+      "6853aa2a0bdd36c2f0fd9e1d",
+      "6853aa2a0bdd36c2f0fd9e1e",
+      "6853aa2a0bdd36c2f0fd9e1f",
+      "6853aa2a0bdd36c2f0fd9e20",
+      "6853aa2a0bdd36c2f0fd9e21",
+      "6853aa2a0bdd36c2f0fd9e22",
+      "6853aa2a0bdd36c2f0fd9e23",
+      "6853aa2a0bdd36c2f0fd9e24",
+      "6853aa2a0bdd36c2f0fd9e25",
+      "6853aa2a0bdd36c2f0fd9e26",
+      "6853aa2a0bdd36c2f0fd9ce5",
+      "6853aa2a0bdd36c2f0fd9e27",
+      "6853aa2a0bdd36c2f0fd9e28",
+      "6853aa2a0bdd36c2f0fd9e29"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763c74381fe6749f1425a57"
+    },
+    "title": "Mimikara Oboeru N3 - Bài 10 - Từ vựng",
+    "videoId": "Erc0yLwtksc",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9e2a",
+      "6853aa2a0bdd36c2f0fd9e2b",
+      "6853aa2a0bdd36c2f0fd9e2c",
+      "6853aa2a0bdd36c2f0fd9e2d",
+      "6853aa2a0bdd36c2f0fd9e2e",
+      "6853aa2a0bdd36c2f0fd9e2f",
+      "6853aa2a0bdd36c2f0fd9e30",
+      "6853aa2a0bdd36c2f0fd9e31",
+      "6853aa2a0bdd36c2f0fd9e32",
+      "6853aa2a0bdd36c2f0fd9e33",
+      "6853aa2a0bdd36c2f0fd9e34",
+      "6853aa2a0bdd36c2f0fd9e35",
+      "6853aa2a0bdd36c2f0fd9e36",
+      "6853aa2a0bdd36c2f0fd9e37",
+      "6853aa2a0bdd36c2f0fd9e38"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763cb7781fe6749f1425a59"
+    },
+    "title": "Mimikara Oboeru N2 - Bài 1 - Từ vựng",
+    "videoId": "uf9-sHEie3E",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9e39",
+      {
+        "$oid": "6767f29a16b1dc13f81e305d"
+      },
+      "6853aa2a0bdd36c2f0fd9e3a",
+      {
+        "$oid": "6767f16616b1dc13f81e2ffb"
+      },
+      "6853aa2a0bdd36c2f0fd9e3b",
+      "6853aa2a0bdd36c2f0fd9e3c",
+      "6853aa2a0bdd36c2f0fd9e3d",
+      "6853aa2a0bdd36c2f0fd9e3e",
+      {
+        "$oid": "6767f16616b1dc13f81e2ffd"
+      },
+      "6853aa2a0bdd36c2f0fd9e3f",
+      {
+        "$oid": "6767f16616b1dc13f81e3000"
+      },
+      "6853aa2a0bdd36c2f0fd9e40",
+      {
+        "$oid": "6767f29a16b1dc13f81e3062"
+      },
+      "6853aa2a0bdd36c2f0fd9e41",
+      {
+        "$oid": "6767f16616b1dc13f81e3001"
+      },
+      "6853aa2a0bdd36c2f0fd9e42",
+      "6853aa2a0bdd36c2f0fd9e43",
+      "6853aa2a0bdd36c2f0fd9e44",
+      "6853aa2a0bdd36c2f0fd9e45",
+      "6853aa2a0bdd36c2f0fd9da4",
+      {
+        "$oid": "6767f29a16b1dc13f81e30a6"
+      },
+      {
+        "$oid": "6767f29a16b1dc13f81e3096"
+      }
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763cb7781fe6749f1425a5a"
+    },
+    "title": "Mimikara Oboeru N2 - Bài 2 - Từ vựng",
+    "videoId": "txm9i9xzvsk",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9e46",
+      "6853aa2a0bdd36c2f0fd9e47",
+      "6853aa2a0bdd36c2f0fd9e48",
+      "6853aa2a0bdd36c2f0fd9e49",
+      "6853aa2a0bdd36c2f0fd9e4a",
+      "6853aa2a0bdd36c2f0fd9e4b",
+      "6853aa2a0bdd36c2f0fd9e4c",
+      "6853aa2a0bdd36c2f0fd9e4d",
+      "6853aa2a0bdd36c2f0fd9e4e",
+      "6853aa2a0bdd36c2f0fd9e4f",
+      "6853aa2a0bdd36c2f0fd9e50",
+      "6853aa2a0bdd36c2f0fd9e51",
+      "6853aa2a0bdd36c2f0fd9e52",
+      "6853aa2a0bdd36c2f0fd9e53",
+      "6853aa2a0bdd36c2f0fd9e54",
+      "6853aa2a0bdd36c2f0fd9e55",
+      "6853aa2a0bdd36c2f0fd9d9e",
+      "6853aa2a0bdd36c2f0fd9e56",
+      "6853aa2a0bdd36c2f0fd9e57",
+      "6853aa2a0bdd36c2f0fd9e58",
+      {
+        "$oid": "6767f16616b1dc13f81e2ffd"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e2fff"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3000"
+      },
+      "6853aa2a0bdd36c2f0fd9e59",
+      "6853aa2a0bdd36c2f0fd9e5a",
+      {
+        "$oid": "6767f29a16b1dc13f81e3062"
+      }
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763cb7781fe6749f1425a5b"
+    },
+    "title": "Mimikara Oboeru N2 - Bài 3 - Từ vựng",
+    "videoId": "26VGxqWCCJM",
+    "vocabulary": [
+      {
+        "$oid": "6767f16616b1dc13f81e3001"
+      },
+      {
+        "$oid": "6767f29a16b1dc13f81e3062"
+      },
+      "6853aa2a0bdd36c2f0fd9e5b",
+      "6853aa2a0bdd36c2f0fd9e5c",
+      "6853aa2a0bdd36c2f0fd9e5d",
+      {
+        "$oid": "6767ed3f16b1dc13f81e2f92"
+      },
+      "6853aa2a0bdd36c2f0fd9da3",
+      "6853aa2a0bdd36c2f0fd9e45",
+      "6853aa2a0bdd36c2f0fd9cc7",
+      {
+        "$oid": "6761b69381fe6749f14257fa"
+      },
+      "6853aa2a0bdd36c2f0fd9da4",
+      "6853aa2a0bdd36c2f0fd9e5e",
+      {
+        "$oid": "6767f29a16b1dc13f81e3066"
+      },
+      "6853aa2a0bdd36c2f0fd9e5f",
+      "6853aa2a0bdd36c2f0fd9e60",
+      "6853aa2a0bdd36c2f0fd9e61",
+      {
+        "$oid": "6767f29a16b1dc13f81e3069"
+      },
+      "6853aa2a0bdd36c2f0fd9e62",
+      "6853aa2a0bdd36c2f0fd9e63",
+      "6853aa2a0bdd36c2f0fd9e64",
+      {
+        "$oid": "6767f16616b1dc13f81e3008"
+      },
+      "6853aa2a0bdd36c2f0fd9e65",
+      "6853aa2a0bdd36c2f0fd9e66",
+      "6853aa2a0bdd36c2f0fd9e67",
+      "6853aa2a0bdd36c2f0fd9e68",
+      "6853aa2a0bdd36c2f0fd9e69"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763cb7781fe6749f1425a5c"
+    },
+    "title": "Mimikara Oboeru N2 - Bài 4 - Từ vựng",
+    "videoId": "pq4dv9Rak7g",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9e68",
+      "6853aa2a0bdd36c2f0fd9e6a",
+      "6853aa2a0bdd36c2f0fd9dac",
+      {
+        "$oid": "6767f16616b1dc13f81e300d"
+      },
+      "6853aa2a0bdd36c2f0fd9e6b",
+      "6853aa2a0bdd36c2f0fd9e6c",
+      "6853aa2a0bdd36c2f0fd9e6d",
+      "6853aa2a0bdd36c2f0fd9dae",
+      "6853aa2a0bdd36c2f0fd9e6e",
+      "6853aa2a0bdd36c2f0fd9e6f",
+      {
+        "$oid": "6767f29a16b1dc13f81e306c"
+      },
+      "6853aa2a0bdd36c2f0fd9e70",
+      "6853aa2a0bdd36c2f0fd9e71",
+      "6853aa2a0bdd36c2f0fd9e72",
+      "6853aa2a0bdd36c2f0fd9e73",
+      {
+        "$oid": "6767f16616b1dc13f81e3051"
+      },
+      {
+        "$oid": "6767f29a16b1dc13f81e306f"
+      },
+      "6853aa2a0bdd36c2f0fd9e74",
+      "6853aa2a0bdd36c2f0fd9e75",
+      "6853aa2a0bdd36c2f0fd9e76",
+      "6853aa2a0bdd36c2f0fd9e77",
+      "6853aa2a0bdd36c2f0fd9e78",
+      "6853aa2a0bdd36c2f0fd9e79",
+      {
+        "$oid": "6767f29a16b1dc13f81e3071"
+      },
+      "6853aa2a0bdd36c2f0fd9e7a"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763cb7781fe6749f1425a5d"
+    },
+    "title": "Mimikara Oboeru N2 - Bài 5 - Từ vựng",
+    "videoId": "Rfn6bS9b8nQ",
+    "vocabulary": [
+      {
+        "$oid": "6767f16616b1dc13f81e3016"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3046"
+      },
+      "6853aa2a0bdd36c2f0fd9e7b",
+      {
+        "$oid": "6767f16616b1dc13f81e3043"
+      },
+      "6853aa2a0bdd36c2f0fd9e7c",
+      {
+        "$oid": "6767f16616b1dc13f81e3048"
+      },
+      "6853aa2a0bdd36c2f0fd9e7d",
+      {
+        "$oid": "6767f16616b1dc13f81e3045"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3049"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3044"
+      },
+      "6853aa2a0bdd36c2f0fd9e7e",
+      "6853aa2a0bdd36c2f0fd9e7f",
+      "6853aa2a0bdd36c2f0fd9e80",
+      "6853aa2a0bdd36c2f0fd9e81",
+      "6853aa2a0bdd36c2f0fd9e82",
+      "6853aa2a0bdd36c2f0fd9e83",
+      "6853aa2a0bdd36c2f0fd9e84",
+      "6853aa2a0bdd36c2f0fd9e85",
+      "6853aa2a0bdd36c2f0fd9e86",
+      "6853aa2a0bdd36c2f0fd9e87",
+      "6853aa2a0bdd36c2f0fd9e88",
+      "6853aa2a0bdd36c2f0fd9e89",
+      "6853aa2a0bdd36c2f0fd9e8a",
+      "6853aa2a0bdd36c2f0fd9e8b",
+      "6853aa2a0bdd36c2f0fd9e8c",
+      "6853aa2a0bdd36c2f0fd9e8d"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763cb7781fe6749f1425a5e"
+    },
+    "title": "Mimikara Oboeru N2 - Bài 6 - Từ vựng",
+    "videoId": "9yNerInKUoM",
+    "vocabulary": [
+      {
+        "$oid": "6767f29a16b1dc13f81e3073"
+      },
+      "6853aa2a0bdd36c2f0fd9e8e",
+      "6853aa2a0bdd36c2f0fd9e8f",
+      {
+        "$oid": "6767f16616b1dc13f81e3053"
+      },
+      "6853aa2a0bdd36c2f0fd9e90",
+      "6853aa2a0bdd36c2f0fd9dba",
+      "6853aa2a0bdd36c2f0fd9e85",
+      "6853aa2a0bdd36c2f0fd9e8a",
+      "6853aa2a0bdd36c2f0fd9e91",
+      "6853aa2a0bdd36c2f0fd9e92",
+      "6853aa2a0bdd36c2f0fd9e85",
+      "6853aa2a0bdd36c2f0fd9e93",
+      "6853aa2a0bdd36c2f0fd9e94",
+      "6853aa2a0bdd36c2f0fd9e95",
+      "6853aa2a0bdd36c2f0fd9e96",
+      "6853aa2a0bdd36c2f0fd9e97",
+      "6853aa2a0bdd36c2f0fd9e98",
+      "6853aa2a0bdd36c2f0fd9e99",
+      "6853aa2a0bdd36c2f0fd9e9a",
+      {
+        "$oid": "6767f16616b1dc13f81e3054"
+      },
+      "6853aa2a0bdd36c2f0fd9e9b",
+      "6853aa2a0bdd36c2f0fd9e8f"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763cb7781fe6749f1425a5f"
+    },
+    "title": "Mimikara Oboeru N2 - Bài 7 - Từ vựng",
+    "videoId": "pLEkNF67jJk",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9e9c",
+      {
+        "$oid": "6767f16616b1dc13f81e3046"
+      },
+      "6853aa2a0bdd36c2f0fd9e9d",
+      "6853aa2a0bdd36c2f0fd9e9e",
+      "6853aa2a0bdd36c2f0fd9e9f",
+      "6853aa2a0bdd36c2f0fd9ea0",
+      {
+        "$oid": "6761b69381fe6749f1425841"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3044"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e3045"
+      },
+      "6853aa2a0bdd36c2f0fd9ea1",
+      {
+        "$oid": "6767f16616b1dc13f81e3048"
+      },
+      {
+        "$oid": "6767f16616b1dc13f81e304a"
+      },
+      "6853aa2a0bdd36c2f0fd9ea2",
+      "6853aa2a0bdd36c2f0fd9ea3",
+      {
+        "$oid": "6767f16616b1dc13f81e3049"
+      },
+      "6853aa2a0bdd36c2f0fd9ea4",
+      {
+        "$oid": "6767f16616b1dc13f81e3044"
+      },
+      "6853aa2a0bdd36c2f0fd9ea5",
+      "6853aa2a0bdd36c2f0fd9ea6",
+      "6853aa2a0bdd36c2f0fd9ea7",
+      "6853aa2a0bdd36c2f0fd9ea8",
+      "6853aa2a0bdd36c2f0fd9ea9"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763cb7781fe6749f1425a60"
+    },
+    "title": "Mimikara Oboeru N2 - Bài 8 - Từ vựng",
+    "videoId": "_4W5euGGZ8I",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9e99",
+      "6853aa2a0bdd36c2f0fd9eaa",
+      "6853aa2a0bdd36c2f0fd9e85",
+      "6853aa2a0bdd36c2f0fd9eab",
+      "6853aa2a0bdd36c2f0fd9dba",
+      "6853aa2a0bdd36c2f0fd9e99",
+      "6853aa2a0bdd36c2f0fd9eac",
+      "6853aa2a0bdd36c2f0fd9e96",
+      "6853aa2a0bdd36c2f0fd9ead",
+      "6853aa2a0bdd36c2f0fd9eae",
+      "6853aa2a0bdd36c2f0fd9e8c",
+      "6853aa2a0bdd36c2f0fd9eaf",
+      {
+        "$oid": "6761b69381fe6749f1425850"
+      },
+      "6853aa2a0bdd36c2f0fd9e91",
+      {
+        "$oid": "6767f16616b1dc13f81e3054"
+      },
+      "6853aa2a0bdd36c2f0fd9e84",
+      "6853aa2a0bdd36c2f0fd9e87",
+      "6853aa2a0bdd36c2f0fd9e88",
+      "6853aa2a0bdd36c2f0fd9eb0",
+      "6853aa2a0bdd36c2f0fd9eb1",
+      "6853aa2a0bdd36c2f0fd9e99",
+      "6853aa2a0bdd36c2f0fd9eb2",
+      "6853aa2a0bdd36c2f0fd9eb3"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763cb7781fe6749f1425a61"
+    },
+    "title": "Mimikara Oboeru N2 - Bài 9 - Từ vựng",
+    "videoId": "gQ2InTEWbyc",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9eb4",
+      {
+        "$oid": "6767f16616b1dc13f81e301e"
+      },
+      "6853aa2a0bdd36c2f0fd9eb5",
+      "6853aa2a0bdd36c2f0fd9eb6",
+      "6853aa2a0bdd36c2f0fd9eb7",
+      "6853aa2a0bdd36c2f0fd9eb8",
+      "6853aa2a0bdd36c2f0fd9eb9",
+      "6853aa2a0bdd36c2f0fd9eba",
+      {
+        "$oid": "6767f29a16b1dc13f81e3088"
+      },
+      "6853aa2a0bdd36c2f0fd9ebb",
+      "6853aa2a0bdd36c2f0fd9ebc",
+      "6853aa2a0bdd36c2f0fd9ebd",
+      "6853aa2a0bdd36c2f0fd9ebe",
+      "6853aa2a0bdd36c2f0fd9ebf",
+      "6853aa2a0bdd36c2f0fd9ec0",
+      "6853aa2a0bdd36c2f0fd9ec1",
+      "6853aa2a0bdd36c2f0fd9ec2",
+      "6853aa2a0bdd36c2f0fd9ec3",
+      "6853aa2a0bdd36c2f0fd9ec4",
+      "6853aa2a0bdd36c2f0fd9ec5",
+      "6853aa2a0bdd36c2f0fd9ec6",
+      "6853aa2a0bdd36c2f0fd9ec7"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763d0cb81fe6749f1425a65"
+    },
+    "title": "Shin Kanzen N2 - Bài 1",
+    "videoId": "mGqhCHYBVtI",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ec8",
+      "6853aa2a0bdd36c2f0fd9ec9",
+      "6853aa2a0bdd36c2f0fd9eca",
+      "6853aa2a0bdd36c2f0fd9ecb",
+      "6853aa2a0bdd36c2f0fd9ecc"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d0cb81fe6749f1425a66"
+    },
+    "title": "Shin Kanzen N2 - Bài 2",
+    "videoId": "pdkhBUzmAqo",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ecd",
+      "6853aa2a0bdd36c2f0fd9ece",
+      "6853aa2a0bdd36c2f0fd9ecf",
+      "6853aa2a0bdd36c2f0fd9ed0",
+      "6853aa2a0bdd36c2f0fd9ed1"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d0cb81fe6749f1425a67"
+    },
+    "title": "Shin Kanzen N2 - Bài 3",
+    "videoId": "3BPMNzTsrTQ",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ed2",
+      "6853aa2a0bdd36c2f0fd9ed3",
+      "6853aa2a0bdd36c2f0fd9ec9",
+      "6853aa2a0bdd36c2f0fd9ed4",
+      "6853aa2a0bdd36c2f0fd9ecb"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d0cb81fe6749f1425a68"
+    },
+    "title": "Shin Kanzen N2 - Bài 4",
+    "videoId": "HZG8dmIEmBQ",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ed5",
+      "6853aa2a0bdd36c2f0fd9ecc",
+      "6853aa2a0bdd36c2f0fd9ed6",
+      "6853aa2a0bdd36c2f0fd9ed7",
+      "6853aa2a0bdd36c2f0fd9ed1"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d0cb81fe6749f1425a69"
+    },
+    "title": "Shin Kanzen N2 - Bài 5",
+    "videoId": "fLLPREO_q1Q",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ed8",
+      "6853aa2a0bdd36c2f0fd9ed9",
+      "6853aa2a0bdd36c2f0fd9ed4",
+      "6853aa2a0bdd36c2f0fd9ecb",
+      "6853aa2a0bdd36c2f0fd9eda"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d0cb81fe6749f1425a6a"
+    },
+    "title": "Shin Kanzen N2 - Bài 6",
+    "videoId": "Cls5dVa9exM",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ed5",
+      "6853aa2a0bdd36c2f0fd9ecc",
+      "6853aa2a0bdd36c2f0fd9edb",
+      "6853aa2a0bdd36c2f0fd9ed1",
+      "6853aa2a0bdd36c2f0fd9edc"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d0cb81fe6749f1425a6b"
+    },
+    "title": "Shin Kanzen N2 - Bài 7",
+    "videoId": "6-EvjVdPOBg",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9edd",
+      "6853aa2a0bdd36c2f0fd9ede",
+      "6853aa2a0bdd36c2f0fd9edf",
+      "6853aa2a0bdd36c2f0fd9ee0",
+      "6853aa2a0bdd36c2f0fd9ee1"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d0cb81fe6749f1425a6c"
+    },
+    "title": "Shin Kanzen N2 - Bài 8",
+    "videoId": "6c5XqcKhZjc",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9eca",
+      "6853aa2a0bdd36c2f0fd9ee2",
+      "6853aa2a0bdd36c2f0fd9ed0",
+      "6853aa2a0bdd36c2f0fd9ecf",
+      "6853aa2a0bdd36c2f0fd9ee3"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d0cb81fe6749f1425a6d"
+    },
+    "title": "Shin Kanzen N2 - Bài 9",
+    "videoId": "V1QmPKRS0Ck",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ed2",
+      "6853aa2a0bdd36c2f0fd9ecc",
+      "6853aa2a0bdd36c2f0fd9ee4",
+      "6853aa2a0bdd36c2f0fd9ee5",
+      "6853aa2a0bdd36c2f0fd9ee6"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d0cb81fe6749f1425a6e"
+    },
+    "title": "Shin Kanzen N2 - Bài 10",
+    "videoId": "3VX6M_OK3fM",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ee7",
+      "6853aa2a0bdd36c2f0fd9ee8",
+      "6853aa2a0bdd36c2f0fd9ed1",
+      "6853aa2a0bdd36c2f0fd9ee9",
+      "6853aa2a0bdd36c2f0fd9ed9"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d6ce81fe6749f1425a74"
+    },
+    "title": "Shin Kanzen N1 - Bài 1",
+    "videoId": "3SL9Wfey9JA",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9eea",
+      "6853aa2a0bdd36c2f0fd9eeb",
+      "6853aa2a0bdd36c2f0fd9eec",
+      "6853aa2a0bdd36c2f0fd9eed",
+      "6853aa2a0bdd36c2f0fd9eee",
+      "6853aa2a0bdd36c2f0fd9eef",
+      "6853aa2a0bdd36c2f0fd9ef0",
+      "6853aa2a0bdd36c2f0fd9ef1",
+      "6853aa2a0bdd36c2f0fd9ef2",
+      "6853aa2a0bdd36c2f0fd9ef3"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d6ce81fe6749f1425a75"
+    },
+    "title": "Shin Kanzen N1 - Bài 2",
+    "videoId": "Bc4sztxy1E8",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9ef4",
+      "6853aa2a0bdd36c2f0fd9ef5",
+      "6853aa2a0bdd36c2f0fd9ef6",
+      "6853aa2a0bdd36c2f0fd9ef7",
+      "6853aa2a0bdd36c2f0fd9ef8",
+      "6853aa2a0bdd36c2f0fd9ef9",
+      "6853aa2a0bdd36c2f0fd9efa",
+      "6853aa2a0bdd36c2f0fd9efb",
+      "6853aa2a0bdd36c2f0fd9efc",
+      "6853aa2a0bdd36c2f0fd9efd"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d6ce81fe6749f1425a76"
+    },
+    "title": "Shin Kanzen N1 - Bài 3",
+    "videoId": "R0BrZobPrUg",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9efe",
+      "6853aa2a0bdd36c2f0fd9eff",
+      "6853aa2a0bdd36c2f0fd9f00",
+      "6853aa2a0bdd36c2f0fd9f01",
+      "6853aa2a0bdd36c2f0fd9f02",
+      "6853aa2a0bdd36c2f0fd9f03",
+      "6853aa2a0bdd36c2f0fd9f04",
+      "6853aa2a0bdd36c2f0fd9f05",
+      "6853aa2a0bdd36c2f0fd9f06",
+      "6853aa2a0bdd36c2f0fd9f07"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d6ce81fe6749f1425a77"
+    },
+    "title": "Shin Kanzen N1 - Bài 4",
+    "videoId": "7Pwm6nz21ig",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9f08",
+      "6853aa2a0bdd36c2f0fd9ef7",
+      "6853aa2a0bdd36c2f0fd9efa",
+      "6853aa2a0bdd36c2f0fd9f09",
+      "6853aa2a0bdd36c2f0fd9f0a",
+      "6853aa2a0bdd36c2f0fd9f0b",
+      "6853aa2a0bdd36c2f0fd9f0c",
+      "6853aa2a0bdd36c2f0fd9f0d",
+      "6853aa2a0bdd36c2f0fd9efd",
+      "6853aa2a0bdd36c2f0fd9f0e"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d6ce81fe6749f1425a78"
+    },
+    "title": "Shin Kanzen N1 - Bài 5",
+    "videoId": "1KWHTCWMToE",
+    "vocabulary": [],
+    "grammar": [
+      "6853aa2a0bdd36c2f0fd9f01",
+      "6853aa2a0bdd36c2f0fd9ef0",
+      "6853aa2a0bdd36c2f0fd9f0f",
+      "6853aa2a0bdd36c2f0fd9f10",
+      "6853aa2a0bdd36c2f0fd9f11",
+      "6853aa2a0bdd36c2f0fd9f12",
+      "6853aa2a0bdd36c2f0fd9f04",
+      "6853aa2a0bdd36c2f0fd9f13",
+      "6853aa2a0bdd36c2f0fd9f14",
+      "6853aa2a0bdd36c2f0fd9f15"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "6763d9dd81fe6749f1425a7c"
+    },
+    "title": "Kaiwa N5 - Bài 1",
+    "videoId": "QZuAS3hMvtA",
+    "vocabulary": [],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763da9b81fe6749f1425a7f"
+    },
+    "title": "Kaiwa N4 - Bài 1",
+    "videoId": "EUQudv7dG-8",
+    "vocabulary": [],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763db4681fe6749f1425a82"
+    },
+    "title": "Kaiwa N3 - Bài 1",
+    "videoId": "hH_QJMUzwBA",
+    "vocabulary": [],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763dd3781fe6749f1425a85"
+    },
+    "title": "Từ Vựng IT - Bài 1",
+    "videoId": "bTMsIOOmFLM",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9f16",
+      "6853aa2a0bdd36c2f0fd9f17",
+      "6853aa2a0bdd36c2f0fd9f18",
+      "6853aa2a0bdd36c2f0fd9f19",
+      "6853aa2a0bdd36c2f0fd9f1a"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763dd3781fe6749f1425a86"
+    },
+    "title": "Từ Vựng IT - Bài 2",
+    "videoId": "_sGkGUU5b6s",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9f1b",
+      "6853aa2a0bdd36c2f0fd9f1c",
+      "6853aa2a0bdd36c2f0fd9f1d",
+      "6853aa2a0bdd36c2f0fd9f1e",
+      "6853aa2a0bdd36c2f0fd9f1f"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763dd3781fe6749f1425a87"
+    },
+    "title": "Từ Vựng IT - Bài 3",
+    "videoId": "i7mK0fxJrv4",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9f16",
+      "6853aa2a0bdd36c2f0fd9f19",
+      "6853aa2a0bdd36c2f0fd9f17",
+      "6853aa2a0bdd36c2f0fd9f20",
+      "6853aa2a0bdd36c2f0fd9f21"
+    ],
+    "grammar": []
+  },
+  {
+    "_id": {
+      "$oid": "6763dd3781fe6749f1425a88"
+    },
+    "title": "Từ Vựng IT - Bài 4",
+    "videoId": "nhSiXkhR3EM",
+    "vocabulary": [
+      "6853aa2a0bdd36c2f0fd9f18",
+      "6853aa2a0bdd36c2f0fd9f22",
+      "6853aa2a0bdd36c2f0fd9f1e",
+      "6853aa2a0bdd36c2f0fd9f23",
+      "6853aa2a0bdd36c2f0fd9f24"
+    ],
+    "grammar": []
+  }
+]

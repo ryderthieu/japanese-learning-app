@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const grammar = new Schema({
     rule: { type: String, required: true },
     meaning: { type: String, required: true }, 
-    example: [{
+    examples: [{
         sentences: {type: String},
         translation: {type: String}
     }],

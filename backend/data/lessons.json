@@ -1,0 +1,203 @@
+[
+  {
+    "_id": "6853a484b86e6df34f78e187",
+    "title": "Minna no Nihongo I - Bài 1",
+    "videoId": "YBI4nM5HC4c",
+    "description": "",
+    "level": "N5",
+    "order": 1,
+    "vocabulary": [
+      "6853a484b86e6df34f78e188",
+      "6853a484b86e6df34f78e189",
+      "6853a484b86e6df34f78e18a",
+      "6853a484b86e6df34f78e18b",
+      "6853a484b86e6df34f78e18c",
+      "6853a484b86e6df34f78e18d",
+      "6853a484b86e6df34f78e18e",
+      "6853a484b86e6df34f78e18f",
+      "6853a484b86e6df34f78e190",
+      "6853a484b86e6df34f78e191"
+    ],
+    "grammar": [
+      "6853a484b86e6df34f78e192",
+      "6853a484b86e6df34f78e193",
+      "6853a484b86e6df34f78e194",
+      "6853a484b86e6df34f78e195"
+    ],
+    "isActive": true,
+    "createdAt": "2025-06-19T05:47:48.504Z",
+    "updatedAt": "2025-06-19T05:47:48.504Z"
+  },
+  {
+    "_id": "6853a484b86e6df34f78e196",
+    "title": "Minna no Nihongo I - Bài 2",
+    "videoId": "8GaOeIUHvfc",
+    "description": "",
+    "level": "N5",
+    "order": 2,
+    "vocabulary": [
+      "6853a484b86e6df34f78e197",
+      "6853a484b86e6df34f78e198",
+      "6853a484b86e6df34f78e199",
+      "6853a484b86e6df34f78e19a",
+      "6853a484b86e6df34f78e19b",
+      "6853a484b86e6df34f78e19c",
+      "6853a484b86e6df34f78e19d",
+      "6853a484b86e6df34f78e19e",
+      "6853a484b86e6df34f78e19f",
+      "6853a484b86e6df34f78e188",
+      "6853a484b86e6df34f78e189",
+      "6853a484b86e6df34f78e1a0",
+      "6853a484b86e6df34f78e1a1",
+      "6853a484b86e6df34f78e18d",
+      "6853a484b86e6df34f78e18c",
+      "6853a484b86e6df34f78e18e"
+    ],
+    "grammar": [
+      "6853a484b86e6df34f78e1a2",
+      "6853a484b86e6df34f78e1a3",
+      "6853a484b86e6df34f78e1a4",
+      "6853a484b86e6df34f78e1a5"
+    ],
+    "isActive": true,
+    "createdAt": "2025-06-19T05:47:48.504Z",
+    "updatedAt": "2025-06-19T05:47:48.504Z"
+  },
+  {
+    "_id": "6853a484b86e6df34f78e1a6",
+    "title": "Minna no Nihongo I - Bài 3",
+    "videoId": "6tn9uUphZx4",
+    "description": "",
+    "level": "N5",
+    "order": 3,
+    "vocabulary": [
+      "6853a484b86e6df34f78e1a7",
+      "6853a484b86e6df34f78e1a8",
+      "6853a484b86e6df34f78e1a9",
+      "6853a484b86e6df34f78e1aa",
+      "6853a484b86e6df34f78e1ab",
+      "6853a484b86e6df34f78e1ac",
+      "6853a484b86e6df34f78e1ad",
+      "6853a484b86e6df34f78e1ae",
+      "6853a484b86e6df34f78e1af",
+      "6853a484b86e6df34f78e1b0",
+      "6853a484b86e6df34f78e1b1",
+      "6853a484b86e6df34f78e1b2"
+    ],
+    "grammar": [
+      "6853a484b86e6df34f78e1b3",
+      "6853a484b86e6df34f78e1b4",
+      "6853a484b86e6df34f78e1b5",
+      "6853a484b86e6df34f78e1a3"
+    ],
+    "isActive": true,
+    "createdAt": "2025-06-19T05:47:48.504Z",
+    "updatedAt": "2025-06-19T05:47:48.504Z"
+  },
+  {
+    "_id": "6853a484b86e6df34f78e1b6",
+    "title": "Minna no Nihongo I - Bài 4",
+    "videoId": "eUlvDkLF78I",
+    "description": "",
+    "level": "N5",
+    "order": 4,
+    "vocabulary": [
+      "6853a484b86e6df34f78e1b7",
+      "6853a484b86e6df34f78e1b8",
+      "6853a484b86e6df34f78e1b9",
+      "6853a484b86e6df34f78e1ba",
+      "6853a484b86e6df34f78e1bb",
+      "6853a484b86e6df34f78e18f",
+      "6853a484b86e6df34f78e1bc",
+      "6853a484b86e6df34f78e1bd"
+    ],
+    "grammar": [
+      "6853a484b86e6df34f78e1be",
+      "6853a484b86e6df34f78e1bf",
+      "6853a484b86e6df34f78e1c0"
+    ],
+    "isActive": true,
+    "createdAt": "2025-06-19T05:47:48.504Z",
+    "updatedAt": "2025-06-19T05:47:48.504Z"
+  },
+  {
+    "_id": "6853a484b86e6df34f78e1c1",
+    "title": "Minna no Nihongo I - Bài 5",
+    "videoId": "bNfsfokfcfY",
+    "description": "",
+    "level": "N5",
+    "order": 5,
+    "vocabulary": [
+      "6853a484b86e6df34f78e1c2",
+      "6853a484b86e6df34f78e1c3",
+      "6853a484b86e6df34f78e1c4",
+      "6853a484b86e6df34f78e1c5",
+      "6853a484b86e6df34f78e1c6",
+      "6853a484b86e6df34f78e1c7",
+      "6853a484b86e6df34f78e1c8",
+      "6853a484b86e6df34f78e1c9"
+    ],
+    "grammar": [
+      "6853a484b86e6df34f78e1ca",
+      "6853a484b86e6df34f78e1cb"
+    ],
+    "isActive": true,
+    "createdAt": "2025-06-19T05:47:48.504Z",
+    "updatedAt": "2025-06-19T05:47:48.504Z"
+  },
+  {
+    "_id": "6853a484b86e6df34f78e1cc",
+    "title": "Minna no Nihongo I - Bài 6",
+    "videoId": "EcMPO0vFGU8",
+    "description": "",
+    "level": "N5",
+    "order": 6,
+    "vocabulary": [
+      "6853a484b86e6df34f78e1cd",
+      "6853a484b86e6df34f78e1ce",
+      "6853a484b86e6df34f78e1cf",
+      "6853a484b86e6df34f78e1d0",
+      "6853a484b86e6df34f78e1d1",
+      "6853a484b86e6df34f78e1d2",
+      "6853a484b86e6df34f78e1d3",
+      "6853a484b86e6df34f78e1d4"
+    ],
+    "grammar": [
+      "6853a484b86e6df34f78e1d5",
+      "6853a484b86e6df34f78e1d6",
+      "6853a484b86e6df34f78e1d7",
+      "6853a484b86e6df34f78e1d8",
+      "6853a484b86e6df34f78e1d9",
+      "6853a484b86e6df34f78e1da",
+      "6853a484b86e6df34f78e1db"
+    ],
+    "isActive": true,
+    "createdAt": "2025-06-19T05:47:48.505Z",
+    "updatedAt": "2025-06-19T05:47:48.505Z"
+  },
+  {
+    "_id": "6853a484b86e6df34f78e1dc",
+    "title": "Minna no Nihongo I - Bài 7",
+    "videoId": "xpCIReYtPYA",
+    "description": "",
+    "level": "N5",
+    "order": 7,
+    "vocabulary": [
+      "6853a484b86e6df34f78e1dd",
+      "6853a484b86e6df34f78e1de",
+      "6853a484b86e6df34f78e1df",
+      "6853a484b86e6df34f78e1e0",
+      "6853a484b86e6df34f78e1d4",
+      "6853a484b86e6df34f78e1e1"
+    ],
+    "grammar": [
+      "6853a484b86e6df34f78e1e2",
+      "6853a484b86e6df34f78e1e3",
+      "6853a484b86e6df34f78e1e4",
+      "6853a484b86e6df34f78e1e5"
+    ],
+    "isActive": true,
+    "createdAt": "2025-06-19T05:47:48.505Z",
+    "updatedAt": "2025-06-19T05:47:48.505Z"
+  }
+]

@@ -11,28 +11,52 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
 import { useState } from "react";
 import LottieView from "lottie-react-native";
-import axios from "axios";
-import BASE_URL from "../../../api/config";
 import { ModalContext } from "../../../context/ModalContext";
-const ForgotPassword = ({ route, navigation }) => {
+import userService from "../../../api/userService";
+
+const ChangePassword = ({ route, navigation }) => {
   const { email } = route.params;
-  console.log("param", route.params);
   const [isPasswordVisible, setPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const {openModal} = useContext(ModalContext)
+  
   const handleConfirm = async () => {
-    console.log(email, newPassword);
+    // Validation
+    if (!newPassword || !confirmPassword) {
+      openModal({type: 'error', message: 'Vui lòng nhập đầy đủ thông tin'});
+      return;
+    }
+    
+    if (newPassword.length < 6) {
+      openModal({type: 'error', message: 'Mật khẩu phải có ít nhất 6 ký tự'});
+      return;
+    }
+    
+    if (newPassword !== confirmPassword) {
+      openModal({type: 'error', message: 'Mật khẩu xác nhận không khớp'});
+      return;
+    }
+    
+    setIsLoading(true);
     try {
-      await axios.post(`${BASE_URL}/user/reset-password`, {
+      await userService.resetPassword({
         newPassword: newPassword,
         email: email,
       });
       openModal({type: 'success', message: "Đổi mật khẩu thành công, vui lòng đăng nhập lại"});
       navigation.navigate("Login");
     } catch (error) {
-      openModal({type: 'error', message: error.response.message})
+      openModal({type: 'error', message: error.response?.data?.message || 'Đổi mật khẩu thất bại'});
+    } finally {
+      setIsLoading(false);
     }
   };
+  
+  const isFormValid = newPassword.length >= 6 && newPassword === confirmPassword;
+  
   return (
     <SafeAreaView>
       <View className="flex flex-col items-center gap-1 w-screen h-screen px-5">
@@ -83,30 +107,33 @@ const ForgotPassword = ({ route, navigation }) => {
             borderBottomWidth: 0,
           }}
           placeholder="Xác nhận mật khẩu"
-          secureTextEntry={!isPasswordVisible}
+          secureTextEntry={!isConfirmPasswordVisible}
           leftIcon={{ type: "feather", name: "key" }}
           rightIcon={{
             type: "feather",
-            name: isPasswordVisible ? "eye-off" : "eye",
-            onPress: () => setPasswordVisible(!isPasswordVisible),
+            name: isConfirmPasswordVisible ? "eye-off" : "eye",
+            onPress: () => setConfirmPasswordVisible(!isConfirmPasswordVisible),
           }}
+          onChangeText={setConfirmPassword}
+          value={confirmPassword}
         />
         <Button
-          title={"Đổi mật khẩu"}
+          title={isLoading ? "Đang xử lý..." : "Đổi mật khẩu"}
           buttonStyle={{
             paddingVertical: 10,
             paddingHorizontal: 20,
-            backgroundColor: "#F490AF",
+            backgroundColor: isFormValid ? "#F490AF" : "#ccc",
             borderRadius: 20,
           }}
           titleStyle={{
             fontWeight: "bold",
           }}
           onPress={handleConfirm}
+          disabled={!isFormValid || isLoading}
         />
       </View>
     </SafeAreaView>
   );
 };
 
-export default ForgotPassword;
+export default ChangePassword;

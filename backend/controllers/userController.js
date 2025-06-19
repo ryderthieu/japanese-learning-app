@@ -318,7 +318,7 @@ const getCourseLessons = async (req, res) => {
     const { courseId } = req.params;
     const userId = req.user._id;
 
-    const course = await Course.findById(courseId).populate("lessons");
+    const course = await Course.findById(courseId).populate("lessons")
     if (!course)
       return res.status(404).json({ message: "Khóa học không tồn tại." });
 
@@ -363,28 +363,239 @@ const addCompletedLesson = async (req, res) => {
 
 const saveQuestion = async (req, res) => {
   try {
-    const {questionId} = req.params
+    const { questionId } = req.body;
     const userId = req.user._id;
     const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).json({ message: "Người dùng không tồn tại." });
-    }
-    if (!user.savedQuestion.includes(questionId))
-      user.savedQuestion.push(questionId);
-    else
-      user.savedQuestion = user.savedQuestion.filter((v) => v!==questionId)
 
-    await user.save()
-    res.status(200).json({ message: "Thay đổi trạng thái câu hỏi thành công" });
-  } catch {
-    res.status(400).json({ message: "Lỗi khi lưu câu hỏi." });
+    if (!mongoose.Types.ObjectId.isValid(questionId)) {
+      return res.status(400).json({ message: "Câu hỏi không hợp lệ" });
+    }
+
+    if (user.savedQuestions.includes(questionId)) {
+      return res.status(400).json({ message: "Câu hỏi đã được lưu" });
+    }
+
+    user.savedQuestions.push(questionId);
+    await user.save();
+
+    res.status(200).json({ message: "Đã lưu câu hỏi", savedQuestions: user.savedQuestions });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
-}
+};
+
+// === JLPT Functions ===
+
+// Lấy thống kê JLPT của user
+const getJLPTStats = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const user = await User.findById(userId);
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User không tồn tại' });
+    }
+
+    const stats = user.getJLPTStats();
+    res.status(200).json(stats);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Cập nhật thông tin JLPT của user
+const updateJLPTInfo = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { jlptLevel, targetLevel } = req.body;
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User không tồn tại' });
+    }
+
+    if (jlptLevel) user.jlptLevel = jlptLevel;
+    if (targetLevel) user.targetLevel = targetLevel;
+    
+    await user.save();
+    
+    res.status(200).json({ 
+      message: 'Cập nhật thông tin JLPT thành công',
+      jlptLevel: user.jlptLevel,
+      targetLevel: user.targetLevel
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Lấy tiến độ học tập
+const getStudyProgress = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const user = await User.findById(userId);
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User không tồn tại' });
+    }
+
+    const progress = user.getStudyProgress();
+    res.status(200).json(progress);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Cập nhật cài đặt học tập
+const updateStudySettings = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const settings = req.body;
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User không tồn tại' });
+    }
+
+    await user.updateStudySettings(settings);
+    
+    res.status(200).json({ 
+      message: 'Cập nhật cài đặt thành công',
+      studySettings: user.studySettings
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Lưu câu hỏi (cải tiến version cũ)
+const saveQuestionNew = async (req, res) => {
+  try {
+    const { questionId } = req.body;
+    const userId = req.user._id;
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User không tồn tại' });
+    }
+
+    if (!mongoose.Types.ObjectId.isValid(questionId)) {
+      return res.status(400).json({ error: 'Câu hỏi không hợp lệ' });
+    }
+
+    await user.saveQuestion(questionId);
+    
+    res.status(200).json({ 
+      message: 'Đã lưu câu hỏi thành công',
+      savedQuestions: user.savedQuestions
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Bỏ lưu câu hỏi
+const unsaveQuestion = async (req, res) => {
+  try {
+    const { questionId } = req.params;
+    const userId = req.user._id;
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User không tồn tại' });
+    }
+
+    await user.unsaveQuestion(questionId);
+    
+    res.status(200).json({ 
+      message: 'Đã bỏ lưu câu hỏi thành công',
+      savedQuestions: user.savedQuestions
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Lấy lịch sử làm bài thi
+const getTestHistory = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { page = 1, limit = 10 } = req.query;
+    
+    const user = await User.findById(userId)
+      .populate('testAttempts.testId', 'title level category')
+      .populate('testAttempts.answers.questionId', 'questionText type section');
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User không tồn tại' });
+    }
+
+    const skip = (page - 1) * limit;
+    const testAttempts = user.testAttempts
+      .sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt))
+      .slice(skip, skip + parseInt(limit));
+    
+    const total = user.testAttempts.length;
+    
+    res.status(200).json({
+      testAttempts,
+      pagination: {
+        current: parseInt(page),
+        total: Math.ceil(total / limit),
+        totalItems: total
+      }
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Lấy thống kê chi tiết theo section
+const getSectionStats = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const user = await User.findById(userId);
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User không tồn tại' });
+    }
+
+    const sectionStats = {
+      mojiGoi: {
+        score: user.jlptStats.sectionScores['moji-goi'],
+        name: '文字・語彙',
+        description: 'Từ vựng và chữ viết'
+      },
+      bunpou: {
+        score: user.jlptStats.sectionScores['bunpou'],
+        name: '文法',
+        description: 'Ngữ pháp'
+      },
+      dokkai: {
+        score: user.jlptStats.sectionScores['dokkai'],
+        name: '読解',
+        description: 'Đọc hiểu'
+      },
+      choukai: {
+        score: user.jlptStats.sectionScores['choukai'],
+        name: '聴解',
+        description: 'Nghe hiểu'
+      }
+    };
+
+    res.status(200).json(sectionStats);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   login,
   signup,
   forgotPassword,
+  cofirmOtp,
   resetPassword,
+  getInfo,
   enrollCourse,
   addToCart,
   getCart,
@@ -393,7 +604,14 @@ module.exports = {
   getUserCourses,
   getCourseLessons,
   addCompletedLesson,
-  cofirmOtp,
   saveQuestion,
-  getInfo
+  // JLPT functions
+  getJLPTStats,
+  updateJLPTInfo,
+  getStudyProgress,
+  updateStudySettings,
+  saveQuestionNew,
+  unsaveQuestion,
+  getTestHistory,
+  getSectionStats
 };

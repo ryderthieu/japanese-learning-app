@@ -11,6 +11,7 @@ const Home = ({ navigation }) => {
   const { token } = useContext(AuthContext)
   const [savedVocabulary, setSavedVocabulary] = useState([]);
   const [savedGrammar, setSavedGrammar] = useState([])
+  const [jlptStats, setJlptStats] = useState(null);
   const isFocus = useIsFocused()
 
   const fetchSavedData = async () => {
@@ -23,8 +24,18 @@ const Home = ({ navigation }) => {
     }
   };
 
+  const fetchJLPTStats = async () => {
+    try {
+      const stats = await userService.getJLPTStats();
+      setJlptStats(stats);
+    } catch (error) {
+      console.error('Lỗi khi lấy thống kê JLPT:', error);
+    }
+  };
+
   useEffect(() => {
     fetchSavedData();
+    fetchJLPTStats();
   }, [isFocus])
 
   return (
@@ -99,11 +110,10 @@ const Home = ({ navigation }) => {
             </TouchableOpacity>
           </View>
 
-
           <View className="flex-row justify-around mt-5 gap-4">
             <TouchableOpacity
               className="flex flex-row items-center justify-around gap-2 flex-1 h-24 bg-white rounded-2xl shadow-md p-4"
-              onPress={() => navigation.navigate("TestStack")}
+              onPress={() => navigation.navigate("JLPTNavigation")}
             >
               <Image
                 source={require("../../../assets/images/home/test.png")}
@@ -128,22 +138,50 @@ const Home = ({ navigation }) => {
           </View>
         </View>
 
-      </View>
+        {/* JLPT Quick Stats */}
+        {jlptStats && (
+          <View className="mx-5 mt-8">
+            <View className="flex-row items-center justify-between mb-4">
+              <Text className="text-2xl font-bold text-[#2B308B]">Tiến độ thi thử</Text>
+              <TouchableOpacity 
+                onPress={() => navigation.navigate("JLPTNavigation")}
+                className="px-3 py-1 bg-pink-100 rounded-full"
+              >
+                <Text className="text-pink-600 font-semibold text-sm">Xem chi tiết</Text>
+              </TouchableOpacity>
+            </View>
+            <View className="bg-white rounded-xl p-4 shadow-md">
+              <View className="flex-row justify-between items-center mb-3">
+                <Text className="text-lg font-semibold text-gray-800">Tiến độ tổng thể</Text>
+                <Text className="text-2xl font-bold text-pink-500">
+                  {jlptStats.overallProgress || 0}%
+                </Text>
+              </View>
+              <View className="flex-row justify-between">
+                <View className="items-center">
+                  <Text className="text-xl font-bold text-green-500">
+                    {jlptStats.completedTests || 0}
+                  </Text>
+                  <Text className="text-sm text-gray-600">Bài thi</Text>
+                </View>
+                <View className="items-center">
+                  <Text className="text-xl font-bold text-blue-500">
+                    {jlptStats.learnedWords || 0}
+                  </Text>
+                  <Text className="text-sm text-gray-600">Từ vựng</Text>
+                </View>
+                <View className="items-center">
+                  <Text className="text-xl font-bold text-orange-500">
+                    {jlptStats.studyDays || 0}
+                  </Text>
+                  <Text className="text-sm text-gray-600">Ngày học</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        )}
 
-      {/* <View className="mx-5 mt-10">
-        <Text className="text-3xl font-bold text-[#2B308B]">Lịch sử</Text>
-        <View className="flex-row justify-end gap-5 mb-5">
-          <Text className="px-7 py-2 bg-white rounded-3xl text-[#2B308B] font-semibold">
-            Bài học
-          </Text>
-          <Text className="px-7 py-2 bg-white rounded-3xl text-[#2B308B] font-semibold">
-            Thi thử
-          </Text>
-        </View>
-        <View className="bg-white rounded-3xl h-28 justify-center items-center shadow-md">
-          <Text className="text-center text-gray-500">Bạn chưa học</Text>
-        </View>
-      </View> */}
+      </View>
 
       <View className="mx-5 mt-10 mb-10">
         <Text className="text-3xl font-bold text-[#2B308B] mb-5">Đã lưu</Text>

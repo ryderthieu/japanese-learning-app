@@ -21,8 +21,11 @@ const MyCourses = ({ navigation }) => {
       try {
         setIsLoading(true)
         const response = await userService.getUserCourses();
+        console.log('User courses response:', response);
+        console.log('Courses data:', response.courses);
         setAllCourses(response.courses);
       } catch (error) {
+        console.log('Error fetching courses:', error);
         openModal({type: 'error', message: error.response?.data?.message || 'Có lỗi xảy ra'})
       } finally {
         setIsLoading(false)

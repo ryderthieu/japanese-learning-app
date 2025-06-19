@@ -22,7 +22,6 @@ const searchVocabulary = async (req, res) => {
     if (results.length === 0) {
       return res.status(404).json({ message: 'Không tìm thấy kết quả nào.' });
     }
-
     res.status(200).json(results);
   } catch (error) {
     console.error(error);
@@ -81,5 +80,6 @@ const getSavedVocabulary = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
-module.exports = { searchVocabulary, saveVocabulary, getLessons, getSavedVocabulary };
+
+module.exports = { searchVocabulary, saveVocabulary, getLessons, getSavedVocabulary};
 

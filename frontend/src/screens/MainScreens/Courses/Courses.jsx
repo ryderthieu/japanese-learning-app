@@ -23,15 +23,25 @@ const Courses = () => {
 
   const navigation = useNavigation();
 
-  const [allCourses, setAllCourses] = useState([{_id: '', title: '', description: '', level: '', price: '', thumbnail: '',type: '', lessons: []}]);
+  const [allCourses, setAllCourses] = useState([]);
     
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         setIsLoading(true)
         const response = await courseService.getAllCourses();
-        setAllCourses(response)
+        
+        // Backend trả về { courses: [...], pagination: {...} }
+        if (response && Array.isArray(response.courses)) {
+          setAllCourses(response.courses)
+        } else if (Array.isArray(response)) {
+          setAllCourses(response)
+        } else {
+          setAllCourses([])
+          openModal({type: 'error', message: 'Dữ liệu khóa học không đúng định dạng'})
+        }
       } catch (error) {
+        setAllCourses([])
         openModal({type: 'error', message: error.response?.data?.message || 'Lỗi khi tải khóa học'})
       } finally {
         setIsLoading(false)
@@ -54,16 +64,25 @@ const Courses = () => {
     }
   };
 
-  const jlptCourses = allCourses.filter(course => course.type === 'JLPT');
-  const kaiwaCourses = allCourses.filter(course => course.type === 'kaiwa');
-  const otherCourses = allCourses.filter(course => course.type === 'other');
+  // Đảm bảo allCourses luôn là array trước khi filter
+  const safeAllCourses = Array.isArray(allCourses) ? allCourses : [];
+  const jlptCourses = safeAllCourses.filter(course => course.type === 'JLPT');
+  const kaiwaCourses = safeAllCourses.filter(course => course.type === 'kaiwa');
+  const otherCourses = safeAllCourses.filter(course => course.type === 'other');
 
   const Category = ({ data, title }) => {
+    // Không hiển thị category nếu không có dữ liệu
+    if (!data || data.length === 0) {
+      return null;
+    }
+    
     const displayData = showAll ? data : data.slice(0, 4); 
 
     return (
       <View className="mb-6">
-        <Text className="text-2xl font-black mb-3 text-primary">{title}</Text>
+        <View className="flex-row items-center justify-between mb-3">
+          <Text className="text-2xl font-black text-primary">{title}</Text>
+        </View>
         <FlatList
           data={displayData}
           renderItem={({ item }) => (
@@ -71,7 +90,7 @@ const Courses = () => {
               <SellingCourse item={item} addToCart={() => addToCart(item)} />
             </TouchableOpacity>
           )}
-          keyExtractor={(item) => item._id.toString()}
+          keyExtractor={(item) => item._id?.toString() || Math.random().toString()}
           numColumns={2}
           columnWrapperStyle={{ justifyContent: 'space-between' }}
           scrollEnabled={false}
@@ -84,7 +103,31 @@ const Courses = () => {
       </View>
     );
   };
+
   if (isLoading) return <Loading />
+
+  // Kiểm tra nếu không có khóa học nào
+  if (safeAllCourses.length === 0 && !isLoading) {
+    return (
+      <View className="flex-1 bg-gray-100 justify-center items-center p-5">
+        <View className="bg-white rounded-xl p-8 shadow-md items-center">
+          <Icon name="book-outline" size={80} color="#ccc" />
+          <Text className="text-xl font-bold text-gray-600 mt-4 mb-2">
+            Chưa có khóa học nào
+          </Text>
+          <Text className="text-gray-500 text-center mb-6">
+            Hiện tại chưa có khóa học nào được thêm vào hệ thống.
+          </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('HomeNavigation')}
+            className="bg-pink-500 py-3 px-6 rounded-lg"
+          >
+            <Text className="text-white font-semibold">Về trang chủ</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <View className="flex-1 bg-gray-100">

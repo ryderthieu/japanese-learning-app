@@ -1,0 +1,218 @@
+[{
+  "_id": {
+    "$oid": "675fef0881fe6749f14255ee"
+  },
+  "title": "25 bài Minna no Nihongo I",
+  "description": "Nắm vững kiến thức cơ bản N5 thông qua các bài giảng cùng Minato Ngọc Tiệp. Khóa học Minna no Nihongo 1 gồm 25 bài học, cung cấp nền tảng vững chắc về tiếng Nhật dành cho người mới bắt đầu. Đây là chương trình học lý tưởng để làm quen với ngữ pháp, từ vựng, và các kỹ năng giao tiếp cơ bản, giúp bạn tự tin sử dụng tiếng Nhật trong cuộc sống hàng ngày.",
+  "thumbnail": "https://nhatnguohashi.com/upload/baiviet/tai-lieu-n5-ok-5-2590.jpg",
+  "level": "N5",
+  "price": 0,
+  "type": "JLPT",
+  "lessons": [
+    "675ea55181fe6749f1425460",
+    "675ea55181fe6749f1425461",
+    "675ea55181fe6749f1425462",
+    "675ea55181fe6749f1425463",
+    "675ea55181fe6749f1425464",
+    "675ea55181fe6749f1425465",
+    "675ea55181fe6749f1425466"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6763b84281fe6749f1425a2b"
+  },
+  "title": "25 bài Minna no Nihongo II",
+  "description": "Nắm vững kiến thức cơ bản N4 thông qua các bài giảng cùng Minato Ngọc Tiệp. Khóa học Minna no Nihongo II gồm 25 bài học, cung cấp nền tảng vững chắc về tiếng Nhật dành cho trình độ N4. Đây là chương trình học lý tưởng để làm quen với ngữ pháp, từ vựng, và các kỹ năng giao tiếp cơ bản, giúp bạn tự tin sử dụng tiếng Nhật trong cuộc sống hàng ngày.",
+  "thumbnail": "https://nhatnguohashi.com/upload/baiviet/tai-lieu-n3-ok-4-7580.jpg",
+  "level": "N4",
+  "price": 500000,
+  "type": "JLPT",
+  "lessons": [
+    "6763b76d81fe6749f1425a22",
+    "6763b76d81fe6749f1425a23",
+    "6763b76d81fe6749f1425a24",
+    "6763b76d81fe6749f1425a25",
+    "6763b76d81fe6749f1425a26",
+    "6763b76d81fe6749f1425a27",
+    "6763b76d81fe6749f1425a28",
+    "6763b76d81fe6749f1425a29"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6763c23c81fe6749f1425a49"
+  },
+  "title": "Shinkanzen Master N3 - Ngữ pháp",
+  "description": "Học ngữ pháp N3 thông qua giáo trình Shinkanzen. Khi học xong khóa học, các bạn có thể nắm rõ được các ngữ pháp N3 thông dụng và đạt được kết quả tốt trong kì thi JLPT N3.",
+  "thumbnail": "https://nhatnguohashi.com/upload/baiviet/tai-lieu-n3-ok-4838.jpg",
+  "level": "N3",
+  "price": 700000,
+  "type": "JLPT",
+  "lessons": [
+    "6763c0de81fe6749f1425a34",
+    "6763c0de81fe6749f1425a35",
+    "6763c0de81fe6749f1425a36",
+    "6763c0de81fe6749f1425a37",
+    "6763c0de81fe6749f1425a38",
+    "6763c0de81fe6749f1425a39",
+    "6763c0de81fe6749f1425a3a",
+    "6763c0de81fe6749f1425a3b",
+    "6763c0de81fe6749f1425a3c",
+    "6763c0de81fe6749f1425a3d",
+    "6763c0de81fe6749f1425a3e",
+    "6763c0de81fe6749f1425a3f",
+    "6763c0de81fe6749f1425a40",
+    "6763c0de81fe6749f1425a41",
+    "6763c0de81fe6749f1425a42",
+    "6763c0de81fe6749f1425a43",
+    "6763c0de81fe6749f1425a44",
+    "6763c0de81fe6749f1425a45",
+    "6763c0de81fe6749f1425a46",
+    "6763c0de81fe6749f1425a47"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6763c83181fe6749f1425a58"
+  },
+  "title": "Mimikara Oboeru N3 - Từ vựng",
+  "description": "Tổng hợp từ vựng N3 Mimikra Oboeru đầy đủ. Khóa học giúp bạn nắm vững kiến thức từ vựng N3.",
+  "thumbnail": "https://gojapan.vn/wp-content/uploads/2021/05/bia-n3.png",
+  "level": "N3",
+  "price": 200000,
+  "type": "JLPT",
+  "lessons": [
+    "6763c74381fe6749f1425a4e",
+    "6763c74381fe6749f1425a4f",
+    "6763c74381fe6749f1425a50",
+    "6763c74381fe6749f1425a51",
+    "6763c74381fe6749f1425a52",
+    "6763c74381fe6749f1425a53",
+    "6763c74381fe6749f1425a54",
+    "6763c74381fe6749f1425a55",
+    "6763c74381fe6749f1425a56",
+    "6763c74381fe6749f1425a57"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6763cdad81fe6749f1425a63"
+  },
+  "title": "Mimikara Oboeru N2 - Từ vựng",
+  "description": "Tổng hợp từ vựng N2 Mimikra Oboeru đầy đủ. Khóa học được giảng từ Ánh sensei của Riki giúp bạn nắm vững kiến thức từ vựng N2.",
+  "thumbnail": "https://nhatnguohashi.com/upload/baiviet/tai-lieu-n2-ok-2779.jpg",
+  "level": "N2",
+  "price": 700000,
+  "type": "JLPT",
+  "lessons": [
+    "6763cb7781fe6749f1425a59",
+    "6763cb7781fe6749f1425a5a",
+    "6763cb7781fe6749f1425a5b",
+    "6763cb7781fe6749f1425a5c",
+    "6763cb7781fe6749f1425a5d",
+    "6763cb7781fe6749f1425a5e",
+    "6763cb7781fe6749f1425a5f",
+    "6763cb7781fe6749f1425a60",
+    "6763cb7781fe6749f1425a61"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6763d1b581fe6749f1425a70"
+  },
+  "title": "Shinkanzen Master N2 - Ngữ pháp",
+  "description": "Tổng hợp ngữ pháp N2 Shinkanzen đầy đủ. Khóa học được giảng từ Riki giúp bạn nắm vững kiến thức ngữ pháp N2.",
+  "thumbnail": "https://nhatnguohashi.com/upload/baiviet/tai-lieu-n2-ok-2779.jpg",
+  "level": "N2",
+  "price": 800000,
+  "type": "JLPT",
+  "lessons": [
+    "6763d0cb81fe6749f1425a65",
+    "6763d0cb81fe6749f1425a66",
+    "6763d0cb81fe6749f1425a67",
+    "6763d0cb81fe6749f1425a68",
+    "6763d0cb81fe6749f1425a69",
+    "6763d0cb81fe6749f1425a6a",
+    "6763d0cb81fe6749f1425a6b",
+    "6763d0cb81fe6749f1425a6c",
+    "6763d0cb81fe6749f1425a6d"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6763d84481fe6749f1425a7a"
+  },
+  "title": "Shinkanzen Master N2 - Ngữ pháp",
+  "description": "Tổng hợp ngữ pháp N1 Shinkanzen đầy đủ. Khóa học được giảng từ Riki giúp bạn nắm vững kiến thức ngữ pháp N1.",
+  "thumbnail": "https://img.youtube.com/vi/1KWHTCWMToE/hqdefault.jpg",
+  "level": "N1",
+  "price": 800000,
+  "type": "JLPT",
+  "lessons": [
+    "6763d6ce81fe6749f1425a74",
+    "6763d6ce81fe6749f1425a75",
+    "6763d6ce81fe6749f1425a76",
+    "6763d6ce81fe6749f1425a77",
+    "6763d6ce81fe6749f1425a78"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6763da4b81fe6749f1425a7e"
+  },
+  "title": "Kaiwa N5 - tổng hợp renshuu C",
+  "description": "Tổng hợp renshuu C hội thoại N5, luyện giao tiếp cơ bản.",
+  "thumbnail": "https://img.youtube.com/vi/QZuAS3hMvtA/hqdefault.jpg",
+  "level": "N5",
+  "price": 100000,
+  "type": "kaiwa",
+  "lessons": [
+    "6763d9dd81fe6749f1425a7c"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6763daba81fe6749f1425a80"
+  },
+  "title": "Kaiwa N4 - tổng hợp renshuu C",
+  "description": "Tổng hợp renshuu C hội thoại N4, luyện giao tiếp cơ bản.",
+  "thumbnail": "https://img.youtube.com/vi/EUQudv7dG-8/hqdefault.jpg",
+  "level": "N4",
+  "price": 100000,
+  "type": "kaiwa",
+  "lessons": [
+    "6763da9b81fe6749f1425a7f"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6763db7681fe6749f1425a83"
+  },
+  "title": "Kaiwa N3 - tổng hợp câu hội thoại thông dụng hàng ngày",
+  "description": "Tổng hợp các câu tình huống hội thoại N3, luyện giao tiếp trung cấp.",
+  "thumbnail": "https://img.youtube.com/vi/hH_QJMUzwBA/hqdefault.jpg",
+  "level": "N3",
+  "price": 100000,
+  "type": "kaiwa",
+  "lessons": [
+    "6763db4681fe6749f1425a82"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6763ddb081fe6749f1425a8a"
+  },
+  "title": "Từ vựng IT",
+  "description": "Tổng hợp các từ vựng chuyên ngành IT, giúp các bạn IT hiểu về các từ vựng liên quan đến chuyên ngành của mình.",
+  "thumbnail": "https://img.youtube.com/vi/kmjgpMBf6lQ/hqdefault.jpg",
+  "level": "N3",
+  "price": 0,
+  "type": "other",
+  "lessons": [
+    "6763dd3781fe6749f1425a85",
+    "6763dd3781fe6749f1425a86",
+    "6763dd3781fe6749f1425a87",
+    "6763dd3781fe6749f1425a88"
+  ]
+}]

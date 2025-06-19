@@ -107,6 +107,56 @@ const userService = {
   getLearningProgress: async () => {
     const response = await apiClient.get('/user/progress');
     return response.data;
+  },
+
+  // === JLPT Functions ===
+
+  // Lấy thống kê JLPT
+  getJLPTStats: async () => {
+    const response = await apiClient.get('/user/jlpt/stats');
+    return response.data;
+  },
+
+  // Cập nhật thông tin JLPT
+  updateJLPTInfo: async (jlptData) => {
+    const response = await apiClient.put('/user/jlpt/info', jlptData);
+    return response.data;
+  },
+
+  // Lấy tiến độ học tập JLPT
+  getStudyProgress: async () => {
+    const response = await apiClient.get('/user/jlpt/progress');
+    return response.data;
+  },
+
+  // Cập nhật cài đặt học tập
+  updateStudySettings: async (settings) => {
+    const response = await apiClient.put('/user/jlpt/settings', settings);
+    return response.data;
+  },
+
+  // Lấy lịch sử làm bài thi
+  getTestHistory: async (page = 1, limit = 10) => {
+    const response = await apiClient.get(`/user/jlpt/history?page=${page}&limit=${limit}`);
+    return response.data;
+  },
+
+  // Lấy thống kê theo section
+  getSectionStats: async () => {
+    const response = await apiClient.get('/user/jlpt/section-stats');
+    return response.data;
+  },
+
+  // Lưu câu hỏi
+  saveQuestion: async (questionId) => {
+    const response = await apiClient.post('/user/save-question', { questionId });
+    return response.data;
+  },
+
+  // Bỏ lưu câu hỏi
+  unsaveQuestion: async (questionId) => {
+    const response = await apiClient.delete(`/user/unsave-question/${questionId}`);
+    return response.data;
   }
 };
 

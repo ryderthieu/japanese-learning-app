@@ -126,12 +126,16 @@ const VocabularyCard = ({ item }) => {
 
             <Text className="text-xl font-semibold mt-4 text-blue-600">Ví dụ</Text>
 
-            {item.example.map((example, index) => (
-                <View key={index} className="mb-3">
-                    <Text className="text-gray-800 mt-1">{example.sentence}</Text>
-                    <Text className="text-gray-600 mt-1 italic">{example.translation || example.sentenceMeaning}</Text>
-                </View>
-            ))}
+            {item.examples && Array.isArray(item.examples) && item.examples.length > 0 ? (
+                item.examples.map((example, index) => (
+                    <View key={index} className="mb-3">
+                        <Text className="text-gray-800 mt-1">{example.sentence}</Text>
+                        <Text className="text-gray-600 mt-1 italic">{example.translation || example.sentenceMeaning}</Text>
+                    </View>
+                ))
+            ) : (
+                <Text className="text-gray-500 mt-2">Không có ví dụ cho từ vựng này</Text>
+            )}
         </View>
     );
 };
@@ -179,10 +183,10 @@ const GrammarCard = ({ item }) => {
 
             <Text className="text-base font-medium text-gray-600 mb-4">{item.meaning}</Text>
 
-            {item.example && Array.isArray(item.example) && item.example.length > 0 ? (
+            {item.examples && Array.isArray(item.examples) && item.examples.length > 0 ? (
                 <View>
                     <Text className="text-xl font-semibold mt-4 text-blue-600">Ví dụ:</Text>
-                    {item.example.map((example, index) => (
+                    {item.examples.map((example, index) => (
                         <View key={index} className="mb-3">
                             <Text className="text-lg text-gray-800 font-medium">{example.sentence || example.sentences}</Text>
                             <Text className="text-gray-600 italic">{example.translation}</Text>
