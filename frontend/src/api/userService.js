@@ -8,6 +8,7 @@ const userService = {
   },
 
   signup: async (email, password, fullName) => {
+    console.log(email, password, fullName)
     const response = await apiClient.post('/user/signup', { email, password, fullName });
     return response.data;
   },

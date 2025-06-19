@@ -32,11 +32,7 @@ const Register = ({ navigation }) => {
     }
 
     try {
-      await userService.signup({
-        fullName,
-        email,
-        password
-      });
+      await userService.signup(email, password, fullName);
       openModal({type: 'success', message: 'Đăng ký thành công!'})
       navigation.navigate('Login')
     } catch (error) {

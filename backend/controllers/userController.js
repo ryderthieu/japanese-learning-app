@@ -25,7 +25,7 @@ const login = async (req, res) => {
 
 const signup = async (req, res) => {
   const { email, password, fullName } = req.body;
-
+  console.log(email)
   try {
     const user = await User.signup(email, password, fullName);
     res.status(200).json({ 
@@ -142,7 +142,7 @@ const getInfo = async (req, res) => {
   try {
     const userId = req.user._id;
     const user = await User.findById(userId)
-      .select('email fullName gender dateOfBirth jlptLevel targetLevel studySettings')
+      .select('email fullName gender dateOfBirth jlptLevel targetLevel studySettings hasCompletedInitialSurvey studyGoal')
       .populate('savedVocabulary')
       .populate('savedGrammar');
     
@@ -170,7 +170,7 @@ const updateProfile = async (req, res) => {
 
     // Lấy lại thông tin đầy đủ sau khi cập nhật
     const updatedUser = await User.findById(userId)
-      .select('email fullName gender dateOfBirth jlptLevel targetLevel studySettings')
+      .select('email fullName gender dateOfBirth jlptLevel targetLevel studySettings hasCompletedInitialSurvey studyGoal')
       .populate('savedVocabulary')
       .populate('savedGrammar');
 

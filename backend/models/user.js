@@ -16,11 +16,22 @@ const userSchema = new Schema({
     otp: { type: String },
     otpExpire: { type: Date },
     
+    // Thông tin khảo sát ban đầu
+    hasCompletedInitialSurvey: {
+        type: Boolean,
+        default: false
+    },
+    studyGoal: {
+        type: String,
+        enum: ['work', 'study', 'travel', 'hobby', 'exam', 'other'],
+        default: 'hobby'
+    },
+    
     // Thông tin JLPT
     jlptLevel: { 
         type: String, 
-        enum: ['N5', 'N4', 'N3', 'N2', 'N1', 'none'],
-        default: 'none'
+        enum: ['Beginner', 'N5', 'N4', 'N3', 'N2', 'N1'],
+        default: 'Beginner'
     },
     targetLevel: { 
         type: String, 
@@ -107,6 +118,7 @@ const userSchema = new Schema({
 });
 
 userSchema.statics.signup = async function (email, password, fullName) {
+    console.log(email)
     if (!email || !password) {
         throw Error('Bạn chưa điền hết thông tin!');
     }
@@ -169,7 +181,7 @@ userSchema.methods.changePassword = async function(currentPassword, newPassword)
 
 // Method để cập nhật thông tin cá nhân
 userSchema.methods.updateProfile = async function(data) {
-    const allowedFields = ['fullName', 'gender', 'dateOfBirth', 'jlptLevel', 'targetLevel', 'studySettings'];
+    const allowedFields = ['fullName', 'gender', 'dateOfBirth', 'jlptLevel', 'targetLevel', 'studySettings', 'hasCompletedInitialSurvey', 'studyGoal'];
     
     for (const field of allowedFields) {
         if (data[field] !== undefined) {

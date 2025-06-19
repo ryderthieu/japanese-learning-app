@@ -5,7 +5,6 @@ import Register from "../screens/AuthScreens/Register/Register";
 import ForgotPassword from "../screens/AuthScreens/ForgotPassword/ForgotPassword";
 import SentOTP from "../screens/AuthScreens/ForgotPassword/SentOTP";
 import ChangePassword from "../screens/AuthScreens/ForgotPassword/ChangePassword";
-import Survey from "../screens/MainScreens/Survey/Survey";
 
 const AuthStack = () => {
   const Stack = createNativeStackNavigator();
@@ -31,10 +30,7 @@ const AuthStack = () => {
       <Stack.Screen name="ChangePassword" component={ChangePassword} options={{
         title: "Quên mật khẩu",
         headerShown: true
-
       }} />
-      <Stack.Screen name="Survey" component={Survey} />
-
     </Stack.Navigator>
   );
 };
