@@ -24,6 +24,11 @@ const JLPTTestResult = ({ navigation, route }) => {
     } else {
       fetchResult();
     }
+    
+    // Debug: Log tất cả dữ liệu nhận được
+    console.log('JLPTTestResult route.params:', route.params);
+    console.log('testId:', testId);
+    console.log('test:', test);
   }, [resultData]);
 
   const fetchResult = async () => {
@@ -69,28 +74,16 @@ const JLPTTestResult = ({ navigation, route }) => {
   };
 
   const handleReviewTest = () => {
-    if (result?.answers && questions) {
-      // Convert answers từ backend response để có thể hiển thị trong review
-      const reviewAnswers = result.answers.map(answer => {
-        const question = questions.find(q => q._id === answer.questionId);
-        const correctOptionIndex = question?.options?.findIndex(opt => opt.isCorrect) ?? -1;
-        
-        return {
-          questionId: answer.questionId,
-          selectedOption: answer.selectedOption,
-          isCorrect: answer.selectedOption === correctOptionIndex,
-          timeSpent: answer.timeSpent || 0
-        };
-      });
-
-      navigation.navigate('JLPTTestReview', {
-        test,
-        questions,
-        answers: reviewAnswers,
-        result
+    // Sử dụng logic đơn giản giống như JLPTTestList
+    const targetTestId = testId || test?._id || test?.id;
+    console.log('Navigate to JLPTTestReview with testId:', targetTestId);
+    
+    if (targetTestId) {
+      navigation.navigate('JLPTTestReview', { 
+        testId: targetTestId 
       });
     } else {
-      Alert.alert('Thông báo', 'Không có dữ liệu để xem lại bài thi');
+      Alert.alert('Thông báo', 'Không có thông tin bài thi để xem lại');
     }
   };
 
@@ -296,20 +289,18 @@ const JLPTTestResult = ({ navigation, route }) => {
         {/* Action Buttons */}
         <View className="mb-8">
           {/* Primary Action - Review Test */}
-          {result.answers && (
-            <TouchableOpacity
-              onPress={handleReviewTest}
-              className="bg-blue-500 rounded-xl p-4 mb-3 shadow-lg"
-              style={{ elevation: 3 }}
-            >
-              <View className="flex-row items-center justify-center">
-                <Icon name="eye-outline" size={24} color="white" />
-                <Text className="text-white font-bold text-lg ml-3">
-                  Xem lại bài thi
-                </Text>
-              </View>
-            </TouchableOpacity>
-          )}
+          <TouchableOpacity
+            onPress={handleReviewTest}
+            className="bg-blue-500 rounded-xl p-4 mb-3 shadow-lg"
+            style={{ elevation: 3 }}
+          >
+            <View className="flex-row items-center justify-center">
+              <Icon name="eye-outline" size={24} color="white" />
+              <Text className="text-white font-bold text-lg ml-3">
+                Xem lại bài thi
+              </Text>
+            </View>
+          </TouchableOpacity>
           
           {/* Secondary Actions Grid */}
           <View className="flex-row justify-between mb-3">

@@ -93,7 +93,11 @@ const JLPTHistory = ({ navigation }) => {
   };
 
   const handleTestPress = (testResult) => {
-    navigation.navigate('JLPTTestResult', { result: testResult });
+    navigation.navigate('JLPTTestResult', { 
+      result: testResult,
+      testId: testResult.testId?._id || testResult.testId,
+      test: testResult.testId
+    });
   };
 
   const getScoreColor = (score, total) => {
