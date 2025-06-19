@@ -1,0 +1,70 @@
+[
+  {
+    "title": "JLPT N5 Practice Test",
+    "description": "Bài test luyện thi JLPT N5 cơ bản",
+    "level": "N5",
+    "sections": [
+      {
+        "name": "moji-goi",
+        "title": "Chữ viết và từ vựng",
+        "timeLimit": 25,
+        "questions": []
+      },
+      {
+        "name": "bunpou",
+        "title": "Ngữ pháp",
+        "timeLimit": 20,
+        "questions": []
+      },
+      {
+        "name": "dokkai",
+        "title": "Đọc hiểu",
+        "timeLimit": 25,
+        "questions": []
+      }
+    ],
+    "totalTime": 70,
+    "passingScore": 19,
+    "maxScore": 60,
+    "isAvailable": true,
+    "isVisible": true,
+    "showAnswers": true,
+    "allowRetake": true,
+    "randomizeQuestions": false,
+    "randomizeOptions": false
+  },
+  {
+    "title": "JLPT N4 Practice Test",
+    "description": "Bài test luyện thi JLPT N4 cơ bản",
+    "level": "N4",
+    "sections": [
+      {
+        "name": "moji-goi",
+        "title": "Chữ viết và từ vựng",
+        "timeLimit": 30,
+        "questions": []
+      },
+      {
+        "name": "bunpou",
+        "title": "Ngữ pháp",
+        "timeLimit": 25,
+        "questions": []
+      },
+      {
+        "name": "dokkai",
+        "title": "Đọc hiểu",
+        "timeLimit": 35,
+        "questions": []
+      }
+    ],
+    "totalTime": 90,
+    "passingScore": 38,
+    "maxScore": 120,
+    "isAvailable": true,
+    "isVisible": true,
+    "showAnswers": true,
+    "allowRetake": true,
+    "randomizeQuestions": false,
+    "randomizeOptions": false
+  }
+] 

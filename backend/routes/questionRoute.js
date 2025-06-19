@@ -18,6 +18,7 @@ const {
 router.get('/types', getQuestionTypes);
 router.get('/stats', getQuestionStats);
 router.get('/random', getRandomQuestions);
+router.get('/test/:testId', getQuestions);
 router.get('/:id', getQuestion);
 router.get('/', getQuestions);
 

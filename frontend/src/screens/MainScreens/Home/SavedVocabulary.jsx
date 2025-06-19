@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, FlatList, Text } from 'react-native';
 import { VocabularyCard } from '../../../components/Card/Card';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -24,19 +24,30 @@ const SavedVocabulary = ({ route }) => {
     ? savedVocabulary 
     : savedVocabulary.filter(item => item.level === selectedLevel);
 
+  const renderItem = useCallback(({ item }) => (
+    <View className="mb-6">
+      <VocabularyCard item={item} />
+    </View>
+  ), []);
+
+  const keyExtractor = useCallback((item) => item._id?.toString() || Math.random().toString(), []);
+
+  const getItemLayout = useCallback((data, index) => ({
+    length: 200,
+    offset: 200 * index,
+    index,
+  }), []);
+
   return (
     <SafeAreaView className="flex-1 bg-gray-100 pt-4 px-5">
-
-
-      {/* Bộ lọc trình độ */}
       <View className="mb-4">
         <DropDownPicker
-          open={open} // Kiểm soát trạng thái mở/đóng dropdown
-          value={selectedLevel} // Giá trị được chọn
-          items={items} // Các mục trong dropdown
-          setOpen={setOpen} // Hàm để thay đổi trạng thái mở/đóng
-          setValue={setSelectedLevel} // Hàm để thay đổi giá trị đã chọn
-          setItems={setItems} // Hàm để thay đổi danh sách các mục (nếu cần)
+          open={open}
+          value={selectedLevel}
+          items={items}
+          setOpen={setOpen}
+          setValue={setSelectedLevel}
+          setItems={setItems}
           placeholder="Chọn trình độ"
           dropDownDirection="BOTTOM"
           containerStyle={{ height: 50 }}
@@ -47,17 +58,17 @@ const SavedVocabulary = ({ route }) => {
         />
       </View>
 
-      {/* FlatList hiển thị các thẻ từ vựng */}
       <FlatList
         data={filteredVocabulary}
-        renderItem={({ item }) => (
-          <View className="mb-6">
-            <VocabularyCard item={item} />
-          </View>
-        )}
-        keyExtractor={(item, index) => index.toString()}
-        contentContainerStyle={{ paddingBottom: 100 }} // Thêm khoảng cách dưới để tránh che khuất
-        showsVerticalScrollIndicator={false} // Ẩn thanh cuộn dọc
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        getItemLayout={getItemLayout}
+        removeClippedSubviews={true}
+        maxToRenderPerBatch={10}
+        windowSize={5}
+        initialNumToRender={5}
+        contentContainerStyle={{ paddingBottom: 100 }}
+        showsVerticalScrollIndicator={false}
       />
     </SafeAreaView>
   );

@@ -2,14 +2,12 @@ import React, { useContext } from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import Button from "../../../components/Button/Button";
 import { CartContext } from "../../../context/CartContext";
-import { AuthContext } from "../../../context/AuthContext";
 import { ModalContext } from "../../../context/ModalContext";
 import userService from "../../../api/userService";
 
 const CourseDetail = ({ route, navigation }) => {
   const { item } = route.params;
   const { setRefresh } = useContext(CartContext)
-  const {token} = useContext(AuthContext)
   const {openModal} = useContext(ModalContext)
 
   const addToCart = async (course) => {

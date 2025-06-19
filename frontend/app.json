@@ -12,18 +12,40 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "notification": {
+      "icon": "./assets/notification-icon.png",
+      "color": "#EC4899",
+      "androidMode": "default",
+      "androidCollapsedTitle": "Nhắc nhở học tập",
+      "iosDisplayInForeground": true
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": ["remote-notification"],
+        "NSUserNotificationUsageDescription": "Chúng tôi cần gửi thông báo để nhắc nhở bạn học tập mỗi ngày"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/splash-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "NOTIFICATIONS",
+        "SCHEDULE_EXACT_ALARM",
+        "VIBRATE",
+        "RECEIVE_BOOT_COMPLETED"
+      ]
     },
     "web": {
       "favicon": "./assets/splash-icon.png",
       "bundler": "metro"
-    }
+    },
+    "plugins": [
+      [
+        "expo-notifications"
+      ]
+    ]
   }
 }

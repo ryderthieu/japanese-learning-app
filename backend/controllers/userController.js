@@ -24,16 +24,15 @@ const login = async (req, res) => {
 };
 
 const signup = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, fullName } = req.body;
 
   try {
-    const user = await User.signup(email, password);
-    res
-      .status(200)
-      .json({ message: "Đăng ký thành công! Vui lòng đăng nhập để tiếp tục." });
+    const user = await User.signup(email, password, fullName);
+    res.status(200).json({ 
+      message: "Đăng ký thành công! Vui lòng đăng nhập để tiếp tục." 
+    });
   } catch (error) {
     console.log(error.message)
-
     res.status(400).json({ error: error.message });
   }
 };
@@ -141,13 +140,63 @@ const resetPassword = async (req, res) => {
 
 const getInfo = async (req, res) => {
   try {
-    const userId = req.user._id
-    const user = await User.findById(userId).populate('savedVocabulary').populate('savedGrammar')
-    res.status(200).json(user)
+    const userId = req.user._id;
+    const user = await User.findById(userId)
+      .select('email fullName gender dateOfBirth jlptLevel targetLevel studySettings')
+      .populate('savedVocabulary')
+      .populate('savedGrammar');
+    
+    if (!user) {
+      return res.status(404).json({ message: "Không tìm thấy thông tin người dùng" });
+    }
+
+    res.status(200).json(user);
   } catch (error) {
-    res.status(400).json({message: error.message})
+    res.status(400).json({ message: error.message });
   }
-}
+};
+
+const updateProfile = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const updateData = req.body;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "Không tìm thấy thông tin người dùng" });
+    }
+
+    await user.updateProfile(updateData);
+
+    // Lấy lại thông tin đầy đủ sau khi cập nhật
+    const updatedUser = await User.findById(userId)
+      .select('email fullName gender dateOfBirth jlptLevel targetLevel studySettings')
+      .populate('savedVocabulary')
+      .populate('savedGrammar');
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const changePassword = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { currentPassword, newPassword } = req.body;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "Không tìm thấy thông tin người dùng" });
+    }
+
+    await user.changePassword(currentPassword, newPassword);
+
+    res.status(200).json({ message: "Đổi mật khẩu thành công" });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 
 const enrollCourse = async (req, res) => {
   try {
@@ -396,7 +445,7 @@ const getJLPTStats = async (req, res) => {
       return res.status(404).json({ error: 'User không tồn tại' });
     }
 
-    const stats = user.getJLPTStats();
+    const stats = await user.getJLPTStats();
     res.status(200).json(stats);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -447,24 +496,59 @@ const getStudyProgress = async (req, res) => {
 };
 
 // Cập nhật cài đặt học tập
+const getStudySettings = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const user = await User.findById(userId).select('studySettings');
+    if (!user) {
+      return res.status(404).json({ message: 'Không tìm thấy người dùng' });
+    }
+    res.json(user.studySettings);
+  } catch (error) {
+    console.error('Error in getStudySettings:', error);
+    res.status(500).json({ message: 'Lỗi server' });
+  }
+};
+
 const updateStudySettings = async (req, res) => {
   try {
     const userId = req.user._id;
-    const settings = req.body;
-    
-    const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).json({ error: 'User không tồn tại' });
+    const { studyDuration, reminder } = req.body;
+
+    // Validate input
+    if (!studyDuration || studyDuration < 5 || studyDuration > 180) {
+      return res.status(400).json({ message: 'Thời gian học tập phải từ 5 đến 180 phút' });
+    }
+    if (reminder) {
+      if (typeof reminder.enabled !== 'boolean') {
+        return res.status(400).json({ message: 'Giá trị bật/tắt nhắc nhở không hợp lệ' });
+      }
+      if (reminder.enabled && reminder.time) {
+        const timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+        if (!timeRegex.test(reminder.time)) {
+          return res.status(400).json({ message: 'Thời gian nhắc nhở không hợp lệ (định dạng: HH:mm)' });
+        }
+      }
     }
 
-    await user.updateStudySettings(settings);
-    
-    res.status(200).json({ 
-      message: 'Cập nhật cài đặt thành công',
-      studySettings: user.studySettings
-    });
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'Không tìm thấy người dùng' });
+    }
+
+    user.studySettings = {
+      studyDuration,
+      reminder: {
+        enabled: reminder?.enabled ?? true,
+        time: reminder?.time ?? '08:00'
+      }
+    };
+    await user.save();
+
+    res.json(user.studySettings);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Error in updateStudySettings:', error);
+    res.status(500).json({ message: 'Lỗi server' });
   }
 };
 
@@ -596,6 +680,8 @@ module.exports = {
   cofirmOtp,
   resetPassword,
   getInfo,
+  updateProfile,
+  changePassword,
   enrollCourse,
   addToCart,
   getCart,
@@ -609,6 +695,7 @@ module.exports = {
   getJLPTStats,
   updateJLPTInfo,
   getStudyProgress,
+  getStudySettings,
   updateStudySettings,
   saveQuestionNew,
   unsaveQuestion,

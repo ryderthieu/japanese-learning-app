@@ -15,36 +15,50 @@ const getQuestions = async (req, res) => {
             search 
         } = req.query;
 
+        // Nếu có testId trong params, lấy câu hỏi từ test đó
+        const testId = req.params.testId;
+
         const filter = {};
         
-        // Filter theo level
-        if (level) {
-            filter.level = level;
-        }
-        
-        // Filter theo type
-        if (type) {
-            filter.type = type;
-        }
-        
-        // Filter theo section
-        if (section) {
-            filter.section = section;
-        }
-        
-        // Filter theo subSection
-        if (subSection) {
-            filter.subSection = subSection;
-        }
-        
-        // Filter theo difficulty
-        if (difficulty) {
-            filter.difficulty = parseInt(difficulty);
-        }
-        
-        // Search theo questionText
-        if (search) {
-            filter.questionText = { $regex: search, $options: 'i' };
+        if (testId) {
+            // Nếu có testId, lấy câu hỏi từ test đó
+            const Test = require('../models/test');
+            const test = await Test.findById(testId);
+            
+            if (!test) {
+                return res.status(404).json({ error: 'Bài thi không tồn tại' });
+            }
+
+            // Lấy tất cả questionId từ test
+            const questionIds = test.sections.flatMap(section => 
+                section.questions.map(q => q.questionId)
+            );
+            filter._id = { $in: questionIds };
+        } else {
+            // Filter thông thường
+            if (level) {
+                filter.level = level;
+            }
+            
+            if (type) {
+                filter.type = type;
+            }
+            
+            if (section) {
+                filter.section = section;
+            }
+            
+            if (subSection) {
+                filter.subSection = subSection;
+            }
+            
+            if (difficulty) {
+                filter.difficulty = parseInt(difficulty);
+            }
+            
+            if (search) {
+                filter.questionText = { $regex: search, $options: 'i' };
+            }
         }
 
         const skip = (page - 1) * limit;

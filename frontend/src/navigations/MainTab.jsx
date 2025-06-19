@@ -6,6 +6,7 @@ import Dictionary from '../screens/MainScreens/Dictionary/Dictionary';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HomeNavigation from '../screens/MainScreens/Home/_layout';
 import JLPTNavigation from '../screens/MainScreens/JLPT/_layout';
+import ProfileStack from '../screens/MainScreens/Profile/ProfileStack';
 
 const MainTab = () => {
   const Tab = createBottomTabNavigator();
@@ -83,6 +84,17 @@ const MainTab = () => {
           headerStyle: {backgroundColor: '#F490AF'},
           headerTitleStyle: {color: '#fff'},
           headerTintColor: '#fff'
+        }}
+      />
+
+      <Tab.Screen
+        name="Profile"
+        component={ProfileStack}
+        options={{
+          title: 'Cá nhân',
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="person" size={size} color={color} />
+          ),
         }}
       />
     </Tab.Navigator>

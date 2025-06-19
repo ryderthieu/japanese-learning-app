@@ -1,18 +1,17 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AuthStack from "./AuthStack";
 import MainDrawer from "./MainDrawer";
-import { AuthContext } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 const MainStack = () => {
     const Stack = createNativeStackNavigator();
-    const { token } = useContext(AuthContext);
+    const { userToken } = useAuth();
 
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-            {token ? (
+            {userToken ? (
                 <Stack.Screen name="MainDrawer" component={MainDrawer} />
-
             ) : (
                 <Stack.Screen name="AuthStack" component={AuthStack} />
             )}

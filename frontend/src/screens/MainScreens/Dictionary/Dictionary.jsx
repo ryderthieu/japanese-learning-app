@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { View, Text, TextInput, FlatList, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { VocabularyCard } from "../../../components/Card/Card";
@@ -32,6 +32,20 @@ const Dictionary = () => {
         }
     };
 
+    const renderItem = useCallback(({ item }) => (
+        <View className="mb-6">
+            <VocabularyCard item={item} />
+        </View>
+    ), []);
+
+    const keyExtractor = useCallback((item) => item._id?.toString() || Math.random().toString(), []);
+
+    const getItemLayout = useCallback((data, index) => ({
+        length: 200,
+        offset: 200 * index,
+        index,
+    }), []);
+
     return (
         <View className="flex-1 bg-gray-100 p-4">
             <View className="flex-row items-center bg-white rounded-lg shadow-md p-3 mb-4">
@@ -63,8 +77,15 @@ const Dictionary = () => {
             ) : results.length > 0 ? (
                 <FlatList
                     data={results}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={({ item }) => <VocabularyCard item={item} />}
+                    renderItem={renderItem}
+                    keyExtractor={keyExtractor}
+                    getItemLayout={getItemLayout}
+                    removeClippedSubviews={true}
+                    maxToRenderPerBatch={10}
+                    windowSize={5}
+                    initialNumToRender={5}
+                    contentContainerStyle={{ paddingBottom: 100 }}
+                    showsVerticalScrollIndicator={false}
                 />
             ) : (
                 !loading && (

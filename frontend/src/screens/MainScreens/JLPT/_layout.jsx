@@ -6,6 +6,8 @@ import JLPTTest from './JLPTTest';
 import JLPTHistory from './JLPTHistory';
 import JLPTMiniTest from './JLPTMiniTest';
 import JLPTTestList from './JLPTTestList';
+import JLPTTestResult from './JLPTTestResult';
+import JLPTTestReview from './JLPTTestReview';
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +66,20 @@ const JLPTNavigation = () => {
         component={JLPTTestList}
         options={{
           title: 'Danh sách đề thi',
+        }}
+      />
+      <Stack.Screen
+        name="JLPTTestResult"
+        component={JLPTTestResult}
+        options={{
+          title: 'Kết quả thi',
+        }}
+      />
+      <Stack.Screen
+        name="JLPTTestReview"
+        component={JLPTTestReview}
+        options={{
+          title: 'Xem lại bài thi',
         }}
       />
     </Stack.Navigator>

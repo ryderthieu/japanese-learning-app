@@ -8,16 +8,32 @@ import userService from "../../../api/userService";
 
 const Register = ({ navigation }) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
-  const [name, setName] = useState('')
+  const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const {openModal} = useContext(ModalContext)
 
   const handleSignup = async () => {
+    // Validation
+    if (!fullName || !email || !password || !confirmPassword) {
+      openModal({type: 'error', message: 'Vui lòng điền đầy đủ thông tin'});
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      openModal({type: 'error', message: 'Mật khẩu xác nhận không khớp'});
+      return;
+    }
+
+    if (password.length < 6) {
+      openModal({type: 'error', message: 'Mật khẩu phải có ít nhất 6 ký tự'});
+      return;
+    }
+
     try {
       await userService.signup({
-        name,
+        fullName,
         email,
         password
       });
@@ -53,7 +69,8 @@ const Register = ({ navigation }) => {
             }}
             placeholder="Họ và tên"
             leftIcon={{ type: "ant-design", name: "user"}}
-            onChangeText={setName}
+            onChangeText={setFullName}
+            value={fullName}
           />
           <Input
             containerStyle={{
@@ -69,10 +86,10 @@ const Register = ({ navigation }) => {
               paddingHorizontal: 10,
               borderBottomWidth: 0
             }}
-
             placeholder="Địa chỉ email"
             leftIcon={{ type: "ant-design", name: "mail" }}
             onChangeText={setEmail}
+            value={email}
           />
           <Input
             containerStyle={{
@@ -97,6 +114,7 @@ const Register = ({ navigation }) => {
               onPress: () => setPasswordVisible(!isPasswordVisible),
             }}
             onChangeText={setPassword}
+            value={password}
           />
           <Input
             containerStyle={{
@@ -122,6 +140,7 @@ const Register = ({ navigation }) => {
               onPress: () => setPasswordVisible(!isPasswordVisible),
             }}
             onChangeText={setConfirmPassword}
+            value={confirmPassword}
           />
           <Button
             onPress={handleSignup}

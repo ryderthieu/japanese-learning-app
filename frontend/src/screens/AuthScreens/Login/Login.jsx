@@ -1,38 +1,36 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import React, { useContext } from "react";
+import React, { useState } from "react";
+import { View, Text, Image, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Input, Icon, Button, SocialIcon } from "@rneui/themed";
-import { useState } from "react";
-import { AuthContext } from "../../../context/AuthContext";
-import { LoadingContext } from "../../../context/LoadingContext";
-import Loading from "../../../components/Loading/Loading";
-import { ModalContext } from "../../../context/ModalContext";
-import userService from "../../../api/userService";
+import { Input, Button } from "@rneui/themed";
+import { useAuth } from '../../../context/AuthContext';
 
 const Login = ({navigation}) => {
-  const {login} = useContext(AuthContext)
-  const {openModal} = useContext(ModalContext)
+  const { login } = useAuth();
   const [isPasswordVisible, setPasswordVisible] = useState(false);
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const handleLogin = async () => {
-    try {
-      const response = await userService.login({
-        email: email,
-        password: password
-      });
-      const token = response.token;
-      openModal({type: 'success', message: 'Đăng nhập thành công!'})
-      login(token)
-    } catch (error) {
-      console.log(error.response?.data?.message)
-      openModal({type: 'error', message: error.response?.data?.message || 'Đăng nhập thất bại'})
+    if (!email || !password) {
+      Alert.alert('Lỗi', 'Vui lòng điền đầy đủ thông tin');
+      return;
     }
-  }
+
+    setLoading(true);
+    try {
+      const result = await login(email, password);
+      if (!result.success) {
+        Alert.alert('Lỗi', result.message);
+      }
+    } catch (error) {
+      Alert.alert('Lỗi', 'Không thể đăng nhập');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-
     <SafeAreaView>
       <View className="flex flex-col items-center w-screen h-screen px-5 py-16">
         <Image source={require("../../../assets/logo/logo-app.png")}></Image>
@@ -57,6 +55,7 @@ const Login = ({navigation}) => {
             placeholder="Địa chỉ email"
             leftIcon={{ type: "ant-design", name: "user" }}
             onChangeText={setEmail}
+            value={email}
           />
           <Input
             containerStyle={{
@@ -74,13 +73,23 @@ const Login = ({navigation}) => {
             }}
             placeholder="Mật khẩu"
             secureTextEntry={!isPasswordVisible}
-            leftIcon={{ type: "feather", name: "key",  }}
-            rightIcon={{ type: "feather", name: isPasswordVisible ? "eye-off" : "eye" , onPress: () => setPasswordVisible(!isPasswordVisible) }}
+            leftIcon={{ type: "feather", name: "key" }}
+            rightIcon={{ 
+              type: "feather", 
+              name: isPasswordVisible ? "eye-off" : "eye",
+              onPress: () => setPasswordVisible(!isPasswordVisible)
+            }}
             onChangeText={setPassword}
+            value={password}
           />
-          <Text className="mb-5 text-right text-base text-[#2B308B]" onPress={() =>navigation.navigate('ForgotPassword')}>Quên mật khẩu?</Text>
+          <Text 
+            className="mb-5 text-right text-base text-[#2B308B]" 
+            onPress={() => navigation.navigate('ForgotPassword')}
+          >
+            Quên mật khẩu?
+          </Text>
           <Button
-            title={"Đăng nhập"}
+            title={loading ? "Đang xử lý..." : "Đăng nhập"}
             buttonStyle={{
               width: 350,
               height: 50,
@@ -88,20 +97,20 @@ const Login = ({navigation}) => {
               borderRadius: 20,
             }}
             titleStyle={{
-             fontWeight: 'bold'
+              fontWeight: 'bold'
             }}
             onPress={handleLogin}
+            disabled={loading}
           />
         </View>
-        {/* <Text className="mt-10 mb-5 text-base">Hoặc đăng nhập bằng</Text>
-        <View className="flex flex-row mb-5 ">
-          <SocialIcon  onPress={() =>navigation.navigate('MainDrawer')} type="facebook" raise={false} />
-          <SocialIcon  onPress={() =>navigation.navigate('Survey')} type="google" raise={false} />
-          <SocialIcon onPress={() =>navigation.navigate('FreeDocument')} type="apple" light={true} raise={false} />
-        </View> */}
         <View className="flex flex-row gap-2 text-base mt-3">
           <Text>Chưa có tài khoản?</Text>
-          <Text className="text-[#2B308B] font-bold" onPress={() => navigation.navigate('Register')}>Đăng ký</Text>
+          <Text 
+            className="text-[#2B308B] font-bold" 
+            onPress={() => navigation.navigate('Register')}
+          >
+            Đăng ký
+          </Text>
         </View>
       </View>
     </SafeAreaView>

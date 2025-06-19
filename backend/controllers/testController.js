@@ -7,7 +7,7 @@ const { createTestTemplate, getSectionInfo, getSubSectionInfo } = require('../ut
 const getTests = async (req, res) => {
     try {
         const { 
-            level, 
+            level: queryLevel, 
             category, 
             isPublic, 
             isActive, 
@@ -16,6 +16,9 @@ const getTests = async (req, res) => {
             limit = 10,
             search 
         } = req.query;
+
+        // Lấy level từ params nếu có (route /level/:level), nếu không thì từ query
+        const level = req.params.level || queryLevel;
 
         const filter = {};
         
@@ -334,6 +337,19 @@ const submitTest = async (req, res) => {
     try {
         const { testId } = req.params;
         const { answers, timeSpent } = req.body;
+        
+        console.log('Submit test request:', {
+            testId,
+            answersCount: answers?.length,
+            timeSpent,
+            userId: req.user?._id
+        });
+
+        // Kiểm tra user authentication
+        if (!req.user) {
+            return res.status(401).json({ error: 'Người dùng chưa được xác thực' });
+        }
+        
         const userId = req.user._id;
 
         const test = await Test.findById(testId)
@@ -342,6 +358,8 @@ const submitTest = async (req, res) => {
         if (!test) {
             return res.status(404).json({ error: 'Bài thi không tồn tại' });
         }
+
+        console.log('Test found:', { id: test._id, title: test.title });
 
         // Tính điểm
         let totalScore = 0;
@@ -352,7 +370,10 @@ const submitTest = async (req, res) => {
 
         for (const answer of answers) {
             const question = await Question.findById(answer.questionId);
-            if (!question) continue;
+            if (!question) {
+                console.log('Question not found:', answer.questionId);
+                continue;
+            }
 
             totalQuestions++;
             const isCorrect = question.options[answer.selectedOption]?.isCorrect || false;
@@ -375,6 +396,12 @@ const submitTest = async (req, res) => {
             });
         }
 
+        console.log('Score calculation:', { 
+            totalScore,
+            correctAnswers,
+            totalQuestions
+        });
+
         const scorePercentage = totalQuestions > 0 ? (correctAnswers / totalQuestions) * 100 : 0;
         const passed = totalScore >= test.passingScore;
 
@@ -389,13 +416,38 @@ const submitTest = async (req, res) => {
         };
 
         // Cập nhật thống kê user
-        const user = await User.findById(userId);
-        await user.addTestAttempt(testAttempt);
+        try {
+            const user = await User.findById(userId);
+            if (user && user.addTestAttempt) {
+                await user.addTestAttempt(testAttempt);
+            } else {
+                console.log('User not found or addTestAttempt method missing');
+            }
+        } catch (userError) {
+            console.error('Error updating user stats:', userError);
+            // Continue with test update even if user update fails
+        }
 
         // Cập nhật thống kê test
-        const newAverageScore = (test.averageScore * (test.attemptCount - 1) + totalScore) / test.attemptCount;
-        test.averageScore = newAverageScore;
-        await test.save();
+        try {
+            test.attemptCount = (test.attemptCount || 0) + 1;
+            const newAverageScore = test.attemptCount === 1 
+                ? totalScore 
+                : ((test.averageScore || 0) * (test.attemptCount - 1) + totalScore) / test.attemptCount;
+            test.averageScore = newAverageScore;
+            
+            console.log('Test before save:', {
+                id: test._id,
+                attemptCount: test.attemptCount,
+                averageScore: test.averageScore
+            });
+            
+            await test.save();
+            console.log('Test saved successfully');
+        } catch (saveError) {
+            console.error('Error saving test:', saveError);
+            // Don't fail the request if test stats update fails
+        }
 
         const result = {
             testId: test._id,

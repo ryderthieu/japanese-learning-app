@@ -111,6 +111,17 @@ const questionService = {
     return response.data;
   },
 
+  // Lấy câu hỏi theo bài thi
+  getQuestionsByTest: async (testId, filters = {}) => {
+    const params = new URLSearchParams();
+    
+    if (filters.page) params.append('page', filters.page);
+    if (filters.limit) params.append('limit', filters.limit);
+    
+    const response = await apiClient.get(`/questions/test/${testId}?${params.toString()}`);
+    return response.data;
+  },
+
   // Tìm kiếm câu hỏi
   searchQuestions: async (query, filters = {}) => {
     const params = new URLSearchParams();

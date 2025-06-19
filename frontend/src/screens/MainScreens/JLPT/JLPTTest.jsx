@@ -22,14 +22,14 @@ const JLPTTest = ({ navigation, route }) => {
   const [showQuestionList, setShowQuestionList] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   
-  const { test: testData } = route.params || {};
+  const { testId, level, type, mode } = route.params || {};
   const timerRef = useRef(null);
 
   useEffect(() => {
-    if (testData) {
+    if (testId) {
       initializeTest();
     }
-  }, [testData]);
+  }, [testId]);
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -52,13 +52,13 @@ const JLPTTest = ({ navigation, route }) => {
       setLoading(true);
       
       // Get test details
-      const testResponse = await testService.getTestById(testData._id);
-      setTest(testResponse.test);
-      setTimeLeft(testResponse.test.duration * 60); // Convert to seconds
+      const testResponse = await testService.getTestById(testId);
+      setTest(testResponse);
+      setTimeLeft(testResponse.totalTime * 60); // Convert to seconds
       
       // Get questions for this test
-      const questionsResponse = await questionService.getQuestionsByTest(testData._id);
-      setQuestions(questionsResponse.questions || []);
+      const questionsResponse = await questionService.getQuestionsByTest(testId);
+      setQuestions(questionsResponse.questions || questionsResponse || []);
       
     } catch (error) {
       console.error('Lỗi khi khởi tạo bài thi:', error);
@@ -110,25 +110,43 @@ const JLPTTest = ({ navigation, route }) => {
     try {
       setSubmitting(true);
       
-      const submission = {
-        testId: test._id,
-        answers: answers,
-        timeSpent: test.duration * 60 - timeLeft,
-        completedAt: new Date().toISOString()
+      console.log('Submitting test with testId:', testId);
+      console.log('Test data:', test);
+      console.log('Raw answers:', answers);
+      
+      // Chuyển đổi answers từ object {questionId: answerIndex} thành array
+      const answersArray = Object.entries(answers).map(([questionId, selectedOption]) => ({
+        questionId,
+        selectedOption,
+        timeSpent: 0 // Có thể tính thời gian cho từng câu sau
+      }));
+      
+      console.log('Converted answers array:', answersArray);
+
+      const submitData = {
+        answers: answersArray,
+        timeSpent: test.totalTime * 60 - timeLeft
       };
 
-      const response = await testService.submitTest(submission);
+      console.log('Submitting data:', submitData);
+
+      const response = await testService.submitTest(testId, submitData);
+      
+      console.log('Submit response:', response);
       
       navigation.replace('JLPTTestResult', {
-        result: response.result,
+        result: response,
         test: test,
         questions: questions,
-        answers: answers
+        answers: answers,
+        testId: testId,
+        timeSpent: test.totalTime * 60 - timeLeft
       });
       
     } catch (error) {
       console.error('Lỗi khi nộp bài:', error);
-      Alert.alert('Lỗi', 'Không thể nộp bài thi. Vui lòng thử lại.');
+      console.error('Error details:', error.message);
+      Alert.alert('Lỗi', `Không thể nộp bài thi: ${error.message || 'Vui lòng thử lại.'}`);
     } finally {
       setSubmitting(false);
     }
@@ -173,12 +191,18 @@ const JLPTTest = ({ navigation, route }) => {
           </View>
           
           <Text className="text-lg font-semibold text-gray-800 mb-4">
-            {question.question}
+            {question.questionText}
           </Text>
           
-          {question.image && (
+          {question.readingPassage && (
+            <View className="bg-gray-100 rounded-lg p-4 mb-4">
+              <Text className="text-gray-700">{question.readingPassage}</Text>
+            </View>
+          )}
+          
+          {question.imageFile && (
             <View className="bg-gray-100 rounded-lg p-4 mb-4 items-center">
-              <Text className="text-gray-500">[Hình ảnh]</Text>
+              <Text className="text-gray-500">[Hình ảnh: {question.imageFile}]</Text>
             </View>
           )}
         </View>
@@ -212,7 +236,7 @@ const JLPTTest = ({ navigation, route }) => {
                   </Text>
                 </View>
                 <Text className="flex-1 text-gray-800 text-lg">
-                  {option}
+                  {option.text}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -261,7 +285,7 @@ const JLPTTest = ({ navigation, route }) => {
               {test?.title || 'Bài thi JLPT'}
             </Text>
             <Text className="text-white text-sm opacity-90">
-              {test?.level} • {test?.questionCount} câu hỏi
+              {test?.level} • {test?.totalQuestions || questions.length} câu hỏi
             </Text>
           </View>
           
@@ -360,7 +384,7 @@ const JLPTTest = ({ navigation, route }) => {
         animationType="slide"
         transparent={true}
       >
-        <View className="flex-1 bg-black bg-opacity-50">
+        <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.5)' }}>
           <View className="flex-1 mt-20 bg-white rounded-t-3xl">
             <View className="p-4 border-b border-gray-200">
               <View className="flex-row items-center justify-between">
@@ -413,7 +437,7 @@ const JLPTTest = ({ navigation, route }) => {
         animationType="fade"
         transparent={true}
       >
-        <View className="flex-1 bg-black bg-opacity-50 justify-center items-center">
+        <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', alignItems: 'center' }}>
           <View className="bg-white rounded-xl p-6 mx-4 w-80">
             <Text className="text-xl font-bold text-gray-800 mb-4 text-center">
               Nộp bài thi?
@@ -425,7 +449,7 @@ const JLPTTest = ({ navigation, route }) => {
             <View className="flex-row space-x-3">
               <TouchableOpacity
                 onPress={() => setShowConfirmSubmit(false)}
-                className="flex-1 bg-gray-200 py-3 rounded-lg"
+                className="flex-1 bg-gray-200 py-3 rounded-lg mr-2"
               >
                 <Text className="text-center font-semibold text-gray-700">
                   Hủy
@@ -437,7 +461,7 @@ const JLPTTest = ({ navigation, route }) => {
                   setShowConfirmSubmit(false);
                   submitTest();
                 }}
-                className="flex-1 bg-pink-500 py-3 rounded-lg"
+                className="flex-1 bg-pink-500 py-3 rounded-lg ml-2"
                 disabled={submitting}
               >
                 <Text className="text-center font-semibold text-white">

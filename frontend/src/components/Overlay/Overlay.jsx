@@ -87,7 +87,12 @@ const Overlay = ({ isVisible, onClose, type, message, title, onConfirm }) => {
               ) : (
                 <TouchableOpacity
                   className="bg-primary w-[80px] h-[40px] items-center justify-center rounded-lg"
-                  onPress={onClose}
+                  onPress={() => {
+                    if (typeof onConfirm === 'function') {
+                      onConfirm();
+                    }
+                    onClose();
+                  }}
                 >
                   <Text className="text-white font-bold text-center">Xác nhận</Text>
                 </TouchableOpacity>

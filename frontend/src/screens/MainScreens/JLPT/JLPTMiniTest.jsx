@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+import { questionService } from '../../../api';
 
 const JLPTMiniTest = ({ navigation }) => {
   const route = useRoute();
@@ -18,36 +19,63 @@ const JLPTMiniTest = ({ navigation }) => {
   const [test, setTest] = useState(null);
   const [error, setError] = useState(null);
 
-  // Giả lập lấy dữ liệu từ API
+  // Lấy dữ liệu từ API
   useEffect(() => {
-    const level = route.params?.level || 'N3'; // Mặc định là N3 nếu không có params
-    
-    // Giả lập call API
-    setTimeout(() => {
-      const sampleTest = {
-        title: `Mini Test ${level} - Ngữ pháp và Từ vựng`,
-        questions: [
-          {
-            question: 'この薬を飲めば、熱が（　　　）でしょう。',
-            options: ['下がる', '下げる', '下がれる', '下げられる'],
-            correctAnswer: 0,
-          },
-          {
-            question: '彼女は日本語が（　　　）上手です。',
-            options: ['とても', 'あまり', 'ずいぶん', 'わりと'],
-            correctAnswer: 2,
-          },
-          {
-            question: '先生に（　　　）、宿題を出しました。',
-            options: ['言われて', '言って', '話されて', '話して'],
-            correctAnswer: 0,
-          },
-        ],
-      };
-      setTest(sampleTest);
-      setLoading(false);
-    }, 1000);
+    fetchMiniTest();
   }, [route.params?.level]);
+
+  const fetchMiniTest = async () => {
+    try {
+      setLoading(true);
+      const level = route.params?.level || 'N3';
+      
+      // Lấy câu hỏi ngẫu nhiên từ API
+      const response = await questionService.getRandomQuestions(3, {
+        level: level,
+        type: 'moji_goi'  // Ngữ pháp và từ vựng
+      });
+
+      if (response.success && response.questions.length > 0) {
+        const testData = {
+          title: `Mini Test ${level} - Ngữ pháp và Từ vựng`,
+          questions: response.questions.map(q => ({
+            question: q.question,
+            options: q.options,
+            correctAnswer: q.correctAnswer,
+          }))
+        };
+        setTest(testData);
+      } else {
+        // Fallback với mock data nếu API không có dữ liệu
+        const sampleTest = {
+          title: `Mini Test ${level} - Ngữ pháp và Từ vựng`,
+          questions: [
+            {
+              question: 'この薬を飲めば、熱が（　　　）でしょう。',
+              options: ['下がる', '下げる', '下がれる', '下げられる'],
+              correctAnswer: 0,
+            },
+            {
+              question: '彼女は日本語が（　　　）上手です。',
+              options: ['とても', 'あまり', 'ずいぶん', 'わりと'],
+              correctAnswer: 2,
+            },
+            {
+              question: '先生に（　　　）、宿題を出しました。',
+              options: ['言われて', '言って', '話されて', '話して'],
+              correctAnswer: 0,
+            },
+          ],
+        };
+        setTest(sampleTest);
+      }
+    } catch (error) {
+      console.error('Error loading mini test:', error);
+      setError('Không thể tải bài thi. Vui lòng thử lại sau.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleAnswer = (selectedAnswer) => {
     if (selectedAnswer === test.questions[currentQuestion].correctAnswer) {

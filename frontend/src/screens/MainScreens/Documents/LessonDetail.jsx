@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import YouTube from 'react-native-youtube-iframe';
 import { GrammarCard, VocabularyCard } from '../../../components/Card/Card';
-import { AuthContext } from '../../../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import { ModalContext } from '../../../context/ModalContext';
 import lessonService from '../../../api/lessonService';
@@ -13,7 +12,6 @@ const LessonDetail = ({ route }) => {
     const { lesson } = route.params;
     const [videoEnded, setVideoEnded] = useState(false);
     const [isMarkingComplete, setIsMarkingComplete] = useState(false);
-    const { token } = useContext(AuthContext);
     const { openModal } = useContext(ModalContext);
     const [lessonDetail, setLessonDetail] = useState(null);
     const [loading, setLoading] = useState(true);

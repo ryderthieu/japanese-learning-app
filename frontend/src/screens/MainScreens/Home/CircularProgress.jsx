@@ -7,9 +7,9 @@ const CircularProgress = ({ percentage }) => {
       {/* Vòng tròn xám (background) */}
       <View className="absolute w-full h-full rounded-full border-[6px] border-gray-300" />
 
-      {/* Vòng tròn đen thể hiện phần trăm */}
+      {/* Vòng tròn hồng thể hiện phần trăm */}
       <View
-        className="absolute w-full h-full rounded-full border-[6px] border-black"
+        className="absolute w-full h-full rounded-full border-[6px] border-pink-500"
         style={{
           borderTopColor: "transparent", // Tạo hiệu ứng vòng tròn
           transform: [{ rotate: `${percentage * 3.6}deg` }],
@@ -17,9 +17,10 @@ const CircularProgress = ({ percentage }) => {
       />
 
       {/* Text phần trăm */}
-      <Text className="text-base font-bold text-black">{`${percentage}%`}</Text>
+      <Text className="text-base font-bold text-pink-600">{`${percentage}%`}</Text>
     </View>
   );
 };
+
 export default CircularProgress
 

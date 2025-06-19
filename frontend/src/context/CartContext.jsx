@@ -1,11 +1,10 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { AuthContext } from './AuthContext';
 import userService from '../api/userService';
+import { Alert } from 'react-native';
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-    const {token} = useContext(AuthContext)
     const [cartItems, setCartItems] = useState([]);
     const [refresh, setRefresh] = useState(false)
 

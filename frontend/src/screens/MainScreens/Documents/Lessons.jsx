@@ -2,14 +2,12 @@ import { View, FlatList, TouchableOpacity, Text, Image, Modal, Button } from "re
 import { useState, useEffect, useContext } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons'
 import DropDownPicker from "react-native-dropdown-picker";
-import { AuthContext } from "../../../context/AuthContext";
 import { useIsFocused } from "@react-navigation/native";
 import { ModalContext } from "../../../context/ModalContext";
 import userService from "../../../api/userService";
 
 const Lessons = ({ route, navigation }) => {
     const isFocus = useIsFocused()
-    const {token} = useContext(AuthContext)
     const {openModal} = useContext(ModalContext)
     const { course } = route.params;
     const [modalVisible, setModalVisible] = useState(false); // Trạng thái mở modal 

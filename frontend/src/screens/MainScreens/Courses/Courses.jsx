@@ -3,7 +3,6 @@ import { View, Text, FlatList, TouchableOpacity, ScrollView } from 'react-native
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SellingCourse } from '../../../components/Card/Card';
-import { AuthContext } from '../../../context/AuthContext';
 import { CartContext } from '../../../context/CartContext';
 import { LoadingContext } from '../../../context/LoadingContext';
 import Loading from '../../../components/Loading/Loading';
@@ -12,7 +11,6 @@ import courseService from '../../../api/courseService';
 import userService from '../../../api/userService';
 
 const Courses = () => {
-  const {token} = useContext(AuthContext)
   const [cartCount, setCartCount] = useState(0); 
   const {cartItems, setRefresh} = useContext(CartContext)
   const {isLoading, setIsLoading} = useContext(LoadingContext)

@@ -15,15 +15,16 @@ const {
 } = require('../controllers/testController');
 
 // Middleware xác thực (cần thêm sau)
-// const requireAuth = require('../middleware/requireAuth');
+const { authenticateJWT } = require("../middleware/authMiddleware");
 
 // Public routes
 router.get('/stats/:testId', getTestStats);
+router.get('/level/:level', getTests);
 router.get('/:id', getTest);
 router.get('/', getTests);
 
 // Protected routes (cần xác thực)
-// router.use(requireAuth);
+router.use(authenticateJWT);
 
 // Quản lý bài thi
 router.post('/', createTest);

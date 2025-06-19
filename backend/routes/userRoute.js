@@ -14,10 +14,13 @@ const {
   addCompletedLesson,
   cofirmOtp,
   getInfo,
+  updateProfile,
+  changePassword,
   // JLPT functions
   getJLPTStats,
   updateJLPTInfo,
   getStudyProgress,
+  getStudySettings,
   updateStudySettings,
   saveQuestionNew,
   unsaveQuestion,
@@ -40,6 +43,8 @@ router.use(authenticateJWT);
 
 // User info
 router.get("/", getInfo);
+router.post("/update-profile", updateProfile);
+router.post("/change-password", changePassword);
 
 // Course management
 router.post("/enroll", enrollCourse);
@@ -55,6 +60,7 @@ router.post("/add-completed-lesson/:lessonId", addCompletedLesson);
 router.get("/jlpt/stats", getJLPTStats);
 router.put("/jlpt/info", updateJLPTInfo);
 router.get("/jlpt/progress", getStudyProgress);
+router.get("/jlpt/settings", getStudySettings);
 router.put("/jlpt/settings", updateStudySettings);
 router.get("/jlpt/history", getTestHistory);
 router.get("/jlpt/section-stats", getSectionStats);

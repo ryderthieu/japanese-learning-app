@@ -7,12 +7,10 @@ import {
   Image,
   Modal,
 } from 'react-native';
-import { AuthContext } from '../../../context/AuthContext';
-import { userService } from '../../../api';
+import userService from '../../../api/userService';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const JLPTDashboard = ({ navigation }) => {
-  const { token } = useContext(AuthContext);
   const [jlptStats, setJlptStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedLevel, setSelectedLevel] = useState('N5');
@@ -26,12 +24,35 @@ const JLPTDashboard = ({ navigation }) => {
     try {
       setLoading(true);
       const stats = await userService.getJLPTStats();
+      console.log('JLPT Stats received:', stats);
       setJlptStats(stats);
     } catch (error) {
       console.error('Lỗi khi lấy thống kê JLPT:', error);
     } finally {
       setLoading(false);
     }
+  };
+
+  const getSectionName = (sectionKey) => {
+    const sectionNames = {
+      'moji-goi': '文字・語彙',
+      'bunpou': '文法',
+      'dokkai': '読解',
+      'choukai': '聴解'
+    };
+    return sectionNames[sectionKey] || sectionKey;
+  };
+
+  const formatTime = (seconds) => {
+    if (!seconds) return '0:00';
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    
+    if (hours > 0) {
+      return `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+    return `${minutes}:${secs.toString().padStart(2, '0')}`;
   };
 
   const JLPTLevels = [
@@ -231,29 +252,209 @@ const JLPTDashboard = ({ navigation }) => {
       {/* Stats Summary */}
       {jlptStats && (
         <View className="p-4">
-          <Text className="text-2xl font-bold text-gray-800 mb-4">Tổng quan</Text>
+          <Text className="text-2xl font-bold text-gray-800 mb-4">Tổng quan thống kê</Text>
           <View className="bg-white rounded-xl p-4 shadow-md">
             <View className="flex-row justify-between items-center mb-4">
-              <Text className="text-lg font-semibold text-gray-800">Tiến độ tổng thể</Text>
-              <Text className="text-2xl font-bold text-pink-500">
-                {jlptStats.overallProgress || 0}%
-              </Text>
+              <Text className="text-lg font-semibold text-gray-800">Cấp độ hiện tại</Text>
+              <View className="flex-row items-center">
+                <Text className="text-xl font-bold text-pink-500 mr-2">
+                  {jlptStats.level || 'Chưa xác định'}
+                </Text>
+                <Icon name="arrow-forward" size={16} color="#666" />
+                <Text className="text-xl font-bold text-green-500 ml-2">
+                  {jlptStats.targetLevel || 'Chưa xác định'}
+                </Text>
+              </View>
             </View>
-            <View className="flex-row justify-between">
-              <View className="items-center">
-                <Text className="text-2xl font-bold text-green-500">
-                  {jlptStats.completedTests || 0}
+            
+            <View className="flex-row justify-between mb-4">
+              <View className="items-center flex-1">
+                <Text className="text-2xl font-bold text-blue-500">
+                  {jlptStats.stats?.totalTestsTaken || 0}
                 </Text>
                 <Text className="text-sm text-gray-600">Bài thi đã làm</Text>
               </View>
-              <View className="items-center">
-                <Text className="text-2xl font-bold text-orange-500">
-                  {jlptStats.studyDays || 0}
+              <View className="items-center flex-1">
+                <Text className="text-2xl font-bold text-green-500">
+                  {Math.round(jlptStats.stats?.averageScore || 0)}
                 </Text>
-                <Text className="text-sm text-gray-600">Ngày học</Text>
+                <Text className="text-sm text-gray-600">Điểm trung bình</Text>
+              </View>
+              <View className="items-center flex-1">
+                <Text className="text-2xl font-bold text-orange-500">
+                  {Math.round(jlptStats.stats?.bestScore || 0)}
+                </Text>
+                <Text className="text-sm text-gray-600">Điểm cao nhất</Text>
               </View>
             </View>
+
+            {/* Section Strengths */}
+            {jlptStats.stats?.strongestSection && jlptStats.stats?.weakestSection && (
+              <View className="bg-gray-50 rounded-lg p-3">
+                <Text className="text-sm font-semibold text-gray-700 mb-2">Thế mạnh & điểm yếu:</Text>
+                <View className="flex-row justify-between">
+                  <View className="flex-row items-center">
+                    <Icon name="checkmark-circle" size={16} color="#4CAF50" />
+                    <Text className="text-sm text-green-600 ml-1">
+                      Mạnh: {getSectionName(jlptStats.stats.strongestSection)}
+                    </Text>
+                  </View>
+                  <View className="flex-row items-center">
+                    <Icon name="alert-circle" size={16} color="#FF9800" />
+                    <Text className="text-sm text-orange-600 ml-1">
+                      Yếu: {getSectionName(jlptStats.stats.weakestSection)}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            )}
           </View>
+
+          {/* Recent Attempts */}
+          {jlptStats.recentAttempts && jlptStats.recentAttempts.length > 0 && (
+            <View className="mt-4 bg-white rounded-xl p-4 shadow-md">
+              <Text className="text-lg font-semibold text-gray-800 mb-3">Lần thi gần nhất</Text>
+              {(() => {
+                const latestAttempt = jlptStats.recentAttempts[0];
+                if (!latestAttempt || !latestAttempt.answers) {
+                  return (
+                    <View className="items-center py-4">
+                      <Text className="text-gray-500">Chưa có dữ liệu chi tiết</Text>
+                    </View>
+                  );
+                }
+
+                const correctAnswers = latestAttempt.answers.filter(a => a.isCorrect).length;
+                const totalQuestions = latestAttempt.answers.length;
+                const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+
+                return (
+                  <View>
+                    {/* Header thông tin bài thi */}
+                    <View className="bg-gray-50 rounded-lg p-3 mb-4">
+                      <View className="flex-row justify-between items-center mb-2">
+                        <Text className="font-medium text-gray-800">
+                          Điểm: {latestAttempt.score}/{latestAttempt.maxScore}
+                        </Text>
+                        <Text className={`font-bold text-lg ${percentage >= 70 ? 'text-green-500' : 'text-red-500'}`}>
+                          {percentage}%
+                        </Text>
+                      </View>
+                      <View className="flex-row justify-between items-center">
+                        <Text className="text-xs text-gray-500">
+                          {new Date(latestAttempt.completedAt).toLocaleDateString('vi-VN')}
+                        </Text>
+                        <Text className="text-xs text-gray-500">
+                          {formatTime(latestAttempt.timeSpent)}
+                        </Text>
+                      </View>
+                    </View>
+
+                    {/* Thống kê nhanh */}
+                    <View className="flex-row justify-around mb-4">
+                      <View className="items-center">
+                        <View className="bg-green-100 w-12 h-12 rounded-full items-center justify-center mb-2">
+                          <Icon name="checkmark" size={20} color="#059669" />
+                        </View>
+                        <Text className="text-xs text-gray-600 text-center">Đúng</Text>
+                        <Text className="text-lg font-bold text-green-600">
+                          {correctAnswers}
+                        </Text>
+                      </View>
+                      
+                      <View className="items-center">
+                        <View className="bg-red-100 w-12 h-12 rounded-full items-center justify-center mb-2">
+                          <Icon name="close" size={20} color="#DC2626" />
+                        </View>
+                        <Text className="text-xs text-gray-600 text-center">Sai</Text>
+                        <Text className="text-lg font-bold text-red-600">
+                          {totalQuestions - correctAnswers}
+                        </Text>
+                      </View>
+                      
+                      <View className="items-center">
+                        <View className="bg-blue-100 w-12 h-12 rounded-full items-center justify-center mb-2">
+                          <Icon name="calculator" size={20} color="#2563EB" />
+                        </View>
+                        <Text className="text-xs text-gray-600 text-center">Tổng</Text>
+                        <Text className="text-lg font-bold text-blue-600">
+                          {totalQuestions}
+                        </Text>
+                      </View>
+                    </View>
+
+                    {/* Mẫu đáp án gần đây (hiển thị 10 câu đầu) */}
+                    <View>
+                      <Text className="text-sm font-medium text-gray-700 mb-3">
+                        Đáp án đã chọn (xem {Math.min(10, totalQuestions)} / {totalQuestions} câu):
+                      </Text>
+                      <View className="flex-row flex-wrap gap-2 mb-3">
+                        {latestAttempt.answers.slice(0, 10).map((answer, index) => (
+                          <View
+                            key={index}
+                            className={`w-10 h-10 rounded-lg items-center justify-center border-2 ${
+                              answer.isCorrect 
+                                ? 'bg-green-100 border-green-400' 
+                                : 'bg-red-100 border-red-400'
+                            }`}
+                          >
+                            <Text 
+                              className={`font-bold ${
+                                answer.isCorrect ? 'text-green-700' : 'text-red-700'
+                              }`}
+                            >
+                              {answer.selectedOption !== undefined 
+                                ? String.fromCharCode(65 + answer.selectedOption) 
+                                : '?'}
+                            </Text>
+                          </View>
+                        ))}
+                        {totalQuestions > 10 && (
+                          <View className="w-10 h-10 rounded-lg items-center justify-center bg-gray-100 border-2 border-gray-300">
+                            <Text className="text-gray-500 font-bold text-xs">
+                              +{totalQuestions - 10}
+                            </Text>
+                          </View>
+                        )}
+                      </View>
+                      <Text className="text-xs text-gray-500 text-center mb-2">
+                        🟢 = Đúng • 🔴 = Sai • Nhấn "Xem chi tiết" để xem tất cả câu hỏi
+                      </Text>
+                    </View>
+
+                    {/* Nút xem chi tiết */}
+                    <View className="flex-row gap-3 mt-4">
+                      <TouchableOpacity 
+                        className="flex-1 bg-blue-500 rounded-lg py-3 px-4 flex-row items-center justify-center"
+                        onPress={() => {
+                          // Điều hướng đến JLPTTestReview với chỉ testId, component sẽ tự lấy dữ liệu
+                          navigation.navigate('JLPTTestReview', {
+                            testId: latestAttempt.testId?._id || latestAttempt.testId,
+                            test: latestAttempt.testId
+                          });
+                        }}
+                      >
+                        <Icon name="eye-outline" size={20} color="white" />
+                        <Text className="text-white font-semibold ml-2">
+                          Xem chi tiết
+                        </Text>
+                      </TouchableOpacity>
+                      
+                      <TouchableOpacity 
+                        className="flex-1 bg-gray-500 rounded-lg py-3 px-4 flex-row items-center justify-center"
+                        onPress={() => navigation.navigate('JLPTHistory')}
+                      >
+                        <Icon name="time-outline" size={20} color="white" />
+                        <Text className="text-white font-semibold ml-2">
+                          Lịch sử
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                );
+              })()}
+            </View>
+          )}
         </View>
       )}
 

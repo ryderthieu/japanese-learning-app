@@ -1,5 +1,5 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React, { useContext, useState, useEffect } from 'react'
+import { View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
+import React, { useContext, useState, useEffect, memo } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
 import * as Speech from 'expo-speech';
 import { AuthContext } from '../../context/AuthContext';
@@ -7,7 +7,7 @@ import userService from '../../api/userService';
 import vocabularyService from '../../api/vocabularyService';
 import grammarService from '../../api/grammarService';
 
-const SellingCourse = ({ item, addToCart }) => {
+export const SellingCourse = ({ item, addToCart }) => {
     return (
         <View className="w-full">
             <View className="bg-white p-4 rounded-xl shadow-lg flex flex-col">
@@ -29,7 +29,7 @@ const SellingCourse = ({ item, addToCart }) => {
     )
 };
 
-const CourseInfo = ({ item }) => {
+export const CourseInfo = ({ item }) => {
     return (
         <View className="w-full">
             <View className="bg-white p-4 rounded-xl shadow-lg flex-row align-middle ">
@@ -61,15 +61,19 @@ const CourseInfo = ({ item }) => {
     )
 }
 
-const VocabularyCard = ({ item }) => {
+export const VocabularyCard = memo(({ item }) => {
     const [isSaved, setIsSaved] = useState(false);
-    const { token } = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const checkSavedStatus = async () => {
+            if (!item?._id) return;
+            
             try {
                 const response = await userService.getUserInfo();
-                if (response.savedVocabulary.some(vocabulary => vocabulary._id.toString() === item._id.toString())) {
+                if (response?.savedVocabulary?.some(vocabulary => 
+                    vocabulary._id?.toString() === item._id?.toString()
+                )) {
                     setIsSaved(true);
                 }
             } catch (error) {
@@ -78,18 +82,25 @@ const VocabularyCard = ({ item }) => {
         };
 
         checkSavedStatus();
-    }, [item._id, token]);
+    }, [item?._id]);
 
     const handleSave = async () => {
+        if (!item?._id || isLoading) return;
+        
+        setIsLoading(true);
         try {
             await vocabularyService.saveVocabulary({ vocabularyId: item._id });
-            setIsSaved((prev) => !prev);
+            setIsSaved(prev => !prev);
         } catch (error) {
             console.error("Lỗi khi thay đổi trạng thái lưu:", error.response);
+        } finally {
+            setIsLoading(false);
         }
     };
 
     const speak = (word) => {
+        if (!word) return;
+        
         Speech.speak(word, {
             language: 'ja',
             pitch: 1,
@@ -97,22 +108,37 @@ const VocabularyCard = ({ item }) => {
         });
     };
 
+    if (!item) {
+        return null;
+    }
+
     return (
         <View className="bg-white p-5 rounded-lg shadow-lg mb-6 border-l-4 border-pink-500 relative">
             <View className="flex-row justify-between items-center border-gray-300 pb-2">
                 <Text className="text-2xl font-semibold text-blue-700">{`${item.kanji ? item.kanji : item.word}`}</Text>
 
                 <View className="flex-col gap-10 items-center absolute right-0 top-0">
-                    <TouchableOpacity onPress={() => speak(item.word)}>
+                    <TouchableOpacity 
+                        onPress={() => speak(item.word)}
+                        className="p-2"
+                    >
                         <Icon name="volume-medium-outline" size={28} color="#FF4081" />
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={handleSave}>
-                        <Icon
-                            name={isSaved ? "heart" : "heart-outline"}
-                            size={24}
-                            color={isSaved ? "#FF4081" : "#FF4081"}
-                        />
+                    <TouchableOpacity 
+                        onPress={handleSave}
+                        disabled={isLoading}
+                        className="p-2"
+                    >
+                        {isLoading ? (
+                            <ActivityIndicator size="small" color="#FF4081" />
+                        ) : (
+                            <Icon
+                                name={isSaved ? "heart" : "heart-outline"}
+                                size={24}
+                                color="#FF4081"
+                            />
+                        )}
                     </TouchableOpacity>
                 </View>
             </View>
@@ -138,17 +164,23 @@ const VocabularyCard = ({ item }) => {
             )}
         </View>
     );
-};
+}, (prevProps, nextProps) => {
+    return prevProps.item._id === nextProps.item._id;
+});
 
-const GrammarCard = ({ item }) => {
+export const GrammarCard = memo(({ item }) => {
     const [isSaved, setIsSaved] = useState(false);
-    const { token } = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const checkSavedStatus = async () => {
+            if (!item?._id) return;
+            
             try {
                 const response = await userService.getUserInfo();
-                if (response.savedGrammar.some(grammar => grammar._id.toString() === item._id.toString())) {
+                if (response?.savedGrammar?.some(grammar => 
+                    grammar._id?.toString() === item._id?.toString()
+                )) {
                     setIsSaved(true);
                 }
             } catch (error) {
@@ -157,14 +189,19 @@ const GrammarCard = ({ item }) => {
         };
 
         checkSavedStatus();
-    }, [item._id, token]);
+    }, [item?._id]);
 
     const handleSave = async () => {
+        if (!item?._id || isLoading) return;
+        
+        setIsLoading(true);
         try {
             await grammarService.saveGrammar({ grammarId: item._id });
-            setIsSaved((prev) => !prev);
+            setIsSaved(prev => !prev);
         } catch (error) {
-            console.error("Lỗi khi thay đổi trạng thái lưu:", error.response.data.message);
+            console.error("Lỗi khi thay đổi trạng thái lưu:", error.response?.data?.message);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -172,12 +209,20 @@ const GrammarCard = ({ item }) => {
         <View className="bg-white p-5 rounded-lg shadow-lg mb-6 border-l-4 border-pink-500 relative">
             <View className='flex-row'>
                 <Text className="text-xl font-semibold text-blue-700 mb-2">{item.rule}</Text>
-                <TouchableOpacity onPress={handleSave} className='absolute right-0 top-2'>
-                    <Icon
-                        name={isSaved ? "heart" : "heart-outline"}
-                        size={24}
-                        color={isSaved ? "#FF4081" : "#FF4081"}
-                    />
+                <TouchableOpacity 
+                    onPress={handleSave}
+                    disabled={isLoading}
+                    className='absolute right-0 top-2 p-2'
+                >
+                    {isLoading ? (
+                        <ActivityIndicator size="small" color="#FF4081" />
+                    ) : (
+                        <Icon
+                            name={isSaved ? "heart" : "heart-outline"}
+                            size={24}
+                            color="#FF4081"
+                        />
+                    )}
                 </TouchableOpacity>
             </View>
 
@@ -198,6 +243,4 @@ const GrammarCard = ({ item }) => {
             )}
         </View>
     );
-};
-
-export { SellingCourse, CourseInfo, VocabularyCard, GrammarCard }
+});

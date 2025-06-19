@@ -6,8 +6,13 @@ const validator = require('validator');
 const userSchema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    lastName: { type: String },
-    firstName: {type: String},
+    fullName: { type: String },
+    gender: { 
+        type: String, 
+        enum: ['male', 'female'],
+        default: 'male'
+    },
+    dateOfBirth: { type: Date },
     otp: { type: String },
     otpExpire: { type: Date },
     
@@ -25,9 +30,7 @@ const userSchema = new Schema({
     
     // Tiến độ học tập
     courses: [{type: Schema.Types.ObjectId, ref: 'Course'}],
-    completedLessons: [{type: Schema.Types.ObjectId, ref: 'Lesson'}],
-    completedTests: [{type: Schema.Types.ObjectId, ref: 'Test'}],
-    
+    completedLessons: [{type: Schema.Types.ObjectId, ref: 'Lesson'}],    
     // Bài thi đã làm
     testAttempts: [{
         testId: { type: Schema.Types.ObjectId, ref: 'Test' },
@@ -76,24 +79,34 @@ const userSchema = new Schema({
     
     // Cài đặt học tập
     studySettings: {
-        dailyGoal: { type: Number, default: 10 }, // Số câu hỏi mục tiêu mỗi ngày
-        preferredTestTypes: [{ 
-            type: String,
-            enum: ['kanji-hiragana', 'hiragana-kanji', 'word-formation', 'context-grammar', 
-                   'synonyms', 'usage', 'grammar-selection', 'sentence-combination', 
-                   'text-grammar', 'short-reading', 'medium-reading', 'long-reading', 
-                   'comparative-reading', 'information-search', 'task-based-listening', 
-                   'point-understanding', 'verbal-expressions', 'quick-response', 
-                   'comprehensive-listening', 'vocabulary', 'mixed']
-        }],
-        showHints: { type: Boolean, default: true },
-        autoSave: { type: Boolean, default: true }
+        studyDuration: {
+            type: Number,
+            default: 30,
+            min: 5,
+            max: 180
+        },
+        reminder: {
+            enabled: {
+                type: Boolean,
+                default: true
+            },
+            time: {
+                type: String,
+                default: '08:00',
+                validate: {
+                    validator: function(v) {
+                        return /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test(v);
+                    },
+                    message: 'Thời gian nhắc nhở không hợp lệ (định dạng: HH:mm)'
+                }
+            }
+        }
     }
 }, {
     timestamps: true
 });
 
-userSchema.statics.signup = async function (email, password) {
+userSchema.statics.signup = async function (email, password, fullName) {
     if (!email || !password) {
         throw Error('Bạn chưa điền hết thông tin!');
     }
@@ -114,6 +127,7 @@ userSchema.statics.signup = async function (email, password) {
     const user = await this.create({
         email,
         password: hash,
+        fullName
     });
 
     return user;
@@ -138,58 +152,111 @@ userSchema.statics.login = async function (email, password) {
     return user;
 };
 
-// Method để cập nhật thống kê JLPT sau khi làm bài thi
-userSchema.methods.updateJLPTStats = async function(testAttempt) {
-    const { score, maxScore, answers } = testAttempt;
+// Method để cập nhật mật khẩu
+userSchema.methods.changePassword = async function(currentPassword, newPassword) {
+    const match = await bcrypt.compare(currentPassword, this.password);
     
-    // Cập nhật thống kê tổng quan
-    this.jlptStats.totalTestsTaken += 1;
-    
-    // Tính điểm trung bình
-    const totalScore = this.jlptStats.averageScore * (this.jlptStats.totalTestsTaken - 1) + score;
-    this.jlptStats.averageScore = totalScore / this.jlptStats.totalTestsTaken;
-    
-    // Cập nhật điểm cao nhất
-    if (score > this.jlptStats.bestScore) {
-        this.jlptStats.bestScore = score;
+    if (!match) {
+        throw new Error('Mật khẩu hiện tại không đúng');
     }
+
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(newPassword, salt);
     
-    // Tính điểm theo section
-    const sectionScores = {
-        'moji-goi': { correct: 0, total: 0 },
-        'bunpou': { correct: 0, total: 0 },
-        'dokkai': { correct: 0, total: 0 },
-        'choukai': { correct: 0, total: 0 }
-    };
+    this.password = hash;
+    return this.save();
+};
+
+// Method để cập nhật thông tin cá nhân
+userSchema.methods.updateProfile = async function(data) {
+    const allowedFields = ['fullName', 'gender', 'dateOfBirth', 'jlptLevel', 'targetLevel', 'studySettings'];
     
-    // Phân tích câu trả lời theo section
-    for (const answer of answers) {
-        const question = await mongoose.model('Question').findById(answer.questionId);
-        if (question && sectionScores[question.section]) {
-            sectionScores[question.section].total += 1;
-            if (answer.isCorrect) {
-                sectionScores[question.section].correct += 1;
-            }
+    for (const field of allowedFields) {
+        if (data[field] !== undefined) {
+            this[field] = data[field];
         }
-    }
-    
-    // Cập nhật điểm section
-    for (const [section, stats] of Object.entries(sectionScores)) {
-        if (stats.total > 0) {
-            const sectionScore = (stats.correct / stats.total) * 100;
-            this.jlptStats.sectionScores[section] = sectionScore;
-        }
-    }
-    
-    // Xác định section mạnh nhất và yếu nhất
-    const sectionEntries = Object.entries(this.jlptStats.sectionScores);
-    if (sectionEntries.length > 0) {
-        const sortedSections = sectionEntries.sort((a, b) => b[1] - a[1]);
-        this.jlptStats.strongestSection = sortedSections[0][0];
-        this.jlptStats.weakestSection = sortedSections[sortedSections.length - 1][0];
     }
     
     return this.save();
+};
+
+// Method để cập nhật thống kê JLPT sau khi làm bài thi
+userSchema.methods.updateJLPTStats = async function(testAttempt) {
+    try {
+        const { score, maxScore, answers } = testAttempt;
+        
+        // Cập nhật thống kê tổng quan
+        this.jlptStats.totalTestsTaken += 1;
+        
+        // Tính điểm trung bình
+        const totalScore = this.jlptStats.averageScore * (this.jlptStats.totalTestsTaken - 1) + score;
+        this.jlptStats.averageScore = totalScore / this.jlptStats.totalTestsTaken;
+        
+        // Cập nhật điểm cao nhất
+        if (score > this.jlptStats.bestScore) {
+            this.jlptStats.bestScore = score;
+        }
+        
+        // Tính điểm theo section
+        const sectionScores = {
+            'moji-goi': { correct: 0, total: 0 },
+            'bunpou': { correct: 0, total: 0 },
+            'dokkai': { correct: 0, total: 0 },
+            'choukai': { correct: 0, total: 0 }
+        };
+        
+        // Phân tích câu trả lời theo section - sử dụng Promise.all để tối ưu hiệu suất
+        if (answers && answers.length > 0) {
+            const questionIds = answers.map(answer => answer.questionId).filter(Boolean);
+            
+            if (questionIds.length > 0) {
+                const questions = await mongoose.model('Question').find({ 
+                    _id: { $in: questionIds } 
+                }).select('_id section');
+                
+                const questionMap = new Map();
+                questions.forEach(q => {
+                    questionMap.set(q._id.toString(), q.section);
+                });
+                
+                // Phân tích câu trả lời theo section
+                for (const answer of answers) {
+                    if (answer && answer.questionId) {
+                        const section = questionMap.get(answer.questionId.toString());
+                        if (section && sectionScores[section]) {
+                            sectionScores[section].total += 1;
+                            if (answer.isCorrect) {
+                                sectionScores[section].correct += 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Cập nhật điểm section
+        for (const [section, stats] of Object.entries(sectionScores)) {
+            if (stats.total > 0) {
+                const sectionScore = (stats.correct / stats.total) * 100;
+                this.jlptStats.sectionScores[section] = sectionScore;
+            }
+        }
+        
+        // Xác định section mạnh nhất và yếu nhất
+        const sectionEntries = Object.entries(this.jlptStats.sectionScores);
+        if (sectionEntries.length > 0) {
+            const sortedSections = sectionEntries.sort((a, b) => b[1] - a[1]);
+            this.jlptStats.strongestSection = sortedSections[0][0];
+            this.jlptStats.weakestSection = sortedSections[sortedSections.length - 1][0];
+        }
+        
+        console.log('JLPT Stats updated successfully for user:', this._id);
+        return this.save();
+    } catch (error) {
+        console.error('Error updating JLPT stats:', error);
+        // Vẫn trả về this.save() để không làm fail toàn bộ quá trình
+        return this.save();
+    }
 };
 
 // Method để thêm bài thi đã làm
@@ -200,12 +267,23 @@ userSchema.methods.addTestAttempt = async function(testAttempt) {
 };
 
 // Method để lấy thống kê JLPT
-userSchema.methods.getJLPTStats = function() {
+userSchema.methods.getJLPTStats = async function() {
+    // Populate thông tin chi tiết cho recent attempts
+    await this.populate({
+        path: 'testAttempts.testId',
+        select: 'title level category'
+    });
+    
+    // Lấy 5 bài thi gần nhất và sắp xếp theo thời gian giảm dần
+    const recentAttempts = this.testAttempts
+        .sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt))
+        .slice(0, 5);
+    
     return {
         level: this.jlptLevel,
         targetLevel: this.targetLevel,
         stats: this.jlptStats,
-        recentAttempts: this.testAttempts.slice(-5) // 5 bài thi gần nhất
+        recentAttempts: recentAttempts
     };
 };
 

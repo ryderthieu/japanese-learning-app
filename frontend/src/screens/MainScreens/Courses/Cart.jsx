@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { View, Text, FlatList, TouchableOpacity, Image, Alert } from "react-native";
 import CheckBox from 'react-native-check-box';
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { AuthContext } from "../../../context/AuthContext";
 import { CartContext } from "../../../context/CartContext";
 import { useNavigation } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
@@ -11,7 +10,6 @@ import userService from "../../../api/userService";
 
 const Cart = ({ route }) => {
   const navigation = useNavigation()
-  const { token } = useContext(AuthContext)
   const { cartItems, setRefresh } = useContext(CartContext)
   const [totalPrice, setTotalPrice] = useState(0);
   const [selectedItems, setSelectedItems] = useState([]);

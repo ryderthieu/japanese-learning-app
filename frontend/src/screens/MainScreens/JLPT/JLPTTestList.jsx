@@ -6,8 +6,12 @@ import {
   TouchableOpacity,
   Modal,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import testService from '../../../api/testService';
+import userService from '../../../api/userService';
+import { useFocusEffect } from '@react-navigation/native';
 
 const JLPTTestList = ({ navigation, route }) => {
   const { level, type } = route.params;
@@ -16,61 +20,84 @@ const JLPTTestList = ({ navigation, route }) => {
   const [selectedTest, setSelectedTest] = useState(null);
   const [showActionModal, setShowActionModal] = useState(false);
 
-  // Giả lập dữ liệu - sau này sẽ lấy từ API
   useEffect(() => {
-    const fetchTests = async () => {
-      try {
-        // Giả lập call API
-        setTimeout(() => {
-          const mockTests = [
-            {
-              id: 1,
-              title: `${type === 'mini' ? 'Mini Test' : 'Đề thi'} số 1`,
-              description: 'Ngữ pháp và Từ vựng',
-              completed: true,
-              score: 80,
-              totalQuestions: 15,
-              timeLimit: type === 'mini' ? 15 : 30,
-            },
-            {
-              id: 2,
-              title: `${type === 'mini' ? 'Mini Test' : 'Đề thi'} số 2`,
-              description: 'Đọc hiểu và Nghe hiểu',
-              completed: true,
-              score: 65,
-              totalQuestions: 15,
-              timeLimit: type === 'mini' ? 15 : 30,
-            },
-            {
-              id: 3,
-              title: `${type === 'mini' ? 'Mini Test' : 'Đề thi'} số 3`,
-              description: 'Tổng hợp',
-              completed: false,
-              totalQuestions: 15,
-              timeLimit: type === 'mini' ? 15 : 30,
-            },
-          ];
-          setTests(mockTests);
-          setLoading(false);
-        }, 1000);
-      } catch (error) {
-        console.error('Lỗi khi lấy danh sách đề thi:', error);
-        setLoading(false);
-      }
-    };
-
     fetchTests();
-  }, [type]);
+  }, [level, type]);
+
+  // Refresh danh sách khi quay lại màn hình
+  useFocusEffect(
+    React.useCallback(() => {
+      fetchTests();
+    }, [level, type])
+  );
+
+  const fetchTests = async () => {
+    try {
+      setLoading(true);
+      // Gọi API để lấy danh sách bài thi theo level và type
+      const response = await testService.getTestsByLevel(level, { type });
+      // Lấy thêm thông tin lịch sử của user để xác định trạng thái completed
+      const historyResponse = await userService.getTestHistory(1, 100);
+      
+      const completedTestIds = (historyResponse.testAttempts || [])
+        .map(attempt => attempt.testId?._id || attempt.testId) || [];
+      
+      
+      // Cập nhật trạng thái completed cho từng test
+      const testsWithStatus = (response.tests || []).map(test => ({
+        ...test,
+        completed: completedTestIds.includes(test._id),
+      }));
+      
+      setTests(testsWithStatus);
+    } catch (error) {
+      console.error('Lỗi khi lấy danh sách đề thi:', error);
+      // Fallback với dữ liệu mặc định nếu API lỗi
+      const fallbackTests = [
+        {
+          _id: 1,
+          title: `${type === 'mini' ? 'Mini Test' : 'Đề thi'} số 1`,
+          description: 'Ngữ pháp và Từ vựng',
+          completed: true,
+          score: 80,
+          totalQuestions: 15,
+          totalTime: type === 'mini' ? 15 : 30,
+        },
+        {
+          _id: 2,
+          title: `${type === 'mini' ? 'Mini Test' : 'Đề thi'} số 2`,
+          description: 'Đọc hiểu và Nghe hiểu',
+          completed: true,
+          score: 65,
+          totalQuestions: 15,
+          totalTime: type === 'mini' ? 15 : 30,
+        },
+        {
+          _id: 3,
+          title: `${type === 'mini' ? 'Mini Test' : 'Đề thi'} số 3`,
+          description: 'Tổng hợp',
+          completed: false,
+          totalQuestions: 15,
+          totalTime: type === 'mini' ? 15 : 30,
+        },
+      ];
+      setTests(fallbackTests);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleTestPress = (test) => {
     if (test.completed) {
       setSelectedTest(test);
       setShowActionModal(true);
     } else {
-      navigation.navigate('JLPTMiniTest', {
+      // Navigate đến màn hình phù hợp dựa trên type
+      const targetScreen = type === 'mini' ? 'JLPTMiniTest' : 'JLPTTest';
+      navigation.navigate(targetScreen, {
         level,
         type,
-        testId: test.id,
+        testId: test._id || test.id,
       });
     }
   };
@@ -102,11 +129,12 @@ const JLPTTestList = ({ navigation, route }) => {
             <TouchableOpacity
               className="bg-pink-500 rounded-xl p-4 mb-3"
               onPress={() => {
+                const targetScreen = type === 'mini' ? 'JLPTMiniTest' : 'JLPTTest';
                 setShowActionModal(false);
-                navigation.navigate('JLPTMiniTest', {
+                navigation.navigate(targetScreen, {
                   level,
                   type,
-                  testId: selectedTest.id,
+                  testId: selectedTest._id || selectedTest.id,
                   mode: 'retry',
                 });
               }}
@@ -119,12 +147,9 @@ const JLPTTestList = ({ navigation, route }) => {
             <TouchableOpacity
               className="bg-gray-100 rounded-xl p-4 mb-3"
               onPress={() => {
-                setShowActionModal(false);
-                navigation.navigate('JLPTMiniTest', {
-                  level,
-                  type,
-                  testId: selectedTest.id,
-                  mode: 'review',
+                console.log('Navigate to JLPTTestReview with testId:', selectedTest._id || selectedTest.id);
+                navigation.navigate('JLPTTestReview', { 
+                  testId: selectedTest._id || selectedTest.id 
                 });
               }}
             >
@@ -172,7 +197,7 @@ const JLPTTestList = ({ navigation, route }) => {
 
         {tests.map((test) => (
           <TouchableOpacity
-            key={test.id}
+            key={test._id || test.id}
             className="bg-white rounded-xl p-4 shadow-sm mb-4"
             onPress={() => handleTestPress(test)}
           >
@@ -195,7 +220,7 @@ const JLPTTestList = ({ navigation, route }) => {
               <View className="flex-row items-center">
                 <Icon name="time-outline" size={16} color="#666" />
                 <Text className="text-gray-600 ml-1">
-                  {test.timeLimit} phút
+                  {test.totalTime} phút
                 </Text>
                 <Icon name="help-circle-outline" size={16} color="#666" className="ml-4" />
                 <Text className="text-gray-600 ml-1">

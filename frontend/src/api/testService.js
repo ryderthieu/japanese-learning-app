@@ -18,8 +18,15 @@ const testService = {
 
   // Lấy bài thi theo ID
   getTestById: async (id) => {
-    const response = await apiClient.get(`/tests/${id}`);
-    return response.data;
+    try {
+      console.log('Calling getTestById API for id:', id);
+      const response = await apiClient.get(`/tests/${id}`);
+      console.log('getTestById response:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error in getTestById:', error.response?.data || error.message);
+      throw error;
+    }
   },
 
   // Tạo bài thi mới
@@ -85,8 +92,8 @@ const testService = {
   },
 
   // Nộp bài thi
-  submitTest: async (testId, answers) => {
-    const response = await apiClient.post(`/tests/${testId}/submit`, { answers });
+  submitTest: async (testId, submitData) => {
+    const response = await apiClient.post(`/tests/${testId}/submit`, submitData);
     return response.data;
   },
 
@@ -198,6 +205,18 @@ const testService = {
   // Export kết quả bài thi
   exportTestResult: async (testId, format = 'pdf') => {
     const response = await apiClient.get(`/tests/${testId}/export?format=${format}`);
+    return response.data;
+  },
+
+  // Lấy lịch sử bài thi với filter
+  getTestHistory: async (params = {}) => {
+    const queryParams = new URLSearchParams();
+    
+    if (params.page) queryParams.append('page', params.page);
+    if (params.limit) queryParams.append('limit', params.limit);
+    if (params.filter) queryParams.append('filter', params.filter);
+    
+    const response = await apiClient.get(`/tests/history?${queryParams.toString()}`);
     return response.data;
   }
 };
