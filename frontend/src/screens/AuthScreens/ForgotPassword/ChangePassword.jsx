@@ -122,7 +122,7 @@ const ChangePassword = ({ route, navigation }) => {
           buttonStyle={{
             paddingVertical: 10,
             paddingHorizontal: 20,
-            backgroundColor: isFormValid ? "#F490AF" : "#ccc",
+            backgroundColor: isFormValid ? "#F472B6" : "#ccc",
             borderRadius: 20,
           }}
           titleStyle={{

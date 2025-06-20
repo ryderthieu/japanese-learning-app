@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import VocabIcon from './VocabIcon.svg';
-import KanjiIcon from './KanjiIcon.svg';
-import GrammarIcon from './GrammarIcon.svg';
-import TestIcon from './TestIcon.svg';
+import VocabIcon from '../../../../assets/VocabIcon.svg';
+import KanjiIcon from '../../../../assets/KanjiIcon.svg';
+import GrammarIcon from '../../../../assets/GrammarIcon.svg';
+import TestIcon from '../../../../assets/TestIcon.svg';
 
 const DocumentLevel = ({ navigation }) => {
   const [selectedLevel, setSelectedLevel] = useState("N5"); // State quản lý trình độ
@@ -18,11 +18,11 @@ const DocumentLevel = ({ navigation }) => {
   // Dữ liệu trình độ
   const levels = ["N5", "N4", "N3", "N2", "N1"];
   const contentByLevel = {
-    N5: { title: "Trình độ N5", image: require("./N5-banner.png") } ,
-    N4: { title: "Trình độ N4", image: require("./N4-banner.png") },
-    N3: { title: "Trình độ N3", image: require("./N3-banner.png") },
-    N2: { title: "Trình độ N2", image: require("./N2-banner.png") },
-    N1: { title: "Trình độ N1", image: require("./N1-banner.png") },
+    N5: { title: "Trình độ N5", image: require("../../../../assets//N5-banner.png") } ,
+    N4: { title: "Trình độ N4", image: require("../../../../assets//N4-banner.png") },
+    N3: { title: "Trình độ N3", image: require("../../../../assets//N3-banner.png") },
+    N2: { title: "Trình độ N2", image: require("../../../../assets//N2-banner.png") },
+    N1: { title: "Trình độ N1", image: require("../../../../assets//N1-banner.png") },
   };
 
   const renderContent = () => (

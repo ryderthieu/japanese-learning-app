@@ -144,7 +144,7 @@ const Register = ({ navigation }) => {
             buttonStyle={{
               width: 350,
               height: 50,
-              backgroundColor: "#F490AF",
+              backgroundColor: "#F472B6",
               borderRadius: 20,
             }}
             titleStyle={{

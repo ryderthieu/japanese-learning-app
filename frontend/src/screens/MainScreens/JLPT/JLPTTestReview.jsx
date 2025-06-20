@@ -321,11 +321,11 @@ const JLPTTestReview = ({ navigation, route }) => {
 
               if (isCorrectAnswer && isUserChoice) {
                 // Đáp án đúng và user cũng chọn đúng
-                backgroundColor = 'bg-blue-50';
-                borderColor = 'border-blue-400';
+                backgroundColor = 'bg-green-50';
+                borderColor = 'border-green-400';
                 iconName = 'checkmark-circle';
-                iconColor = '#2196F3';
-                optionCircleColor = 'bg-blue-400';
+                iconColor = '#4CAF50';
+                optionCircleColor = 'bg-green-400';
                 showUserLabel = true;
                 showCorrectLabel = true;
               } else if (isCorrectAnswer) {
@@ -380,10 +380,10 @@ const JLPTTestReview = ({ navigation, route }) => {
                         )}
                         {showUserLabel && (
                           <View className={`px-2 py-1 rounded-full mr-2 mb-1 ${
-                            isCorrectAnswer ? 'bg-blue-100' : 'bg-red-100'
+                            isCorrectAnswer ? 'bg-green-100' : 'bg-red-100'
                           }`}>
                             <Text className={`text-xs font-semibold ${
-                              isCorrectAnswer ? 'text-blue-700' : 'text-red-700'
+                              isCorrectAnswer ? 'text-green-700' : 'text-red-700'
                             }`}>
                               {isCorrectAnswer ? '👤 Bạn chọn đúng' : '👤 Bạn đã chọn'}
                             </Text>
@@ -414,8 +414,8 @@ const JLPTTestReview = ({ navigation, route }) => {
                 onPress={() => handleAIExplanation(question, currentQuestionIndex + 1)}
                 className="bg-gradient-to-r from-pink-500 to-purple-500 px-4 py-2 rounded-lg flex-row items-center"
                 style={{
-                  backgroundColor: '#FF4081',
-                  shadowColor: '#FF4081',
+                  backgroundColor: '#F472B6',
+                  shadowColor: '#F472B6',
                   shadowOffset: { width: 0, height: 2 },
                   shadowOpacity: 0.3,
                   shadowRadius: 4,
@@ -426,7 +426,7 @@ const JLPTTestReview = ({ navigation, route }) => {
                 <Text className="text-white font-semibold ml-2 text-sm">Hỏi AI</Text>
               </TouchableOpacity>
             </View>
-            <Text className="text-blue-800 leading-6">{question.explanation}</Text>
+            <Text className="text-pink-800 leading-6">{question.explanation}</Text>
           </View>
         )}
 
@@ -442,8 +442,8 @@ const JLPTTestReview = ({ navigation, route }) => {
                 onPress={() => handleAIExplanation(question, currentQuestionIndex + 1)}
                 className="bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 rounded-lg flex-row items-center ml-4"
                 style={{
-                  backgroundColor: '#FF4081',
-                  shadowColor: '#FF4081',
+                  backgroundColor: '#F472B6',
+                  shadowColor: '#F472B6',
                   shadowOffset: { width: 0, height: 2 },
                   shadowOpacity: 0.3,
                   shadowRadius: 4,
@@ -467,7 +467,7 @@ const JLPTTestReview = ({ navigation, route }) => {
     return (
       <SafeAreaView style={styles.container}>
         <View className="flex-1 justify-center items-center bg-gray-50">
-          <ActivityIndicator size="large" color="#F490AF" />
+          <ActivityIndicator size="large" color="#F472B6" />
           <Text className="text-lg text-gray-600 mt-4">Đang tải dữ liệu...</Text>
           <Text className="text-sm text-gray-500 mt-2 text-center px-8">
             Đang lấy câu hỏi và kết quả của bạn

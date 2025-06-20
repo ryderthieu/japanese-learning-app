@@ -57,7 +57,7 @@ const ForgotPassword = ({ navigation }) => {
           buttonStyle={{
             padding: 10,
             paddingHorizontal: 20,
-            backgroundColor: "#F490AF",
+            backgroundColor: "#F472B6",
             borderRadius: 20,
           }}
           titleStyle={{

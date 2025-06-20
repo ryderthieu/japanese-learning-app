@@ -192,11 +192,6 @@ const Test = ({ route }) => {
                         <Text className="text-2xl font-bold text-gray-800 text-center leading-10">
                           {filteredVocabulary[currentIndex]?.meaning || 'Không có ý nghĩa'}
                         </Text>
-                        <View className="absolute bottom-4 right-4">
-                          <View className="bg-pink-100 px-3 py-1 rounded-full">
-                            <Text className="text-pink-600 text-xs font-medium">Ý nghĩa</Text>
-                          </View>
-                        </View>
                       </View>
                     ) : (
                       // Mặt trước - Từ vựng
@@ -215,11 +210,6 @@ const Test = ({ route }) => {
                             {filteredVocabulary[currentIndex].romanji}
                           </Text>
                         )}
-                        <View className="absolute bottom-4 right-4">
-                          <View className="bg-blue-100 px-3 py-1 rounded-full">
-                            <Text className="text-blue-600 text-xs font-medium">Từ vựng</Text>
-                          </View>
-                        </View>
                       </View>
                     )}
                   </View>

@@ -55,16 +55,7 @@ const ConversationResult = ({ navigation, route }) => {
 
   return (
     <View className="flex-1 bg-gray-50">
-      {/* Header */}
-      <View className="bg-pink-500 p-4">
-        <Text className="text-white font-bold text-xl text-center">
-          🎉 Hoàn thành hội thoại!
-        </Text>
-        <Text className="text-pink-100 text-center mt-1">
-          {scenarioName} - {level}
-        </Text>
-      </View>
-
+      
       <ScrollView className="flex-1 p-4">
         {/* Stats Summary */}
         <View className="bg-white rounded-xl p-4 shadow-md mb-4">
@@ -159,7 +150,7 @@ const ConversationResult = ({ navigation, route }) => {
         </View>
 
         {/* Action Buttons */}
-        <View className="space-y-3 mb-8">
+        <View className="space-y-3 mb-8 gap-3">
           <TouchableOpacity
             className="bg-pink-500 rounded-xl p-4 flex-row items-center justify-center"
             onPress={handleTryAgain}
@@ -179,17 +170,6 @@ const ConversationResult = ({ navigation, route }) => {
             <Icon name="home-outline" size={20} color="#F472B6" />
             <Text className="text-pink-600 font-semibold ml-2 text-base">
               Chọn tình huống khác
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            className="bg-gray-100 rounded-xl p-4 flex-row items-center justify-center"
-            onPress={handleShare}
-            activeOpacity={0.8}
-          >
-            <Icon name="share-outline" size={20} color="#6B7280" />
-            <Text className="text-gray-600 font-semibold ml-2 text-base">
-              Chia sẻ kết quả
             </Text>
           </TouchableOpacity>
         </View>

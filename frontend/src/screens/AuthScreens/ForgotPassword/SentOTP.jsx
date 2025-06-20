@@ -107,7 +107,7 @@ const SentOTP = ({ route, navigation }) => {
           buttonStyle={{
             paddingVertical: 10,
             paddingHorizontal: 20,
-            backgroundColor: isOtpComplete ? "#F490AF" : "#ccc",
+            backgroundColor: isOtpComplete ? "#F472B6" : "#ccc",
             borderRadius: 20,
           }}
           titleStyle={{

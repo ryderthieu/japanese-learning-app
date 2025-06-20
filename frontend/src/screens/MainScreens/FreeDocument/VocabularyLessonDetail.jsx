@@ -16,7 +16,7 @@ const VocabularyLessonDetail = ({ route }) => {
 
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingVertical: 20 }}>
         <View className="px-3">
-          {data.map((grammarItem, index) => (
+          {data?.map((grammarItem, index) => (
             <VocabularyCard item={grammarItem} key={index} />
           ))}
         </View>

@@ -75,7 +75,7 @@ const SelectGrammarLesson = ({ navigation, route }) => {
         />
       ) : (
         <View className="flex-1 justify-center items-center px-6">
-          <Image source={require("./empty.png")} className="w-64 h-64 mb-4" />
+          <Image source={require("../../../../assets/empty.png")} className="w-64 h-64 mb-4" />
           <Text className="text-gray-400 text-xl font-semibold text-center">Không có dữ liệu</Text>
           <Text className="text-gray-400 text-sm text-center mt-2">
             Chưa có bài học nào cho trình độ {level}

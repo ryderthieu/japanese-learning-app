@@ -9,6 +9,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [userToken, setUserToken] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const { setIsLoading } = useContext(LoadingContext);
   const { openModal } = useContext(ModalContext);
 
@@ -18,6 +19,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkLoginStatus = async () => {
     try {
+      setIsCheckingAuth(true);
       const token = await AsyncStorage.getItem('token');
       if (token) {
         setUserToken(token);
@@ -25,6 +27,8 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.error('Error checking login status:', error);
+    } finally {
+      setIsCheckingAuth(false);
     }
   };
 
@@ -80,17 +84,30 @@ export const AuthProvider = ({ children }) => {
     try {
       setIsLoading(true);
       const data = await userService.updateProfile(newInfo);
+      
+      // Cập nhật userInfo ngay lập tức với dữ liệu từ server
       setUserInfo(data);
-      openModal({
-        type: 'success',
-        message: 'Cập nhật thông tin thành công'
+      
+      // Log để debug
+      console.log('AuthContext - User info updated:', {
+        hasCompletedInitialSurvey: data.hasCompletedInitialSurvey,
+        email: data.email
       });
+      
+      // Chỉ hiển thị modal success nếu không phải survey completion
+      if (!newInfo.hasCompletedInitialSurvey) {
+        openModal({
+          type: 'success',
+          message: 'Cập nhật thông tin thành công'
+        });
+      }
     } catch (error) {
       console.error('Error updating user info:', error);
       openModal({
         type: 'error',
         message: error.response?.data?.message || 'Không thể cập nhật thông tin'
       });
+      throw error; // Re-throw để component có thể handle
     } finally {
       setIsLoading(false);
     }
@@ -123,6 +140,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={{
       userToken,
       userInfo,
+      isCheckingAuth,
       login,
       logout,
       updateUserInfo,

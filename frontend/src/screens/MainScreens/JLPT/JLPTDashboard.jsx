@@ -9,16 +9,19 @@ import {
 } from 'react-native';
 import userService from '../../../api/userService';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useIsFocused } from '@react-navigation/native';
 
 const JLPTDashboard = ({ navigation }) => {
   const [jlptStats, setJlptStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedLevel, setSelectedLevel] = useState('N5');
   const [showLevelModal, setShowLevelModal] = useState(false);
-
+  const isFocused = useIsFocused();
   useEffect(() => {
-    fetchJLPTStats();
-  }, []);
+    if (isFocused) {
+      fetchJLPTStats();
+    }
+  }, [isFocused]);
 
   const fetchJLPTStats = async () => {
     try {
@@ -68,7 +71,7 @@ const JLPTDashboard = ({ navigation }) => {
       title: 'Mini Test',
       description: 'Bài thi ngắn để luyện tập',
       icon: 'create-outline',
-      color: '#F490AF',
+      color: '#F472B6',
       type: 'mini',
     },
     {
@@ -85,7 +88,7 @@ const JLPTDashboard = ({ navigation }) => {
       title: 'Lịch sử thi',
       description: 'Xem kết quả các bài thi',
       icon: 'time-outline',
-      color: '#FF9800',
+      color: '#FFD700',
       onPress: () => navigation.navigate('JLPTHistory'),
     },
   ];
@@ -275,13 +278,13 @@ const JLPTDashboard = ({ navigation }) => {
                 <Text className="text-sm text-gray-600">Bài thi đã làm</Text>
               </View>
               <View className="items-center flex-1">
-                <Text className="text-2xl font-bold text-green-500">
+                <Text className="text-2xl font-bold text-orange-500">
                   {Math.round(jlptStats.stats?.averageScore || 0)}
                 </Text>
                 <Text className="text-sm text-gray-600">Điểm trung bình</Text>
               </View>
               <View className="items-center flex-1">
-                <Text className="text-2xl font-bold text-orange-500">
+                <Text className="text-2xl font-bold text-green-500">
                   {Math.round(jlptStats.stats?.bestScore || 0)}
                 </Text>
                 <Text className="text-sm text-gray-600">Điểm cao nhất</Text>
@@ -354,7 +357,7 @@ const JLPTDashboard = ({ navigation }) => {
                     <View className="flex-row justify-around mb-4">
                       <View className="items-center">
                         <View className="bg-green-100 w-12 h-12 rounded-full items-center justify-center mb-2">
-                          <Icon name="checkmark" size={20} color="#059669" />
+                          <Icon name="checkmark" size={20} color="#4CAF50" />
                         </View>
                         <Text className="text-xs text-gray-600 text-center">Đúng</Text>
                         <Text className="text-lg font-bold text-green-600">
@@ -374,7 +377,7 @@ const JLPTDashboard = ({ navigation }) => {
                       
                       <View className="items-center">
                         <View className="bg-blue-100 w-12 h-12 rounded-full items-center justify-center mb-2">
-                          <Icon name="calculator" size={20} color="#2563EB" />
+                          <Icon name="calculator" size={20} color="#3B82F6" />
                         </View>
                         <Text className="text-xs text-gray-600 text-center">Tổng</Text>
                         <Text className="text-lg font-bold text-blue-600">
@@ -383,49 +386,10 @@ const JLPTDashboard = ({ navigation }) => {
                       </View>
                     </View>
 
-                    {/* Mẫu đáp án gần đây (hiển thị 10 câu đầu) */}
-                    <View>
-                      <Text className="text-sm font-medium text-gray-700 mb-3">
-                        Đáp án đã chọn (xem {Math.min(10, totalQuestions)} / {totalQuestions} câu):
-                      </Text>
-                      <View className="flex-row flex-wrap gap-2 mb-3">
-                        {latestAttempt.answers.slice(0, 10).map((answer, index) => (
-                          <View
-                            key={index}
-                            className={`w-10 h-10 rounded-lg items-center justify-center border-2 ${
-                              answer.isCorrect 
-                                ? 'bg-green-100 border-green-400' 
-                                : 'bg-red-100 border-red-400'
-                            }`}
-                          >
-                            <Text 
-                              className={`font-bold ${
-                                answer.isCorrect ? 'text-green-700' : 'text-red-700'
-                              }`}
-                            >
-                              {answer.selectedOption !== undefined 
-                                ? String.fromCharCode(65 + answer.selectedOption) 
-                                : '?'}
-                            </Text>
-                          </View>
-                        ))}
-                        {totalQuestions > 10 && (
-                          <View className="w-10 h-10 rounded-lg items-center justify-center bg-gray-100 border-2 border-gray-300">
-                            <Text className="text-gray-500 font-bold text-xs">
-                              +{totalQuestions - 10}
-                            </Text>
-                          </View>
-                        )}
-                      </View>
-                      <Text className="text-xs text-gray-500 text-center mb-2">
-                        🟢 = Đúng • 🔴 = Sai • Nhấn "Xem chi tiết" để xem tất cả câu hỏi
-                      </Text>
-                    </View>
-
                     {/* Nút xem chi tiết */}
                     <View className="flex-row gap-3 mt-4">
                       <TouchableOpacity 
-                        className="flex-1 bg-blue-500 rounded-lg py-3 px-4 flex-row items-center justify-center"
+                        className="flex-1 bg-pink-500 rounded-lg py-3 px-4 flex-row items-center justify-center"
                         onPress={() => {
                           // Điều hướng đến JLPTTestReview với chỉ testId, component sẽ tự lấy dữ liệu
                           navigation.navigate('JLPTTestReview', {

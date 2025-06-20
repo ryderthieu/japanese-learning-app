@@ -286,7 +286,7 @@ export const AIExplanationModal = () => {
                 {textParts.map((part, index) => {
                     if (part.type === 'kanji') {
                         return (
-                            <Text key={index} style={{ fontWeight: 'bold', color: '#FF4081' }}>
+                            <Text key={index} style={{ fontWeight: 'bold', color: '#F472B6' }}>
                                 {part.content}
                             </Text>
                         );
@@ -474,7 +474,7 @@ export const AIExplanationModal = () => {
                     alignItems: 'center',
                     paddingVertical: 60
                 }}>
-                    <ActivityIndicator size="large" color="#FF4081" />
+                    <ActivityIndicator size="large" color="#F472B6" />
                     <Text style={{
                         color: '#6B7280',
                         marginTop: 20,
@@ -528,12 +528,12 @@ export const AIExplanationModal = () => {
                     alignItems: 'center',
                     marginBottom: 20,
                     padding: 15,
-                    backgroundColor: '#F8F9FA',
+                    backgroundColor: '#FDF2F8',
                     borderRadius: 12,
                     borderLeftWidth: 4,
-                    borderLeftColor: '#FF4081'
+                    borderLeftColor: '#F472B6'
                 }}>
-                    <Icon name="sparkles" size={22} color="#FF4081" />
+                    <Icon name="sparkles" size={22} color="#F472B6" />
                     <Text style={{
                         fontSize: 20,
                         fontWeight: '600',
@@ -554,7 +554,7 @@ export const AIExplanationModal = () => {
                         borderWidth: 1,
                         borderColor: section.type === 'example' ? '#3B82F6' : '#E5E7EB',
                         borderLeftWidth: section.type === 'example' ? 4 : 1,
-                        borderLeftColor: section.type === 'example' ? '#3B82F6' : '#E5E7EB',
+                        borderLeftColor: section.type === 'example' ? '#3B82F6' : '#F472B6',
                         shadowColor: '#000',
                         shadowOffset: { width: 0, height: 2 },
                         shadowOpacity: 0.1,
@@ -571,7 +571,7 @@ export const AIExplanationModal = () => {
                                     width: 24,
                                     height: 24,
                                     borderRadius: 12,
-                                    backgroundColor: section.type === 'example' ? '#3B82F6' : '#FF4081',
+                                    backgroundColor: section.type === 'example' ? '#3B82F6' : '#F472B6',
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     marginRight: 8
@@ -587,7 +587,7 @@ export const AIExplanationModal = () => {
                                 <Text style={{
                                     fontSize: 16,
                                     fontWeight: 'bold',
-                                    color: section.type === 'example' ? '#1E40AF' : '#FF4081',
+                                    color: section.type === 'example' ? '#1E40AF' : '#F472B6',
                                     flex: 1
                                 }}>
                                     {explanationType === 'vocabulary' ? getVocabSectionTitle(section.number) : 
@@ -631,19 +631,19 @@ export const AIExplanationModal = () => {
                 <View style={{
                     marginTop: 20,
                     padding: 15,
-                    backgroundColor: '#F0F9FF',
+                    backgroundColor: '#FDF2F8',
                     borderRadius: 12,
                     borderWidth: 1,
-                    borderColor: '#3B82F6'
+                    borderColor: '#F472B6'
                 }}>
                     <View style={{
                         flexDirection: 'row',
                         alignItems: 'center'
                     }}>
-                        <Icon name="information-circle" size={20} color="#3B82F6" />
+                        <Icon name="information-circle" size={20} color="#F472B6" />
                         <Text style={{
                             fontSize: 14,
-                            color: '#1E40AF',
+                            color: '#EC4899',
                             marginLeft: 8,
                             fontWeight: '500'
                         }}>
@@ -721,7 +721,7 @@ export const AIExplanationModal = () => {
                         alignItems: 'center',
                         justifyContent: 'space-between',
                         padding: 20,
-                        backgroundColor: '#FF4081',
+                        backgroundColor: '#F472B6',
                         borderBottomWidth: 1,
                         borderBottomColor: '#E5E7EB'
                     }}>

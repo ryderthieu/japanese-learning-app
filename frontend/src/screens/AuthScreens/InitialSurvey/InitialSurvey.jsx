@@ -110,10 +110,8 @@ const InitialSurvey = ({ navigation }) => {
         hasCompletedInitialSurvey: true
       });
       
-      openModal({
-        type: 'success',
-        message: 'Chào mừng bạn đến với ứng dụng học tiếng Nhật! Hãy bắt đầu hành trình học tập của bạn.'
-      });
+      // Không cần modal hoặc navigation manual - để AuthContext tự động chuyển
+      console.log('Survey completed successfully');
     } catch (error) {
       console.error('Error completing survey:', error);
       openModal({ type: 'error', message: 'Có lỗi xảy ra. Vui lòng thử lại.' });

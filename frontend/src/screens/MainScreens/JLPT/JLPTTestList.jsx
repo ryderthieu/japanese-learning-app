@@ -175,7 +175,7 @@ const JLPTTestList = ({ navigation, route }) => {
   if (loading) {
     return (
       <View className="flex-1 justify-center items-center bg-gray-50">
-        <ActivityIndicator size="large" color="#F490AF" />
+        <ActivityIndicator size="large" color="#F472B6" />
         <Text className="text-gray-600 mt-4">Đang tải danh sách đề thi...</Text>
       </View>
     );

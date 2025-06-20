@@ -98,7 +98,7 @@ const JLPTMiniTest = ({ navigation }) => {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#F490AF" />
+        <ActivityIndicator size="large" color="#F472B6" />
         <Text style={styles.loadingText}>Đang tải bài thi...</Text>
       </View>
     );
@@ -109,7 +109,7 @@ const JLPTMiniTest = ({ navigation }) => {
       <View style={styles.errorContainer}>
         <Text style={styles.errorText}>{error}</Text>
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: '#F490AF' }]}
+          style={[styles.button, { backgroundColor: '#F472B6' }]}
           onPress={() => navigation.goBack()}
         >
           <Text style={styles.buttonText}>Quay lại</Text>
@@ -123,7 +123,7 @@ const JLPTMiniTest = ({ navigation }) => {
       <View style={styles.errorContainer}>
         <Text style={styles.errorText}>Không thể tải bài thi. Vui lòng thử lại sau.</Text>
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: '#F490AF' }]}
+          style={[styles.button, { backgroundColor: '#F472B6' }]}
           onPress={() => navigation.goBack()}
         >
           <Text style={styles.buttonText}>Quay lại</Text>
@@ -143,7 +143,7 @@ const JLPTMiniTest = ({ navigation }) => {
           <Text style={styles.buttonText}>Làm lại</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.button, { backgroundColor: '#F490AF' }]}
+          style={[styles.button, { backgroundColor: '#F472B6' }]}
           onPress={() => navigation.goBack()}
         >
           <Text style={styles.buttonText}>Quay lại</Text>
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#F472B6',
     padding: 15,
     borderRadius: 8,
     marginBottom: 10,

@@ -17,19 +17,21 @@ const JLPTNavigation = () => {
       screenOptions={{
         headerStyle: {
           backgroundColor: '#F472B6',
-          elevation: 4,
+          elevation: 8,
           shadowColor: '#000',
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.1,
-          shadowRadius: 3,
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.15,
+          shadowRadius: 6,
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
-          fontSize: 20,
+          fontSize: 18,
+          color: '#ffffff',
         },
         headerTitleAlign: 'center',
         headerBackTitleVisible: false,
+        headerShadowVisible: true,
       }}
     >
       <Stack.Screen
@@ -37,6 +39,14 @@ const JLPTNavigation = () => {
         component={JLPTDashboard}
         options={{
           title: 'Thi thử JLPT',
+          headerStyle: {
+            backgroundColor: '#F472B6',
+            elevation: 8,
+            shadowColor: '#F472B6',
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: 0.3,
+            shadowRadius: 8,
+          },
         }}
       />
       <Stack.Screen

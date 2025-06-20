@@ -452,7 +452,7 @@ const Home = ({ navigation }) => {
             >
               <MaterialIcons name="library-books" size={40} color="#F472B6" />
               <Text className="font-semibold text-base text-[#2B308B]">
-                Tài liệu {"\n"}offline
+                Tài liệu{"\n"}miễn phí
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -461,7 +461,7 @@ const Home = ({ navigation }) => {
             >
               <Ionicons name="school" size={40} color="#F472B6" />
               <Text className="font-semibold text-base text-[#2B308B]">
-                Khóa học {"\n"}online
+                Khóa học{"\n"}online
               </Text>
             </TouchableOpacity>
           </View>
@@ -474,7 +474,7 @@ const Home = ({ navigation }) => {
               <MaterialIcons name="quiz" size={40} color="#F472B6" />
               <Text className="font-semibold text-base text-[#2B308B]">
                 Thi thử
-              </Text>
+              </Text> 
             </TouchableOpacity>
             <TouchableOpacity
               className="flex flex-row items-center justify-around gap-2 flex-1 h-20 bg-white rounded-2xl shadow-md p-3"
@@ -494,7 +494,7 @@ const Home = ({ navigation }) => {
         <Text className="text-2xl font-bold text-[#2B308B] mb-4">Đã lưu</Text>
         <View className="flex-row justify-around">
           <TouchableOpacity className="flex flex-col justify-center items-center w-[120px] h-[120px] bg-white rounded-3xl shadow-md" onPress={() => navigation.navigate('SavedVocabulary', {savedVocabulary})}>
-            <View className="flex w-[50px] h-[50px] justify-center items-center mt-3 bg-secondary rounded-2xl">
+            <View className="flex w-[50px] h-[50px] justify-center items-center mt-3 bg-[#F472B6] rounded-2xl">
               <Text className="font-bold text-white text-2xl">{savedVocabulary.length}</Text>
             </View>
             <Text className="font-bold text-lg mt-2 text-[#2B308B]">
@@ -502,7 +502,7 @@ const Home = ({ navigation }) => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity className="flex flex-col justify-center items-center w-[120px] h-[120px] bg-white rounded-3xl shadow-md" onPress={() => navigation.navigate('SavedGrammar', {savedGrammar})}>
-            <View className="w-[50px] h-[50px] justify-center items-center mt-3 bg-secondary rounded-2xl">
+            <View className="w-[50px] h-[50px] justify-center items-center mt-3 bg-[#F472B6] rounded-2xl">
               <Text className="font-bold text-white text-2xl">{savedGrammar.length}</Text>
             </View>
             <Text className="font-bold text-lg mt-2 text-[#2B308B]">

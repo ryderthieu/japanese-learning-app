@@ -107,7 +107,7 @@ const JLPTLevelSelect = ({ navigation, route }) => {
   if (loading) {
     return (
       <View className="flex-1 justify-center items-center bg-gray-50">
-        <ActivityIndicator size="large" color="#F490AF" />
+        <ActivityIndicator size="large" color="#F472B6" />
         <Text className="text-lg text-gray-600 mt-4">Đang tải...</Text>
       </View>
     );
@@ -161,7 +161,7 @@ const JLPTLevelSelect = ({ navigation, route }) => {
                     </Text>
                   </View>
                 </View>
-                <Icon name="chevron-forward" size={24} color="#F490AF" />
+                <Icon name="chevron-forward" size={24} color="#F472B6" />
               </View>
             </TouchableOpacity>
           ))}
@@ -219,11 +219,11 @@ const JLPTLevelSelect = ({ navigation, route }) => {
                         {test.description || 'Bài thi thử JLPT'}
                       </Text>
                       <View className="flex-row items-center">
-                        <Icon name="time-outline" size={16} color="#F490AF" />
+                        <Icon name="time-outline" size={16} color="#F472B6" />
                         <Text className="text-sm text-gray-600 ml-1">
                           {test.duration || 120} phút
                         </Text>
-                        <Icon name="help-circle-outline" size={16} color="#F490AF" className="ml-4" />
+                        <Icon name="help-circle-outline" size={16} color="#F472B6" className="ml-4" />
                         <Text className="text-sm text-gray-600 ml-1">
                           {test.questionCount || 50} câu hỏi
                         </Text>
@@ -235,7 +235,7 @@ const JLPTLevelSelect = ({ navigation, route }) => {
                           <Text className="text-xs text-green-700">Đã hoàn thành</Text>
                         </View>
                       )}
-                      <Icon name="play-circle-outline" size={32} color="#F490AF" />
+                      <Icon name="play-circle-outline" size={32} color="#F472B6" />
                     </View>
                   </View>
                 </TouchableOpacity>

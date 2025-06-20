@@ -255,7 +255,7 @@ const JLPTTest = ({ navigation, route }) => {
   if (loading) {
     return (
       <View className="flex-1 justify-center items-center bg-gray-50">
-        <ActivityIndicator size="large" color="#F490AF" />
+        <ActivityIndicator size="large" color="#F472B6" />
         <Text className="text-lg text-gray-600 mt-4">Đang tải bài thi...</Text>
       </View>
     );
@@ -265,46 +265,11 @@ const JLPTTest = ({ navigation, route }) => {
     <View className="flex-1 bg-gray-50">
       {/* Header */}
       <View className="bg-gradient-to-b from-pink-400 to-pink-600 p-4">
-        <View className="flex-row items-center justify-between mb-4">
-          <TouchableOpacity
-            onPress={() => {
-              if (Object.keys(answers).length > 0) {
-                openModal({
-                  title: 'Thoát bài thi',
-                  type: 'warning',
-                  message: 'Bạn có chắc muốn thoát? Tiến độ sẽ không được lưu.',
-                  onConfirm: () => navigation.goBack()
-                });
-              } else {
-                navigation.goBack();
-              }
-            }}
-            className="p-2"
-          >
-            <Icon name="close" size={24} color="white" />
-          </TouchableOpacity>
-          
-          <View className="items-center">
-            <Text className="text-white font-bold text-lg">
-              {test?.title || 'Bài thi JLPT'}
-            </Text>
-            <Text className="text-white text-sm opacity-90">
-              {test?.level} • {test?.totalQuestions || questions.length} câu hỏi
-            </Text>
-          </View>
-          
-          <TouchableOpacity
-            onPress={() => setShowQuestionList(true)}
-            className="p-2"
-          >
-            <Icon name="list" size={24} color="white" />
-          </TouchableOpacity>
-        </View>
         
         {/* Timer */}
         <View className="bg-white rounded-lg p-3 flex-row items-center justify-between">
           <View className="flex-row items-center">
-            <Icon name="time-outline" size={20} color="#F490AF" />
+            <Icon name="time-outline" size={20} color="#F472B6" />
             <Text className="text-lg font-bold text-gray-800 ml-2">
               {formatTime(timeLeft)}
             </Text>
@@ -342,7 +307,7 @@ const JLPTTest = ({ navigation, route }) => {
             <Icon
               name="chevron-back"
               size={20}
-              color={currentQuestionIndex === 0 ? '#ccc' : '#F490AF'}
+              color={currentQuestionIndex === 0 ? '#ccc' : '#F472B6'}
             />
             <Text
               className={`ml-1 font-semibold ${
@@ -376,7 +341,7 @@ const JLPTTest = ({ navigation, route }) => {
             <Icon
               name="chevron-forward"
               size={20}
-              color={currentQuestionIndex === questions.length - 1 ? '#ccc' : '#F490AF'}
+              color={currentQuestionIndex === questions.length - 1 ? '#ccc' : '#F472B6'}
             />
           </TouchableOpacity>
         </View>

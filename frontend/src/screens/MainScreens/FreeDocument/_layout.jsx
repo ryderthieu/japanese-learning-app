@@ -3,11 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import SelectVocabLesson from './SelectVocabLesson'
 import SelectKanjiLesson from './SelectKanjiLesson'
 import SelectGrammarLesson from './SelectGrammarLesson'
-import Vocab from './Vocab'
-import Kanji from './Kanji'
 import DocumentLevel from './DocumentLevel'
-import VocabList from './VocabList'
-import KanjiList from './KanjiList'
 import Test from './Test'
 import { Icon } from '@rneui/themed'
 import { TouchableOpacity, Text } from 'react-native'
@@ -37,15 +33,11 @@ const FreeDocumentNavigation = ({ navigation }) => {
     }}>
       <Stack.Screen name='DocumentLevel' component={DocumentLevel} options={{
         headerShown: true,
-        title: 'Tài liệu offline',
+        title: 'Tài liệu miễn phí',
       }}
       />
       <Stack.Screen name='SelectVocabLesson' component={SelectVocabLesson} options={{ title: 'Danh sách bài học từ vựng' }} />
-      <Stack.Screen name='VocabList' component={VocabList} options={{ title: 'Danh sách từ vựng' }} />
-      <Stack.Screen name='Vocab' component={Vocab} options={{ title: 'Học từ vựng' }} />
       <Stack.Screen name='SelectKanjiLesson' component={SelectKanjiLesson} options={{ title: 'Danh sách bài học kanji' }} />
-      <Stack.Screen name='KanjiList' component={KanjiList} options={{ title: 'Danh sách kanji' }} />
-      <Stack.Screen name='Kanji' component={Kanji} options={{ title: 'Học kanji' }} />
       <Stack.Screen name='SelectGrammarLesson' component={SelectGrammarLesson} options={{ title: 'Danh sách ngữ pháp' }} />
       <Stack.Screen name='GrammarLessonDetail' component={GrammarLessonDetail} options={({ route }) => ({
         title: route.params.lesson.title

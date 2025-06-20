@@ -26,7 +26,8 @@ const Login = ({navigation}) => {
     setLoading(true);
     try {
       const result = await login(email, password);
-      if (!result.success) {
+      console.log(result)
+      if (!result) {
         openModal({
           title: 'Lỗi',
           type: 'error',
@@ -107,7 +108,7 @@ const Login = ({navigation}) => {
             buttonStyle={{
               width: 350,
               height: 50,
-              backgroundColor: "#F490AF",
+              backgroundColor: "#F472B6",
               borderRadius: 20,
             }}
             titleStyle={{

@@ -109,7 +109,7 @@ const JLPTHistory = ({ navigation }) => {
 
   const getStatusText = (score, total) => {
     const percentage = (score / total) * 100;
-    if (percentage >= 60) return 'Đạt';
+    if (percentage >= 50) return 'Đạt';
     return 'Không đạt';
   };
 
@@ -196,7 +196,7 @@ const JLPTHistory = ({ navigation }) => {
   if (loading && currentPage === 1) {
     return (
       <View className="flex-1 justify-center items-center bg-gray-50">
-        <ActivityIndicator size="large" color="#F490AF" />
+        <ActivityIndicator size="large" color="#F472B6" />
         <Text className="text-lg text-gray-600 mt-4">Đang tải lịch sử...</Text>
       </View>
     );
@@ -236,7 +236,7 @@ const JLPTHistory = ({ navigation }) => {
         
         {loading && currentPage > 1 && (
           <View className="py-4">
-            <ActivityIndicator size="small" color="#0D9488" />
+            <ActivityIndicator size="small" color="#F472B6" />
           </View>
         )}
       </ScrollView>
