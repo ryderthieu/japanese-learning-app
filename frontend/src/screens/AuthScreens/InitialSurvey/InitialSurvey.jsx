@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Animated, TextInput, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Animated, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useAuth } from '../../../context/AuthContext';
 import { ModalContext } from '../../../context/ModalContext';

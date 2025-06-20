@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   View,
   Text,
   ScrollView,
   TouchableOpacity,
-  Alert,
   ActivityIndicator,
 } from 'react-native';
 import { testService } from '../../../api';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { ModalContext } from '../../../context/ModalContext';
 
 const JLPTTestResult = ({ navigation, route }) => {
+  const { openModal } = useContext(ModalContext);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showReview, setShowReview] = useState(false);
@@ -40,7 +41,11 @@ const JLPTTestResult = ({ navigation, route }) => {
       }
     } catch (error) {
       console.error('Lỗi khi lấy kết quả:', error);
-      Alert.alert('Lỗi', 'Không thể tải kết quả bài thi');
+      openModal({
+        title: 'Lỗi',
+        type: 'error',
+        message: 'Không thể tải kết quả bài thi'
+      });
     } finally {
       setLoading(false);
     }
@@ -73,39 +78,48 @@ const JLPTTestResult = ({ navigation, route }) => {
   };
 
   const handleReviewTest = () => {
-    // Sử dụng logic đơn giản giống như JLPTTestList
-    const targetTestId = testId || test?._id || test?.id;
-    console.log('Navigate to JLPTTestReview with testId:', targetTestId);
-    
-    if (targetTestId) {
-      navigation.navigate('JLPTTestReview', { 
-        testId: targetTestId 
+    if (!result?.questions || result.questions.length === 0) {
+      openModal({
+        title: 'Thông báo',
+        type: 'warning',
+        message: 'Không có thông tin bài thi để xem lại'
       });
-    } else {
-      Alert.alert('Thông báo', 'Không có thông tin bài thi để xem lại');
+      return;
     }
+
+    openModal({
+      title: 'Xem lại bài thi',
+      type: 'info',
+      message: 'Bạn có muốn xem lại các câu hỏi và đáp án không?',
+      onConfirm: () => {
+        navigation.navigate('JLPTTestReview', {
+          testResult: result,
+          questions: result.questions,
+          userAnswers: result.userAnswers
+        });
+      }
+    });
   };
 
   const handleRetakeTest = () => {
-    Alert.alert(
-      'Làm lại bài thi',
-      'Bạn có muốn làm lại bài thi này?',
-      [
-        { text: 'Hủy', style: 'cancel' },
-        { 
-          text: 'Làm lại', 
-          onPress: () => navigation.navigate('JLPTTest', { 
-            testId: testId,
-            level: test?.level,
-            mode: 'retry'
-          }) 
-        }
-      ]
-    );
+    openModal({
+      title: 'Làm lại bài thi',
+      type: 'confirm',
+      message: 'Bạn có muốn làm lại bài thi này?',
+      onConfirm: () => navigation.navigate('JLPTTest', { 
+        testId: testId,
+        level: test?.level,
+        mode: 'retry'
+      })
+    });
   };
 
-  const handleShareResult = () => {
-    Alert.alert('Chia sẻ', 'Tính năng chia sẻ sẽ được cập nhật sau');
+  const handleShare = () => {
+    openModal({
+      title: 'Chia sẻ',
+      type: 'info',
+      message: 'Tính năng chia sẻ sẽ được cập nhật sau'
+    });
   };
 
   if (loading) {

@@ -24,12 +24,10 @@ const saveGrammar = async (req, res) => {
 const getLessons = async (req, res) => {
     try {
         const { level, lessonNumber = 1 } = req.query; 
-        const limit = 5;  
-
+        const limit = 10;  
         const skip = (lessonNumber - 1) * limit;  
 
         const query = level ? { level } : {};  
-
         const grammars = await Grammar.find(query)
             .skip(skip)  
             .limit(limit);

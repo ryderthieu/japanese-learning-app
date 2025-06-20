@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { View, Text, Image, Alert } from "react-native";
+import React, { useState, useContext } from "react";
+import { View, Text, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Input, Button } from "@rneui/themed";
 import { useAuth } from '../../../context/AuthContext';
+import { ModalContext } from "../../../context/ModalContext";
 
 const Login = ({navigation}) => {
   const { login } = useAuth();
+  const { openModal } = useContext(ModalContext);
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +15,11 @@ const Login = ({navigation}) => {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('Lỗi', 'Vui lòng điền đầy đủ thông tin');
+      openModal({
+        title: 'Lỗi',
+        type: 'error',
+        message: 'Vui lòng điền đầy đủ thông tin'
+      });
       return;
     }
 
@@ -21,10 +27,18 @@ const Login = ({navigation}) => {
     try {
       const result = await login(email, password);
       if (!result.success) {
-        Alert.alert('Lỗi', result.message);
+        openModal({
+          title: 'Lỗi',
+          type: 'error',
+          message: result.message
+        });
       }
     } catch (error) {
-      Alert.alert('Lỗi', 'Không thể đăng nhập');
+      openModal({
+        title: 'Lỗi',
+        type: 'error',
+        message: 'Không thể đăng nhập'
+      });
     } finally {
       setLoading(false);
     }

@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   View,
   Text,
   ScrollView,
   TouchableOpacity,
-  Alert,
   ActivityIndicator,
 } from 'react-native';
 import { testService } from '../../../api';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { ModalContext } from '../../../context/ModalContext';
 
 const JLPTLevelSelect = ({ navigation, route }) => {
   const [tests, setTests] = useState([]);
   const [loading, setLoading] = useState(true);
   const selectedLevel = route.params?.level;
+  const { openModal } = useContext(ModalContext);
 
   const JLPTLevels = [
     {
@@ -80,8 +81,12 @@ const JLPTLevelSelect = ({ navigation, route }) => {
       const response = await testService.getTestsByLevel(level);
       setTests(response.tests || []);
     } catch (error) {
-      console.error('Lỗi khi lấy bài thi:', error);
-      Alert.alert('Lỗi', 'Không thể tải danh sách bài thi');
+      console.error('Error loading tests:', error);
+      openModal({
+        title: 'Lỗi',
+        type: 'error',
+        message: 'Không thể tải danh sách bài thi'
+      });
     } finally {
       setLoading(false);
     }

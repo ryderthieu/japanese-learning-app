@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import React, { useEffect, useState, useContext } from 'react';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../../context/AuthContext';
 import userService from '../../../api/userService';
+import { ModalContext } from '../../../context/ModalContext';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
   const { userInfo, logout } = useAuth();
   const [stats, setStats] = useState(null);
+  const { openModal } = useContext(ModalContext);
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -19,25 +21,22 @@ const ProfileScreen = () => {
         console.error('Lỗi khi lấy thống kê:', error);
       }
     };
-    fetchStats();
+    fetchStats(); 
   }, []);
 
   const handleLogout = () => {
-    Alert.alert(
-      'Đăng xuất',
-      'Bạn có chắc chắn muốn đăng xuất?',
-      [
-        {
-          text: 'Hủy',
-          style: 'cancel',
-        },
-        {
-          text: 'Đồng ý',
-          onPress: () => logout(),
-        },
-      ],
-      { cancelable: false }
-    );
+    openModal({
+      title: 'Đăng xuất',
+      type: 'warning',
+      message: 'Bạn có chắc chắn muốn đăng xuất?',
+      onConfirm: () => {
+        logout();
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'AuthStack' }],
+        });
+      }
+    });
   };
 
   const menuItems = [

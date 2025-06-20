@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { testService, questionService } from '../../../api';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { ModalContext } from '../../../context/ModalContext';
 
 const JLPTTest = ({ navigation, route }) => {
   const [test, setTest] = useState(null);
@@ -24,6 +25,7 @@ const JLPTTest = ({ navigation, route }) => {
   
   const { testId, level, type, mode } = route.params || {};
   const timerRef = useRef(null);
+  const { openModal } = useContext(ModalContext);
 
   useEffect(() => {
     if (testId) {
@@ -62,7 +64,11 @@ const JLPTTest = ({ navigation, route }) => {
       
     } catch (error) {
       console.error('Lỗi khi khởi tạo bài thi:', error);
-      Alert.alert('Lỗi', 'Không thể tải bài thi');
+      openModal({
+        title: 'Lỗi',
+        type: 'error',
+        message: 'Không thể tải bài thi'
+      });
       navigation.goBack();
     } finally {
       setLoading(false);
@@ -94,16 +100,12 @@ const JLPTTest = ({ navigation, route }) => {
   };
 
   const handleAutoSubmit = () => {
-    Alert.alert(
-      'Hết thời gian',
-      'Thời gian làm bài đã hết. Bài thi sẽ được nộp tự động.',
-      [
-        {
-          text: 'OK',
-          onPress: () => submitTest()
-        }
-      ]
-    );
+    openModal({
+      title: 'Hết thời gian',
+      type: 'warning',
+      message: 'Thời gian làm bài đã hết. Bài thi sẽ được nộp tự động.',
+      onConfirm: () => submitTest()
+    });
   };
 
   const submitTest = async () => {
@@ -146,7 +148,11 @@ const JLPTTest = ({ navigation, route }) => {
     } catch (error) {
       console.error('Lỗi khi nộp bài:', error);
       console.error('Error details:', error.message);
-      Alert.alert('Lỗi', `Không thể nộp bài thi: ${error.message || 'Vui lòng thử lại.'}`);
+      openModal({
+        title: 'Lỗi',
+        type: 'error',
+        message: `Không thể nộp bài thi: ${error.message || 'Vui lòng thử lại.'}`
+      });
     } finally {
       setSubmitting(false);
     }
@@ -263,14 +269,12 @@ const JLPTTest = ({ navigation, route }) => {
           <TouchableOpacity
             onPress={() => {
               if (Object.keys(answers).length > 0) {
-                Alert.alert(
-                  'Thoát bài thi',
-                  'Bạn có chắc muốn thoát? Tiến độ sẽ không được lưu.',
-                  [
-                    { text: 'Hủy', style: 'cancel' },
-                    { text: 'Thoát', onPress: () => navigation.goBack() }
-                  ]
-                );
+                openModal({
+                  title: 'Thoát bài thi',
+                  type: 'warning',
+                  message: 'Bạn có chắc muốn thoát? Tiến độ sẽ không được lưu.',
+                  onConfirm: () => navigation.goBack()
+                });
               } else {
                 navigation.goBack();
               }

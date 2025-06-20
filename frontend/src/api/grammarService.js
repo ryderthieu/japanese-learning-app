@@ -2,8 +2,12 @@ import apiClient from './config';
 
 const grammarService = {
   // Lấy danh sách bài học ngữ pháp
-  getLessons: async () => {
-    const response = await apiClient.get('/grammar/get-lesson');
+  getLessons: async ({ level, lessonNumber = 1 } = {}) => {
+    const params = new URLSearchParams();
+    if (level) params.append('level', level);
+    if (lessonNumber) params.append('lessonNumber', lessonNumber);
+    
+    const response = await apiClient.get(`/grammar/get-lesson?${params.toString()}`);
     return response.data;
   },
 

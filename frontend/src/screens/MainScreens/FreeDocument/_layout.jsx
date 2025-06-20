@@ -20,16 +20,16 @@ const FreeDocumentNavigation = ({ navigation }) => {
     <Stack.Navigator screenOptions={{
       headerStyle: { 
         backgroundColor: '#F472B6',
-        elevation: 4,
+        elevation: 2,
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.1,
         shadowRadius: 3,
       },
       headerTitleStyle: { 
         color: '#fff',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 18,
       },
       headerTintColor: '#fff',
       headerTitleAlign: 'center',
@@ -40,10 +40,10 @@ const FreeDocumentNavigation = ({ navigation }) => {
         title: 'Tài liệu offline',
       }}
       />
-      <Stack.Screen name='SelectVocabLesson' component={SelectVocabLesson} options={{ title: 'Danh sách bài học' }} />
+      <Stack.Screen name='SelectVocabLesson' component={SelectVocabLesson} options={{ title: 'Danh sách bài học từ vựng' }} />
       <Stack.Screen name='VocabList' component={VocabList} options={{ title: 'Danh sách từ vựng' }} />
       <Stack.Screen name='Vocab' component={Vocab} options={{ title: 'Học từ vựng' }} />
-      <Stack.Screen name='SelectKanjiLesson' component={SelectKanjiLesson} options={{ title: 'Danh sách bài học' }} />
+      <Stack.Screen name='SelectKanjiLesson' component={SelectKanjiLesson} options={{ title: 'Danh sách bài học kanji' }} />
       <Stack.Screen name='KanjiList' component={KanjiList} options={{ title: 'Danh sách kanji' }} />
       <Stack.Screen name='Kanji' component={Kanji} options={{ title: 'Học kanji' }} />
       <Stack.Screen name='SelectGrammarLesson' component={SelectGrammarLesson} options={{ title: 'Danh sách ngữ pháp' }} />
@@ -53,7 +53,7 @@ const FreeDocumentNavigation = ({ navigation }) => {
       <Stack.Screen name='VocabularyLessonDetail' component={VocabularyLessonDetail} options={({ route }) => ({
         title: route.params.lesson.title
       })} />
-      <Stack.Screen name='Test' component={Test} options={{ title: 'Ôn tập' }} />
+      <Stack.Screen name='Test' component={Test} options={{ title: 'Ôn tập kiến thức' }} />
     </Stack.Navigator>
   )
 }

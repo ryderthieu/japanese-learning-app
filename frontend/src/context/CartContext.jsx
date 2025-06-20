@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import userService from '../api/userService';
-import { Alert } from 'react-native';
 
 export const CartContext = createContext();
 
@@ -15,7 +14,6 @@ export const CartProvider = ({ children }) => {
               setCartItems(response.courses);
             } catch (error) {
               console.error("Lỗi khi lấy giỏ hàng:", error);
-              Alert.alert("Lỗi", "Không thể tải giỏ hàng");
             }
           };
       

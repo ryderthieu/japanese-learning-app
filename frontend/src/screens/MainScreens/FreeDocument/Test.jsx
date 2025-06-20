@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Text, TouchableOpacity, Modal, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, Modal, FlatList, Animated, Dimensions, ImageBackground } from "react-native";
 import { LoadingContext } from '../../../context/LoadingContext';
 import vocabularyService from "../../../api/vocabularyService";
+import Icon from 'react-native-vector-icons/Ionicons';
+import Loading from "../../../components/Loading/Loading";
+
+const { width, height } = Dimensions.get('window');
 
 const Test = ({ route }) => {
   const { level } = route.params;
@@ -12,6 +16,10 @@ const Test = ({ route }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
+  
+  // Animation values
+  const flipAnimation = new Animated.Value(0);
+  const scaleAnimation = new Animated.Value(1);
 
   const getAllLessons = async (level) => {
     let allLessons = [];
@@ -20,21 +28,22 @@ const Test = ({ route }) => {
     while (true) {
       try {
         setIsLoading(true);
-        const response = await vocabularyService.getLesson({ level, lessonNumber: pageNumber });
+        const response = await vocabularyService.getLessons({ level, lessonNumber: pageNumber });
 
-        if (response.length === 0) {
+        if (!response || response.length === 0) {
           break;
         }
 
         const formattedLessons = {
           title: `Bài ${pageNumber}`,
           vocabulary: response || [],
+          lessonNumber: pageNumber,
         };
 
         allLessons.push(formattedLessons);
         pageNumber++;
       } catch (error) {
-        console.error("Lỗi khi lấy khóa học:", error.response?.data?.message || error);
+        console.error("Lỗi khi lấy bài học:", error.response?.data?.message || error);
         break;
       } finally {
         setIsLoading(false);
@@ -53,6 +62,8 @@ const Test = ({ route }) => {
       }
     });
     setFilteredVocabulary(allVocabulary);
+    setCurrentIndex(0);
+    setIsFlipped(false);
   };
 
   useEffect(() => {
@@ -69,112 +80,311 @@ const Test = ({ route }) => {
     );
   };
 
+  const animateFlip = () => {
+    Animated.sequence([
+      Animated.timing(flipAnimation, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }),
+      Animated.timing(flipAnimation, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      })
+    ]).start();
+    setIsFlipped(!isFlipped);
+  };
+
+  const animateCardPress = () => {
+    Animated.sequence([
+      Animated.timing(scaleAnimation, {
+        toValue: 0.95,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(scaleAnimation, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      })
+    ]).start();
+  };
+
   const handleNext = () => {
     if (currentIndex < filteredVocabulary.length - 1) {
       setCurrentIndex((prevIndex) => prevIndex + 1);
-      setIsFlipped(false); 
+      setIsFlipped(false);
+      flipAnimation.setValue(0);
     }
   };
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prevIndex) => prevIndex - 1);
-      setIsFlipped(false); 
+      setIsFlipped(false);
+      flipAnimation.setValue(0);
     }
   };
 
+  const rotateInterpolate = flipAnimation.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '180deg']
+  });
+
+  if (isLoading) return <Loading />;
+
   return (
-    <View className="flex-1 bg-gray-100 items-center p-4">
+    <View className="flex-1 bg-gray-50">
+      {/* Progress Bar đơn giản */}
+      {filteredVocabulary.length > 0 && (
+        <View className="bg-white px-4 py-3 border-b border-gray-100">
+          <View className="bg-gray-200 h-2 rounded-full overflow-hidden">
+            <View
+              style={{
+                width: `${((currentIndex + 1) / filteredVocabulary.length) * 100}%`,
+              }}
+              className="bg-pink-500 h-full rounded-full"
+            />
+          </View>
+          <Text className="text-center text-sm text-gray-500 mt-2">
+            {currentIndex + 1} / {filteredVocabulary.length}
+          </Text>
+        </View>
+      )}
+
+      {/* Flashcard Container */}
+      <View className="flex-1 justify-center items-center px-6 py-8">
+        {filteredVocabulary.length > 0 ? (
+          <Animated.View
+            style={{
+              transform: [{ scale: scaleAnimation }],
+              width: width - 48,
+              height: height * 0.5,
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => {
+                animateCardPress();
+                animateFlip();
+              }}
+              activeOpacity={0.9}
+              className="flex-1"
+            >
+              <Animated.View
+                style={{
+                  transform: [{ rotateY: rotateInterpolate }],
+                }}
+                className="flex-1 bg-white rounded-3xl shadow-xl border border-gray-100"
+              >
+                <ImageBackground
+                  source={{
+                    uri: 'https://images.unsplash.com/photo-1515169974629-fc2a2c225eeb?w=500&h=300&fit=crop&crop=center'
+                  }}
+                  className="flex-1 rounded-3xl overflow-hidden"
+                  imageStyle={{ opacity: 0.05 }}
+                >
+                  <View className="flex-1 justify-center items-center p-8">
+                    {isFlipped ? (
+                      // Mặt sau - Ý nghĩa
+                      <View className="items-center">
+                        <Icon name="language-outline" size={48} color="#F472B6" style={{ marginBottom: 20 }} />
+                        <Text className="text-2xl font-bold text-gray-800 text-center leading-10">
+                          {filteredVocabulary[currentIndex]?.meaning || 'Không có ý nghĩa'}
+                        </Text>
+                        <View className="absolute bottom-4 right-4">
+                          <View className="bg-pink-100 px-3 py-1 rounded-full">
+                            <Text className="text-pink-600 text-xs font-medium">Ý nghĩa</Text>
+                          </View>
+                        </View>
+                      </View>
+                    ) : (
+                      // Mặt trước - Từ vựng
+                      <View className="items-center">
+                        <Icon name="book-outline" size={48} color="#3B82F6" style={{ marginBottom: 20 }} />
+                        {filteredVocabulary[currentIndex]?.kanji && (
+                          <Text className="text-5xl font-bold text-blue-700 mb-4 text-center">
+                            {filteredVocabulary[currentIndex].kanji}
+                          </Text>
+                        )}
+                        <Text className="text-3xl font-semibold text-gray-800 text-center mb-2">
+                          {filteredVocabulary[currentIndex]?.word || 'Không có từ'}
+                        </Text>
+                        {filteredVocabulary[currentIndex]?.romanji && (
+                          <Text className="text-lg text-gray-500 italic text-center">
+                            {filteredVocabulary[currentIndex].romanji}
+                          </Text>
+                        )}
+                        <View className="absolute bottom-4 right-4">
+                          <View className="bg-blue-100 px-3 py-1 rounded-full">
+                            <Text className="text-blue-600 text-xs font-medium">Từ vựng</Text>
+                          </View>
+                        </View>
+                      </View>
+                    )}
+                  </View>
+                </ImageBackground>
+              </Animated.View>
+            </TouchableOpacity>
+          </Animated.View>
+        ) : (
+          // Empty State
+          <View className="items-center py-20">
+            <View className="bg-gray-100 p-6 rounded-full mb-6">
+              <Icon name="library-outline" size={64} color="#9CA3AF" />
+            </View>
+            <Text className="text-gray-500 text-xl font-semibold text-center mb-3">
+              Chưa có từ vựng
+            </Text>
+            <Text className="text-gray-400 text-sm text-center mb-6 px-8">
+              Hãy chọn ít nhất một bài học để bắt đầu ôn tập flashcard
+            </Text>
+            <TouchableOpacity
+              onPress={() => setModalVisible(true)}
+              className="bg-pink-500 px-6 py-3 rounded-2xl"
+              activeOpacity={0.8}
+            >
+              <Text className="text-white font-semibold">Chọn bài học</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
+
+      {/* Bottom Controls */}
+      {filteredVocabulary.length > 0 && (
+        <View className="flex-row justify-between items-center px-6 py-4 bg-white border-t border-gray-100">
+          <TouchableOpacity
+            onPress={handlePrevious}
+            disabled={currentIndex === 0}
+            className={`flex-row items-center px-6 py-3 rounded-2xl ${
+              currentIndex === 0 ? 'bg-gray-100' : 'bg-blue-500'
+            }`}
+            activeOpacity={0.8}
+          >
+            <Icon 
+              name="chevron-back" 
+              size={20} 
+              color={currentIndex === 0 ? '#9CA3AF' : 'white'} 
+              style={{ marginRight: 8 }}
+            />
+            <Text className={`font-semibold ${
+              currentIndex === 0 ? 'text-gray-400' : 'text-white'
+            }`}>
+              Trước
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => setModalVisible(true)}
+            className="bg-gray-100 px-4 py-3 rounded-2xl flex-row items-center"
+            activeOpacity={0.8}
+          >
+            <Icon name="list-outline" size={20} color="#6B7280" style={{ marginRight: 8 }} />
+            <Text className="text-gray-600 font-medium">Bài học</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={handleNext}
+            disabled={currentIndex === filteredVocabulary.length - 1}
+            className={`flex-row items-center px-6 py-3 rounded-2xl ${
+              currentIndex === filteredVocabulary.length - 1 ? 'bg-gray-100' : 'bg-blue-500'
+            }`}
+            activeOpacity={0.8}
+          >
+            <Text className={`font-semibold ${
+              currentIndex === filteredVocabulary.length - 1 ? 'text-gray-400' : 'text-white'
+            }`}>
+              Sau
+            </Text>
+            <Icon 
+              name="chevron-forward" 
+              size={20} 
+              color={currentIndex === filteredVocabulary.length - 1 ? '#9CA3AF' : 'white'} 
+              style={{ marginLeft: 8 }}
+            />
+          </TouchableOpacity>
+        </View>
+      )}
+
+      {/* Modal chọn bài học */}
       <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
-        <View className="flex-1 justify-center items-center bg-black/50">
-          <View className="bg-white rounded-lg p-4 w-3/4 max-h-[500px]"> 
-            <Text className="text-lg font-bold mb-4">Chọn bài học</Text>
+        <View className="flex-1 justify-end bg-black/50">
+          <View className="bg-white rounded-t-3xl max-h-[70%]">
+            <View className="flex-row items-center justify-between p-6 border-b border-gray-100">
+              <Text className="text-xl font-bold text-gray-800">Chọn bài học</Text>
+              <TouchableOpacity
+                onPress={() => setModalVisible(false)}
+                className="bg-gray-100 p-2 rounded-full"
+                activeOpacity={0.8}
+              >
+                <Icon name="close" size={20} color="#6B7280" />
+              </TouchableOpacity>
+            </View>
+            
             <FlatList
               data={allLessons}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ padding: 16 }}
               renderItem={({ item }) => (
                 <TouchableOpacity
                   onPress={() => toggleLesson(item.title)}
-                  className={`p-3 rounded-lg mb-2 w-full text-center ${selectedLessons.includes(item.title) ? "bg-blue-500" : "bg-gray-200"}`}
+                  className={`p-4 rounded-2xl mb-3 border-2 ${
+                    selectedLessons.includes(item.title) 
+                      ? "bg-pink-50 border-pink-500" 
+                      : "bg-gray-50 border-gray-200"
+                  }`}
+                  activeOpacity={0.8}
                 >
-                  <Text className={`${selectedLessons.includes(item.title) ? "text-white" : "text-gray-700"}`}>
-                    {item.title}
-                  </Text>
+                  <View className="flex-row items-center justify-between">
+                    <View className="flex-row items-center flex-1">
+                      <View className={`w-10 h-10 rounded-2xl items-center justify-center mr-4 ${
+                        selectedLessons.includes(item.title) ? "bg-pink-500" : "bg-gray-300"
+                      }`}>
+                        <Text className={`font-bold ${
+                          selectedLessons.includes(item.title) ? "text-white" : "text-gray-600"
+                        }`}>
+                          {item.lessonNumber}
+                        </Text>
+                      </View>
+                      <View className="flex-1">
+                        <Text className={`text-lg font-semibold ${
+                          selectedLessons.includes(item.title) ? "text-pink-700" : "text-gray-700"
+                        }`}>
+                          {item.title}
+                        </Text>
+                        <Text className="text-sm text-gray-500 mt-1">
+                          {item.vocabulary.length} từ vựng
+                        </Text>
+                      </View>
+                    </View>
+                    {selectedLessons.includes(item.title) && (
+                      <Icon name="checkmark-circle" size={24} color="#F472B6" />
+                    )}
+                  </View>
                 </TouchableOpacity>
               )}
               keyExtractor={(item) => item.title}
-              style={{ maxHeight: 300 }} 
             />
-            <TouchableOpacity
-              onPress={() => setModalVisible(false)}
-              className="mt-4 bg-red-500 p-3 rounded-lg w-full"
-            >
-              <Text className="text-white text-center">Đóng</Text>
-            </TouchableOpacity>
+            
+            <View className="p-4 border-t border-gray-100">
+              <TouchableOpacity
+                onPress={() => setModalVisible(false)}
+                className="bg-pink-500 p-4 rounded-2xl"
+                activeOpacity={0.8}
+              >
+                <Text className="text-white text-center font-semibold text-lg">
+                  Hoàn thành ({selectedLessons.length} bài đã chọn)
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
-
-      {/* Hiển thị tiến độ */}
-      <View className="w-full mt-4 mb-4">
-        <View className="w-full bg-gray-200 rounded-full h-2 mt-2">
-          <View
-            style={{
-              width: `${((currentIndex + 1) / filteredVocabulary.length) * 100}%`,
-            }}
-            className="bg-blue-500 h-2 rounded-full"
-          />
-        </View>
-      </View>
-
-      {/* Flashcard */}
-      <View className="flex-1 justify-center items-center w-full">
-        {filteredVocabulary.length > 0 ? (
-          <TouchableOpacity
-            onPress={() => setIsFlipped(!isFlipped)}
-            className="bg-white flex-1 w-full h-[500px] rounded-lg shadow-md justify-center"
-          >
-            {isFlipped ? (
-              <Text className="text-xl font-bold text-center">{filteredVocabulary[currentIndex].meaning}</Text>
-            ) : (
-              <View>
-                <Text className="text-2xl font-bold text-center">{filteredVocabulary[currentIndex].kanji}</Text>
-                <Text className="text-2xl  text-center">{filteredVocabulary[currentIndex].word}</Text>
-              </View>
-            )}
-          </TouchableOpacity>
-        ) : (
-          <Text className="text-gray-500 text-lg">Không có từ vựng.</Text>
-        )}
-      </View>
-
-      {/* Nút điều hướng */}
-      <View className="flex-row justify-between w-full mt-4">
-        <TouchableOpacity
-          onPress={handlePrevious}
-          className="bg-secondary p-3 rounded-lg"
-          disabled={currentIndex === 0}
-        >
-          <Text className="text-white font-semibold">Quay lại</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => setModalVisible(true)}
-          className="bg-gray-200 p-3 rounded-lg items-center flex-2"
-        >
-          <Text className=" text-lg">Chọn bài học</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleNext}
-          className="bg-primary p-3 rounded-lg"
-          disabled={currentIndex === filteredVocabulary.length - 1}
-        >
-          <Text className="text-white font-semibold">Tiếp tục</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { View, Text, FlatList, TouchableOpacity, Image, Alert } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import CheckBox from 'react-native-check-box';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { CartContext } from "../../../context/CartContext";

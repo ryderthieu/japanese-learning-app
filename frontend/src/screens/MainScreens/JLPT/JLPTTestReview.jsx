@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import testService from '../../../api/testService';
 import userService from '../../../api/userService';
 import { useAIExplanation } from '../../../context/AIExplanationContext';
+import { ModalContext } from '../../../context/ModalContext';
 
 const JLPTTestReview = ({ navigation, route }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -23,6 +24,7 @@ const JLPTTestReview = ({ navigation, route }) => {
   const { testId, test, questions: passedQuestions, answers: passedAnswers, result } = route.params || {};
   
   const { showExplanation } = useAIExplanation();
+  const { openModal } = useContext(ModalContext);
 
   useEffect(() => {    
     console.log('JLPTTestReview mounted with params:', route.params);
@@ -139,7 +141,12 @@ const JLPTTestReview = ({ navigation, route }) => {
       }
       
     } catch (error) {
-      console.error('Error fetching test data and results:', error);
+      console.error('Error loading test review data:', error);
+      openModal({
+        title: 'Thông báo',
+        type: 'error',
+        message: 'Có lỗi khi tải dữ liệu. Hiển thị dữ liệu mẫu để xem giao diện.'
+      });
       
       // Tạo dữ liệu fallback nếu API hoàn toàn thất bại
       const fallbackQuestions = [
@@ -170,8 +177,6 @@ const JLPTTestReview = ({ navigation, route }) => {
         timeSpent: 0,
         completedAt: new Date().toISOString()
       });
-      
-      Alert.alert('Thông báo', 'Có lỗi khi tải dữ liệu. Hiển thị dữ liệu mẫu để xem giao diện.');
     } finally {
       setLoading(false);
     }

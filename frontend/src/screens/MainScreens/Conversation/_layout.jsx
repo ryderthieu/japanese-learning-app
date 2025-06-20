@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ConversationHome from './ConversationHome';
 import ConversationChat from './ConversationChat';
@@ -21,9 +22,9 @@ const ConversationNavigation = () => {
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
-          fontSize: 20,
+          fontSize: 18,
         },
-        headerTitleAlign: 'center',
+        headerTitleAlign: 'left',
         headerBackTitleVisible: false,
       }}
     >
@@ -32,20 +33,22 @@ const ConversationNavigation = () => {
         component={ConversationHome}
         options={{
           title: 'Luyện hội thoại AI',
+          headerTitleAlign: 'center',
         }}
       />
       <ConversationStack.Screen
         name="ConversationChat"
         component={ConversationChat}
-        options={{
-          title: 'Hội thoại với AI',
-        }}
+        options={({ route }) => ({
+          title: `${route.params?.scenarioName || 'Tình huống'} - ${route.params?.level || 'N/A'}`,
+        })}
       />
       <ConversationStack.Screen
         name="ConversationResult"
         component={ConversationResult}
         options={{
           title: 'Kết quả hội thoại',
+          headerTitleAlign: 'center',
         }}
       />
     </ConversationStack.Navigator>

@@ -1,5 +1,5 @@
-import { Text, View, Image, ScrollView, TouchableOpacity, Alert, AppState } from 'react-native';
-import React, { useState, useEffect, useRef } from 'react';
+import { Text, View, Image, ScrollView, TouchableOpacity, AppState } from 'react-native';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import CircularProgress from './CircularProgress';
 import Slider from '../../../components/SlideCarousel/Slider';
 import SliderData from '../../../components/SlideCarousel/SliderData';
@@ -10,6 +10,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useAuth } from '../../../context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ModalContext } from '../../../context/ModalContext';
 
 const Home = ({ navigation }) => {
   const [savedVocabulary, setSavedVocabulary] = useState([]);
@@ -25,6 +26,7 @@ const Home = ({ navigation }) => {
   const { userInfo } = useAuth();
   const appState = useRef(AppState.currentState);
   const studyInterval = useRef(null);
+  const { openModal } = useContext(ModalContext);
 
   // Lấy thời gian mục tiêu từ studySettings
   const dailyGoal = userInfo?.studySettings?.studyDuration || 30;
@@ -282,11 +284,19 @@ const Home = ({ navigation }) => {
       setSavedVocabulary(response.savedVocabulary || []);
       setSavedGrammar(response.savedGrammar || []);
     } catch (error) {
-      console.error('Lỗi khi lấy dữ liệu:', error);
-      if (error.response?.status === 404) {
-        Alert.alert('Lỗi', 'Không thể kết nối đến server. Vui lòng kiểm tra kết nối mạng và thử lại.');
+      console.error('Error fetching saved data:', error);
+      if (error.message === 'Network Error') {
+        openModal({
+          title: 'Lỗi',
+          type: 'error',
+          message: 'Không thể kết nối đến server. Vui lòng kiểm tra kết nối mạng và thử lại.'
+        });
       } else {
-        Alert.alert('Lỗi', 'Có lỗi xảy ra khi lấy dữ liệu. Vui lòng thử lại sau.');
+        openModal({
+          title: 'Lỗi',
+          type: 'error',
+          message: 'Có lỗi xảy ra khi lấy dữ liệu. Vui lòng thử lại sau.'
+        });
       }
     } finally {
       setIsLoading(false);
@@ -298,9 +308,13 @@ const Home = ({ navigation }) => {
       const stats = await userService.getJLPTStats();
       setJlptStats(stats);
     } catch (error) {
-      console.error('Lỗi khi lấy thống kê JLPT:', error);
-      if (error.response?.status === 404) {
-        Alert.alert('Lỗi', 'Không thể kết nối đến server. Vui lòng kiểm tra kết nối mạng và thử lại.');
+      console.error('Error fetching study stats:', error);
+      if (error.message === 'Network Error') {
+        openModal({
+          title: 'Lỗi',
+          type: 'error',
+          message: 'Không thể kết nối đến server. Vui lòng kiểm tra kết nối mạng và thử lại.'
+        });
       }
     }
   };
