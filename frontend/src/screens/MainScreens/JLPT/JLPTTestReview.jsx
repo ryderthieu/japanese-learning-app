@@ -22,31 +22,85 @@ const JLPTTestReview = ({ navigation, route }) => {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [userTestResult, setUserTestResult] = useState(null);
-  const { testId, test, questions: passedQuestions, answers: passedAnswers, result } = route.params || {};
+  
+  // Nhận tất cả các format params có thể
+  const { 
+    testId, 
+    test, 
+    questions: passedQuestions, 
+    answers: passedAnswers, 
+    result, 
+    testResult,
+    userAnswers 
+  } = route.params || {};
   
   const { showExplanation } = useAIExplanation();
   const { openModal } = useContext(ModalContext);
 
   useEffect(() => {    
-    console.log('JLPTTestReview mounted with params:', route.params);
+    console.log('🎯 JLPTTestReview mounted with params:', {
+      hasTestId: !!testId,
+      hasTest: !!test,
+      hasPassedQuestions: !!passedQuestions,
+      hasPassedAnswers: !!passedAnswers,
+      hasResult: !!result,
+      hasTestResult: !!testResult,
+      hasUserAnswers: !!userAnswers,
+      fullParams: route.params
+    });
     
-    // Nếu có dữ liệu được truyền qua props, sử dụng trực tiếp
-    if (passedQuestions && passedAnswers) {
-      console.log('Using passed data directly');
-      setQuestions(passedQuestions);
-      setAnswers(passedAnswers);
-      setUserTestResult(result);
+    // Xử lý các format dữ liệu khác nhau
+    const finalQuestions = passedQuestions || result?.questions || testResult?.questions;
+    const finalAnswers = passedAnswers || userAnswers || result?.userAnswers || testResult?.userAnswers || [];
+    const finalResult = result || testResult;
+    
+    if (finalQuestions && finalQuestions.length > 0) {
+      console.log('✅ Using provided questions data:', finalQuestions.length, 'questions');
+      setQuestions(finalQuestions);
+      setAnswers(finalAnswers);
+      setUserTestResult(finalResult);
       setLoading(false);
-    }
-    // Nếu có testId, luôn fetch để lấy dữ liệu mới nhất  
-    else if (testId) {
-      console.log('Fetching data for testId:', testId);
+    } else if (testId) {
+      console.log('📡 No questions provided, fetching data for testId:', testId);
       fetchTestDataAndResults();
     } else {
-      console.log('No data provided, setting loading to false');
-      setLoading(false);
+      console.log('⚠️ No valid data provided, creating demo data');
+      createDemoData();
     }
   }, []);
+
+  const createDemoData = () => {
+    console.log('Creating demo data for testing...');
+    const demoQuestions = [
+      {
+        _id: 'demo1',
+        questionText: 'Demo: Không tìm thấy dữ liệu bài thi. Đây là câu hỏi mẫu để xem giao diện.',
+        type: 'vocabulary',
+        section: 'moji_goi',
+        options: [
+          { text: 'Tùy chọn A (Đúng)', isCorrect: true },
+          { text: 'Tùy chọn B', isCorrect: false },
+          { text: 'Tùy chọn C', isCorrect: false },
+          { text: 'Tùy chọn D', isCorrect: false }
+        ],
+        explanation: 'Đây là demo giải thích. Dữ liệu thực tế không được tìm thấy.'
+      }
+    ];
+    
+    setQuestions(demoQuestions);
+    setAnswers([{
+      questionId: 'demo1',
+      selectedOption: 1,
+      isCorrect: false
+    }]);
+    setUserTestResult({
+      score: 0,
+      maxScore: 100,
+      timeSpent: 0,
+      completedAt: new Date().toISOString()
+    });
+    setLoading(false);
+  };
 
   const fetchTestDataAndResults = async () => {  
     try {

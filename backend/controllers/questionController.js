@@ -11,7 +11,7 @@ const getQuestions = async (req, res) => {
             subSection, 
             difficulty, 
             page = 1, 
-            limit = 10,
+            limit = 100,
             search 
         } = req.query;
 

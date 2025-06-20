@@ -79,27 +79,41 @@ const JLPTTestResult = ({ navigation, route }) => {
   };
 
   const handleReviewTest = () => {
-    if (!result?.questions || result.questions.length === 0) {
+    console.log('🔍 Checking data for review:', {
+      hasResult: !!result,
+      hasQuestions: result?.questions?.length,
+      hasUserAnswers: result?.userAnswers?.length,
+      testId: testId,
+      test: !!test
+    });
+
+    // Kiểm tra các trường hợp dữ liệu có sẵn
+    if (result?.questions && result.questions.length > 0) {
+      // Trường hợp có đầy đủ dữ liệu trong result
+      console.log('✅ Using result data for review');
+      navigation.navigate('JLPTTestReview', {
+        questions: result.questions,
+        answers: result.userAnswers || [],
+        result: result,
+        testId: testId,
+        test: test
+      });
+    } else if (testId) {
+      // Trường hợp chỉ có testId, để JLPTTestReview tự fetch
+      console.log('📡 Using testId for review');
+      navigation.navigate('JLPTTestReview', {
+        testId: testId,
+        test: test,
+        result: result
+      });
+    } else {
+      // Không có đủ dữ liệu
       openModal({
         title: 'Thông báo',
         type: 'warning',
-        message: 'Không có thông tin bài thi để xem lại'
+        message: 'Không có thông tin bài thi để xem lại. Vui lòng thử lại sau.'
       });
-      return;
     }
-
-    openModal({
-      title: 'Xem lại bài thi',
-      type: 'info',
-      message: 'Bạn có muốn xem lại các câu hỏi và đáp án không?',
-      onConfirm: () => {
-        navigation.navigate('JLPTTestReview', {
-          testResult: result,
-          questions: result.questions,
-          userAnswers: result.userAnswers
-        });
-      }
-    });
   };
 
   const handleRetakeTest = () => {
