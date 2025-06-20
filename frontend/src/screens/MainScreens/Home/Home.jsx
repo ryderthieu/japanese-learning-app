@@ -370,11 +370,10 @@ const Home = ({ navigation }) => {
                   Đã hoàn thành {Math.round(studyPercentage)}% mục tiêu hôm nay
                 </Text>
                 
-                {/* Progress Bar */}
                 <View className="bg-gray-200 h-2 rounded-full mt-2">
                   <View 
-                    className="bg-gradient-to-r from-pink-400 to-pink-500 h-2 rounded-full"
-                    style={{ width: `${Math.min(studyPercentage, 100)}%` }}
+                    className="bg-gradient-to-r from-pink-400 to-pink-500 h-2 rounded-full z-10"
+                    style={{ width: `${Math.round(studyPercentage)}%` }}
                   />
                 </View>
 
@@ -474,49 +473,6 @@ const Home = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-
-        {/* JLPT Quick Stats */}
-        {jlptStats && (
-          <View className="mx-5 mt-6">
-            <View className="flex-row items-center justify-between mb-3">
-              <Text className="text-xl font-bold text-[#2B308B]">Tiến độ thi thử</Text>
-              <TouchableOpacity 
-                onPress={() => navigation.navigate("JLPTNavigation")}
-                className="px-3 py-1 bg-pink-100 rounded-full"
-              >
-                <Text className="text-pink-600 font-semibold text-xs">Xem chi tiết</Text>
-              </TouchableOpacity>
-            </View>
-            <View className="bg-white rounded-xl p-4 shadow-md">
-              <View className="flex-row justify-between items-center mb-3">
-                <Text className="text-base font-semibold text-gray-800">Tiến độ tổng thể</Text>
-                <Text className="text-xl font-bold text-pink-500">
-                  {jlptStats.overallProgress || 0}%
-                </Text>
-              </View>
-              <View className="flex-row justify-between">
-                <View className="items-center">
-                  <Text className="text-lg font-bold text-green-500">
-                    {jlptStats.completedTests || 0}
-                  </Text>
-                  <Text className="text-xs text-gray-600">Bài thi</Text>
-                </View>
-                <View className="items-center">
-                  <Text className="text-lg font-bold text-blue-500">
-                    {jlptStats.learnedWords || 0}
-                  </Text>
-                  <Text className="text-xs text-gray-600">Từ vựng</Text>
-                </View>
-                <View className="items-center">
-                  <Text className="text-lg font-bold text-orange-500">
-                    {jlptStats.studyDays || 0}
-                  </Text>
-                  <Text className="text-xs text-gray-600">Ngày học</Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        )}
 
       </View>
 

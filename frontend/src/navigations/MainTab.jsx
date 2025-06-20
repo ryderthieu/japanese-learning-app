@@ -1,11 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import CoursesNavigation from '../screens/MainScreens/Courses/_layout';
 import DocumentStack from '../screens/MainScreens/Documents/_layout';
-import Dictionary from '../screens/MainScreens/Dictionary/Dictionary';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HomeNavigation from '../screens/MainScreens/Home/_layout';
 import JLPTNavigation from '../screens/MainScreens/JLPT/_layout';
+import ConversationNavigation from '../screens/MainScreens/Conversation/_layout';
 import ProfileStack from '../screens/MainScreens/Profile/ProfileStack';
 
 const MainTab = () => {
@@ -51,12 +50,12 @@ const MainTab = () => {
       />
 
       <Tab.Screen
-        name="CoursesNavigation"
-        component={CoursesNavigation}
+        name="ConversationNavigation"
+        component={ConversationNavigation}
         options={{
-          title: 'Khóa học',
+          title: 'Hội thoại',
           tabBarIcon: ({ color, size }) => (
-            <Icon name="book" size={size} color={color} />
+            <Icon name="chatbubbles" size={size} color={color} />
           ),
         }}
       />
@@ -69,21 +68,6 @@ const MainTab = () => {
           tabBarIcon: ({ color, size }) => (
             <Icon name="document-text" size={size} color={color} />
           ),
-        }}
-      />
-
-      <Tab.Screen
-        name="Dictionary"
-        component={Dictionary}
-        options={{
-          title: 'Từ điển',
-          headerShown: true,
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="search" size={size} color={color} />
-          ),
-          headerStyle: {backgroundColor: '#F490AF'},
-          headerTitleStyle: {color: '#fff'},
-          headerTintColor: '#fff'
         }}
       />
 

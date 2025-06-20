@@ -204,67 +204,10 @@ const JLPTHistory = ({ navigation }) => {
 
   return (
     <View className="flex-1 bg-gray-50">
-      {/* Header */}
-      <View className="bg-gradient-to-b from-teal-400 to-teal-600 p-6">
-        <View className="flex-row items-center justify-between mb-4">
-          <TouchableOpacity
-            onPress={() => navigation.goBack()}
-            className="p-2"
-          >
-            <Icon name="arrow-back" size={24} color="white" />
-          </TouchableOpacity>
-          <Text className="text-2xl font-bold text-white">
-            Lịch sử bài thi
-          </Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('JLPTStats')}
-            className="p-2"
-          >
-            <Icon name="analytics-outline" size={24} color="white" />
-          </TouchableOpacity>
-        </View>
-      </View>
 
-      {/* Filters */}
+      
       <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        className="bg-white border-b border-gray-200"
-      >
-        <View className="flex-row p-4">
-          {filters.map((filter) => (
-            <TouchableOpacity
-              key={filter.key}
-              className={`flex-row items-center px-4 py-2 rounded-full mr-3 ${
-                selectedFilter === filter.key
-                  ? 'bg-teal-100 border border-teal-300'
-                  : 'bg-gray-100'
-              }`}
-              onPress={() => {
-                setSelectedFilter(filter.key);
-                setCurrentPage(1);
-              }}
-            >
-              <Icon
-                name={filter.icon}
-                size={16}
-                color={selectedFilter === filter.key ? '#0D9488' : '#666'}
-              />
-              <Text
-                className={`ml-2 text-sm font-medium ${
-                  selectedFilter === filter.key ? 'text-teal-700' : 'text-gray-600'
-                }`}
-              >
-                {filter.label}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </ScrollView>
-
-      {/* History List */}
-      <ScrollView
-        className="flex-1 p-4"
+        className="flex-4 p-4"
         onScroll={({ nativeEvent }) => {
           const { layoutMeasurement, contentOffset, contentSize } = nativeEvent;
           const paddingToBottom = 20;
@@ -297,35 +240,6 @@ const JLPTHistory = ({ navigation }) => {
           </View>
         )}
       </ScrollView>
-
-      {/* Action Buttons */}
-      <View className="bg-white border-t border-gray-200 p-4">
-        <View className="flex-row space-x-3">
-          <TouchableOpacity
-            onPress={() => navigation.navigate('JLPTDashboard')}
-            className="flex-1 bg-teal-500 py-3 rounded-xl"
-          >
-            <View className="flex-row items-center justify-center">
-              <Icon name="play-outline" size={20} color="white" className="mr-2" />
-              <Text className="text-white font-semibold">
-                Làm bài thi mới
-              </Text>
-            </View>
-          </TouchableOpacity>
-          
-          <TouchableOpacity
-            onPress={() => navigation.navigate('JLPTStats')}
-            className="flex-1 bg-gray-500 py-3 rounded-xl"
-          >
-            <View className="flex-row items-center justify-center">
-              <Icon name="analytics-outline" size={20} color="white" className="mr-2" />
-              <Text className="text-white font-semibold">
-                Thống kê
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
     </View>
   );
 };

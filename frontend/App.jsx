@@ -5,6 +5,8 @@ import { AuthProvider } from "./src/context/AuthContext";
 import MainStack from "./src/navigations/MainStack";
 import { LoadingProvider } from "./src/context/LoadingContext";
 import { ModalProvider } from "./src/context/ModalContext";
+import { AIExplanationProvider } from "./src/context/AIExplanationContext";
+import { AIExplanationModal } from "./src/components/Modal/AIExplanationModal";
 import notificationService from './src/services/NotificationService';
 
 export default function App() {
@@ -23,15 +25,18 @@ export default function App() {
   }, []);
 
   return (
-    <NavigationContainer>
-      <LoadingProvider>
-        <ModalProvider>
-          <AuthProvider>
-            <MainStack />
-          </AuthProvider>
-        </ModalProvider>
-      </LoadingProvider>
-    </NavigationContainer>
+    <LoadingProvider>
+      <ModalProvider>
+        <AIExplanationProvider>
+          <NavigationContainer>
+            <AuthProvider>
+              <MainStack />
+            </AuthProvider>
+          </NavigationContainer>
+          <AIExplanationModal />
+        </AIExplanationProvider>
+      </ModalProvider>
+    </LoadingProvider>
   );
 }
 

@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/AuthContext';
 import userService from '../../api/userService';
 import vocabularyService from '../../api/vocabularyService';
 import grammarService from '../../api/grammarService';
+import { useAIExplanation } from '../../context/AIExplanationContext';
 
 export const SellingCourse = ({ item, addToCart }) => {
     return (
@@ -64,6 +65,7 @@ export const CourseInfo = ({ item }) => {
 export const VocabularyCard = memo(({ item }) => {
     const [isSaved, setIsSaved] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const { showExplanation } = useAIExplanation();
 
     useEffect(() => {
         const checkSavedStatus = async () => {
@@ -108,6 +110,11 @@ export const VocabularyCard = memo(({ item }) => {
         });
     };
 
+    const handleAIExplanation = () => {
+        console.log('🎯 VocabularyCard - AI button clicked:', { item, type: 'vocabulary' });
+        showExplanation(item, 'vocabulary');
+    };
+
     if (!item) {
         return null;
     }
@@ -117,12 +124,19 @@ export const VocabularyCard = memo(({ item }) => {
             <View className="flex-row justify-between items-center border-gray-300 pb-2">
                 <Text className="text-2xl font-semibold text-blue-700">{`${item.kanji ? item.kanji : item.word}`}</Text>
 
-                <View className="flex-col gap-10 items-center absolute right-0 top-0">
+                <View className="flex-col gap-2 items-center absolute right-0 top-0">
                     <TouchableOpacity 
                         onPress={() => speak(item.word)}
                         className="p-2"
                     >
                         <Icon name="volume-medium-outline" size={28} color="#FF4081" />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity 
+                        onPress={handleAIExplanation}
+                        className="p-2 bg-blue-50 rounded-full"
+                    >
+                        <Icon name="sparkles" size={24} color="#3B82F6" />
                     </TouchableOpacity>
 
                     <TouchableOpacity 
@@ -171,6 +185,7 @@ export const VocabularyCard = memo(({ item }) => {
 export const GrammarCard = memo(({ item }) => {
     const [isSaved, setIsSaved] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const { showExplanation } = useAIExplanation();
 
     useEffect(() => {
         const checkSavedStatus = async () => {
@@ -205,25 +220,42 @@ export const GrammarCard = memo(({ item }) => {
         }
     };
 
+    const handleAIExplanation = () => {
+        console.log('🎯 GrammarCard - AI button clicked:', { item, type: 'grammar' });
+        showExplanation(item, 'grammar');
+    };
+
     return (
         <View className="bg-white p-5 rounded-lg shadow-lg mb-6 border-l-4 border-pink-500 relative">
-            <View className='flex-row'>
-                <Text className="text-xl font-semibold text-blue-700 mb-2">{item.rule}</Text>
-                <TouchableOpacity 
-                    onPress={handleSave}
-                    disabled={isLoading}
-                    className='absolute right-0 top-2 p-2'
-                >
-                    {isLoading ? (
-                        <ActivityIndicator size="small" color="#FF4081" />
-                    ) : (
-                        <Icon
-                            name={isSaved ? "heart" : "heart-outline"}
-                            size={24}
-                            color="#FF4081"
-                        />
-                    )}
-                </TouchableOpacity>
+            <View className='flex-row justify-between items-start'>
+                <View className="flex-1">
+                    <Text className="text-xl font-semibold text-blue-700 mb-2">{item.rule}</Text>
+                </View>
+                
+                <View className="flex-row gap-2 ml-4">
+                    <TouchableOpacity 
+                        onPress={handleAIExplanation}
+                        className="p-2 bg-blue-50 rounded-full"
+                    >
+                        <Icon name="sparkles" size={20} color="#3B82F6" />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity 
+                        onPress={handleSave}
+                        disabled={isLoading}
+                        className="p-2"
+                    >
+                        {isLoading ? (
+                            <ActivityIndicator size="small" color="#FF4081" />
+                        ) : (
+                            <Icon
+                                name={isSaved ? "heart" : "heart-outline"}
+                                size={20}
+                                color="#FF4081"
+                            />
+                        )}
+                    </TouchableOpacity>
+                </View>
             </View>
 
             <Text className="text-base font-medium text-gray-600 mb-4">{item.meaning}</Text>

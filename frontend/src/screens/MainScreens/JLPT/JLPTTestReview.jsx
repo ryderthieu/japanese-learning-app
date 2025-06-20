@@ -12,6 +12,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import testService from '../../../api/testService';
 import userService from '../../../api/userService';
+import { useAIExplanation } from '../../../context/AIExplanationContext';
 
 const JLPTTestReview = ({ navigation, route }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -20,6 +21,8 @@ const JLPTTestReview = ({ navigation, route }) => {
   const [answers, setAnswers] = useState([]);
   const [userTestResult, setUserTestResult] = useState(null);
   const { testId, test, questions: passedQuestions, answers: passedAnswers, result } = route.params || {};
+  
+  const { showExplanation } = useAIExplanation();
 
   useEffect(() => {    
     console.log('JLPTTestReview mounted with params:', route.params);
@@ -198,6 +201,21 @@ const JLPTTestReview = ({ navigation, route }) => {
 
   const handleQuestionNavigation = (index) => {
     setCurrentQuestionIndex(index);
+  };
+
+  const handleAIExplanation = (question, questionNumber) => {
+    const correctAnswerIndex = question.options?.findIndex(opt => opt.isCorrect);
+    
+    const questionData = {
+      questionText: question.questionText,
+      options: question.options,
+      correctAnswer: correctAnswerIndex,
+      section: question.type || question.section,
+      level: 'N5', // Có thể lấy từ test data
+      questionNumber: questionNumber
+    };
+    
+    showExplanation(questionData, 'question');
   };
 
   const renderQuestion = () => {
@@ -382,11 +400,55 @@ const JLPTTestReview = ({ navigation, route }) => {
         {/* Explanation */}
         {question.explanation && (
           <View className="bg-blue-50 rounded-xl p-5 mb-6 border border-blue-200">
-            <View className="flex-row items-center mb-3">
-              <Icon name="information-circle" size={22} color="#2196F3" />
-              <Text className="text-blue-700 font-semibold ml-2 text-base">Giải thích</Text>
+            <View className="flex-row items-center justify-between mb-3">
+              <View className="flex-row items-center">
+                <Icon name="information-circle" size={22} color="#2196F3" />
+                <Text className="text-blue-700 font-semibold ml-2 text-base">Giải thích</Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => handleAIExplanation(question, currentQuestionIndex + 1)}
+                className="bg-gradient-to-r from-pink-500 to-purple-500 px-4 py-2 rounded-lg flex-row items-center"
+                style={{
+                  backgroundColor: '#FF4081',
+                  shadowColor: '#FF4081',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.3,
+                  shadowRadius: 4,
+                  elevation: 3
+                }}
+              >
+                <Icon name="chatbubble-ellipses" size={16} color="white" />
+                <Text className="text-white font-semibold ml-2 text-sm">Hỏi AI</Text>
+              </TouchableOpacity>
             </View>
             <Text className="text-blue-800 leading-6">{question.explanation}</Text>
+          </View>
+        )}
+
+        {/* Nếu không có explanation sẵn, hiển thị nút hỏi AI */}
+        {!question.explanation && (
+          <View className="bg-gray-50 rounded-xl p-5 mb-6 border border-gray-200">
+            <View className="flex-row items-center justify-between">
+              <View className="flex-1">
+                <Text className="text-gray-600 font-medium mb-2">Cần giải thích chi tiết?</Text>
+                <Text className="text-gray-500 text-sm">AI sẽ phân tích câu hỏi và giải thích tại sao đáp án này đúng</Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => handleAIExplanation(question, currentQuestionIndex + 1)}
+                className="bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 rounded-lg flex-row items-center ml-4"
+                style={{
+                  backgroundColor: '#FF4081',
+                  shadowColor: '#FF4081',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.3,
+                  shadowRadius: 4,
+                  elevation: 3
+                }}
+              >
+                <Icon name="chatbubble-ellipses" size={18} color="white" />
+                <Text className="text-white font-semibold ml-2">Hỏi AI giải thích</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         )}
 

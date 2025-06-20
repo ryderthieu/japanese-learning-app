@@ -16,18 +16,59 @@ const explainVocabulary = async (req, res) => {
             });
         }
 
-        const prompt = `Bạn là một giáo viên tiếng Nhật chuyên nghiệp. Hãy giải thích từ vựng tiếng Nhật "${word}" một cách chi tiết và dễ hiểu bằng tiếng Việt. Bao gồm:
+        const prompt = `Bạn là một giáo viên tiếng Nhật chuyên nghiệp. Hãy giải thích từ vựng "${word}" bằng tiếng Việt theo ĐÚNG CHÍNH XÁC format sau:
 
-1. Nghĩa của từ
-2. Cách đọc (hiragana/katakana)
-3. Kanji (nếu có)
-4. Ví dụ câu sử dụng từ này (ít nhất 2 câu với bản dịch tiếng Việt)
-5. Từ đồng nghĩa hoặc từ liên quan (nếu có)
-6. Lưu ý về cách sử dụng (formal/informal, tình huống sử dụng)
+1. [Từ kanji (PHIÊN ÂM HÁN VIỆT)] nghĩa là [nghĩa tiếng Việt]
+
+2. [hiragana/katakana] ([romaji])
+
+3. Ví dụ câu sử dụng:
+   - [Câu tiếng Nhật thuần túy KHÔNG có phiên âm Hán Việt]
+   - [Romaji đầy đủ]
+   - [Bản dịch tiếng Việt]
+   
+   - [Câu thứ 2 tiếng Nhật thuần túy KHÔNG có phiên âm Hán Việt]
+   - [Romaji đầy đủ]  
+   - [Bản dịch tiếng Việt]
+
+4. Từ đồng nghĩa / liên quan:
+   - [từ 1 (PHIÊN ÂM HÁN VIỆT)] nghĩa là [nghĩa]
+   - [từ 2 (PHIÊN ÂM HÁN VIỆT)] nghĩa là [nghĩa]
+
+5. Lưu ý khi sử dụng: [Tính trang trọng, tình huống sử dụng]
+
+**VÍ DỤ CHUẨN BẮT BUỘC TUÂN THEO:**
+
+1. 川 (XUYÊN) nghĩa là sông
+
+2. かわ (kawa)
+
+3. Ví dụ câu sử dụng:
+   - 川を渡って、学校に行きます
+   - Kawa o watatte, gakkou ni ikimasu
+   - Tôi sẽ qua sông để đến trường
+   
+   - 川岸でピクニックを楽しんだ
+   - Kawagishi de pikunikku o tanoshinda
+   - Chúng tôi đã thưởng thức picnic ở bờ sông
+
+4. Từ đồng nghĩa / liên quan:
+   - 河 (HÀ) nghĩa là sông
+   - 川岸 (XUYÊN NGẠN) nghĩa là bờ sông
+
+5. Lưu ý khi sử dụng: Từ thông dụng trong cả văn viết và hội thoại hàng ngày
+
+**CỰC KỲ QUAN TRỌNG:**
+- BẮT BUỘC có số thứ tự 1. 2. 3. 4. 5.
+- BẮT BUỘC viết "nghĩa là" sau mỗi từ có kanji (trừ trong ví dụ câu mục 3)
+- BẮT BUỘC có phiên âm Hán Việt VIẾT HOA trong () cho kanji (CHỈ ở mục 1 và 4, KHÔNG ở mục 3)
+- BẮT BUỘC theo ĐÚNG CHÍNH XÁC format trên
+- KHÔNG được thay đổi cấu trúc dù là từ nào
+- MỤC 3 (ví dụ câu): CHỈ viết câu tiếng Nhật thuần túy, KHÔNG thêm phiên âm Hán Việt
 
 ${context ? `Ngữ cảnh: ${context}` : ''}
 
-Hãy trả lời một cách ngắn gọn nhưng đầy đủ thông tin.`;
+Hãy trả lời theo ĐÚNG CHÍNH XÁC format trên, KHÔNG được sai lệch!`;
 
         const completion = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
@@ -276,34 +317,67 @@ const explainAnswer = async (req, res) => {
 
         const questionTypeDesc = getQuestionTypeDescription(questionType, section);
 
-        const prompt = `Bạn là một giáo viên tiếng Nhật chuyên nghiệp. Hãy giải thích đáp án của câu hỏi ${questionTypeDesc} cấp độ ${level || 'JLPT'} sau đây bằng tiếng Việt một cách chi tiết và dễ hiểu:
+        // Thêm function getSectionName trước khi sử dụng
+        const getSectionName = (section) => {
+            const sectionNames = {
+                'moji_goi': '文字・語彙 (Từ vựng)',
+                'bunpou': '文法 (Ngữ pháp)', 
+                'dokkai': '読解 (Đọc hiểu)',
+                'choukai': '聴解 (Nghe hiểu)',
+                'context-grammar': '文法 (Ngữ pháp)',
+                'vocabulary': '語彙 (Từ vựng)',
+                'grammar': '文法 (Ngữ pháp)',
+                'reading': '読解 (Đọc hiểu)',
+                'listening': '聴解 (Nghe hiểu)'
+            };
+            return sectionNames[section] || 'JLPT';
+        };
 
-**Câu hỏi:** ${questionText}
+        const prompt = `Bạn là một giáo viên tiếng Nhật chuyên nghiệp với nhiều năm kinh nghiệm luyện thi JLPT. Hãy giải thích câu hỏi ${questionTypeDesc} cấp độ ${level || 'JLPT'} sau đây bằng tiếng Việt theo ĐÚNG CHÍNH XÁC format yêu cầu:
 
-**Các lựa chọn:**
+**CÂU HỎI JLPT ${level || 'N5'} - ${getSectionName(section)}:**
+${questionText}
+
+**CÁC LỰA CHỌN:**
 ${optionsText}
 
-**Đáp án đúng:** ${correctAnswer}
-${userAnswer && userAnswer !== correctAnswer ? `**Bạn đã chọn:** ${userAnswer} (Sai)` : ''}
+**ĐÁP ÁN ĐÚNG:** ${correctAnswer}
+${userAnswer && userAnswer !== correctAnswer ? `**BẠN ĐÃ CHỌN:** ${userAnswer} (Sai)` : ''}
 
-Hãy giải thích:
-1. **Tại sao đáp án "${correctAnswer}" là đúng?**
-   - Phân tích ý nghĩa/ngữ pháp/cách đọc
-   - Ngữ cảnh sử dụng phù hợp
+Hãy giải thích theo ĐÚNG CHÍNH XÁC format sau và KHÔNG ĐƯỢC thay đổi:
 
-2. **Tại sao các đáp án khác sai?**
-   - Chỉ ra lỗi cụ thể của từng lựa chọn sai
-   - Giải thích sự khác biệt
+1. Phân tích câu hỏi:
+[Phân tích câu hỏi và yêu cầu của đề bài - giải thích ngắn gọn câu hỏi đang hỏi gì]
 
-3. **Kiến thức bổ sung:**
-   - Ngữ pháp/từ vựng liên quan
-   - Ví dụ câu minh họa (nếu cần)
-   - Mẹo nhớ hoặc cách phân biệt
+2. Giải thích từng lựa chọn:
+[Giải thích từng đáp án A, B, C, D - tại sao đúng hay sai]
 
-4. **Lưu ý quan trọng:**
-   - Những điều cần chú ý khi gặp dạng câu hỏi tương tự
+3. Tại sao đáp án này đúng?:
+[Lý do cụ thể tại sao đáp án được chọn là chính xác nhất]
 
-Hãy trả lời một cách có cấu trúc, rõ ràng và dễ hiểu.`;
+4. Kiến thức cần nhớ:
+[Ngữ pháp, từ vựng, quy tắc quan trọng liên quan đến câu hỏi này]
+
+5. Mẹo làm bài:
+[Kỹ thuật và phương pháp để giải nhanh dạng câu hỏi tương tự]
+
+**YÊU CẦU CỰC KỲ QUAN TRỌNG:**
+- BẮT BUỘC bắt đầu bằng số thứ tự: 1. 2. 3. 4. 5.
+- KHÔNG sử dụng ** hay ### để đánh dấu tiêu đề
+- CHỈ sử dụng dấu hai chấm (:) sau tiêu đề
+- Giải thích bằng tiếng Việt dễ hiểu
+- Khi có Kanji, thêm phiên âm Hán Việt: 朝 (TRIÊU)
+- Mỗi section phải có nội dung cụ thể, không để trống
+
+**VÍ DỤ FORMAT CHUẨN:**
+1. Phân tích câu hỏi:
+Câu hỏi này yêu cầu...
+
+2. Giải thích từng lựa chọn:
+A. 食べます - đúng vì...
+B. 飲みます - sai vì...
+
+TUÂN THỦ ĐÚNG format trên, KHÔNG thay đổi!`;
 
         const completion = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",

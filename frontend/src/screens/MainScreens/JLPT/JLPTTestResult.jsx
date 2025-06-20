@@ -15,7 +15,6 @@ const JLPTTestResult = ({ navigation, route }) => {
   const [loading, setLoading] = useState(true);
   const [showReview, setShowReview] = useState(false);
   const { result: resultData, test, questions, answers, testId, timeSpent } = route.params || {};
-
   useEffect(() => {
     if (resultData) {
       console.log('Received result data:', resultData);
@@ -36,8 +35,8 @@ const JLPTTestResult = ({ navigation, route }) => {
       setLoading(true);
       // Nếu không có resultData, có thể fetch từ API dựa trên testId
       if (testId) {
-        // const response = await testService.getTestResult(testId);
-        // setResult(response);
+        const response = await testService.getTestResult(testId);
+        setResult(response);
       }
     } catch (error) {
       console.error('Lỗi khi lấy kết quả:', error);
@@ -134,45 +133,11 @@ const JLPTTestResult = ({ navigation, route }) => {
   }
 
   // Tính toán dữ liệu hiển thị
-  const scorePercentage = result.scorePercentage || Math.round((result.correctAnswers / result.totalQuestions) * 100);
-  const incorrectAnswers = result.totalQuestions - result.correctAnswers;
+  const scorePercentage = Math.round((result.score / result.maxScore) * 100);
   const isPassed = result.passed || false;
 
   return (
     <View className="flex-1 bg-gray-50">
-      {/* Header */}
-      <View className={`p-6 ${isPassed ? 'bg-gradient-to-b from-green-400 to-green-600' : 'bg-gradient-to-b from-red-400 to-red-600'}`}>
-        <View className="flex-row items-center justify-between mb-4">
-          <TouchableOpacity
-            onPress={() => navigation.navigate('JLPTDashboard')}
-            className="p-2"
-          >
-            <Icon name="home" size={24} color="white" />
-          </TouchableOpacity>
-          <Text className="text-2xl font-bold text-white">
-            Kết quả bài thi
-          </Text>
-          <TouchableOpacity
-            onPress={handleShareResult}
-            className="p-2"
-          >
-            <Icon name="share-outline" size={24} color="white" />
-          </TouchableOpacity>
-        </View>
-        
-        <Text className="text-white text-lg opacity-90 text-center">
-          {test?.title || 'Bài thi JLPT'}
-        </Text>
-        
-        {/* Status Badge */}
-        <View className="items-center mt-4">
-          <View className={`px-4 py-2 rounded-full ${isPassed ? 'bg-green-500' : 'bg-red-500'}`}>
-            <Text className="text-white font-bold">
-              {isPassed ? '🎉 ĐẠT' : '😔 KHÔNG ĐẠT'}
-            </Text>
-          </View>
-        </View>
-      </View>
 
       <ScrollView className="flex-1 p-4">
         {/* Overall Score */}
@@ -195,7 +160,7 @@ const JLPTTestResult = ({ navigation, route }) => {
                   backgroundColor: getScoreColor(result.score, result.maxScore)
                 }}
               >
-                <Text className="text-3xl font-bold text-white">
+                <Text className="text-3xl font-bold text-black">
                   {scorePercentage}%
                 </Text>
               </View>
@@ -210,33 +175,6 @@ const JLPTTestResult = ({ navigation, route }) => {
             >
               {getScoreMessage(isPassed, scorePercentage)}
             </Text>
-          </View>
-          
-          <View className="flex-row justify-around">
-            <View className="items-center">
-              <Text className="text-sm text-gray-500">Thời gian</Text>
-              <Text className="text-lg font-semibold text-gray-800">
-                {formatTime(result.timeSpent)}
-              </Text>
-            </View>
-            <View className="items-center">
-              <Text className="text-sm text-gray-500">Đúng</Text>
-              <Text className="text-lg font-semibold text-green-600">
-                {result.correctAnswers}
-              </Text>
-            </View>
-            <View className="items-center">
-              <Text className="text-sm text-gray-500">Sai</Text>
-              <Text className="text-lg font-semibold text-red-600">
-                {incorrectAnswers}
-              </Text>
-            </View>
-            <View className="items-center">
-              <Text className="text-sm text-gray-500">Tổng số</Text>
-              <Text className="text-lg font-semibold text-gray-800">
-                {result.totalQuestions}
-              </Text>
-            </View>
           </View>
         </View>
 
@@ -287,81 +225,35 @@ const JLPTTestResult = ({ navigation, route }) => {
         </View>
 
         {/* Action Buttons */}
-        <View className="mb-8">
+        <View className="mb-8 flex-row justify-between gap-4">
           {/* Primary Action - Review Test */}
           <TouchableOpacity
             onPress={handleReviewTest}
-            className="bg-blue-500 rounded-xl p-4 mb-3 shadow-lg"
+            className="bg-blue-500 rounded-xl p-4 mb-3 shadow-lg flex-1"
             style={{ elevation: 3 }}
           >
             <View className="flex-row items-center justify-center">
               <Icon name="eye-outline" size={24} color="white" />
-              <Text className="text-white font-bold text-lg ml-3">
-                Xem lại bài thi
+              <Text className="text-white font-bold text-base ml-3">
+                Xem lại
               </Text>
             </View>
           </TouchableOpacity>
           
           {/* Secondary Actions Grid */}
-          <View className="flex-row justify-between mb-3">
             <TouchableOpacity
               onPress={handleRetakeTest}
-              className="bg-pink-500 rounded-xl p-4 flex-1 mr-2 shadow-md"
+              className="bg-pink-500 rounded-xl p-4 mb-3 shadow-lg flex-1"
               style={{ elevation: 2 }}
             >
-              <View className="items-center">
-                <Icon name="refresh-outline" size={22} color="white" />
-                <Text className="text-white font-semibold text-sm mt-1 text-center">
+              <View className="items-center flex-row justify-center gap-2">
+                <Icon name="refresh-outline" size={24} color="white" />
+                <Text className="text-white font-semibold text-base mt-1 text-center">
                   Làm lại
                 </Text>
               </View>
             </TouchableOpacity>
             
-            <TouchableOpacity
-              onPress={() => navigation.navigate('JLPTHistory')}
-              className="bg-orange-500 rounded-xl p-4 flex-1 ml-2 shadow-md"
-              style={{ elevation: 2 }}
-            >
-              <View className="items-center">
-                <Icon name="time-outline" size={22} color="white" />
-                <Text className="text-white font-semibold text-sm mt-1 text-center">
-                  Lịch sử
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          
-          {/* Navigation Actions */}
-          <View className="flex-row justify-between">
-            <TouchableOpacity
-              onPress={() => navigation.navigate('JLPTTestList', { 
-                level: test?.level, 
-                type: test?.category 
-              })}
-              className="bg-green-500 rounded-xl p-4 flex-1 mr-2 shadow-md"
-              style={{ elevation: 2 }}
-            >
-              <View className="items-center">
-                <Icon name="list-outline" size={22} color="white" />
-                <Text className="text-white font-semibold text-sm mt-1 text-center">
-                  Đề khác
-                </Text>
-              </View>
-            </TouchableOpacity>
-            
-            <TouchableOpacity
-              onPress={() => navigation.navigate('JLPTDashboard')}
-              className="bg-gray-500 rounded-xl p-4 flex-1 ml-2 shadow-md"
-              style={{ elevation: 2 }}
-            >
-              <View className="items-center">
-                <Icon name="home-outline" size={22} color="white" />
-                <Text className="text-white font-semibold text-sm mt-1 text-center">
-                  Trang chủ
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
         </View>
       </ScrollView>
     </View>
