@@ -138,6 +138,27 @@ const userService = {
   getSectionStats: async () => {
     const response = await apiClient.get('/user/jlpt/section-stats');
     return response.data;
+  },
+
+  // Study Progress APIs
+  getDetailedStudyProgress: async () => {
+    const response = await apiClient.get('/user/jlpt/detailed-progress');
+    return response.data;
+  },
+
+  updateStudyProgress: async (additionalMinutes) => {
+    const response = await apiClient.put('/user/jlpt/update-progress', { 
+      additionalMinutes 
+    });
+    return response.data;
+  },
+
+  syncStudyProgress: async (todayStudyTime, studyDate = null) => {
+    const response = await apiClient.post('/user/jlpt/sync-progress', {
+      todayStudyTime,
+      studyDate
+    });
+    return response.data;
   }
 };
 

@@ -136,7 +136,7 @@ const Home = ({ navigation }) => {
     }
   };
 
-  // Hàm lưu thời gian học vào storage
+  // Hàm lưu thời gian học vào storage và đồng bộ với database
   const saveTodayStudyTime = async (minutes) => {
     try {
       const today = getCurrentDateString();
@@ -144,6 +144,15 @@ const Home = ({ navigation }) => {
         date: today,
         minutes: minutes
       }));
+      
+      // Đồng bộ với database
+      try {
+        await userService.syncStudyProgress(minutes, today);
+        console.log('✅ Đồng bộ tiến độ với database thành công');
+      } catch (syncError) {
+        console.error('❌ Lỗi đồng bộ với database:', syncError);
+        // Vẫn tiếp tục cập nhật local streak
+      }
       
       // Kiểm tra và cập nhật streak khi đạt mục tiêu
       await updateStudyStreak(minutes, dailyGoal);
@@ -170,6 +179,14 @@ const Home = ({ navigation }) => {
             setTodayStudyTime(prev => {
               const newTime = prev + minutesPassed;
               saveTodayStudyTime(newTime);
+              
+              // Đồng bộ với database mỗi 5 phút để tránh spam API
+              if (newTime % 5 === 0) {
+                userService.syncStudyProgress(newTime)
+                  .then(() => console.log('✅ Auto-sync với database thành công'))
+                  .catch(err => console.error('❌ Auto-sync thất bại:', err));
+              }
+              
               return newTime;
             });
             return currentTime; // Reset thời điểm reference
@@ -320,9 +337,43 @@ const Home = ({ navigation }) => {
     }
   };
 
+  // Hàm đồng bộ tiến độ từ database
+  const syncProgressFromDatabase = async () => {
+    try {
+      const progressData = await userService.getDetailedStudyProgress();
+      
+      // Cập nhật state từ database
+      setTodayStudyTime(progressData.todayStudyTime || 0);
+      setStudyStreak(progressData.currentStreak || 0);
+      
+      // Cập nhật AsyncStorage để đồng bộ với local
+      const today = getCurrentDateString();
+      await AsyncStorage.setItem('dailyStudyTime', JSON.stringify({
+        date: today,
+        minutes: progressData.todayStudyTime || 0
+      }));
+      
+      await AsyncStorage.setItem('studyStreak', JSON.stringify({
+        lastStudyDate: progressData.goalAchievedToday ? today : null,
+        streak: progressData.currentStreak || 0
+      }));
+      
+      console.log('✅ Đồng bộ tiến độ từ database thành công:', {
+        todayStudyTime: progressData.todayStudyTime,
+        currentStreak: progressData.currentStreak,
+        goalAchieved: progressData.goalAchievedToday
+      });
+      
+    } catch (error) {
+      console.error('❌ Lỗi khi đồng bộ từ database:', error);
+      // Fallback: load từ local storage
+      await loadTodayStudyTime();
+      await loadStudyStreak();
+    }
+  };
+
   useEffect(() => {
-    loadTodayStudyTime();
-    loadStudyStreak(); // Load chuỗi ngày học
+    syncProgressFromDatabase(); // Thay vì load từ local
     fetchSavedData();
     fetchJLPTStats();
   }, [isFocus]);
@@ -360,12 +411,20 @@ const Home = ({ navigation }) => {
                   Hôm nay • {new Date().toLocaleDateString('vi-VN')}
                 </Text>
               </View>
-              <View className="items-center">
-                <View className="flex-row items-center bg-orange-100 px-2 py-1 rounded-full">
-                  <MaterialIcons name="local-fire-department" size={16} color="#F97316" />
-                  <Text className="text-orange-600 font-bold text-sm ml-1">{studyStreak}</Text>
+              <View className="flex-row items-center space-x-3">
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('StudyStatistics')}
+                  className="bg-white px-3 py-1 rounded-full shadow-sm"
+                >
+                  <Text className="text-[#F472B6] text-xs font-medium">Chi tiết</Text>
+                </TouchableOpacity>
+                <View className="items-center">
+                  <View className="flex-row items-center bg-orange-100 px-2 py-1 rounded-full">
+                    <MaterialIcons name="local-fire-department" size={16} color="#F97316" />
+                    <Text className="text-orange-600 font-bold text-sm ml-1">{studyStreak}</Text>
+                  </View>
+                  <Text className="text-xs text-gray-500 mt-1">ngày liên tiếp</Text>
                 </View>
-                <Text className="text-xs text-gray-500 mt-1">ngày liên tiếp</Text>
               </View>
             </View>
           </View>

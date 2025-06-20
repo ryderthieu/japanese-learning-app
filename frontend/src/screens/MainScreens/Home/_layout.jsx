@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { useEffect } from 'react'
 import SavedVocabulary from './SavedVocabulary'
 import SavedGrammar from './SavedGrammar'
+import StudyStatistics from './StudyStatistics'
 
 const HomeNavigation = ({ navigation, route }) => {
     const Stack = createNativeStackNavigator()
@@ -30,6 +31,9 @@ const HomeNavigation = ({ navigation, route }) => {
         }}>
             <Stack.Screen name='Home' component={Home} options={{
               title: 'Trang chủ',
+            }} />
+            <Stack.Screen name='StudyStatistics' component={StudyStatistics} options={{
+              title: 'Thống kê học tập chi tiết',
             }} />
             <Stack.Screen name='FreeDocumentNavigation' component={FreeDocumentNavigation} options={{ headerShown: false }} />
             <Stack.Screen name='SurveyNavigation' component={SurveyNavigation} options={{ headerShown: false }} />

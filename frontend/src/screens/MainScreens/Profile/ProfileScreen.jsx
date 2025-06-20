@@ -10,13 +10,22 @@ const ProfileScreen = () => {
   const navigation = useNavigation();
   const { userInfo, logout } = useAuth();
   const [stats, setStats] = useState(null);
+  const [studyStats, setStudyStats] = useState(null);
   const { openModal } = useContext(ModalContext);
 
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await userService.getJLPTStats();
-        setStats(response);
+        // Lấy thống kê JLPT và thống kê học tập
+        const [jlptResponse, studyResponse] = await Promise.all([
+          userService.getJLPTStats(),
+          userService.getDetailedStudyProgress()
+        ]);
+        
+        setStats(jlptResponse);
+        setStudyStats(studyResponse.data || studyResponse);
+        console.log('JLPT Stats:', jlptResponse);
+        console.log('Study Stats:', studyResponse.data || studyResponse);
       } catch (error) {
         console.error('Lỗi khi lấy thống kê:', error);
       }
@@ -115,7 +124,7 @@ const ProfileScreen = () => {
           <View className="items-center bg-pink-50 rounded-xl p-3 flex-1 ml-2">
             <Icon name="time" size={24} color="#F490AF" />
             <Text className="text-lg font-bold text-pink-500 mt-1">
-              {stats?.studyDays || '0'}
+              {studyStats?.monthlyStats?.daysStudied || '0'}
             </Text>
             <Text className="text-sm text-gray-600">Ngày học</Text>
           </View>

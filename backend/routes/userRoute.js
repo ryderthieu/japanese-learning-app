@@ -25,7 +25,10 @@ const {
   saveQuestionNew,
   unsaveQuestion,
   getTestHistory,
-  getSectionStats
+  getSectionStats,
+  getDetailedStudyProgress,
+  updateStudyProgress,
+  syncStudyProgress
 } = require("../controllers/userController");
 const { authenticateJWT } = require("../middleware/authMiddleware");
 
@@ -60,6 +63,9 @@ router.post("/add-completed-lesson/:lessonId", addCompletedLesson);
 router.get("/jlpt/stats", getJLPTStats);
 router.put("/jlpt/info", updateJLPTInfo);
 router.get("/jlpt/progress", getStudyProgress);
+router.get("/jlpt/detailed-progress", getDetailedStudyProgress);
+router.put("/jlpt/update-progress", updateStudyProgress);
+router.post("/jlpt/sync-progress", syncStudyProgress);
 router.get("/jlpt/settings", getStudySettings);
 router.put("/jlpt/settings", updateStudySettings);
 router.get("/jlpt/history", getTestHistory);

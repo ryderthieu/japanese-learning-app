@@ -112,6 +112,38 @@ const userSchema = new Schema({
                 }
             }
         }
+    },
+    
+    // Tiến độ học tập hàng ngày
+    studyProgress: {
+        // Tổng thời gian học (phút)
+        totalStudyTime: { type: Number, default: 0 },
+        // Chuỗi ngày học liên tiếp hiện tại
+        currentStreak: { type: Number, default: 0 },
+        // Chuỗi ngày học dài nhất
+        longestStreak: { type: Number, default: 0 },
+        // Ngày học cuối cùng
+        lastStudyDate: { type: Date },
+        // Thời gian học hôm nay (phút)
+        todayStudyTime: { type: Number, default: 0 },
+        // Ngày cập nhật thời gian học cuối
+        lastUpdateDate: { type: Date },
+        // Thống kê tuần này
+        weeklyStats: {
+            totalTime: { type: Number, default: 0 },
+            daysStudied: { type: Number, default: 0 },
+            goalsAchieved: { type: Number, default: 0 },
+            weekStartDate: { type: Date }
+        },
+        // Thống kê tháng này
+        monthlyStats: {
+            totalTime: { type: Number, default: 0 },
+            daysStudied: { type: Number, default: 0 },
+            goalsAchieved: { type: Number, default: 0 },
+            monthStartDate: { type: Date }
+        },
+        // Lịch sử 30 ngày gần nhất (array boolean - true nếu đạt mục tiêu)
+        last30Days: { type: [Boolean], default: [] }
     }
 }, {
     timestamps: true
@@ -329,6 +361,188 @@ userSchema.methods.saveQuestion = async function(questionId) {
 userSchema.methods.unsaveQuestion = async function(questionId) {
     this.savedQuestions = this.savedQuestions.filter(id => id.toString() !== questionId.toString());
     return this.save();
+};
+
+// Method để cập nhật tiến độ học tập hàng ngày
+userSchema.methods.updateDailyStudyProgress = async function(additionalMinutes) {
+    const today = new Date();
+    const todayString = today.toDateString();
+    
+    // Khởi tạo studyProgress nếu chưa có
+    if (!this.studyProgress) {
+        this.studyProgress = {
+            totalStudyTime: 0,
+            currentStreak: 0,
+            longestStreak: 0,
+            todayStudyTime: 0,
+            weeklyStats: { totalTime: 0, daysStudied: 0, goalsAchieved: 0 },
+            monthlyStats: { totalTime: 0, daysStudied: 0, goalsAchieved: 0 },
+            last30Days: []
+        };
+    }
+    
+    // Kiểm tra nếu là ngày mới
+    const lastUpdateString = this.studyProgress.lastUpdateDate ? 
+        this.studyProgress.lastUpdateDate.toDateString() : null;
+    
+    if (lastUpdateString !== todayString) {
+        // Lưu lại trạng thái ngày hôm qua vào lịch sử
+        const yesterday = new Date(today);
+        yesterday.setDate(yesterday.getDate() - 1);
+        const yesterdayString = yesterday.toDateString();
+        
+        // Cập nhật lịch sử 30 ngày
+        if (lastUpdateString === yesterdayString) {
+            // Hôm qua có học, kiểm tra đạt mục tiêu không
+            const goalAchieved = this.studyProgress.todayStudyTime >= this.studySettings.studyDuration;
+            this.studyProgress.last30Days.push(goalAchieved);
+            
+            // Cập nhật streak
+            if (goalAchieved) {
+                this.studyProgress.currentStreak += 1;
+                this.studyProgress.longestStreak = Math.max(
+                    this.studyProgress.longestStreak, 
+                    this.studyProgress.currentStreak
+                );
+            } else {
+                this.studyProgress.currentStreak = 0;
+            }
+        } else {
+            // Có ngày bỏ trống, reset streak
+            this.studyProgress.currentStreak = 0;
+            // Thêm false cho các ngày bỏ trống
+            this.studyProgress.last30Days.push(false);
+        }
+        
+        // Giữ chỉ 30 ngày gần nhất
+        if (this.studyProgress.last30Days.length > 30) {
+            this.studyProgress.last30Days = this.studyProgress.last30Days.slice(-30);
+        }
+        
+        // Reset thời gian học hôm nay
+        this.studyProgress.todayStudyTime = 0;
+        this.studyProgress.lastUpdateDate = today;
+    }
+    
+    // Cập nhật thời gian học hôm nay
+    this.studyProgress.todayStudyTime += additionalMinutes;
+    this.studyProgress.totalStudyTime += additionalMinutes;
+    
+    // Cập nhật thống kê tuần
+    this._updateWeeklyStats(additionalMinutes);
+    
+    // Cập nhật thống kê tháng  
+    this._updateMonthlyStats(additionalMinutes);
+    
+    return this.save();
+};
+
+// Method helper để cập nhật thống kê tuần
+userSchema.methods._updateWeeklyStats = function(additionalMinutes) {
+    const today = new Date();
+    const startOfWeek = new Date(today);
+    startOfWeek.setDate(today.getDate() - today.getDay()); // Chủ nhật đầu tuần
+    startOfWeek.setHours(0, 0, 0, 0);
+    
+    // Nếu tuần mới, reset thống kê
+    if (!this.studyProgress.weeklyStats.weekStartDate || 
+        this.studyProgress.weeklyStats.weekStartDate < startOfWeek) {
+        this.studyProgress.weeklyStats = {
+            totalTime: 0,
+            daysStudied: 0,
+            goalsAchieved: 0,
+            weekStartDate: startOfWeek
+        };
+    }
+    
+    this.studyProgress.weeklyStats.totalTime += additionalMinutes;
+    
+    // Kiểm tra đạt mục tiêu hôm nay
+    if (this.studyProgress.todayStudyTime >= this.studySettings.studyDuration) {
+        const todayString = today.toDateString();
+        const lastStudyString = this.studyProgress.lastStudyDate ? 
+            this.studyProgress.lastStudyDate.toDateString() : null;
+        
+        // Chỉ tăng nếu chưa đếm ngày hôm nay
+        if (lastStudyString !== todayString) {
+            this.studyProgress.weeklyStats.daysStudied += 1;
+            this.studyProgress.weeklyStats.goalsAchieved += 1;
+            this.studyProgress.lastStudyDate = today;
+        }
+    }
+};
+
+// Method helper để cập nhật thống kê tháng
+userSchema.methods._updateMonthlyStats = function(additionalMinutes) {
+    const today = new Date();
+    const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    
+    // Nếu tháng mới, reset thống kê
+    if (!this.studyProgress.monthlyStats.monthStartDate || 
+        this.studyProgress.monthlyStats.monthStartDate < startOfMonth) {
+        this.studyProgress.monthlyStats = {
+            totalTime: 0,
+            daysStudied: 0,
+            goalsAchieved: 0,
+            monthStartDate: startOfMonth
+        };
+    }
+    
+    this.studyProgress.monthlyStats.totalTime += additionalMinutes;
+    
+    // Kiểm tra đạt mục tiêu hôm nay  
+    if (this.studyProgress.todayStudyTime >= this.studySettings.studyDuration) {
+        const todayString = today.toDateString();
+        const lastStudyString = this.studyProgress.lastStudyDate ? 
+            this.studyProgress.lastStudyDate.toDateString() : null;
+        
+        // Chỉ tăng nếu chưa đếm ngày hôm nay
+        if (lastStudyString !== todayString) {
+            this.studyProgress.monthlyStats.daysStudied += 1;
+            this.studyProgress.monthlyStats.goalsAchieved += 1;
+        }
+    }
+};
+
+// Method để lấy tiến độ học tập chi tiết
+userSchema.methods.getDetailedStudyProgress = function() {
+    // Khởi tạo nếu chưa có
+    if (!this.studyProgress) {
+        this.studyProgress = {
+            totalStudyTime: 0,
+            currentStreak: 0,
+            longestStreak: 0,
+            todayStudyTime: 0,
+            weeklyStats: { totalTime: 0, daysStudied: 0, goalsAchieved: 0 },
+            monthlyStats: { totalTime: 0, daysStudied: 0, goalsAchieved: 0 },
+            last30Days: []
+        };
+    }
+    
+    // Khởi tạo studySettings nếu chưa có
+    if (!this.studySettings) {
+        this.studySettings = {
+            studyDuration: 30,
+            reminder: {
+                enabled: true,
+                time: '08:00'
+            }
+        };
+    }
+    
+    const dailyGoal = this.studySettings.studyDuration || 30;
+    
+    return {
+        totalStudyTime: this.studyProgress.totalStudyTime,
+        currentStreak: this.studyProgress.currentStreak,
+        longestStreak: this.studyProgress.longestStreak,
+        todayStudyTime: this.studyProgress.todayStudyTime,
+        dailyGoal: dailyGoal,
+        weeklyStats: this.studyProgress.weeklyStats,
+        monthlyStats: this.studyProgress.monthlyStats,
+        last30Days: this.studyProgress.last30Days,
+        goalAchievedToday: this.studyProgress.todayStudyTime >= dailyGoal
+    };
 };
 
 module.exports = mongoose.model('User', userSchema);

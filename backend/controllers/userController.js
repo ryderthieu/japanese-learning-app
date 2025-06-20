@@ -495,6 +495,110 @@ const getStudyProgress = async (req, res) => {
   }
 };
 
+// Lấy tiến độ học tập chi tiết
+const getDetailedStudyProgress = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const user = await User.findById(userId);
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User không tồn tại' });
+    }
+
+    const detailedProgress = user.getDetailedStudyProgress();
+    res.status(200).json(detailedProgress);
+  } catch (error) {
+    console.error('Error getting detailed study progress:', error);
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Cập nhật tiến độ học tập hàng ngày
+const updateStudyProgress = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { additionalMinutes } = req.body;
+    
+    if (!additionalMinutes || additionalMinutes <= 0) {
+      return res.status(400).json({ error: 'Thời gian học phải lớn hơn 0' });
+    }
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User không tồn tại' });
+    }
+
+    await user.updateDailyStudyProgress(additionalMinutes);
+    
+    // Trả về tiến độ cập nhật
+    const updatedProgress = user.getDetailedStudyProgress();
+    
+    res.status(200).json({
+      message: 'Cập nhật tiến độ thành công',
+      progress: updatedProgress
+    });
+  } catch (error) {
+    console.error('Error updating study progress:', error);
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Đồng bộ tiến độ từ frontend (cho trường hợp offline)
+const syncStudyProgress = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { todayStudyTime, studyDate } = req.body;
+    
+    if (!todayStudyTime || todayStudyTime < 0) {
+      return res.status(400).json({ error: 'Dữ liệu thời gian học không hợp lệ' });
+    }
+    
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User không tồn tại' });
+    }
+
+    // Kiểm tra ngày đồng bộ
+    const today = new Date().toDateString();
+    const syncDate = studyDate ? new Date(studyDate).toDateString() : today;
+    
+    if (syncDate !== today) {
+      return res.status(400).json({ error: 'Chỉ có thể đồng bộ dữ liệu hôm nay' });
+    }
+
+    // Khởi tạo studyProgress nếu chưa có
+    if (!user.studyProgress) {
+      user.studyProgress = {
+        totalStudyTime: 0,
+        currentStreak: 0,
+        longestStreak: 0,
+        todayStudyTime: 0,
+        weeklyStats: { totalTime: 0, daysStudied: 0, goalsAchieved: 0 },
+        monthlyStats: { totalTime: 0, daysStudied: 0, goalsAchieved: 0 },
+        last30Days: []
+      };
+    }
+
+    // Tính thời gian chênh lệch cần cập nhật
+    const currentStudyTime = user.studyProgress.todayStudyTime || 0;
+    const additionalTime = Math.max(0, todayStudyTime - currentStudyTime);
+    
+    if (additionalTime > 0) {
+      await user.updateDailyStudyProgress(additionalTime);
+    }
+    
+    const updatedProgress = user.getDetailedStudyProgress();
+    
+    res.status(200).json({
+      message: 'Đồng bộ tiến độ thành công',
+      progress: updatedProgress
+    });
+  } catch (error) {
+    console.error('Error syncing study progress:', error);
+    res.status(400).json({ error: error.message });
+  }
+};
+
 // Cập nhật cài đặt học tập
 const getStudySettings = async (req, res) => {
   try {
@@ -695,6 +799,9 @@ module.exports = {
   getJLPTStats,
   updateJLPTInfo,
   getStudyProgress,
+  getDetailedStudyProgress,
+  updateStudyProgress,
+  syncStudyProgress,
   getStudySettings,
   updateStudySettings,
   saveQuestionNew,
