@@ -8,7 +8,17 @@ import {
 } from "react-native";
 import LottieView from "lottie-react-native";
 
-const Overlay = ({ isVisible, onClose, type, message, title, onConfirm }) => {
+const Overlay = ({ 
+  isVisible, 
+  onClose, 
+  type, 
+  message, 
+  title, 
+  onConfirm, 
+  onCancel,
+  confirmText = "Xác nhận",
+  cancelText = "Hủy" 
+}) => {
   const modalStyles = {
     success: {
       title: 'Thành công',
@@ -39,6 +49,20 @@ const Overlay = ({ isVisible, onClose, type, message, title, onConfirm }) => {
 
   const currentStyle = modalStyles[type] || modalStyles.info;
 
+  const handleCancel = () => {
+    if (typeof onCancel === 'function') {
+      onCancel();
+    }
+    onClose();
+  };
+
+  const handleConfirm = () => {
+    if (typeof onConfirm === 'function') {
+      onConfirm();
+    }
+    onClose();
+  };
+
   return (
     <Modal
       animationType="fade"
@@ -64,37 +88,33 @@ const Overlay = ({ isVisible, onClose, type, message, title, onConfirm }) => {
 
               <Text className="text-center text-gray-700 mb-6">{message}</Text>
 
-              {type === "confirm" || type === "warning" ? (
+              {type === "confirm" || type === "warning" || type === "error" ? (
                 <View className="flex-row gap-5">
                   <TouchableOpacity
-                    className="bg-gray-200 w-[80px] h-[40px] items-center justify-center rounded-lg"
-                    onPress={onClose}
+                    className="bg-gray-200 flex-1 h-[40px] items-center justify-center rounded-lg mx-1"
+                    onPress={handleCancel}
                   >
-                    <Text className=" font-bold text-center">Hủy</Text>
+                    <Text className="font-bold text-center" numberOfLines={1}>
+                      {cancelText}
+                    </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    className="bg-primary w-[80px] h-[40px] items-center justify-center rounded-lg"
-                    onPress={() => {
-                      if (typeof onConfirm === 'function') {
-                        onConfirm();
-                      }
-                      onClose(); 
-                    }}
+                    className="bg-primary flex-1 h-[40px] items-center justify-center rounded-lg mx-1"
+                    onPress={handleConfirm}
                   >
-                    <Text className="text-white font-bold text-center">Xác nhận</Text>
+                    <Text className="text-white font-bold text-center" numberOfLines={1}>
+                      {confirmText}
+                    </Text>
                   </TouchableOpacity>
                 </View>
               ) : (
                 <TouchableOpacity
-                  className="bg-primary w-[80px] h-[40px] items-center justify-center rounded-lg"
-                  onPress={() => {
-                    if (typeof onConfirm === 'function') {
-                      onConfirm();
-                    }
-                    onClose();
-                  }}
+                  className="bg-primary w-[100px] h-[40px] items-center justify-center rounded-lg"
+                  onPress={handleConfirm}
                 >
-                  <Text className="text-white font-bold text-center">Xác nhận</Text>
+                  <Text className="text-white font-bold text-center">
+                    {confirmText}
+                  </Text>
                 </TouchableOpacity>
               )}
             </View>

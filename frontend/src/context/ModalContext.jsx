@@ -8,20 +8,35 @@ const ModalProvider = ({ children }) => {
     const [modalType, setModalType] = useState("success");
     const [modalMessage, setModalMessage] = useState("");
     const [modalTitle, setModalTitle] = useState("");
+    const [confirmText, setConfirmText] = useState("");
+    const [cancelText, setCancelText] = useState("");
     const modalOnConfirmRef = useRef(null);
+    const modalOnCancelRef = useRef(null);
 
-    const openModal = ({ title, type, message, onConfirm }) => {
+    const openModal = ({ 
+        title, 
+        type, 
+        message, 
+        onConfirm, 
+        onCancel,
+        confirmText = "Xác nhận",
+        cancelText = "Hủy"
+    }) => {
         setModalType(type);
         setModalMessage(message);
         setModalVisible(true);
         setModalTitle(title);
+        setConfirmText(confirmText);
+        setCancelText(cancelText);
         modalOnConfirmRef.current = onConfirm;
+        modalOnCancelRef.current = onCancel;
         console.log('Modal opened with onConfirm:', typeof onConfirm);
     };
     
     const closeModal = () => {
         setModalVisible(false);
         modalOnConfirmRef.current = null;
+        modalOnCancelRef.current = null;
     };
 
     return (
@@ -34,7 +49,10 @@ const ModalProvider = ({ children }) => {
                     type={modalType}
                     message={modalMessage}
                     title={modalTitle}
+                    confirmText={confirmText}
+                    cancelText={cancelText}
                     onConfirm={modalOnConfirmRef.current}
+                    onCancel={modalOnCancelRef.current}
                 />
             </View>
         </ModalContext.Provider>
