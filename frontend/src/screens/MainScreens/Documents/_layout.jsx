@@ -10,23 +10,25 @@ const DocumentStack = () => {
   const navigation = useNavigation()
   return (
     <Stack.Navigator screenOptions={{
-      headerStyle: { backgroundColor: '#F490AF' },
-      headerTitleStyle: { color: '#fff' },
-      headerTintColor: '#fff'
+      headerStyle: { 
+        backgroundColor: '#F472B6',
+        elevation: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+      },
+      headerTitleStyle: { 
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 20,
+      },
+      headerTintColor: '#fff',
+      headerTitleAlign: 'center',
+      headerBackTitleVisible: false,
     }}>
       <Stack.Screen name='MyCourse' component={LearningMaterials} options={{
         title: 'Khóa học của tôi',
-        headerLeft: () => (
-          <Icon
-            name="menu-outline"
-            size={24}
-            color="#fff"
-            onPress={() => navigation.openDrawer()}
-            style={{
-              marginRight: 20
-            }}
-          />
-        ),
       }} />
       <Stack.Screen name='Lessons' component={Lessons} options={({ route }) => ({
         title: route.params?.course.title || 'Danh sách bài học'

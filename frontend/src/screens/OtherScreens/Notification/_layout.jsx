@@ -10,20 +10,29 @@ const NotificationNavigation = () => {
     const Stack = createNativeStackNavigator()
     const navigation = useNavigation()
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{
+      headerStyle: {
+        backgroundColor: '#F472B6',
+        elevation: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+      },
+      headerTitleStyle: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 20,
+      },
+      headerTintColor: '#fff',
+      headerTitleAlign: 'center',
+      headerBackTitleVisible: false,
+    }}>
         <Stack.Screen name='Notification' component={Notification} options={{
-            headerLeft: () => (
-                <Icon name='menu' size = {24} color={'#fff'} className='mr-[20px]' onPress={() => navigation.openDrawer()}/>
-            ),
             title: 'Thông báo',
-            headerStyle: {backgroundColor: '#F490AF'},
-            headerTitleStyle: {color: '#fff'},
         }}/>
         <Stack.Screen name='NotificationDetails' component={NotificationDetails} options={({route}) => ({
-            headerTintColor: '#fff',
             title: route.params?.notification.title,
-            headerStyle: {backgroundColor: '#F490AF'},
-            headerTitleStyle: {color: '#fff'},
         })}/>
     </Stack.Navigator>
   )

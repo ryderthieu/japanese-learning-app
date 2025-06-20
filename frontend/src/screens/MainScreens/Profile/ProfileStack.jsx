@@ -12,10 +12,22 @@ const ProfileStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTitleStyle: {
-          color: '#EC4899',
+        headerStyle: {
+          backgroundColor: '#F472B6',
+          elevation: 4,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 3,
         },
-        headerTintColor: '#EC4899',
+        headerTitleStyle: {
+          color: '#fff',
+          fontWeight: 'bold',
+          fontSize: 20,
+        },
+        headerTintColor: '#fff',
+        headerTitleAlign: 'center',
+        headerBackTitleVisible: false,
       }}
     >
       <Stack.Screen 

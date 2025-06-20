@@ -35,13 +35,13 @@ const MainDrawer = () => {
                     backgroundColor: "#FFFFFF",
                     width: 300,
                 },
-                drawerActiveTintColor: "#F490AF",
+                drawerActiveTintColor: "#F472B6",
                 drawerInactiveTintColor: "#333333",
                 drawerLabelStyle: {
                     fontSize: 16,
                 },
                 headerStyle: {
-                    backgroundColor: "#F490AF",
+                    backgroundColor: "#F472B6",
                 },
                 headerTintColor: "#FFFFFF",
                 headerTitleStyle: {

@@ -15,27 +15,21 @@ const HomeNavigation = ({ navigation, route }) => {
     const Stack = createNativeStackNavigator()
     return (
         <Stack.Navigator screenOptions={{
-            headerStyle: { backgroundColor: '#F490AF' },
-            headerTitleStyle: { color: '#fff' },
-            headerTintColor: '#fff'
+            headerStyle: { 
+              backgroundColor: '#F472B6',
+              elevation: 0,
+              shadowOpacity: 0,
+            },
+            headerTitleStyle: { 
+              color: '#fff', 
+              fontWeight: 'bold',
+              fontSize: 20,
+            },
+            headerTintColor: '#fff',
+            headerTitleAlign: 'center',
         }}>
             <Stack.Screen name='Home' component={Home} options={{
-                headerLeft: () => (
-                    <Icon
-                        name='menu'
-                        size={24}
-                        onPress={() => navigation.openDrawer()}
-                        className='mr-[20px]'
-                        color='#fff'
-                    />
-                ),
-                headerRight: () => (
-                    <View className="flex flex-row gap-2 justify-center items-center">
-                        <Text className="text-xl font-semibold text-[#fff] ">こんにちは！</Text>
-                        <Image className="w-[40px] h-[40px] rounded-full" source={{ uri: 'https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/07/anh-nu-cute-55.jpg' }}></Image>
-                    </View>
-                ),
-                title: ''
+              title: 'Trang chủ',
             }} />
             <Stack.Screen name='FreeDocumentNavigation' component={FreeDocumentNavigation} options={{ headerShown: false }} />
             <Stack.Screen name='SurveyNavigation' component={SurveyNavigation} options={{ headerShown: false }} />

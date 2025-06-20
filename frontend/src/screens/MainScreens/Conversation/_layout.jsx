@@ -11,19 +11,27 @@ const ConversationNavigation = () => {
     <ConversationStack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#0D9488',
+          backgroundColor: '#F472B6',
+          elevation: 4,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 3,
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
+          fontSize: 20,
         },
+        headerTitleAlign: 'center',
+        headerBackTitleVisible: false,
       }}
     >
       <ConversationStack.Screen
         name="ConversationHome"
         component={ConversationHome}
         options={{
-          title: 'Luyện hội thoại',
+          title: 'Luyện hội thoại AI',
         }}
       />
       <ConversationStack.Screen

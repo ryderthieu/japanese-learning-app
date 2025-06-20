@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AuthStack from "./AuthStack";
-import MainDrawer from "./MainDrawer";
+import MainTab from "./MainTab";
 import InitialSurvey from "../screens/AuthScreens/InitialSurvey/InitialSurvey";
 import { useAuth } from '../context/AuthContext';
 
@@ -13,7 +13,7 @@ const MainStack = () => {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             {userToken ? (
                 userInfo?.hasCompletedInitialSurvey ? (
-                    <Stack.Screen name="MainDrawer" component={MainDrawer} />
+                    <Stack.Screen name="MainTab" component={MainTab} />
                 ) : (
                     <Stack.Screen name="InitialSurvey" component={InitialSurvey} />
                 )

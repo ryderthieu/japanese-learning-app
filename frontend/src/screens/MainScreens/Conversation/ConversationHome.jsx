@@ -162,7 +162,7 @@ const ConversationHome = ({ navigation }) => {
                   key={level.key}
                   className={`px-4 py-2 rounded-full border-2 ${
                     selectedLevel === level.key
-                      ? 'border-teal-500 bg-teal-50'
+                      ? 'border-pink-500 bg-pink-50'
                       : 'border-gray-200 bg-white'
                   }`}
                   onPress={() => setSelectedLevel(level.key)}
@@ -171,7 +171,7 @@ const ConversationHome = ({ navigation }) => {
                   <Text
                     className={`text-sm font-semibold ${
                       selectedLevel === level.key
-                        ? 'text-teal-700'
+                        ? 'text-pink-700'
                         : 'text-gray-600'
                     }`}
                   >
@@ -198,14 +198,14 @@ const ConversationHome = ({ navigation }) => {
         {scenarios.map(renderScenarioCard)}
 
         {/* Tips */}
-        <View className="bg-teal-50 border border-teal-200 rounded-xl p-4 mt-4">
+        <View className="bg-pink-50 border border-pink-200 rounded-xl p-4 mt-4">
           <View className="flex-row items-center mb-2">
-            <Icon name="bulb-outline" size={20} color="#0D9488" />
-            <Text className="text-base font-bold text-teal-800 ml-2">
+            <Icon name="bulb-outline" size={20} color="#F472B6" />
+            <Text className="text-base font-bold text-pink-800 ml-2">
               Mẹo luyện tập
             </Text>
           </View>
-          <Text className="text-sm text-teal-700 leading-5">
+          <Text className="text-sm text-pink-700 leading-5">
             • Đừng lo lắng về lỗi ngữ pháp, hãy tập trung vào giao tiếp{'\n'}
             • Sử dụng từ vựng đơn giản nếu chưa biết từ phức tạp{'\n'}
             • AI sẽ điều chỉnh độ khó phù hợp với cấp độ của bạn{'\n'}

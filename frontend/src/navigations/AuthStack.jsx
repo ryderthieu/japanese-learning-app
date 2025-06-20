@@ -12,9 +12,22 @@ const AuthStack = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        headerStyle: { backgroundColor: '#F490AF' },
-        headerTitleStyle: { color: '#fff' },
-        headerTintColor: '#fff'
+        headerStyle: { 
+          backgroundColor: '#F472B6',
+          elevation: 4,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 3,
+        },
+        headerTitleStyle: { 
+          color: '#fff',
+          fontWeight: 'bold',
+          fontSize: 20,
+        },
+        headerTintColor: '#fff',
+        headerTitleAlign: 'center',
+        headerBackTitleVisible: false,
       }}
     >
       <Stack.Screen name="Login" component={Login} />

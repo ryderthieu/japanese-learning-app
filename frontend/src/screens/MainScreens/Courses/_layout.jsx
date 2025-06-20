@@ -14,9 +14,22 @@ export default function CoursesNavigation() {
       <Stack.Navigator
         screenOptions={{
           headerShown: true,
-          headerStyle: {backgroundColor: '#F490AF'},
-          headerTitleStyle: {color: '#fff'},
-          headerTintColor: '#fff'
+          headerStyle: {
+            backgroundColor: '#F472B6',
+            elevation: 4,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 3,
+          },
+          headerTitleStyle: {
+            color: '#fff',
+            fontWeight: 'bold',
+            fontSize: 20,
+          },
+          headerTintColor: '#fff',
+          headerTitleAlign: 'center',
+          headerBackTitleVisible: false,
         }}
       >
         <Stack.Screen
@@ -24,17 +37,6 @@ export default function CoursesNavigation() {
           component={Courses}
           options={{
             title: "Khóa học",
-            headerLeft: () => (
-              <Icon
-                name="menu-outline"
-                size={24}
-                color="#fff"
-                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-                style={{
-                  marginRight: 20
-                }}
-              />
-            ),
           }}
         />
         <Stack.Screen name="Cart" component={Cart} options={{

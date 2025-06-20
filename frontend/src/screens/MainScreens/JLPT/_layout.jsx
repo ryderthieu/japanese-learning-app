@@ -16,14 +16,20 @@ const JLPTNavigation = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#F490AF',
+          backgroundColor: '#F472B6',
+          elevation: 4,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.1,
+          shadowRadius: 3,
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
-          fontSize: 18,
+          fontSize: 20,
         },
-        headerShadowVisible: false,
+        headerTitleAlign: 'center',
+        headerBackTitleVisible: false,
       }}
     >
       <Stack.Screen

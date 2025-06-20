@@ -8,22 +8,25 @@ const SettingNavigation = ({ navigation }) => {
   const Stack = createNativeStackNavigator()
   return (
     <Stack.Navigator screenOptions={{
-      headerStyle: {backgroundColor: '#F490AF'},
-      headerTitleStyle: {color: '#fff'},
+      headerStyle: {
+        backgroundColor: '#F472B6',
+        elevation: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+      },
+      headerTitleStyle: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 20,
+      },
       headerTintColor: '#fff',
-
+      headerTitleAlign: 'center',
+      headerBackTitleVisible: false,
     }}>
       <Stack.Screen name='Setting' component={Setting} options={{
         title: 'Cài đặt',
-        headerLeft: () => (
-          <Icon
-            name='menu'
-            size={24}
-            onPress={() => navigation.openDrawer()}
-            className='mr-[20px]'
-            color={'white'}
-          />
-        )
       }} />
       <Stack.Screen name='ChangePassword' component={ChangePassword} options={{ headerShown: true, title: 'Đổi mật khẩu' }} />
     </Stack.Navigator>

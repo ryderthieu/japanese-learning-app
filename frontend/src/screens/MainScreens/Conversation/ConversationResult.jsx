@@ -56,11 +56,11 @@ const ConversationResult = ({ navigation, route }) => {
   return (
     <View className="flex-1 bg-gray-50">
       {/* Header */}
-      <View className="bg-teal-500 p-4">
+      <View className="bg-pink-500 p-4">
         <Text className="text-white font-bold text-xl text-center">
           🎉 Hoàn thành hội thoại!
         </Text>
-        <Text className="text-teal-100 text-center mt-1">
+        <Text className="text-pink-100 text-center mt-1">
           {scenarioName} - {level}
         </Text>
       </View>
@@ -75,7 +75,7 @@ const ConversationResult = ({ navigation, route }) => {
           <View className="space-y-3">
             <View className="flex-row items-center justify-between py-2 border-b border-gray-100">
               <View className="flex-row items-center">
-                <Icon name="chatbubbles-outline" size={20} color="#0D9488" />
+                <Icon name="chatbubbles-outline" size={20} color="#F472B6" />
                 <Text className="text-gray-700 ml-2">Tổng tin nhắn</Text>
               </View>
               <Text className="font-semibold text-gray-800">
@@ -85,7 +85,7 @@ const ConversationResult = ({ navigation, route }) => {
 
             <View className="flex-row items-center justify-between py-2 border-b border-gray-100">
               <View className="flex-row items-center">
-                <Icon name="person-outline" size={20} color="#0D9488" />
+                <Icon name="person-outline" size={20} color="#F472B6" />
                 <Text className="text-gray-700 ml-2">Câu của bạn</Text>
               </View>
               <Text className="font-semibold text-gray-800">
@@ -95,7 +95,7 @@ const ConversationResult = ({ navigation, route }) => {
 
             <View className="flex-row items-center justify-between py-2 border-b border-gray-100">
               <View className="flex-row items-center">
-                <Icon name="time-outline" size={20} color="#0D9488" />
+                <Icon name="time-outline" size={20} color="#F472B6" />
                 <Text className="text-gray-700 ml-2">Thời gian</Text>
               </View>
               <Text className="font-semibold text-gray-800">
@@ -105,7 +105,7 @@ const ConversationResult = ({ navigation, route }) => {
 
             <View className="flex-row items-center justify-between py-2">
               <View className="flex-row items-center">
-                <Icon name="trending-up-outline" size={20} color="#0D9488" />
+                <Icon name="trending-up-outline" size={20} color="#F472B6" />
                 <Text className="text-gray-700 ml-2">Tỷ lệ tham gia</Text>
               </View>
               <Text className="font-semibold text-gray-800">
@@ -119,7 +119,7 @@ const ConversationResult = ({ navigation, route }) => {
         {evaluation && (
           <View className="bg-white rounded-xl p-4 shadow-md mb-4">
             <View className="flex-row items-center mb-3">
-              <Icon name="school-outline" size={20} color="#0D9488" />
+              <Icon name="school-outline" size={20} color="#F472B6" />
               <Text className="text-lg font-bold text-gray-800 ml-2">
                 🤖 Đánh giá từ AI
               </Text>
@@ -161,7 +161,7 @@ const ConversationResult = ({ navigation, route }) => {
         {/* Action Buttons */}
         <View className="space-y-3 mb-8">
           <TouchableOpacity
-            className="bg-teal-500 rounded-xl p-4 flex-row items-center justify-center"
+            className="bg-pink-500 rounded-xl p-4 flex-row items-center justify-center"
             onPress={handleTryAgain}
             activeOpacity={0.8}
           >
@@ -172,12 +172,12 @@ const ConversationResult = ({ navigation, route }) => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            className="bg-white border border-teal-500 rounded-xl p-4 flex-row items-center justify-center"
+            className="bg-white border border-pink-500 rounded-xl p-4 flex-row items-center justify-center"
             onPress={handleBackToHome}
             activeOpacity={0.8}
           >
-            <Icon name="home-outline" size={20} color="#0D9488" />
-            <Text className="text-teal-600 font-semibold ml-2 text-base">
+            <Icon name="home-outline" size={20} color="#F472B6" />
+            <Text className="text-pink-600 font-semibold ml-2 text-base">
               Chọn tình huống khác
             </Text>
           </TouchableOpacity>
