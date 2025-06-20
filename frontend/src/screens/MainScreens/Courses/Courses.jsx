@@ -4,16 +4,15 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { SellingCourse } from '../../../components/Card/Card';
 import { CartContext } from '../../../context/CartContext';
-import { LoadingContext } from '../../../context/LoadingContext';
-import Loading from '../../../components/Loading/Loading';
+import { LoadingSpinner } from '../../../context/LoadingContext';
 import { ModalContext } from '../../../context/ModalContext';
 import courseService from '../../../api/courseService';
 import userService from '../../../api/userService';
 
 const Courses = () => {
   const [cartCount, setCartCount] = useState(0); 
+  const [loading, setLoading] = useState(true);
   const {cartItems, setRefresh} = useContext(CartContext)
-  const {isLoading, setIsLoading} = useContext(LoadingContext)
   const {openModal, closeModal} = useContext(ModalContext)
 
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -26,7 +25,7 @@ const Courses = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        setIsLoading(true)
+        setLoading(true)
         const response = await courseService.getAllCourses();
         
         // Backend trả về { courses: [...], pagination: {...} }
@@ -42,7 +41,7 @@ const Courses = () => {
         setAllCourses([])
         openModal({type: 'error', message: error.response?.data?.message || 'Lỗi khi tải khóa học'})
       } finally {
-        setIsLoading(false)
+        setLoading(false)
       }
     };
     fetchCourses();
@@ -102,10 +101,10 @@ const Courses = () => {
     );
   };
 
-  if (isLoading) return <Loading />
+  if (loading) return <LoadingSpinner text="Đang tải khóa học..." />
 
   // Kiểm tra nếu không có khóa học nào
-  if (safeAllCourses.length === 0 && !isLoading) {
+  if (safeAllCourses.length === 0 && !loading) {
     return (
       <View className="flex-1 bg-gray-100 justify-center items-center p-5">
         <View className="bg-white rounded-xl p-8 shadow-md items-center">

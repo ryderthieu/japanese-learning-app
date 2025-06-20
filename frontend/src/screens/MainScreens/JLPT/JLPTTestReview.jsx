@@ -14,6 +14,7 @@ import testService from '../../../api/testService';
 import userService from '../../../api/userService';
 import { useAIExplanation } from '../../../context/AIExplanationContext';
 import { ModalContext } from '../../../context/ModalContext';
+import { LoadingSpinner } from '../../../context/LoadingContext';
 
 const JLPTTestReview = ({ navigation, route }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -466,13 +467,7 @@ const JLPTTestReview = ({ navigation, route }) => {
   if (loading) {
     return (
       <SafeAreaView style={styles.container}>
-        <View className="flex-1 justify-center items-center bg-gray-50">
-          <ActivityIndicator size="large" color="#F472B6" />
-          <Text className="text-lg text-gray-600 mt-4">Đang tải dữ liệu...</Text>
-          <Text className="text-sm text-gray-500 mt-2 text-center px-8">
-            Đang lấy câu hỏi và kết quả của bạn
-          </Text>
-        </View>
+        <LoadingSpinner text="Đang tải dữ liệu..." />
       </SafeAreaView>
     );
   }

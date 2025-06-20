@@ -3,8 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-nativ
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { ModalContext } from '../../../context/ModalContext';
-import { LoadingContext } from '../../../context/LoadingContext';
-import Loading from '../../../components/Loading/Loading';
+import { LoadingContext, LoadingSpinner } from '../../../context/LoadingContext';
 import userService from '../../../api/userService';
 
 const PasswordInput = ({ label, value, onChangeText, showPassword, toggleShow, placeholder }) => (
@@ -86,7 +85,7 @@ const ChangePasswordScreen = () => {
   };
 
   if (isLoading) {
-    return <Loading />;
+    return <LoadingSpinner text="Đang xử lý..." />;
   }
 
   return (

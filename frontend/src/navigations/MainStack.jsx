@@ -1,16 +1,17 @@
 import React from 'react';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View, ActivityIndicator, Text } from 'react-native';
 import AuthStack from "./AuthStack";
 import MainTab from "./MainTab";
 import InitialSurvey from "../screens/AuthScreens/InitialSurvey/InitialSurvey";
 import { useAuth } from '../context/AuthContext';
+import { LoadingSpinner } from '../context/LoadingContext';
 
 // Component loading đẹp khi đang kiểm tra auth
 const AuthLoadingScreen = () => (
-    <View className="flex-1 bg-white items-center justify-center">
-        <ActivityIndicator size="large" color="#F472B6" />
-    </View>
+    <LoadingSpinner 
+        text="Đang kiểm tra đăng nhập..." 
+        style={{ backgroundColor: '#ffffff' }}
+    />
 );
 
 const MainStack = () => {

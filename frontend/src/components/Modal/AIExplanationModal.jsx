@@ -821,7 +821,7 @@ export const AIExplanationModal = () => {
                     >
                         {isLoading ? (
                             <View style={styles.loadingContainer}>
-                                <ActivityIndicator size="large" color="#FF4081" />
+                                <ActivityIndicator size="large" color="#F472B6" />
                                 <Text style={styles.loadingText}>
                                     AI đang phân tích và tạo giải thích chi tiết...
                                 </Text>

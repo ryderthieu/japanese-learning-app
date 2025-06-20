@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useRef } from 'react';
 import Overlay from '../components/Overlay/Overlay';
 import { View } from 'react-native';
 const ModalContext = createContext();
@@ -8,16 +8,21 @@ const ModalProvider = ({ children }) => {
     const [modalType, setModalType] = useState("success");
     const [modalMessage, setModalMessage] = useState("");
     const [modalTitle, setModalTitle] = useState("");
-    const [modalOnConfirm, setModalOnConfirm] = useState(null);
+    const modalOnConfirmRef = useRef(null);
+
     const openModal = ({ title, type, message, onConfirm }) => {
         setModalType(type);
         setModalMessage(message);
         setModalVisible(true);
-        setModalTitle(title)
-        setModalOnConfirm(onConfirm)
-        console.log('hello', onConfirm)
+        setModalTitle(title);
+        modalOnConfirmRef.current = onConfirm;
+        console.log('Modal opened with onConfirm:', typeof onConfirm);
     };
-    const closeModal = () => setModalVisible(false)
+    
+    const closeModal = () => {
+        setModalVisible(false);
+        modalOnConfirmRef.current = null;
+    };
 
     return (
         <ModalContext.Provider value={{openModal, closeModal}}>
@@ -25,11 +30,11 @@ const ModalProvider = ({ children }) => {
             <View className='absolute top-1/2 left-1/2'>
                 <Overlay
                     isVisible={modalVisible}
-                    onClose={() => setModalVisible(false)}
+                    onClose={closeModal}
                     type={modalType}
                     message={modalMessage}
                     title={modalTitle}
-                    onConfirm={modalOnConfirm}
+                    onConfirm={modalOnConfirmRef.current}
                 />
             </View>
         </ModalContext.Provider>

@@ -10,6 +10,7 @@ import {
 import userService from '../../../api/userService';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useIsFocused } from '@react-navigation/native';
+import { LoadingSpinner } from '../../../context/LoadingContext';
 
 const JLPTDashboard = ({ navigation }) => {
   const [jlptStats, setJlptStats] = useState(null);
@@ -158,11 +159,7 @@ const JLPTDashboard = ({ navigation }) => {
   );
 
   if (loading) {
-    return (
-      <View className="flex-1 justify-center items-center bg-gray-50">
-        <Text className="text-lg text-gray-600">Đang tải...</Text>
-      </View>
-    );
+    return <LoadingSpinner text="Đang tải..." />;
   }
 
   return (

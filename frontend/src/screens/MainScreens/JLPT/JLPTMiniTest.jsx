@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { questionService } from '../../../api';
+import { LoadingSpinner } from '../../../context/LoadingContext';
 
 const JLPTMiniTest = ({ navigation }) => {
   const route = useRoute();
@@ -96,12 +97,7 @@ const JLPTMiniTest = ({ navigation }) => {
   };
 
   if (loading) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#F472B6" />
-        <Text style={styles.loadingText}>Đang tải bài thi...</Text>
-      </View>
-    );
+    return <LoadingSpinner text="Đang tải bài thi..." />;
   }
 
   if (error) {

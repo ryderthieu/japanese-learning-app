@@ -5,12 +5,12 @@ import {
   ScrollView,
   TouchableOpacity,
   Alert,
-  ActivityIndicator,
   Modal,
 } from 'react-native';
 import { testService, questionService } from '../../../api';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ModalContext } from '../../../context/ModalContext';
+import { LoadingSpinner } from '../../../context/LoadingContext';
 
 const JLPTTest = ({ navigation, route }) => {
   const [test, setTest] = useState(null);
@@ -253,12 +253,7 @@ const JLPTTest = ({ navigation, route }) => {
   };
 
   if (loading) {
-    return (
-      <View className="flex-1 justify-center items-center bg-gray-50">
-        <ActivityIndicator size="large" color="#F472B6" />
-        <Text className="text-lg text-gray-600 mt-4">Đang tải bài thi...</Text>
-      </View>
-    );
+    return <LoadingSpinner text="Đang tải bài thi..." />;
   }
 
   return (

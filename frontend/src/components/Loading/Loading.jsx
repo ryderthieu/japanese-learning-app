@@ -3,7 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Image, Text, Animated } from 'react-native';
 import LottieView from 'lottie-react-native';
 
-const Loading = () => {
+const Loading = ({ 
+  text = 'Đang tải nội dung',
+  showLogo = true,
+  backgroundColor = '#fff',
+  textColor = '#333',
+  lottieSize = 200,
+  speed = 3 
+}) => {
   const [dots, setDots] = useState('');
   const opacity = new Animated.Value(0);
 
@@ -32,19 +39,21 @@ const Loading = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Image source={require('../../assets/logo/logo-app.png')} style={styles.logo} />
+    <View style={[styles.container, { backgroundColor }]}>
+      {showLogo && (
+        <Image source={require('../../assets/logo/logo-app.png')} style={styles.logo} />
+      )}
 
       <LottieView
         source={require('../../assets/animate/loading.json')}
         autoPlay
         loop
-        style={styles.lottie}
-        speed={3}
+        style={[styles.lottie, { width: lottieSize, height: lottieSize }]}
+        speed={speed}
       />
 
-      <Animated.Text style={[styles.text, { opacity }]}>
-        Đang tải nội dung{dots}
+      <Animated.Text style={[styles.text, { opacity, color: textColor }]}>
+        {text}{dots}
       </Animated.Text>
     </View>
   );
@@ -55,22 +64,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
     padding: 30,
   },
   logo: {
     marginBottom: 20,
   },
   lottie: {
-    width: 200,
-    height: 200,
     alignSelf: 'center'
   },
   text: {
     marginTop: 10,
     fontSize: 16,
-    color: '#333',
     textAlign: 'center',
+    fontWeight: '500',
   },
 });
 

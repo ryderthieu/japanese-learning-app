@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
-import { LoadingContext } from "../../../context/LoadingContext";
+import { LoadingSpinner } from "../../../context/LoadingContext";
 import { useFreeDocument } from "../../../context/FreeDocumentContext";
-import Loading from "../../../components/Loading/Loading";
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const SelectVocabLesson = ({ navigation, route }) => {
   const { level } = route.params;
   const [allLessons, setAllLessons] = useState([]);
-  const { isLoading, setIsLoading } = useContext(LoadingContext);
   const { getVocabLessons, isPreloading } = useFreeDocument();
 
   useEffect(() => {
@@ -61,7 +59,7 @@ const SelectVocabLesson = ({ navigation, route }) => {
   );
 
   // Hiển thị loading nếu đang preload
-  if (isPreloading) return <Loading />
+  if (isPreloading) return <LoadingSpinner text="Đang tải danh sách bài học..." />
 
   return (
     <View className="flex-1 bg-gray-50">

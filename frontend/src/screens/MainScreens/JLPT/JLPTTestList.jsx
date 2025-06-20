@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import testService from '../../../api/testService';
 import userService from '../../../api/userService';
 import { useFocusEffect } from '@react-navigation/native';
+import { LoadingSpinner } from '../../../context/LoadingContext';
 
 const JLPTTestList = ({ navigation, route }) => {
   const { level, type } = route.params;
@@ -173,12 +174,7 @@ const JLPTTestList = ({ navigation, route }) => {
   );
 
   if (loading) {
-    return (
-      <View className="flex-1 justify-center items-center bg-gray-50">
-        <ActivityIndicator size="large" color="#F472B6" />
-        <Text className="text-gray-600 mt-4">Đang tải danh sách đề thi...</Text>
-      </View>
-    );
+    return <LoadingSpinner text="Đang tải danh sách bài thi..." />;
   }
 
   return (

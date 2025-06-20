@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { View, Text, TouchableOpacity, Modal, FlatList, Animated, Dimensions, ImageBackground } from "react-native";
-import { LoadingContext } from '../../../context/LoadingContext';
+import { LoadingContext, LoadingSpinner } from '../../../context/LoadingContext';
 import vocabularyService from "../../../api/vocabularyService";
 import Icon from 'react-native-vector-icons/Ionicons';
-import Loading from "../../../components/Loading/Loading";
 
 const { width, height } = Dimensions.get('window');
 
@@ -132,7 +131,7 @@ const Test = ({ route }) => {
     outputRange: ['0deg', '180deg']
   });
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <LoadingSpinner text="Đang tải bài thi..." />;
 
   return (
     <View className="flex-1 bg-gray-50">

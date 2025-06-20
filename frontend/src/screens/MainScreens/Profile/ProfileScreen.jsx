@@ -31,10 +31,6 @@ const ProfileScreen = () => {
       message: 'Bạn có chắc chắn muốn đăng xuất?',
       onConfirm: () => {
         logout();
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'AuthStack' }],
-        });
       }
     });
   };

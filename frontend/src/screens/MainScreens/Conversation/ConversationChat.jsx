@@ -13,6 +13,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import aiService from '../../../api/aiService';
 import { ModalContext } from '../../../context/ModalContext';
+import { LoadingSpinner, InlineLoading } from '../../../context/LoadingContext';
 
 const ConversationChat = ({ navigation, route }) => {
   const { scenario, scenarioName, level } = route.params;
@@ -298,17 +299,10 @@ const ConversationChat = ({ navigation, route }) => {
         showsVerticalScrollIndicator={false}
       >
         {!conversationStarted && loading ? (
-          <View className="flex-1 justify-center items-center py-20">
-            <View className="bg-white rounded-2xl p-6 border border-gray-100 items-center">
-              <ActivityIndicator size="large" color="#F472B6" />
-              <Text className="text-gray-600 mt-4 font-medium">
-                Đang khởi tạo cuộc hội thoại...
-              </Text>
-              <Text className="text-gray-400 text-sm mt-2">
-                AI đang chuẩn bị tình huống cho bạn
-              </Text>
-            </View>
-          </View>
+          <LoadingSpinner 
+            text="Đang khởi tạo cuộc hội thoại..." 
+            style={{ backgroundColor: 'transparent', paddingVertical: 80 }}
+          />
         ) : (
           <>
             {messages.map((message, index) => renderMessage(message, index))}
@@ -317,12 +311,11 @@ const ConversationChat = ({ navigation, route }) => {
             {loading && (
               <View className="items-start mb-6">
                 <View className="bg-white border border-gray-100 rounded-2xl rounded-bl-lg p-3">
-                  <View className="flex-row items-center">
-                    <ActivityIndicator size="small" color="#F472B6" />
-                    <Text className="text-gray-500 ml-3 font-medium text-sm">
-                      AI đang suy nghĩ...
-                    </Text>
-                  </View>
+                  <InlineLoading 
+                    text="AI đang suy nghĩ..." 
+                    size="small"
+                    style={{ paddingVertical: 0 }}
+                  />
                 </View>
               </View>
             )}

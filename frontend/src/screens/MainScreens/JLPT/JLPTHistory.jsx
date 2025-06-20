@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import userService from '../../../api/userService';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { LoadingSpinner, InlineLoading } from '../../../context/LoadingContext';
 
 const JLPTHistory = ({ navigation }) => {
   const [history, setHistory] = useState([]);
@@ -194,12 +195,7 @@ const JLPTHistory = ({ navigation }) => {
   );
 
   if (loading && currentPage === 1) {
-    return (
-      <View className="flex-1 justify-center items-center bg-gray-50">
-        <ActivityIndicator size="large" color="#F472B6" />
-        <Text className="text-lg text-gray-600 mt-4">Đang tải lịch sử...</Text>
-      </View>
-    );
+    return <LoadingSpinner text="Đang tải lịch sử..." />;
   }
 
   return (
@@ -235,9 +231,7 @@ const JLPTHistory = ({ navigation }) => {
         )}
         
         {loading && currentPage > 1 && (
-          <View className="py-4">
-            <ActivityIndicator size="small" color="#F472B6" />
-          </View>
+          <InlineLoading text="Đang tải thêm..." />
         )}
       </ScrollView>
     </View>

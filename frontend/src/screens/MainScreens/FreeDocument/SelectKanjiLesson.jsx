@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
 import { useFreeDocument } from "../../../context/FreeDocumentContext";
-import Loading from "../../../components/Loading/Loading";
+import { LoadingSpinner } from "../../../context/LoadingContext";
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const SelectKanjiLesson = ({ navigation, route }) => {
@@ -59,7 +59,7 @@ const SelectKanjiLesson = ({ navigation, route }) => {
   );
 
   // Hiển thị loading nếu đang preload
-  if (isPreloading) return <Loading />
+  if (isPreloading) return <LoadingSpinner text="Đang tải danh sách bài học..." />
 
   return (
     <View className="flex-1 bg-gray-50">

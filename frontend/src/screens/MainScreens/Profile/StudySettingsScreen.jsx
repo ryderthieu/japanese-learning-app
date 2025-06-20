@@ -2,9 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Switch, ScrollView, Modal } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ModalContext } from '../../../context/ModalContext';
-import { LoadingContext } from '../../../context/LoadingContext';
+import { LoadingSpinner } from '../../../context/LoadingContext';
 import { useAuth } from '../../../context/AuthContext';
-import Loading from '../../../components/Loading/Loading';
 import NotificationService from '../../../services/NotificationService';
 
 const TimePickerModal = ({ visible, onClose, currentTime, onTimeSelected }) => {
@@ -107,7 +106,7 @@ const TimePickerModal = ({ visible, onClose, currentTime, onTimeSelected }) => {
 
 const StudySettingsScreen = () => {
   const { openModal } = useContext(ModalContext);
-  const { isLoading } = useContext(LoadingContext);
+  const { isLoading } = useAuth();
   const { userInfo, updateUserInfo } = useAuth();
   const [form, setForm] = useState(userInfo?.studySettings || {
     studyDuration: 30,
@@ -258,7 +257,7 @@ const StudySettingsScreen = () => {
   );
 
   if (isLoading) {
-    return <Loading />;
+    return <LoadingSpinner text="Đang tải cài đặt..." />;
   }
 
   return (

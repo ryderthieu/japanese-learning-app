@@ -9,6 +9,7 @@ import {
 import { testService } from '../../../api';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { ModalContext } from '../../../context/ModalContext';
+import { LoadingSpinner } from '../../../context/LoadingContext';
 
 const JLPTLevelSelect = ({ navigation, route }) => {
   const [tests, setTests] = useState([]);
@@ -105,12 +106,7 @@ const JLPTLevelSelect = ({ navigation, route }) => {
   };
 
   if (loading) {
-    return (
-      <View className="flex-1 justify-center items-center bg-gray-50">
-        <ActivityIndicator size="large" color="#F472B6" />
-        <Text className="text-lg text-gray-600 mt-4">Đang tải...</Text>
-      </View>
-    );
+    return <LoadingSpinner text="Đang tải..." />;
   }
 
   return (

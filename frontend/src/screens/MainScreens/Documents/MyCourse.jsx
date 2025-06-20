@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { View, FlatList, TouchableOpacity, Text } from 'react-native';
 import { CourseInfo } from '../../../components/Card/Card';
 import { useIsFocused } from '@react-navigation/native';
-import { LoadingContext } from '../../../context/LoadingContext';
-import Loading from '../../../components/Loading/Loading';
+import { LoadingSpinner } from '../../../context/LoadingContext';
 import LottieView from 'lottie-react-native';
 import { ModalContext } from '../../../context/ModalContext';
 import userService from '../../../api/userService';
@@ -11,13 +10,13 @@ import userService from '../../../api/userService';
 const MyCourses = ({ navigation }) => {
   const isFocus = useIsFocused()
   const [allCourses, setAllCourses] = useState([]);
-  const { isLoading, setIsLoading } = useContext(LoadingContext)
+  const [loading, setLoading] = useState(true);
   const {openModal} = useContext(ModalContext)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setIsLoading(true)
+        setLoading(true)
         const response = await userService.getUserCourses();
         console.log('User courses response:', response);
         console.log('Courses data:', response.courses);
@@ -26,14 +25,14 @@ const MyCourses = ({ navigation }) => {
         console.log('Error fetching courses:', error);
         openModal({type: 'error', message: error.response?.data?.message || 'Có lỗi xảy ra'})
       } finally {
-        setIsLoading(false)
+        setLoading(false)
       }
     };
 
     fetchData();
   }, [isFocus])
 
-  if (isLoading) return <Loading />
+  if (loading) return <LoadingSpinner text="Đang tải khóa học của tôi..." />
   return (
     <View className="flex-1 p-4">
       {allCourses.length > 0 ? (<FlatList

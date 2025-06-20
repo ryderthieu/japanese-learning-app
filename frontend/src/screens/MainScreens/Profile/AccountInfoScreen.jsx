@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useAuth } from '../../../context/AuthContext';
 import { ModalContext } from '../../../context/ModalContext';
-import { LoadingContext } from '../../../context/LoadingContext';
-import Loading from '../../../components/Loading/Loading';
+import { LoadingContext, LoadingSpinner } from '../../../context/LoadingContext';
 import userService from '../../../api/userService';
 
 const InfoField = ({ label, value, editable, onChangeText, type = 'text', options = [], edit }) => (
@@ -143,7 +142,7 @@ const AccountInfoScreen = () => {
   };
 
   if (isLoading) {
-    return <Loading />;
+    return <LoadingSpinner text="Đang tải thông tin..." />;
   }
 
   return (

@@ -145,7 +145,7 @@ export const VocabularyCard = memo(({ item }) => {
                         className="p-2"
                     >
                         {isLoading ? (
-                            <ActivityIndicator size="small" color="#FF4081" />
+                            <ActivityIndicator size="small" color="#F472B6" />
                         ) : (
                             <Icon
                                 name={isSaved ? "heart" : "heart-outline"}
@@ -246,7 +246,7 @@ export const GrammarCard = memo(({ item }) => {
                         className="p-2"
                     >
                         {isLoading ? (
-                            <ActivityIndicator size="small" color="#FF4081" />
+                            <ActivityIndicator size="small" color="#F472B6" />
                         ) : (
                             <Icon
                                 name={isSaved ? "heart" : "heart-outline"}

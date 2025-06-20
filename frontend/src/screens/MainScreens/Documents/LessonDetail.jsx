@@ -1,11 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Modal, SafeAreaView, StatusBar, Image } from 'react-native';
 import YouTube from 'react-native-youtube-iframe';
 import { GrammarCard, VocabularyCard } from '../../../components/Card/Card';
 import { useNavigation } from '@react-navigation/native';
 import { ModalContext } from '../../../context/ModalContext';
 import lessonService from '../../../api/lessonService';
 import userService from '../../../api/userService';
+import { LoadingSpinner } from '../../../context/LoadingContext';
 
 const LessonDetail = ({ route }) => {
     const navigation = useNavigation();
@@ -87,11 +88,7 @@ const LessonDetail = ({ route }) => {
     };
 
     if (loading) {
-        return (
-            <View className="flex-1 justify-center items-center bg-gray-100">
-                <Text className="text-lg text-gray-600">Đang tải dữ liệu...</Text>
-            </View>
-        );
+        return <LoadingSpinner text="Đang tải bài học..." />;
     }
 
     if (!lessonDetail) {

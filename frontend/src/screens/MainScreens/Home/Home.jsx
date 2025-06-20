@@ -11,6 +11,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useAuth } from '../../../context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ModalContext } from '../../../context/ModalContext';
+import { LoadingSpinner } from '../../../context/LoadingContext';
 
 const Home = ({ navigation }) => {
   const [savedVocabulary, setSavedVocabulary] = useState([]);
@@ -332,6 +333,10 @@ const Home = ({ navigation }) => {
       stopAutoTracking();
     };
   }, []);
+
+  if (isLoading) {
+    return <LoadingSpinner text="Đang tải dữ liệu trang chủ..." />;
+  }
 
   return (
     <ScrollView
